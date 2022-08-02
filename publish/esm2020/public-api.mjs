@@ -1,0 +1,5 @@
+/*
+ * Public API Surface of ng-zorro-antd-extension-lib
+ */
+export default void 0;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL2NvbXBvbmVudHMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGVBQWUsS0FBSyxDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIG5nLXpvcnJvLWFudGQtZXh0ZW5zaW9uLWxpYlxuICovXG5cbmV4cG9ydCBkZWZhdWx0IHZvaWQgMDtcbiJdfQ==
