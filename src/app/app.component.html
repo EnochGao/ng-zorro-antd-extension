@@ -1,3 +1,24 @@
-<button nz-button>dddd</button>
-
-<nz-checkbox-extension [checkOptions]="checkOptions" [(ngModel)]="value"></nz-checkbox-extension>
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo">zorro extension</div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-submenu nzTitle="组件" nzIcon="user">
+        <ul>
+          <li nz-menu-item [routerLink]="['checkbox']">nzx-checkbox-group</li>
+          <li nz-menu-item [routerLink]="['simple-table']">nzx-simple-table</li>
+          <li nz-menu-item [routerLink]="['nzx-map-pipe']">nzx-map-pipe</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"></i>
+    </nz-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface Options<T = string> {
@@ -8,11 +8,12 @@ export interface Options<T = string> {
 }
 
 /**
- * nz-checkbox-extension 自定义选择框,选择时传出的值为数组形式如：[1,2]
+ * nzx-checkbox-group
+ * 自定义选择框,选择时传出的值为数组形式如：[1,2]
  *
  * html:
  * ```html
- *  <nz-checkbox-extension [checkOptions]="checkOptions" formControlName="label"></nz-checkbox-extension>
+ *  <nzx-checkbox-group [checkOptions]="checkOptions" formControlName="label"></nzx-checkbox-group>
  * ```
  * ts:
  * ```ts
@@ -23,24 +24,28 @@ export interface Options<T = string> {
     this.form = this.fb.group({
       label: []
     });
-
  * ```
  */
 
 @Component({
-  selector: 'nz-checkbox-extension',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.less'],
+  selector: 'nzx-checkbox-group',
+  exportAs: 'nzxCheckboxGroupExtension',
+  template: `
+    <nz-checkbox-group [nzDisabled]="nzDisabled" [(ngModel)]="checkOptions"
+    (ngModelChange)="emit(checkOptions)">
+    </nz-checkbox-group>
+  `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxExtensionComponent),
+      useExisting: forwardRef(() => CheckboxGroupExtensionComponent),
       multi: true
     },
   ]
 })
-export class CheckboxExtensionComponent implements OnInit, ControlValueAccessor {
+export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
 
   @Input() checkOptions: Array<Options<number | string>> = [];
   /**
@@ -55,11 +60,6 @@ export class CheckboxExtensionComponent implements OnInit, ControlValueAccessor 
   nzDisabled = false;
 
   private propagateChange = (_: any) => { };
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   writeValue(v: (string | number)[]): void {
     if (v) {

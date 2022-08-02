@@ -117,6 +117,15 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -124,12 +133,13 @@
       "projectType": "library",
       "root": "components",
       "sourceRoot": "components",
-      "prefix": "nz",
+      "prefix": "nzx",
       "schematics": {
         "@schematics/angular:component": {
           "style": "less",
           "skipTests": true,
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "viewEncapsulation": "None"
         },
         "@schematics/angular:application": {
           "strict": true
@@ -163,6 +173,15 @@
             "main": "components/test.ts",
             "tsConfig": "components/tsconfig.spec.json",
             "karmaConfig": "components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "components/**/*.ts",
+              "components/**/*.html"
+            ]
           }
         }
       }

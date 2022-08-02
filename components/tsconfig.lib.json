@@ -2,14 +2,14 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist",
+    "outDir": "../publish",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
     "types": []
   },
   "exclude": [
-    "src/test.ts",
+    "test.ts",
     "**/*.spec.ts"
   ]
 }
