@@ -1,22 +1,3 @@
-.trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.trigger:hover {
-  color: #1890ff;
-}
-
-.logo {
-  margin: 16px;
-  text-align: center;
-  font-size: medium;
-  color: #fff
-}
-
 nz-layout {
   height: 100%;
 }
@@ -24,6 +5,21 @@ nz-layout {
 nz-header {
   background: #fff;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+  i {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: #000
+  }
+
+  i:hover {
+    color: #1890ff;
+  }
 }
 
 nz-content {
@@ -34,14 +30,4 @@ nz-content {
 
 nz-breadcrumb {
   margin: 16px 0;
-}
-
-.inner-content {
-  padding: 24px;
-  background: #fff;
-
-}
-
-nz-footer {
-  text-align: center;
 }

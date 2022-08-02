@@ -38,6 +38,10 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     RouterModule.forRoot(
       [
         {
+          path: 'home',
+          loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
+        },
+        {
           path: 'checkbox',
           loadChildren: () => import('./checkbox-group-demo/checkbox-group-demo.module').then((m) => m.CheckboxGroupDemoModule)
         },
@@ -49,7 +53,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
           path: 'nzx-map-pipe',
           loadChildren: () => import('./nzx-map-pipe-demo/nzx-map-pipe-demo.module').then((m) => m.NzxMapPipeDemoModule)
         },
-        { path: '**', redirectTo: 'checkbox', pathMatch: 'full' },
+        { path: '**', redirectTo: 'home', pathMatch: 'full' },
       ], {
       // enableTracing: true,
       preloadingStrategy: PreloadAllModules
