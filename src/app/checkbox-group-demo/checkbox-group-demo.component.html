@@ -1,1 +1,13 @@
-<p>checkbox-group-demo works!</p>
+<nz-tabset [nzTabPosition]="'left'">
+  <nz-tab nzTitle="说明">
+    <markdown ngPreserveWhitespaces clipboard src="assets/doc/nzx-checkbox-group.md">
+    </markdown>
+  </nz-tab>
+  <nz-tab nzTitle="demo">
+    <form [formGroup]="form">
+      <nzx-checkbox-group [customFormateInFn]="inFn" [customFormateOutFn]="outFn"
+        [checkOptions]="checkOptions" formControlName="value"></nzx-checkbox-group>
+    </form>
+    {{form.value|json}}
+  </nz-tab>
+</nz-tabset>

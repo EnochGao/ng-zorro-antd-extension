@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface Options<T = string> {
@@ -61,6 +61,8 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
 
   private propagateChange = (_: any) => { };
 
+  constructor(private cd: ChangeDetectorRef) { }
+
   writeValue(v: (string | number)[]): void {
     if (v) {
       let list = this.customFormateInFn(v) || [];
@@ -70,6 +72,7 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
           this.checkOptions[index]['checked'] = true;
         }
       });
+      this.cd.markForCheck();
     }
   }
 

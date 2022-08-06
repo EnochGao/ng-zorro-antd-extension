@@ -1,9 +1,24 @@
 {
   "name": "ng-zorro-antd-extension",
   "version": "0.0.1",
+  "license": "MIT",
+  "description": "An extension based on ng-zorro-antd",
+  "keywords": [
+    "angular",
+    "ng-zorro-antd",
+    "frontend",
+    "extension",
+    "ng-zorro-antd-extension"
+  ],
+  "homepage": "https://enochgao.github.io/ng-zorro-antd-extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnochGao/ng-zorro-antd-extension"
+  },
   "peerDependencies": {
     "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
+    "@angular/core": "^14.0.0",
+    "ng-zorro-antd": "^13.4.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

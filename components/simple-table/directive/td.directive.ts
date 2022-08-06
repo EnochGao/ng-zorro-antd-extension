@@ -5,6 +5,8 @@ import { Directive, Input, TemplateRef } from '@angular/core';
 })
 export class TdDirective {
 
+  @Input() key: any;
+
   constructor(
     public templateRef: TemplateRef<any>,
   ) { }

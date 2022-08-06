@@ -6,16 +6,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NzCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
 
+import en from '@angular/common/locales/en';
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule } from './zorro.module';
-import en from '@angular/common/locales/en';
 
-import { NZ_ICONS } from 'ng-zorro-antd/icon';
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-import * as AllIcons from '@ant-design/icons-angular/icons';
 import { registerLocaleData } from '@angular/common';
-import { IconDefinition } from '@ant-design/icons-angular';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule } from '@angular/router';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { MarkdownModule } from 'ngx-markdown';
 
 registerLocaleData(en);
 
@@ -29,12 +31,15 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     AppComponent
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
     FormsModule,
+    HttpClientModule,
     NzCheckboxExtensionModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+    }),
     RouterModule.forRoot(
       [
         {

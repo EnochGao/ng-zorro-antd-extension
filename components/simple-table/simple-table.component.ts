@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   ChangeDetectionStrategy, Component, ContentChild,
   ContentChildren, Input, QueryList,
   TemplateRef, ViewEncapsulation
@@ -26,12 +27,14 @@ export interface NzxSimpleTableConfig<T> {
    * 数据格式化函数
    */
   format?: (data: T) => any;
+
+  template?: TemplateRef<any>;
 }
 
 @Component({
   selector: 'nzx-simple-table',
   template: `
-    <nz-table #table [nzData]="nzxData" nzHideOnSinglePage [nzTitle]="nzxTitle" [nzFooter]="nzxFooter">
+    <nz-table #table [nzData]="nzxData" [nzBordered]="nzxBordered" nzHideOnSinglePage [nzTitle]="nzxTitle" [nzFooter]="nzxFooter">
       <thead>
         <tr>
           <th [nzAlign]="nzxAlign" *ngFor="let config of nzxConfig" [nzWidth]="config?.width">
@@ -48,20 +51,27 @@ export interface NzxSimpleTableConfig<T> {
         <ng-container *ngFor="let data of table.data;let i=index;">
           <tr>
             <td [nzAlign]="nzxAlign" *ngFor="let config of nzxConfig">
-              <ng-container *ngIf="!!config.key">
-                <ng-container *ngIf="!config.format">
-                  {{ data[config.key] }}
-                </ng-container>
-                <ng-container *ngIf="config.format">
-                  {{config.format(data[config.key])}}
-                </ng-container>
+              <ng-container *ngIf="config.template">
+                <ng-template [ngTemplateOutlet]="config.template"
+                [ngTemplateOutletContext]="{$implicit:data}">
+                </ng-template>
               </ng-container>
-              <ng-container *ngIf="!!!config.key">
-                <ng-container *ngIf="!config.format">
-                  {{ data }}
+              <ng-container *ngIf="!config.template">
+                <ng-container *ngIf="!!config.key">
+                  <ng-container *ngIf="!config.format">
+                    {{ data[config.key] }}
+                  </ng-container>
+                  <ng-container *ngIf="config.format">
+                    {{config.format(data)}}
+                  </ng-container>
                 </ng-container>
-                <ng-container *ngIf="config.format">
-                  {{config.format(data)}}
+                <ng-container *ngIf="!!!config.key">
+                  <ng-container *ngIf="!config.format">
+                    {{ data }}
+                  </ng-container>
+                  <ng-container *ngIf="config.format">
+                    {{config.format(data)}}
+                  </ng-container>
                 </ng-container>
               </ng-container>
             </td>
@@ -80,19 +90,37 @@ export interface NzxSimpleTableConfig<T> {
     </nz-table>
   ` ,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
-export class SimpleTableComponent<T> {
+export class SimpleTableComponent<T> implements AfterContentInit {
 
   @Input() nzxAlign: 'left' | 'right' | 'center' | null = 'center';
   @Input() nzxTitle!: string | TemplateRef<void>;
   @Input() nzxFooter!: string | TemplateRef<void>;
   @Input() nzxExpand = false;
+  @Input() nzxBordered = true;
   @Input() nzxData: Array<T> = [];
   @Input() nzxConfig: Array<NzxSimpleTableConfig<T>> = [];
 
-  @ContentChildren(ThDirective) tdList!: QueryList<ThDirective>;
-  @ContentChildren(TdDirective) thList!: QueryList<TdDirective>;
+  tdList: Array<TdDirective> = [];
+  thList: Array<ThDirective> = [];
+
   @ContentChild(ExpandDirective) expandDirective!: ExpandDirective;
+  @ContentChildren(ThDirective) private _thList!: QueryList<ThDirective>;
+  @ContentChildren(TdDirective) private _tdList!: QueryList<TdDirective>;
+
+  ngAfterContentInit(): void {
+    this.thList = this._thList.toArray();
+    this.tdList = this._tdList.toArray().filter(td => !td.key);
+
+    const tds = this._tdList.toArray().filter(td => td.key);
+    tds.forEach(td => {
+      this.nzxConfig.forEach(config => {
+        if (config.key === td.key) {
+          config.template = td.templateRef;
+        }
+      });
+    });
+  }
 
 }
