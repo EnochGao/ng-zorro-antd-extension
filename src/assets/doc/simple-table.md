@@ -29,6 +29,19 @@ html:
 ts:
 
 ```typescript
+interface Person {
+  id: number;
+  name: string;
+  age: number;
+  class: 1 | 2;
+}
+
+@Component({
+  selector: 'app-simple-table-demo',
+  templateUrl: './simple-table-demo.component.html',
+  styleUrls: ['./simple-table-demo.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
 export class SimpleTableDemoComponent implements OnInit {
 
   config: Array<NzxSimpleTableConfig<Person>> = [
