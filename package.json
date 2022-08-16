@@ -7,6 +7,8 @@
     "build": "ng build",
     "build-lib": "ng build ng-zorro-antd-extension-lib",
     "watch": "ng build --watch --configuration development",
+    "start:docs": "docgeni serve --port 4600",
+    "build:docs": "docgeni build --prod",
     "test": "ng test",
     "lint": "ng lint"
   },
@@ -35,6 +37,8 @@
     "@angular-eslint/template-parser": "14.0.2",
     "@angular/cli": "~14.0.0",
     "@angular/compiler-cli": "^14.0.0",
+    "@docgeni/cli": "^1.2.0-next.22",
+    "@docgeni/template": "^1.2.0-next.22",
     "@types/jasmine": "~4.0.0",
     "@typescript-eslint/eslint-plugin": "5.29.0",
     "@typescript-eslint/parser": "5.29.0",

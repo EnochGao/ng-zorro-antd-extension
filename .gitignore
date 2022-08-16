@@ -6,6 +6,7 @@
 /tmp
 /out-tsc
 /bazel-out
+.docgeni/site
 
 # Node
 /node_modules

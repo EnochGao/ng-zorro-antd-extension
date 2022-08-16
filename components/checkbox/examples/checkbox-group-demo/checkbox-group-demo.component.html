@@ -1,0 +1,5 @@
+<form [formGroup]="form">
+  <nzx-checkbox-group [customFormateInFn]="inFn" [customFormateOutFn]="outFn"
+    [checkOptions]="checkOptions" formControlName="value"></nzx-checkbox-group>
+</form>
+{{form.value|json}}

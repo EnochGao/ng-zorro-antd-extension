@@ -23,6 +23,9 @@
       "dom"
     ],
     "paths": {
+      "ng-zorro-antd-extension": [
+        "components/public-api.ts"
+      ],
       "ng-zorro-antd-extension/*": [
         "components/*"
       ]
