@@ -5,10 +5,10 @@ module.exports = [
     description: '按钮组件，支持 alibButton 指令和 alib-button 组件两种形式',
     properties: [
       {
-        name: 'alibType',
-        type: 'string',
-        default: 'primary',
-        description: '按钮的类型，支持 \`primary | info | warning | danger\`'
+        name: 'checkOptions',
+        type: 'Array<Options<number | string>>',
+        default: '[]',
+        description: '选项集合'
       },
       {
         name: 'alibSize',
