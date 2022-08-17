@@ -1,0 +1,50 @@
+<div class="container" nz-row nzJustify="space-between">
+  <div nz-col [nzSpan]="lSpan">
+    <form nz-form [formGroup]="queryForm">
+      <div nz-row [nzGutter]="8" [nzJustify]="nzJustify" class="controls-container">
+        <div nz-col [nzSpan]="control.nzSpan" *ngFor="let control of controls">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="control.nzLSpan||6" *ngIf="control.label">{{ control.label }}
+            </nz-form-label>
+            <nz-form-control [nzSpan]="control.nzRSpan||18">
+              <input nz-input *ngIf="control.controlType==='input'"
+                [placeholder]="control.placeholder" [formControlName]="control.controlName" />
+
+              <nz-select [formControlName]="control.controlName" [nzShowSearch]="true"
+                [nzAllowClear]="control.nzAllowClear" [nzPlaceHolder]="control.placeholder"
+                *ngIf="control.controlType==='select'">
+                <nz-option *ngFor="let item of control.menuList" [nzValue]="item.value"
+                  [nzLabel]="item.label">
+                </nz-option>
+              </nz-select>
+
+              <nz-date-picker *ngIf="control.controlType==='datePicker'"
+                [ngStyle]="{'width': '100%'}" [formControlName]="control.controlName"
+                [nzPlaceHolder]="control.placeholder">
+              </nz-date-picker>
+
+              <nz-range-picker [ngStyle]="{'width': '100%'}"
+                *ngIf="control.controlType==='rangePicker'" [formControlName]="control.controlName">
+              </nz-range-picker>
+
+              <ng-container *ngIf="control.controlType==='Template'">
+                <ng-container *ngTemplateOutlet="control.templateRef"></ng-container>
+              </ng-container>
+
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="btn-container" nz-col [nzSpan]="rSpan">
+    <div nz-row nzJustify="end">
+      <button class="query-btn" nz-button nzType="primary" type="button"
+        (click)="search()">查询</button>
+      <button class="reset-btn" nz-button type="button" (click)="reset()">重置</button>
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+</div>
