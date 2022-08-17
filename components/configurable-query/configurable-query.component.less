@@ -1,9 +1,11 @@
-@import "../../../theme/theme-variables.less";
-
 .container {
   padding: 12px;
-  background-color: @configurable-search-background;
-  border-radius: @configurable-search-border-radius;
+  background-color: #fff;
+  border-radius: 8px;
+
+  [nz-form-label] {
+    overflow: visible;
+  }
 
   .btn-container {
     button {
@@ -11,9 +13,5 @@
       width: 104px;
     }
 
-    .query-btn {
-      background-color: @configurable-search-query-btn-background;
-      border-color: @configurable-search-query-btn-background;
-    }
   }
 }

@@ -1,17 +1,19 @@
-<div class="container" nz-row nzJustify="space-between">
-  <div nz-col [nzSpan]="lSpan">
-    <form nz-form [formGroup]="queryForm">
-      <div nz-row [nzGutter]="8" [nzJustify]="nzJustify" class="controls-container">
-        <div nz-col [nzSpan]="control.nzSpan" *ngFor="let control of controls">
+<div class="container">
+  <form nz-form [formGroup]="queryForm">
+    <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
+      <ng-container *ngFor="let control of controls">
+        <div nz-col [nzSpan]="control.nzxSpan||nzxSpan" [hidden]="control.collapse">
           <nz-form-item>
-            <nz-form-label [nzSpan]="control.nzLSpan||6" *ngIf="control.label">{{ control.label }}
+            <nz-form-label [nzSpan]="control.nzxLSpan||6" *ngIf="control.label">
+              {{ control.label }}
             </nz-form-label>
-            <nz-form-control [nzSpan]="control.nzRSpan||18">
+            <nz-form-control [nzSpan]="control.nzxRSpan||18" [nzErrorTip]="control.errorTip">
+
               <input nz-input *ngIf="control.controlType==='input'"
                 [placeholder]="control.placeholder" [formControlName]="control.controlName" />
 
               <nz-select [formControlName]="control.controlName" [nzShowSearch]="true"
-                [nzAllowClear]="control.nzAllowClear" [nzPlaceHolder]="control.placeholder"
+                [nzAllowClear]="control.nzxAllowClear" [nzPlaceHolder]="control.placeholder"
                 *ngIf="control.controlType==='select'">
                 <nz-option *ngFor="let item of control.menuList" [nzValue]="item.value"
                   [nzLabel]="item.label">
@@ -34,17 +36,22 @@
             </nz-form-control>
           </nz-form-item>
         </div>
+      </ng-container>
+
+
+      <div class="btn-container" nz-col [nzSpan]="nzxBtnSpan||8">
+        <div nz-row nzJustify="end" nzAlign="middle">
+          <button nz-button nzType="primary" type="button" (click)="search()">查询</button>
+          <button nz-button type="button" (click)="reset()">重置</button>
+
+          <a *ngIf="nzxCollapse" (click)="toggleCollapse()">
+            {{isCollapse?'展开':'收起'}}
+            <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+          </a>
+
+        </div>
       </div>
-    </form>
-  </div>
 
-  <div class="btn-container" nz-col [nzSpan]="rSpan">
-    <div nz-row nzJustify="end">
-      <button class="query-btn" nz-button nzType="primary" type="button"
-        (click)="search()">查询</button>
-      <button class="reset-btn" nz-button type="button" (click)="reset()">重置</button>
-      <ng-content></ng-content>
     </div>
-  </div>
-
+  </form>
 </div>

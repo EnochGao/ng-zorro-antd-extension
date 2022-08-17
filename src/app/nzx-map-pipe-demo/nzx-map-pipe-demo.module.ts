@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzxMapPipeDemoComponent } from './nzx-map-pipe-demo.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MarkdownModule } from 'ngx-markdown';
-import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
 import { PipesModule } from 'ng-zorro-antd-extension/pipes';
+import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
 import { NgZorroAntdModule } from '../zorro.module';
+import { NzxMapPipeDemoComponent } from './nzx-map-pipe-demo.component';
 
 
 
@@ -18,7 +17,6 @@ import { NgZorroAntdModule } from '../zorro.module';
     NgZorroAntdModule,
     SimpleTableModule,
     PipesModule,
-    MarkdownModule.forChild(),
     RouterModule.forChild([
       { path: '', component: NzxMapPipeDemoComponent }
     ])

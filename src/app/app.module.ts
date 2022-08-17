@@ -11,13 +11,12 @@ import { AppComponent } from './app.component';
 import { NgZorroAntdModule } from './zorro.module';
 
 import { registerLocaleData } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
-import { MarkdownModule } from 'ngx-markdown';
 
 registerLocaleData(en);
 
@@ -37,15 +36,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     FormsModule,
     HttpClientModule,
     NzCheckboxExtensionModule,
-    MarkdownModule.forRoot({
-      loader: HttpClient,
-    }),
     RouterModule.forRoot(
       [
-        {
-          path: 'home',
-          loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
-        },
         {
           path: 'checkbox',
           loadChildren: () => import('./checkbox-group-demo/checkbox-group-demo.module').then((m) => m.CheckboxGroupDemoModule)
@@ -58,7 +50,11 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
           path: 'nzx-map-pipe',
           loadChildren: () => import('./nzx-map-pipe-demo/nzx-map-pipe-demo.module').then((m) => m.NzxMapPipeDemoModule)
         },
-        { path: '**', redirectTo: 'home', pathMatch: 'full' },
+        {
+          path: 'nzx-configurable-query',
+          loadChildren: () => import('./nzx-configurable-query-demo/nzx-configurable-query-demo.module').then((m) => m.NzxConfigurableQueryDemoModule)
+        },
+        { path: '**', redirectTo: 'checkbox', pathMatch: 'full' },
       ], {
       // enableTracing: true,
       preloadingStrategy: PreloadAllModules

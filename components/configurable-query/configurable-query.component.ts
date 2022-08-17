@@ -1,9 +1,10 @@
 import {
   AfterContentInit, ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component, ContentChildren, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList
 } from '@angular/core';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject } from 'rxjs';
@@ -30,17 +31,20 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
 
   @Input() controls: Array<QueryControlOptions> = [];
   /** 查询控件左侧控件布局方式 */
-  @Input() nzJustify: NzJustify = 'start';
+  @Input() nzxJustify: NzJustify = 'start';
+  @Input() nzxGutter: number = 8;
+  @Input() nzxSpan: number = 8;
   /** 查询控件左侧控件占比 */
-  @Input() lSpan = 24;
-  /** 查询控件右侧查询按钮空间占比 */
-  @Input() rSpan = 24;
+  @Input() nzxBtnSpan: number | null = null;
+  @Input() nzxCollapse = true;
+
 
   @Output() query = new EventEmitter<QueryParams>();
   @Output() resetQuery = new EventEmitter<QueryParams>();
 
   queryParams: QueryParams = {};
   queryForm!: FormGroup;
+  isCollapse = true;
 
   private defaultValue: QueryParams = {};
   private params: QueryParams = {};
@@ -50,6 +54,7 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
 
   constructor(
     private fb: FormBuilder,
+    private cd: ChangeDetectorRef
   ) {
     this.queryForm = this.fb.group({});
   }
@@ -70,7 +75,7 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
           control.templateRef = item.templateRef;
         }
       }
-      this.queryForm.addControl(control.controlName, control.controlInstance);
+      this.queryForm.addControl(control.controlName, control.controlInstance ?? this.fb.control(null));
     }
 
     this.queryParams = this.queryForm.value;
@@ -93,6 +98,21 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
   reset() {
     this.queryForm.reset(this.defaultValue);
     this.resetQuery.emit(this.queryParams);
+  }
+
+  toggleCollapse() {
+    this.controls.forEach((control) => {
+      if (this.isCollapse && (control.collapse === true)) {// 展开
+        control.collapse = false;
+        this.nzxBtnSpan = 24;
+      }
+      if (!this.isCollapse && (control.collapse === false)) {
+        control.collapse = true;
+        this.nzxBtnSpan = 0;
+      }
+    });
+    this.isCollapse = !this.isCollapse;
+
   }
 
   ngOnDestroy(): void {

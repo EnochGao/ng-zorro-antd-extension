@@ -1,23 +1,15 @@
-<nz-tabset [nzTabPosition]="'left'">
-  <nz-tab nzTitle="说明">
-    <markdown ngPreserveWhitespaces clipboard src="assets/doc/simple-table.md">
-    </markdown>
-  </nz-tab>
-  <nz-tab nzTitle="demo">
-    <nzx-simple-table [nzxConfig]="config" [nzxData]="list" [nzxExpand]="true">
-      <ng-template nzxTh width="160px">
-        <button nz-button nzType="primary" (click)="add()">添加</button>
-      </ng-template>
+<nzx-simple-table [nzxConfig]="config" [nzxData]="list" [nzxExpand]="true">
+  <ng-template nzxTh width="160px">
+    <button nz-button nzType="primary" (click)="add()">添加</button>
+  </ng-template>
 
-      <ng-template nzxTd let-data>
-        <button nz-button nzType="link" (click)="remove(data)">删除</button>
-        <button nz-button nzType="link" (click)="data.expand=!data.expand">展开</button>
-      </ng-template>
+  <ng-template nzxTd let-data>
+    <button nz-button nzType="link" (click)="remove(data)">删除</button>
+    <button nz-button nzType="link" (click)="data.expand=!data.expand">展开</button>
+  </ng-template>
 
-      <ng-template nzxExpandTr let-data>
-        {{data|json}}
-      </ng-template>
+  <ng-template nzxExpandTr let-data>
+    {{data|json}}
+  </ng-template>
 
-    </nzx-simple-table>
-  </nz-tab>
-</nz-tabset>
+</nzx-simple-table>

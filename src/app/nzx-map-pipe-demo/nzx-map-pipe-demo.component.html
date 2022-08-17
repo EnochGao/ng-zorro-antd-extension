@@ -1,38 +1,30 @@
-<nz-tabset [nzTabPosition]="'left'">
-  <nz-tab nzTitle="说明">
-    <markdown ngPreserveWhitespaces clipboard src="assets/doc/nzx-map-pipe.md">
-    </markdown>
-  </nz-tab>
-  <nz-tab nzTitle="demo">
-    <nzx-simple-table [nzxConfig]="[
-    { header: 'id', key: 'id', width: '50px' },
-    { header: '姓名', key: 'name' },
-    { header: '班级', key: 'class' },
-    { header: '年龄', key: 'age' },
-    { header: '所修科目', key: 'course' }
+<nzx-simple-table [nzxConfig]="[
+{ header: 'id', key: 'id', width: '50px' },
+{ header: '姓名', key: 'name' },
+{ header: '班级', key: 'class' },
+{ header: '年龄', key: 'age' },
+{ header: '所修科目', key: 'course' }
 
-    ]" [nzxData]="list" [nzxExpand]="true">
+]" [nzxData]="list" [nzxExpand]="true">
 
-      <ng-template nzxTh width="160px">
-        <button nz-button nzType="primary" (click)="add()">添加</button>
-      </ng-template>
+  <ng-template nzxTh width="160px">
+    <button nz-button nzType="primary" (click)="add()">添加</button>
+  </ng-template>
 
-      <ng-template nzxTd key="class" let-data>
-        {{data.class|nzxMap:classMap}}
-      </ng-template>
-      <ng-template nzxTd key="course" let-data>
-        {{data.course|nzxMap:null:'*_*'}}
-      </ng-template>
+  <ng-template nzxTd key="class" let-data>
+    {{data.class|nzxMap:classMap}}
+  </ng-template>
+  <ng-template nzxTd key="course" let-data>
+    {{data.course|nzxMap:null:'*_*'}}
+  </ng-template>
 
-      <ng-template nzxTd let-data>
-        <button nz-button nzType="link" (click)="remove(data)">删除</button>
-        <button nz-button nzType="link" (click)="data.expand=!data.expand">展开</button>
-      </ng-template>
+  <ng-template nzxTd let-data>
+    <button nz-button nzType="link" (click)="remove(data)">删除</button>
+    <button nz-button nzType="link" (click)="data.expand=!data.expand">展开</button>
+  </ng-template>
 
-      <ng-template nzxExpandTr let-data>
-        {{data|json}}
-      </ng-template>
+  <ng-template nzxExpandTr let-data>
+    {{data|json}}
+  </ng-template>
 
-    </nzx-simple-table>
-  </nz-tab>
-</nz-tabset>
+</nzx-simple-table>

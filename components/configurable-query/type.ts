@@ -8,14 +8,16 @@ export interface Options<T = any> {
 
 export interface QueryControlOptions {
   controlName: string;
+  controlType: 'input' | 'select' | 'datePicker' | 'rangePicker' | 'Template';
   label?: string;
   placeholder?: string;
-  controlType: string | 'Template';
   menuList?: Array<Options<any>>;
-  nzAllowClear?: boolean;
-  nzSpan: number;
-  nzLSpan?: number;
-  nzRSpan?: number;
-  controlInstance: AbstractControl;
+  nzxAllowClear?: boolean;
+  nzxSpan?: number;
+  nzxLSpan?: number;
+  nzxRSpan?: number;
+  errorTip?: string;
+  collapse?: boolean;
+  controlInstance?: AbstractControl;
   templateRef?: TemplateRef<unknown>;
 }
