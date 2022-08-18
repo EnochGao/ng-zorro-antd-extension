@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzxConfigurableQueryDemoComponent } from './nzx-configurable-query-demo.component';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { NzxConfigurableQueryModule } from 'ng-zorro-antd-extension/configurable-query';
-import { NgZorroAntdModule } from '../zorro.module';
-import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzxConfigurableQueryDemoComponent } from './nzx-configurable-query-demo/nzx-configurable-query-demo.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 
 
 @NgModule({
@@ -15,12 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NgZorroAntdModule,
     NzRateModule,
     NzxConfigurableQueryModule,
-    RouterModule.forChild([
-      { path: '', component: NzxConfigurableQueryDemoComponent }
-    ])
   ]
 })
 export class NzxConfigurableQueryDemoModule { }

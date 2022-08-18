@@ -2,7 +2,8 @@
   <form nz-form [formGroup]="queryForm">
     <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
       <ng-container *ngFor="let control of controls">
-        <div nz-col [nzSpan]="control.nzxSpan||nzxSpan" [hidden]="control.collapse">
+        <div nz-col [nzSpan]="control.nzxSpan||(24/lineNumber)"
+          [hidden]="nzxCollapse&&control.collapse">
           <nz-form-item>
             <nz-form-label [nzSpan]="control.nzxLSpan||6" *ngIf="control.label">
               {{ control.label }}
@@ -30,7 +31,9 @@
               </nz-range-picker>
 
               <ng-container *ngIf="control.controlType==='Template'">
-                <ng-container *ngTemplateOutlet="control.templateRef"></ng-container>
+                <ng-container
+                  *ngTemplateOutlet="control.templateRef;context:{$implicit:queryForm.get(control.controlName)}">
+                </ng-container>
               </ng-container>
 
             </nz-form-control>
@@ -39,7 +42,7 @@
       </ng-container>
 
 
-      <div class="btn-container" nz-col [nzSpan]="nzxBtnSpan||8">
+      <div class="btn-container" nz-col [nzSpan]="nzxBtnSpan||(24/lineNumber)">
         <div nz-row nzJustify="end" nzAlign="middle">
           <button nz-button nzType="primary" type="button" (click)="search()">查询</button>
           <button nz-button type="button" (click)="reset()">重置</button>

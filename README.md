@@ -10,4 +10,9 @@ mpm install ng-zorro-antd-extension --save
 
 ```
 
-该组件包是自己做项目中所写的，后续如有扩展再添加，也欢迎大家fork贡献代码
+|依赖|版本|
+|---|----|
+|angular|^13.x.x|
+|ng-zorro-antd|^13.4.0|
+
+该组件包是项目中所开发的组件，以用于生产环境，后续有扩展再添加，欢迎fork贡献代码

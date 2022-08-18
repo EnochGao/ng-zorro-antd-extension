@@ -1,5 +1,7 @@
 ---
+category: component
 title: nzx-checkbox-group
+subtitle: 多选框
 order: 1
 ---
 
@@ -7,8 +9,9 @@ order: 1
 
 提供`customFormateInFn`和`customFormateOutFn`自定义函数转换出入参格式
 
+引入
+
 ```ts
-// 引入
 import { NzCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
 ```
 

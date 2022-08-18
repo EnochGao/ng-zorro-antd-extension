@@ -1,23 +1,18 @@
 import {
-  AfterContentInit, ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component, ContentChildren, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList
+  AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewEncapsulation
 } from '@angular/core';
 
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { NzJustify } from 'ng-zorro-antd/grid';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { ControlDirective } from './control.directive';
-import { QueryControlOptions } from './type';
+import { NzxQueryParams, QueryControlOptions } from './type';
 
-interface QueryParams {
-  [key: string]: any;
-}
 
 /**
  * 查询组件
- * 支持模板自定义，在使用模板自定义时，要注意controlType应该设置为Template并且确保controlName与指令上的controlName应该相同
+ * 支持模板自定义，在使用模板自定义时，要注意controlType应该设置为Template并且确保controlName与指令上的nzxControl应该相同
  */
 
 @Component({
@@ -25,57 +20,65 @@ interface QueryParams {
   templateUrl: './configurable-query.component.html',
   styleUrls: ['./configurable-query.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  exportAs: 'ConfigurableQuery'
+  exportAs: 'NzxConfigurableQuery',
+  encapsulation: ViewEncapsulation.None
 })
 export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnDestroy {
-
+  /** 配置项 */
   @Input() controls: Array<QueryControlOptions> = [];
-  /** 查询控件左侧控件布局方式 */
+  /** 查询表单排列方式 */
   @Input() nzxJustify: NzJustify = 'start';
+  /** 查询项间隔 */
   @Input() nzxGutter: number = 8;
-  @Input() nzxSpan: number = 8;
-  /** 查询控件左侧控件占比 */
+  /** 一行展示多少查询项 */
+  @Input() lineNumber: number = 3;
+  /** 操作按钮所占栅格数，24则换行 */
   @Input() nzxBtnSpan: number | null = null;
+  /**启用折叠 */
   @Input() nzxCollapse = true;
+  /** 初始化时，主动查询 */
+  @Input() initQuery = false;
 
+  /** 查询重置时会触发抛出查询参数 */
+  @Output() queryParamsChange = new EventEmitter<NzxQueryParams>();
 
-  @Output() query = new EventEmitter<QueryParams>();
-  @Output() resetQuery = new EventEmitter<QueryParams>();
-
-  queryParams: QueryParams = {};
+  queryParams: NzxQueryParams = {};
   queryForm!: FormGroup;
   isCollapse = true;
 
-  private defaultValue: QueryParams = {};
-  private params: QueryParams = {};
+  private defaultValue: NzxQueryParams = {};
+  private params: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
+  private _nzxBtnSpan: number | null = null;
 
   @ContentChildren(ControlDirective) controlTemplateList!: QueryList<ControlDirective>;
 
   constructor(
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef
   ) {
     this.queryForm = this.fb.group({});
   }
 
 
   ngOnInit(): void {
-    this.queryForm.valueChanges.subscribe(val => {
-      this.queryParams = val;
-    });
+    this.queryForm.valueChanges.pipe(takeUntil(this.destroy$))
+      .subscribe(val => {
+        this.queryParams = val;
+      });
+
+    this._nzxBtnSpan = this.nzxBtnSpan;
   }
 
   ngAfterContentInit(): void {
     for (const control of this.controls) {
       if (control.controlType === 'Template') {
         const item = this.controlTemplateList.find(directive =>
-          (directive.controlName === control.controlName));
+          (directive.nzxControl === control.controlName));
         if (item) {
           control.templateRef = item.templateRef;
         }
       }
-      this.queryForm.addControl(control.controlName, control.controlInstance ?? this.fb.control(null));
+      this.queryForm.addControl(control.controlName, control.controlInstance ?? this.fb.control(control.default ?? null));
     }
 
     this.queryParams = this.queryForm.value;
@@ -85,22 +88,37 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
     if (this.params) { // 缓存回显查询条件
       this.queryForm.patchValue(this.params);
     }
+
+    if (this.initQuery) {
+      this.search();
+    }
   }
 
-  setQueryParams(params: QueryParams) {
+  setQueryParams(params: NzxQueryParams) {
     this.params = params;
   }
 
   search(): void {
-    this.query.emit(this.queryParams);
+    if (this.queryForm.invalid) {
+      Object.values(this.queryForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    } else {
+      this.queryParamsChange.emit(this.queryParams);
+    }
   }
+
 
   reset() {
     this.queryForm.reset(this.defaultValue);
-    this.resetQuery.emit(this.queryParams);
+    this.search();
   }
 
   toggleCollapse() {
+
     this.controls.forEach((control) => {
       if (this.isCollapse && (control.collapse === true)) {// 展开
         control.collapse = false;
@@ -108,7 +126,7 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
       }
       if (!this.isCollapse && (control.collapse === false)) {
         control.collapse = true;
-        this.nzxBtnSpan = 0;
+        this.nzxBtnSpan = this._nzxBtnSpan;
       }
     });
     this.isCollapse = !this.isCollapse;

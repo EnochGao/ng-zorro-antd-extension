@@ -1,13 +1,16 @@
 ---
+category: pipe
 title: nzx-map-pipe
+subtitle: 映射管道
 order: 2
 ---
 
 
 映射管道，可以转换数据格式，
 
+引入
+
 ```ts
-// 引入
 import { PipesModule } from 'ng-zorro-antd-extension/pipes';
 ```
 
@@ -20,7 +23,6 @@ html:
 { header: '班级', key: 'class' },
 { header: '年龄', key: 'age' },
 { header: '所修科目', key: 'course' }
-
 ]" [nzxData]="list" [nzxExpand]="true">
 
   <ng-template nzxTh width="160px">

@@ -4,10 +4,10 @@
 module.exports = {
   mode: 'full',
   theme: 'angular',
-  title: 'ng zorro extension',
+  title: 'zorro extension',
   description: 'ng zorro 拓展包',
-  logoUrl: 'https://cdn.pingcode.com/open-sources/docgeni/logo.png',
-  repoUrl: 'https://github.com/docgeni/docgeni',
+  logoUrl: 'https://avatars.githubusercontent.com/u/41459067?v=4',
+  repoUrl: 'https://github.com/EnochGao/ng-zorro-antd-extension',
   navs: [
     null,
     {
@@ -24,13 +24,12 @@ module.exports = {
       exclude: '',
       categories: [
         {
-          id: 'general',
-          title: '通用',
-          locales: {
-            'zh-cn': {
-              title: 'General'
-            }
-          }
+          id: 'component',
+          title: '组件',
+        },
+        {
+          id: 'pipe',
+          title: '管道'
         }
       ]
     }

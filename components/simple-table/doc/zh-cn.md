@@ -1,9 +1,11 @@
 ---
+category: component
 title: nzx-simple-table
+subtitle: 简单表格
 order: 3
 ---
 
-简单table通过配置项快速生成一个table，支持自定义template，初衷只是为了数据展示方便，暂时不支持服务端分页
+简单table通过配置项快速生成一个table，支持自定义template，初衷只是为了数据展示方便，不支持服务端分页
 
 ```typescript
 import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';

@@ -5,7 +5,7 @@ import { Directive, Input, TemplateRef } from '@angular/core';
 })
 export class ControlDirective {
 
-  @Input() controlName!: string;
+  @Input() nzxControl!: string;
 
   constructor(public templateRef: TemplateRef<unknown>) { }
 

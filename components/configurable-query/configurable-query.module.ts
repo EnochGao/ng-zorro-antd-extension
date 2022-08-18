@@ -12,6 +12,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { AlertOutline } from '@ant-design/icons-angular/icons';
 import { IconDefinition, } from '@ant-design/icons-angular';
 import { NzFormModule } from 'ng-zorro-antd/form';
+
 const icons: IconDefinition[] = [AlertOutline];
 
 @NgModule({

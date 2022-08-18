@@ -8,7 +8,7 @@ export class ThDirective {
   @Input() width: string | null = null;
 
   constructor(
-    public templateRef: TemplateRef<any>,
+    public templateRef: TemplateRef<unknown>,
   ) { }
 
 }

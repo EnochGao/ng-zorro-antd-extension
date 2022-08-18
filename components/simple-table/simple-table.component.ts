@@ -93,13 +93,19 @@ export interface NzxSimpleTableConfig<T> {
   encapsulation: ViewEncapsulation.None
 })
 export class SimpleTableComponent<T> implements AfterContentInit {
-
+  /** th td 布局方式 */
   @Input() nzxAlign: 'left' | 'right' | 'center' | null = 'center';
+  /** table 标题 */
   @Input() nzxTitle!: string | TemplateRef<void>;
+  /** table 页脚*/
   @Input() nzxFooter!: string | TemplateRef<void>;
+  /** 支持展开 */
   @Input() nzxExpand = false;
+  /** 启用边框 */
   @Input() nzxBordered = true;
+  /** table数据集合 */
   @Input() nzxData: Array<T> = [];
+  /** table 配置项 */
   @Input() nzxConfig: Array<NzxSimpleTableConfig<T>> = [];
 
   tdList: Array<TdDirective> = [];

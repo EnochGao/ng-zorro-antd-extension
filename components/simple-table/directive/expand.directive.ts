@@ -6,7 +6,7 @@ import { Directive, Input, TemplateRef } from '@angular/core';
 export class ExpandDirective {
 
   constructor(
-    public templateRef: TemplateRef<any>,
+    public templateRef: TemplateRef<unknown>,
   ) { }
 
 }

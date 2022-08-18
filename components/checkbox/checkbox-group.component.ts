@@ -11,22 +11,7 @@ export interface Options<T = string> {
  * nzx-checkbox-group
  * 自定义选择框,选择时传出的值为数组形式如：[1,2]
  *
- * html:
- * ```html
- *  <nzx-checkbox-group [checkOptions]="checkOptions" formControlName="label"></nzx-checkbox-group>
- * ```
- * ts:
- * ```ts
- *  checkOptions = [
-    { label: '客户信赖', value: '客户信赖' },
-    { label: '技术评估', value: '技术评估' },
-  ];
-    this.form = this.fb.group({
-      label: []
-    });
- * ```
  */
-
 @Component({
   selector: 'nzx-checkbox-group',
   exportAs: 'nzxCheckboxGroupExtension',
@@ -55,7 +40,7 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
   /**
   * 自定义函数用来格式化输出内容用来接口入参
   */
-  @Input() customFormateOutFn = (checkedList: any) => checkedList;
+  @Input() customFormateOutFn: (value: any) => any = (checkedList: any) => checkedList;
 
   nzDisabled = false;
 
@@ -85,6 +70,7 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
     this.nzDisabled = isDisabled;
+    this.cd.markForCheck();
   }
 
   emit(value: Options<number | string>[]): void {

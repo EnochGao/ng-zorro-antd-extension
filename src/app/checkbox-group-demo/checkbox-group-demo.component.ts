@@ -14,12 +14,18 @@ export class CheckboxGroupDemoComponent implements OnInit {
     { label: '技术评估', value: 2 },
   ];
 
+  checkOptions1 = [
+    { label: '客户信赖', value: 1 },
+    { label: '技术评估', value: 2 },
+  ];
+
   form!: FormGroup;
+  form1!: FormGroup;
 
   inFn = (v: number) => {
-    if (v === 1) return [1];
-    if (v === 2) return [2];
-    if (v === 3) return [1, 2];
+    if (v = 1) return [1];
+    if (v = 2) return [2];
+    if (v = 3) return [1, 2];
     return [];
   };
   outFn = (v: number[]) => v.reduce((pre, cur) => pre + cur, 0);
@@ -29,6 +35,10 @@ export class CheckboxGroupDemoComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       value: [1, []]
+    });
+
+    this.form1 = this.fb.group({
+      value: [[], []]
     });
   }
 

@@ -24,10 +24,12 @@
     ],
     "paths": {
       "ng-zorro-antd-extension": [
-        "components/public-api.ts"
+        // "components/public-api.ts",
+        "publish/public-api.ts",
       ],
       "ng-zorro-antd-extension/*": [
-        "components/*"
+        // "components/*",
+        "publish/*"
       ]
     }
   },
