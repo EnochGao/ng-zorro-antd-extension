@@ -8,7 +8,7 @@
     "build:lib": "ng build ng-zorro-antd-extension-lib",
     "watch": "ng build --watch --configuration development",
     "start:docs": "npx docgeni serve --port 4600",
-    "build:docs": "npx docgeni build --production --base-href=/docgeni-site/",
+    "build:docs": "npx docgeni build --production --base-href=/ng-zorro-antd-extension/",
     "test": "ng test",
     "lint": "ng lint"
   },
