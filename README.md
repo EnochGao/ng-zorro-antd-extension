@@ -1,6 +1,8 @@
 
 # 基于ng-zorro的组件扩展包
 
+[文档](https://enochgao.github.io/ng-zorro-antd-extension/)
+
 ## 安装
 
 首先要安装ng-zorro然后再安装扩展包
