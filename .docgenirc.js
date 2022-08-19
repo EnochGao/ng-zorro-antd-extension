@@ -6,6 +6,7 @@ module.exports = {
   theme: 'angular',
   title: 'zorro extension',
   description: 'ng zorro 拓展包',
+  siteProjectName: 'custom-site',
   logoUrl: 'https://avatars.githubusercontent.com/u/41459067?v=4',
   repoUrl: 'https://github.com/EnochGao/ng-zorro-antd-extension',
   navs: [
