@@ -36,7 +36,7 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
   /**
    * 自定义函数用来格式化输输入内容用来回显
    */
-  @Input() customFormateInFn: (value: any) => Array<any> = (value: any) => value;
+  @Input() customFormateInFn: (value: any) => Array<any> = (value: any): Array<any> => value;
   /**
   * 自定义函数用来格式化输出内容用来接口入参
   */
@@ -48,17 +48,15 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
 
   constructor(private cd: ChangeDetectorRef) { }
 
-  writeValue(v: (string | number)[]): void {
-    if (v) {
-      let list = this.customFormateInFn(v) || [];
-      list.forEach((value: string | number) => {
-        const index = this.checkOptions.findIndex(i => i.value === value);
-        if (index > -1) {
-          this.checkOptions[index]['checked'] = true;
-        }
-      });
-      this.cd.markForCheck();
-    }
+  writeValue(v: (string | number)[] | any): void {
+    let list = this.customFormateInFn(v) || [];
+    list.forEach((value: string | number) => {
+      const index = this.checkOptions.findIndex(i => i.value === value);
+      if (index > -1) {
+        this.checkOptions[index]['checked'] = true;
+      }
+    });
+    this.cd.markForCheck();
   }
 
   registerOnChange(fn: any): void {
