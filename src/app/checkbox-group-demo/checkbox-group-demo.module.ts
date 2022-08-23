@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NzCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
-import { NgZorroAntdModule } from '../zorro.module';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { CheckboxGroupDemoComponent } from './checkbox-group-demo.component';
 
 
@@ -14,7 +14,7 @@ import { CheckboxGroupDemoComponent } from './checkbox-group-demo.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NgZorroAntdModule,
+    NzCheckboxModule,
     NzCheckboxExtensionModule,
     RouterModule.forChild([
       { path: '', component: CheckboxGroupDemoComponent }

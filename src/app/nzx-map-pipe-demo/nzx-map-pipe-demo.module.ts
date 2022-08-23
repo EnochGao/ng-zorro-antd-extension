@@ -3,10 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PipesModule } from 'ng-zorro-antd-extension/pipes';
 import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
-import { NgZorroAntdModule } from '../zorro.module';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzxMapPipeDemoComponent } from './nzx-map-pipe-demo.component';
-
-
 
 @NgModule({
   declarations: [
@@ -14,7 +12,7 @@ import { NzxMapPipeDemoComponent } from './nzx-map-pipe-demo.component';
   ],
   imports: [
     CommonModule,
-    NgZorroAntdModule,
+    NzButtonModule,
     SimpleTableModule,
     PipesModule,
     RouterModule.forChild([

@@ -5,12 +5,22 @@
         <ul>
           <li nz-menu-item [routerLink]="['checkbox']">nzx-checkbox-group</li>
           <li nz-menu-item [routerLink]="['simple-table']">nzx-simple-table</li>
-          <li nz-menu-item [routerLink]="['nzx-map-pipe']">nzx-map-pipe</li>
           <li nz-menu-item [routerLink]="['nzx-configurable-query']">nzx-configurable-query</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="管道" nzIcon="user">
+        <ul>
+          <li nz-menu-item [routerLink]="['nzx-map-pipe']">nzx-map-pipe</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="指令" nzIcon="user">
+        <ul>
+          <li nz-menu-item [routerLink]="['nzx-to-date']">nzx-to-date</li>
         </ul>
       </li>
     </ul>
   </nz-sider>
+
   <nz-layout>
     <nz-header>
       <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"

@@ -14,7 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     NzCheckboxExtensionModule,
-
   ]
 })
 export class CheckboxGroupDemoModule { }
