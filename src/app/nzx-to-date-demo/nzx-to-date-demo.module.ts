@@ -7,6 +7,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzxToDateModule } from 'ng-zorro-antd-extension/nzx-to-date/nzx-to-date.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzTimePickerModule,
     NzFormModule,
     NzButtonModule,
+    NzxToDateModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: NzxToDateDemoComponent }
