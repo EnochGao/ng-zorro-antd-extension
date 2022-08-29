@@ -1,5 +1,6 @@
 import { TemplateRef } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { Options } from 'ng-zorro-antd-extension/types/common';
 
 /**
  * 查询参数
@@ -8,13 +9,6 @@ export interface NzxQueryParams {
   [key: string]: any;
 }
 
-/**
- * 下拉选项
- */
-export interface Options<T = any> {
-  label: string;
-  value: T;
-}
 /**
  * 配置项
  */

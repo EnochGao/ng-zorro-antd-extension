@@ -1,11 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Options } from 'ng-zorro-antd-extension/types/common';
 
-export interface Options<T = string> {
-  label: string;
-  value: T;
-  [key: string]: any;
-}
 
 /**
  * nzx-checkbox-group

@@ -21,6 +21,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
+
 registerLocaleData(zh);
 
 const antDesignIcons = AllIcons as {
@@ -47,15 +48,15 @@ const routes: Routes = [
     loadChildren: () => import('./nzx-map-pipe-demo/nzx-map-pipe-demo.module').then((m) => m.NzxMapPipeDemoModule)
   },
   {
-    path: 'nzx-to-date',
-    loadChildren: () => import('./nzx-to-date-demo/nzx-to-date-demo.module').then((m) => m.NzxToDateDemoModule)
+    path: 'nzx-table-form',
+    loadChildren: () => import('./nzx-table-form-demo/nzx-table-form-demo.module').then((m) => m.NzxMapPipeDemoModule)
   },
   { path: '**', redirectTo: 'checkbox', pathMatch: 'full' },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
