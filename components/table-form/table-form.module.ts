@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     ReactiveFormsModule,
     NzRadioModule,
     NzInputModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzInputNumberModule,
+    NzFormModule,
 
   ],
   exports: [

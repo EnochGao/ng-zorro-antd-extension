@@ -36,7 +36,7 @@ import { TableFormExpandDirective } from './directive/table-expand.directive';
 import { TableFormTdDirective } from './directive/table-td.directive';
 import { TableFormThDirective } from './directive/table-th.directive';
 
-import { TableFormConfig, TableFormContentConfig, TableFormHeaderConfig } from './type';
+import { LimitMessage, TableFormConfig, TableFormHeaderConfig, TableFormTdConfig } from './type';
 
 @Component({
   selector: 'nzx-table-form',
@@ -58,14 +58,15 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
 
   @Input() tableLayout: NzTableLayout = 'fixed';
   @Input() tableAlign: 'left' | 'right' | 'center' | null = 'center';
-  @Input() enableUniqueId = false;
+  // @Input() enableUniqueId = false;
   @Input() enableExpand = false;
   @Input() enableNo = false;
+  @Input() serialNumberWidth: string = '60px';
   @Input() limit: number = 0;
   @Input() enableLimit = false;
   @Input() minLimit: number = 0;
   @Input() enableMinLimit = false;
-  @Input() nzFooter?: string | TemplateRef<void>;
+  @Input() nzxFooter?: string | TemplateRef<void>;
 
   /**
    * 校验整个table的错误提示自定义模板
@@ -77,7 +78,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
    */
   @Input() tableValidatorFn: ValidatorFn = (control: AbstractControl): ValidationErrors | null => null;
 
-  @Input() formConfig: TableFormConfig[] = [
+  @Input() tableFormConfig: TableFormConfig[] = [
     {
       header: '名字',
       controlName: 'name',
@@ -88,24 +89,22 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
     },
   ];
 
-  @Output() logger = new EventEmitter<string>();
-  @Output() addChange = new EventEmitter<any>();
-  @Output() removeChange = new EventEmitter<any>();
+  @Output() limitMessage = new EventEmitter<LimitMessage>();
 
   headerConfig!: Array<TableFormHeaderConfig>;
-  contentConfig!: Array<TableFormContentConfig>;
+  tdConfig!: Array<TableFormTdConfig>;
 
   thTemplateOfNullInForm: { templateRef: TemplateRef<unknown>; width?: string; }[] = [];
   tdTemplateOfNullInForm: { templateRef: TemplateRef<unknown>; }[] = [];
 
   form!: FormGroup;
 
-  private get tableList() {
+  get tableList() {
     return (this.form.get('formArray') as FormArray<FormGroup>);
   }
 
-  get formArrayControls() {
-    return this.tableList?.controls as FormGroup[];
+  get formGroups() {
+    return this.tableList.controls.concat([]);
   }
 
   /** 一行的form配置 */
@@ -133,9 +132,12 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
 
   ngOnInit(): void {
 
-    this.controlsConfig = this.parseFormConfig(this.formConfig);
-    this.headerConfig = this.parseHeader(this.formConfig);
-    this.contentConfig = this.parseContent(this.formConfig);
+    this.controlsConfig = this.parseFormConfig(this.tableFormConfig);
+    this.headerConfig = this.parseHeader(this.tableFormConfig);
+    this.tdConfig = this.parseTd(this.tableFormConfig);
+    console.log('tdConfig:', this.tdConfig);
+    this.cd.markForCheck();
+
 
     this.form.valueChanges.pipe(
       debounceTime(500),
@@ -167,9 +169,9 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
    * 在更新config时候需要调用重新渲染table
    */
   updateTableConfig(): void {
-    this.controlsConfig = this.parseFormConfig(this.formConfig);
-    this.headerConfig = this.parseHeader(this.formConfig);
-    this.contentConfig = this.parseContent(this.formConfig);
+    this.controlsConfig = this.parseFormConfig(this.tableFormConfig);
+    this.headerConfig = this.parseHeader(this.tableFormConfig);
+    this.tdConfig = this.parseTd(this.tableFormConfig);
     this.matchTemplate(this.tableThDirectiveList, this.tableTdDirectiveList);
   };
 
@@ -185,6 +187,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
    * 添加table一行
    */
   addRow(): void {
+
     if (this.form.valid) {
       if (this.enableLimit && this.tableList.length < this.limit) {
         const controlsConfigTemp = Object.assign({}, this.controlsConfig);
@@ -196,9 +199,13 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
         }
 
         this.tableList.push(this.fb.group(controlsConfigTemp));
-        this.addChange.emit(this.fb.group(controlsConfigTemp));
+
       } else if (this.enableLimit) {
-        this.logger.emit(`最多添加${this.limit}条!`);
+        this.limitMessage.emit({
+          type: 'max',
+          limit: this.limit,
+          msg: `最多${this.limit}条`
+        });
       } else {
         const controlsConfigTemp = Object.assign({}, this.controlsConfig);
         // if (this.enableUniqueId) {
@@ -208,15 +215,13 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
           controlsConfigTemp['expand'] = [false];
         }
         this.tableList.push(this.fb.group(controlsConfigTemp));
-        this.addChange.emit(this.fb.group(controlsConfigTemp));
       }
-      this.cd.markForCheck();
     } else {
       this.tableList.controls.forEach((item: FormGroup) => {
         validForm(item);
       });
-      this.cd.markForCheck();
     }
+    this.cd.markForCheck();
   }
 
   /**
@@ -226,20 +231,24 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
     if (this.enableMinLimit) {
       if (this.tableList.length > this.minLimit) {
         this.tableList.removeAt(i);
-        this.removeChange.emit(this.tableList.controls[i]);
       } else {
-        this.logger.emit(`至少${this.minLimit}条!`);
+        this.limitMessage.emit(
+          {
+            type: 'min',
+            limit: this.limit,
+            msg: `至少${this.limit}条`
+          }
+        );
       }
     } else {
       this.tableList.removeAt(i);
-      this.removeChange.emit(this.tableList.controls[i]);
     }
   }
 
   writeValue(obj: any): void {
     this.tableList.clear();
     if (obj && obj.length > 0) {
-      if (this.contentConfig.length > 0) {
+      if (this.tdConfig.length > 0) {
         obj.forEach((item: any, i: number) => {
           const controlsConfigTemp = Object.assign({}, this.controlsConfig);
           // if (this.enableUniqueId) {
@@ -250,6 +259,8 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
           }
           this.tableList.push(this.fb.group(controlsConfigTemp));
           this.tableList.controls[i].patchValue(item);
+          // this.cd.markForCheck();
+
         });
       }
     }
@@ -277,7 +288,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   /**
    * 匹配投影模板template放到config中
    */
-  private matchTemplate(thList: QueryList<TableFormThDirective>, tdList: QueryList<TableFormTdDirective>) {
+  private matchTemplate(thList: QueryList<TableFormThDirective>, tdList: QueryList<TableFormTdDirective>): void {
     this.headerConfig = this.headerConfig.map(item => {
       const ThDirective = thList.find(th => th.controlName === item.controlName);
       return {
@@ -286,13 +297,15 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
       };
     });
 
-    this.contentConfig = this.formConfig.map(item => {
+    this.tdConfig = this.tdConfig.map(item => {
       const TdDirective = tdList.find(td => td.controlName === item.controlName);
       return {
         ...item,
         templateRef: TdDirective?.templateRef
       };
     });
+    console.log('dddd', this.tdConfig);
+
 
     this.thTemplateOfNullInForm = thList.filter(item => !item.controlName).map(item => ({
       templateRef: item.templateRef,
@@ -308,7 +321,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   /**
    * 解析配置生成controls
    */
-  private parseFormConfig(customFormConfig: TableFormConfig[]) {
+  private parseFormConfig(customFormConfig: TableFormConfig[]): { [key: string]: any; } {
     const controls: { [key: string]: any; } = {};
     customFormConfig.forEach(item => {
       if (item.controlName) {
@@ -327,7 +340,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
    * 解析配置生成header
    *
    */
-  private parseHeader(customFormConfig: TableFormConfig[]) {
+  private parseHeader(customFormConfig: TableFormConfig[]): Array<TableFormHeaderConfig> {
     return customFormConfig.map(item => ({
       header: item.header,
       width: item?.width,
@@ -341,24 +354,24 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   /**
    * 解析配置生成Content
    */
-  private parseContent(customFormConfig: TableFormConfig[]) {
+  private parseTd(customFormConfig: TableFormConfig[]): Array<TableFormTdConfig> {
+
     return customFormConfig.map(item => ({
-      header: item.header,
       controlName: item?.controlName,
       isShow: item.isShow ?? true,
       templateRef: void 0,
       showRequiredTip: item?.showRequiredTip,
-
-      defaultValue: item.controlName,
+      defaultValue: item?.defaultValue,
       type: item.type,
       validation: item.validation,
-      errorTip: item.errorTip,
-      options: item.options,
-      controlMode: item.controlMode,
-      placeholder: item.placeholder,
-      allowClear: item.allowClear,
-      maxLength: item.maxLength,
-      max: item.max,
+      errorTip: item?.errorTip,
+      options: item?.options,
+      controlMode: item?.controlMode ?? 'edit',
+      placeholder: item?.placeholder,
+      allowClear: item?.allowClear,
+      maxLength: item?.maxLength,
+      max: item?.max,
+      format: item?.format
     }));
   }
 

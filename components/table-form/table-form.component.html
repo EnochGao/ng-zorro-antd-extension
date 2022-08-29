@@ -1,28 +1,28 @@
 <div [formGroup]="form">
 
-  <nz-table #table [nzData]="formArrayControls" nzHideOnSinglePage [nzTableLayout]="tableLayout"
-    [nzFooter]="nzFooter">
+  <nz-table nzBordered #table [nzData]="formGroups" nzHideOnSinglePage [nzTableLayout]="tableLayout"
+    [nzFooter]="nzxFooter">
     <thead>
       <ng-content></ng-content>
       <tr>
         <!-- 序号列标题 -->
-        <th *ngIf="enableNo" [nzAlign]="tableAlign" nzWidth="60px">
+        <th *ngIf="enableNo" [nzAlign]="tableAlign" [nzWidth]="serialNumberWidth">
           <span *ngIf="!serialNumberTemplate">
             序号
           </span>
           <ng-container *ngIf="serialNumberTemplate">
-            <ng-template *ngTemplateOutlet="serialNumberTemplate"></ng-template>
+            <ng-container *ngTemplateOutlet="serialNumberTemplate"></ng-container>
           </ng-container>
         </th>
         <!-- 表单列form header -->
         <ng-container *ngFor="let item of headerConfig;let index=index">
           <ng-container *ngIf="item.isShow">
-            <th *ngIf="!item.template" [nzAlign]="tableAlign" [nzWidth]="item.width">
+            <th *ngIf="!item.templateRef" [nzAlign]="tableAlign" [nzWidth]="item.width">
               <label *ngIf="item.showRequiredTip" [ngStyle]="{'color': 'red'}">*</label>
               {{item.header}}
             </th>
-            <th *ngIf="item.template" [nzAlign]="tableAlign" [nzWidth]="item.width">
-              <ng-container [ngTemplateOutlet]="item.template"
+            <th *ngIf="item.templateRef" [nzAlign]="tableAlign" [nzWidth]="item.width">
+              <ng-container [ngTemplateOutlet]="item.templateRef"
                 [ngTemplateOutletContext]="{$implicit:item,index}"></ng-container>
             </th>
           </ng-container>
@@ -30,7 +30,7 @@
         <!-- 自定义展示列header -->
         <th *ngFor="let item of thTemplateOfNullInForm;let i=index" [nzAlign]="tableAlign"
           [nzWidth]="item.width">
-          <ng-container *ngTemplateOutlet="item.template;context:{$implicit:i,formAll:form}">
+          <ng-container *ngTemplateOutlet="item.templateRef;context:{$implicit:i,formAll:form}">
           </ng-container>
         </th>
       </tr>
@@ -44,9 +44,9 @@
           </td>
           <!-- 表单列将放进form -->
           <ng-container [formGroup]="fg">
-            <ng-container *ngFor="let item of contentConfig">
+            <ng-container *ngFor="let item of tdConfig">
               <ng-container *ngIf="item.isShow">
-                <td *ngIf="!item.template" [nzAlign]="tableAlign">
+                <td *ngIf="!item.templateRef" [nzAlign]="tableAlign">
                   <nz-form-item [ngStyle]="{'margin-bottom': 0}">
                     <nz-form-control [nzErrorTip]="item.errorTip">
 
@@ -80,12 +80,14 @@
                         </nz-option>
                       </nz-select>
 
-                      <label nz-radio
-                        *ngIf="item.type==='radio'&&item.controlMode!=='readonly'&&!!item.controlName"
-                        [formControlName]="item.controlName"></label>
+                      <nz-radio-group [formControlName]="item.controlName"
+                        *ngIf="item.type==='radio'&&item.controlMode!=='readonly'&&!!item.controlName">
+                        <label *ngFor="let option of item.options" nz-radio
+                          [nzValue]="option.value">{{option.label}}</label>
+                      </nz-radio-group>
 
                       <span *ngIf="item.controlMode==='readonly'">
-                        <ng-container *ngIf="item.format">
+                        <ng-container *ngIf=" item.format">
                           {{ item.format(fg.get(item.controlName).value)}}
                         </ng-container>
                         <ng-container *ngIf="!item.format">
@@ -98,9 +100,9 @@
                 </td>
               </ng-container>
 
-              <ng-container *ngIf="item.template">
+              <ng-container *ngIf="item.templateRef">
                 <td *ngIf="item.isShow" [nzAlign]="tableAlign">
-                  <ng-container [ngTemplateOutlet]="item.template"
+                  <ng-container [ngTemplateOutlet]="item.templateRef"
                     [ngTemplateOutletContext]="{$implicit:item,formGroup:fg,errorTip:item.errorTip,index:i}">
                   </ng-container>
                 </td>
@@ -109,12 +111,12 @@
           </ng-container>
           <!-- 自定义展示列 -->
           <td *ngFor="let item of tdTemplateOfNullInForm;" [nzAlign]="tableAlign">
-            <ng-container [ngTemplateOutlet]="item.template"
+            <ng-container [ngTemplateOutlet]="item.templateRef"
               [ngTemplateOutletContext]="{$implicit:fg,index:i}"></ng-container>
           </td>
         </tr>
         <tr *ngIf="enableExpand" [nzExpand]="fg.value.expand">
-          <ng-container [ngTemplateOutlet]="orderExpandDirective?.templateRef"
+          <ng-container [ngTemplateOutlet]="tableExpandDirective?.templateRef"
             [ngTemplateOutletContext]="{$implicit:fg,index:i}">
           </ng-container>
         </tr>
