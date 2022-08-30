@@ -73,6 +73,12 @@ module.exports = [
         description: '启用边框'
       },
       {
+        name: 'nzxSize',
+        type: 'NzTableSize',
+        default: 'default',
+        description: 'table大小'
+      },
+      {
         name: 'nzxData',
         type: 'Array<T>',
         default: '[]',

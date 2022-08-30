@@ -1,8 +1,8 @@
 ---
 category: component
-title: nzx-configurable-query
-subtitle: 查询组件
-order: 1
+title: 查询组件
+subtitle: nzx-configurable-query
+order: 3
 label: new
 ---
 

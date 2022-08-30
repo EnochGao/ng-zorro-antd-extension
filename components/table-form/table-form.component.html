@@ -1,7 +1,7 @@
 <div [formGroup]="form">
 
-  <nz-table nzBordered #table [nzData]="formGroups" nzHideOnSinglePage [nzTableLayout]="tableLayout"
-    [nzFooter]="nzxFooter">
+  <nz-table #table [nzData]="formGroups" nzHideOnSinglePage [nzTableLayout]="tableLayout"
+    [nzFooter]="nzxFooter" [nzBordered]="nzxBordered" [nzSize]="nzxSize">
     <thead>
       <ng-content></ng-content>
       <tr>
@@ -30,7 +30,8 @@
         <!-- 自定义展示列header -->
         <th *ngFor="let item of thTemplateOfNullInForm;let i=index" [nzAlign]="tableAlign"
           [nzWidth]="item.width">
-          <ng-container *ngTemplateOutlet="item.templateRef;context:{$implicit:i,formAll:form}">
+          <ng-container
+            *ngTemplateOutlet="item.templateRef;context:{$implicit:form,index:i,disabled:isDisabled}">
           </ng-container>
         </th>
       </tr>
@@ -87,7 +88,7 @@
                       </nz-radio-group>
 
                       <span *ngIf="item.controlMode==='readonly'">
-                        <ng-container *ngIf=" item.format">
+                        <ng-container *ngIf="item.format">
                           {{ item.format(fg.get(item.controlName).value)}}
                         </ng-container>
                         <ng-container *ngIf="!item.format">
@@ -102,8 +103,13 @@
 
               <ng-container *ngIf="item.templateRef">
                 <td *ngIf="item.isShow" [nzAlign]="tableAlign">
-                  <ng-container [ngTemplateOutlet]="item.templateRef"
-                    [ngTemplateOutletContext]="{$implicit:item,formGroup:fg,errorTip:item.errorTip,index:i}">
+                  <ng-container [ngTemplateOutlet]="item.templateRef" [ngTemplateOutletContext]="{
+                      $implicit:fg,
+                      config:item,
+                      formControl:fg.get(item.controlName),
+                      errorTip:item.errorTip,
+                      index:i,
+                      disabled:isDisabled}">
                   </ng-container>
                 </td>
               </ng-container>
@@ -112,16 +118,17 @@
           <!-- 自定义展示列 -->
           <td *ngFor="let item of tdTemplateOfNullInForm;" [nzAlign]="tableAlign">
             <ng-container [ngTemplateOutlet]="item.templateRef"
-              [ngTemplateOutletContext]="{$implicit:fg,index:i}"></ng-container>
+              [ngTemplateOutletContext]="{$implicit:fg,index:i,disabled:isDisabled}"></ng-container>
           </td>
         </tr>
         <tr *ngIf="enableExpand" [nzExpand]="fg.value.expand">
           <ng-container [ngTemplateOutlet]="tableExpandDirective?.templateRef"
-            [ngTemplateOutletContext]="{$implicit:fg,index:i}">
+            [ngTemplateOutletContext]="{$implicit:fg,index:i,disabled:isDisabled}">
           </ng-container>
         </tr>
       </ng-container>
-      <tr *ngIf="errorTemplate" [nzExpand]="true">
+
+      <tr *ngIf="form.get('formArray')?.errors" [nzExpand]="true">
         <ng-container [ngTemplateOutlet]="errorTemplate"
           [ngTemplateOutletContext]="{$implicit:form.get('formArray')}">
         </ng-container>

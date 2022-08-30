@@ -1,8 +1,8 @@
 ---
 category: component
-title: nzx-simple-table
-subtitle: 简单表格
-order: 3
+title: 简单表格
+subtitle: nzx-simple-table
+order: 2
 ---
 
 简单table通过配置项快速生成一个table，支持自定义template，初衷只是为了数据展示方便，不支持服务端分页

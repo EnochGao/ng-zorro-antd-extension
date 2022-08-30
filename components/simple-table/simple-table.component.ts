@@ -4,6 +4,7 @@ import {
   ContentChildren, Input, QueryList,
   TemplateRef, ViewEncapsulation
 } from '@angular/core';
+import { NzTableSize } from 'ng-zorro-antd/table';
 import { ExpandDirective } from './directive/expand.directive';
 import { TdDirective } from './directive/td.directive';
 import { ThDirective } from './directive/th.directive';
@@ -105,6 +106,8 @@ export class SimpleTableComponent<T> implements AfterContentInit {
   @Input() nzxBordered = true;
   /** table数据集合 */
   @Input() nzxData: Array<T> = [];
+  /** table size */
+  @Input() nzxSize: NzTableSize = 'default';
   /** table 配置项 */
   @Input() nzxConfig: Array<NzxSimpleTableConfig<T>> = [];
 

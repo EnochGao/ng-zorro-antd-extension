@@ -16,13 +16,13 @@ export interface TableFormConfig {
   /** td th 宽度 */
   width?: string;
   /** 控件名 */
-  controlName?: string;
+  controlName: string;
   /** 控件默认值 */
   defaultValue?: any;
   /** 控件类型 */
-  type: 'input' | 'date' | 'select' | 'number' | 'radio' | 'textarea';
+  type?: 'input' | 'date' | 'select' | 'number' | 'radio' | 'textarea' | 'template';
   /** 控件校验 */
-  validation: Array<any>;
+  validation?: Array<any>;
   /** 控件错误提示 */
   errorTip?: string;
   /** 控件为select时下拉选项 */
@@ -67,7 +67,7 @@ export interface TableFormTdConfig {
   /** td th 宽度 */
   width?: string;
   /** 控件名 */
-  controlName?: string;
+  controlName: string;
   /** 控件列是否在table中展示 */
   isShow?: boolean;
   /** 自定义模板，可不填 */
@@ -77,9 +77,9 @@ export interface TableFormTdConfig {
   /** 控件默认值 */
   defaultValue?: any;
   /** 控件类型 */
-  type: 'input' | 'date' | 'select' | 'number' | 'radio' | 'textarea';
+  type?: 'input' | 'date' | 'select' | 'number' | 'radio' | 'textarea' | 'template';
   /** 控件校验 */
-  validation: Array<any>;
+  validation?: Array<any>;
   /** 控件错误提示 */
   errorTip?: string;
   /** 控件为select时下拉选项 */

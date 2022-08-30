@@ -1,7 +1,7 @@
 ---
 category: pipe
-title: nzx-map-pipe
-subtitle: 映射管道
+title: 映射管道
+subtitle: nzx-map-pipe
 order: 2
 ---
 

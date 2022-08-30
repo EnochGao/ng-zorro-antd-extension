@@ -4,7 +4,6 @@ import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { SimpleTableDemoComponent } from './simple-table-demo/simple-table-demo.component';
 
-
 @NgModule({
   declarations: [
     SimpleTableDemoComponent
@@ -13,7 +12,6 @@ import { SimpleTableDemoComponent } from './simple-table-demo/simple-table-demo.
     CommonModule,
     SimpleTableModule,
     NzButtonModule
-
   ]
 })
 export class SimpleTableDemoModule { }

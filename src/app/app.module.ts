@@ -13,21 +13,19 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { IconDefinition } from '@ant-design/icons-angular';
-import * as AllIcons from '@ant-design/icons-angular/icons';
+import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
-import { NzIconModule, NZ_ICONS } from 'ng-zorro-antd/icon';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
 
+import { PlusOutline } from '@ant-design/icons-angular/icons';
 
 registerLocaleData(zh);
 
-const antDesignIcons = AllIcons as {
-  [key: string]: IconDefinition;
-};
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
+const icons: IconDefinition[] = [PlusOutline];
 
 
 const routes: Routes = [
@@ -54,6 +52,13 @@ const routes: Routes = [
   { path: '**', redirectTo: 'checkbox', pathMatch: 'full' },
 ];
 
+const ngZorroConfig: NzConfig = {
+  // 注意组件名称没有 nz 前缀
+  // table: { nzSize: 'small', nzBordered: true, },
+  // descriptions: { nzSize: 'small', nzBordered: true },
+  // button: { nzSize: 'small' },
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +69,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     NzGridModule,
-    NzIconModule,
+    NzIconModule.forRoot(icons),
     NzLayoutModule,
     NzSliderModule,
     NzMenuModule,
@@ -76,7 +81,10 @@ const routes: Routes = [
         preloadingStrategy: PreloadAllModules
       })
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }, { provide: NZ_ICONS, useValue: icons }],
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: NZ_CONFIG, useValue: ngZorroConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

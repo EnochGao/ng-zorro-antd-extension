@@ -1,7 +1,7 @@
 ---
 category: component
-title: nzx-checkbox-group
-subtitle: 多选框
+title: 多选框
+subtitle: nzx-checkbox-group
 order: 1
 ---
 
