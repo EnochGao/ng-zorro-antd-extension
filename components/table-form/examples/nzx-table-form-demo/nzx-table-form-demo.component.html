@@ -41,7 +41,7 @@
 
   <ng-template #footer>
     <h2>页脚
-      <button nz-button nzType="primary" [disabled]="form.invalid&&table.invalid">提交</button>
+      <button nz-button nzType="primary" [disabled]="form.invalid||table.invalid">提交</button>
       <button nz-button type="button" (click)="table.clearTable()">清空table</button>
       <button nz-button type="button" nzType="dashed" (click)="form.disable()">禁用table</button>
       <button nz-button type="button" nzType="dashed" (click)="form.enable()">启用table</button>
@@ -52,7 +52,7 @@
 
   <ng-template #errorTemp let-control>
     <div class="right">
-      <span>
+      <span [ngStyle]="{'color':'red'}">
         {{control?.errors?.tableError}}
       </span>
     </div>
