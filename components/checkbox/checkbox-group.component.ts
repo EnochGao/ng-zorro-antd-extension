@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Options } from 'ng-zorro-antd-extension/types/common';
-
+import { Options } from 'ng-zorro-antd-extension/types';
 
 
 /**

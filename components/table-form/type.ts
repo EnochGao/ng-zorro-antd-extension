@@ -1,5 +1,5 @@
 import { TemplateRef } from "@angular/core";
-import { Options } from "ng-zorro-antd-extension/types/common";
+import { Options } from "ng-zorro-antd-extension/types";
 
 export interface LimitMessage {
   type: 'max' | 'min';

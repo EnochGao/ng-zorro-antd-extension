@@ -1,19 +1,22 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { DownOutline, UpOutline } from '@ant-design/icons-angular/icons';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ConfigurableQueryComponent } from './configurable-query.component';
 import { ControlDirective } from './control.directive';
-import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { AlertOutline } from '@ant-design/icons-angular/icons';
-import { IconDefinition, } from '@ant-design/icons-angular';
-import { NzFormModule } from 'ng-zorro-antd/form';
 
-const icons: IconDefinition[] = [AlertOutline];
+const icons: IconDefinition[] = [
+  DownOutline,
+  UpOutline,
+];
 
 @NgModule({
   declarations: [

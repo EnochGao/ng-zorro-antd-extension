@@ -8,3 +8,4 @@ export * from './directive/table-td.directive';
 export * from './directive/table-th.directive';
 export * from './table-form.component';
 export * from './type';
+export * from './table-form.module';

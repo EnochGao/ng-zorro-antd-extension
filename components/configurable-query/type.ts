@@ -1,6 +1,6 @@
 import { TemplateRef } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { Options } from 'ng-zorro-antd-extension/types/common';
+import { Options } from 'ng-zorro-antd-extension/types';
 
 /**
  * 查询参数

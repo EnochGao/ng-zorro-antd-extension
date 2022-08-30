@@ -24,9 +24,9 @@ import {
   ValidationErrors,
   Validator,
   ValidatorFn,
-  Validators
 } from '@angular/forms';
-import { validForm } from 'ng-zorro-antd-extension/util/vaild-form';
+import { validForm } from 'ng-zorro-antd-extension/util';
+
 import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
@@ -88,16 +88,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   @Input() tableValidatorFn: ValidatorFn = (control: AbstractControl): ValidationErrors | null => null;
 
   /** table config */
-  @Input() tableFormConfig: TableFormConfig[] = [
-    {
-      header: '名字',
-      controlName: 'name',
-      defaultValue: '',
-      type: 'input',
-      validation: [Validators.required],
-      errorTip: '必填',
-    },
-  ];
+  @Input() tableFormConfig: TableFormConfig[] = [];
 
   /** 数量限制回调 */
   @Output() limitMessage = new EventEmitter<LimitMessage>();
@@ -140,7 +131,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   ngOnDestroy(): void {
     this.destroyed$.complete();
     this.destroyed$.unsubscribe();
-  };
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -162,7 +153,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
 
   ngAfterContentInit(): void {
     this.matchTemplate(this.tableThDirectiveList, this.tableTdDirectiveList);
-  };
+  }
 
   /**
   * 若table为空或者有一行数据校验不通过，则整个组件校验不通过
@@ -199,7 +190,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   clearTable(): void {
     this.tableList.clear();
     this.cd.markForCheck();
-  };
+  }
 
   /**
    * 添加table一行
@@ -295,7 +286,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
     this.headerConfig = this.parseHeader(this.tableFormConfig);
     this.tdConfig = this.parseTd(this.tableFormConfig);
     this.matchTemplate(this.tableThDirectiveList, this.tableTdDirectiveList);
-  };
+  }
 
   private propagateChange = (_: any) => { };
 
@@ -329,7 +320,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
     this.tdTemplateOfNullInForm = tdList.filter(item => !item.controlName).map(item => ({
       templateRef: item.templateRef,
     }));
-  };
+  }
 
   /**
    * 解析配置生成controls
@@ -362,7 +353,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
       templateRef: void 0,
       showRequiredTip: item?.showRequiredTip,
     }));
-  };
+  }
 
   /**
    * 解析配置生成Content
