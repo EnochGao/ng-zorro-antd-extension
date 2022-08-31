@@ -1,5 +1,15 @@
 import {
-  AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, EventEmitter, Input, OnDestroy, OnInit, Output, QueryList, ViewEncapsulation
+  Input,
+  OnInit,
+  Output,
+  QueryList,
+  Component,
+  OnDestroy,
+  EventEmitter,
+  ContentChildren,
+  AfterContentInit,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';

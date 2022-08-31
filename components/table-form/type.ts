@@ -25,7 +25,7 @@ export interface TableFormConfig {
   validation?: Array<any>;
   /** 控件错误提示 */
   errorTip?: string;
-  /** 控件为select时下拉选项 */
+  /** 控件为select radio时下拉选项 */
   options?: Array<Options<any>>;
   /** 控件模式 */
   controlMode?: 'readonly' | 'edit';
@@ -43,7 +43,7 @@ export interface TableFormConfig {
   maxLength?: string | number;
   /** nz-input-number时max */
   max?: number;
-  /** 自定义函数用来自定义展示 */
+  /** readonly时自定义函数用来自定义展示 */
   format?: (value: any) => any;
 }
 

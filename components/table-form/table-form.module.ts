@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -18,26 +18,27 @@ import { TableFormComponent } from './table-form.component';
 @NgModule({
   declarations: [
     TableFormComponent,
-    TableFormExpandDirective,
     TableFormTdDirective,
-    TableFormThDirective
+    TableFormThDirective,
+    TableFormExpandDirective,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+
     NzFormModule,
     NzTableModule,
     NzRadioModule,
     NzInputModule,
+    NzSelectModule,
     NzDatePickerModule,
     NzInputNumberModule,
-    NzSelectModule,
   ],
   exports: [
     TableFormComponent,
-    TableFormExpandDirective,
     TableFormTdDirective,
-    TableFormThDirective
+    TableFormThDirective,
+    TableFormExpandDirective,
   ]
 })
 export class TableFormModule {

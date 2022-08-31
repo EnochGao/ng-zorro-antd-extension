@@ -1,13 +1,20 @@
 import {
+  Input,
+  QueryList,
+  Component,
+  TemplateRef,
+  ContentChild,
+  ContentChildren,
   AfterContentInit,
-  ChangeDetectionStrategy, Component, ContentChild,
-  ContentChildren, Input, QueryList,
-  TemplateRef, ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NzTableSize } from 'ng-zorro-antd/table';
-import { ExpandDirective } from './directive/expand.directive';
+
 import { TdDirective } from './directive/td.directive';
 import { ThDirective } from './directive/th.directive';
+import { ExpandDirective } from './directive/expand.directive';
+
 /**
  * nzx-simple-table 组件配置格式
  */

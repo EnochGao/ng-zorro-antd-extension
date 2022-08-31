@@ -1,38 +1,41 @@
 import {
-  AfterContentInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ContentChild,
-  ContentChildren,
-  EventEmitter,
-  forwardRef, Input,
-  OnDestroy,
+  Input,
   OnInit,
-  Output, QueryList,
+  Output,
+  QueryList,
+  Component,
+  OnDestroy,
+  forwardRef,
   TemplateRef,
-  ViewEncapsulation
+  ContentChild,
+  EventEmitter,
+  ContentChildren,
+  AfterContentInit,
+  ChangeDetectorRef,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
+
 import {
-  AbstractControl,
-  ControlValueAccessor,
   FormArray,
-  FormBuilder,
   FormGroup,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
   Validator,
+  FormBuilder,
   ValidatorFn,
+  NG_VALIDATORS,
+  AbstractControl,
+  ValidationErrors,
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor,
 } from '@angular/forms';
-import { validForm } from 'ng-zorro-antd-extension/util';
 
-import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
+import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
 
-import { TableFormExpandDirective } from './directive/table-expand.directive';
+import { validForm } from 'ng-zorro-antd-extension/util';
 import { TableFormTdDirective } from './directive/table-td.directive';
 import { TableFormThDirective } from './directive/table-th.directive';
+import { TableFormExpandDirective } from './directive/table-expand.directive';
 
 import { LimitMessage, TableFormConfig, TableFormHeaderConfig, TableFormTdConfig } from './type';
 
@@ -78,7 +81,7 @@ export class TableFormComponent implements OnInit, ControlValueAccessor, AfterCo
   /** 启用序号 */
   @Input() enableNo = false;
 
-  /** 序号宽度*/
+  /** 序号宽度 */
   @Input() serialNumberWidth: string = '60px';
   /** 序号自定义模板 */
   @Input() serialNumberTemplate?: TemplateRef<void>;
