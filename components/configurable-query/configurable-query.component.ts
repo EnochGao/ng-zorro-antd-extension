@@ -1,15 +1,14 @@
 import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   QueryList,
-  Component,
-  OnDestroy,
-  EventEmitter,
-  ContentChildren,
-  AfterContentInit,
-  ViewEncapsulation,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -18,7 +17,6 @@ import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject, takeUntil } from 'rxjs';
 import { ControlDirective } from './control.directive';
 import { NzxQueryParams, QueryControlOptions } from './type';
-
 
 /**
  * 查询组件
@@ -31,9 +29,10 @@ import { NzxQueryParams, QueryControlOptions } from './type';
   styleUrls: ['./configurable-query.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxConfigurableQuery',
-  encapsulation: ViewEncapsulation.None
 })
-export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnDestroy {
+export class ConfigurableQueryComponent
+  implements OnInit, AfterContentInit, OnDestroy
+{
   /** 配置项 */
   @Input() controls: Array<QueryControlOptions> = [];
   /** 查询表单排列方式 */
@@ -61,18 +60,17 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
   private destroy$ = new Subject<void>();
   private _nzxBtnSpan: number | null = null;
 
-  @ContentChildren(ControlDirective) controlTemplateList!: QueryList<ControlDirective>;
+  @ContentChildren(ControlDirective)
+  controlTemplateList!: QueryList<ControlDirective>;
 
-  constructor(
-    private fb: FormBuilder,
-  ) {
+  constructor(private fb: FormBuilder) {
     this.queryForm = this.fb.group({});
   }
 
-
   ngOnInit(): void {
-    this.queryForm.valueChanges.pipe(takeUntil(this.destroy$))
-      .subscribe(val => {
+    this.queryForm.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((val) => {
         this.queryParams = val;
       });
 
@@ -82,20 +80,25 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
   ngAfterContentInit(): void {
     for (const control of this.controls) {
       if (control.controlType === 'Template') {
-        const item = this.controlTemplateList.find(directive =>
-          (directive.nzxControl === control.controlName));
+        const item = this.controlTemplateList.find(
+          (directive) => directive.nzxControl === control.controlName
+        );
         if (item) {
           control.templateRef = item.templateRef;
         }
       }
-      this.queryForm.addControl(control.controlName, control.controlInstance ?? this.fb.control(control.default ?? null));
+      this.queryForm.addControl(
+        control.controlName,
+        control.controlInstance ?? this.fb.control(control.default ?? null)
+      );
     }
 
     this.queryParams = this.queryForm.value;
 
     this.defaultValue = Object.assign({}, this.queryParams);
 
-    if (this.params) { // 缓存回显查询条件
+    if (this.params) {
+      // 缓存回显查询条件
       this.queryForm.patchValue(this.params);
     }
 
@@ -110,7 +113,7 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
 
   search(): void {
     if (this.queryForm.invalid) {
-      Object.values(this.queryForm.controls).forEach(control => {
+      Object.values(this.queryForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -121,31 +124,28 @@ export class ConfigurableQueryComponent implements OnInit, AfterContentInit, OnD
     }
   }
 
-
   reset() {
     this.queryForm.reset(this.defaultValue);
     this.search();
   }
 
   toggleCollapse() {
-
     this.controls.forEach((control) => {
-      if (this.isCollapse && (control.collapse === true)) {// 展开
+      if (this.isCollapse && control.collapse === true) {
+        // 展开
         control.collapse = false;
         this.nzxBtnSpan = 24;
       }
-      if (!this.isCollapse && (control.collapse === false)) {
+      if (!this.isCollapse && control.collapse === false) {
         control.collapse = true;
         this.nzxBtnSpan = this._nzxBtnSpan;
       }
     });
     this.isCollapse = !this.isCollapse;
-
   }
 
   ngOnDestroy(): void {
     this.destroy$.complete();
     this.destroy$.unsubscribe();
   }
-
 }
