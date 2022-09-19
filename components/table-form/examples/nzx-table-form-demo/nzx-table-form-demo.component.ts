@@ -5,7 +5,7 @@ import { LimitMessage, TableFormConfig } from 'ng-zorro-antd-extension/table-for
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'app-nzx-table-form-demo',
+  selector: 'nzx-table-form-demo',
   templateUrl: './nzx-table-form-demo.component.html',
   styleUrls: ['./nzx-table-form-demo.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -283,9 +283,17 @@ export class TableFormComponent
   setDisabledState?(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
     if (isDisabled) {
-      this.form.disable();
+      setTimeout(() => {
+        (this.form.get('formArray') as FormArray).controls.forEach((i) =>
+          i.disable()
+        );
+      }, 0);
     } else {
-      this.form.enable();
+      setTimeout(() => {
+        (this.form.get('formArray') as FormArray).controls.forEach((i) =>
+          i.enable()
+        );
+      }, 0);
     }
   }
   /**
@@ -352,7 +360,7 @@ export class TableFormComponent
     const controls: { [key: string]: any } = {};
     customFormConfig.forEach((item) => {
       if (item.controlName) {
-        let defaultValue = null;
+        let defaultValue: any = null;
         if (item.defaultValue === false) {
           defaultValue = false;
         }

@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { NzxQueryParams, QueryControlOptions } from 'ng-zorro-antd-extension/configurable-query/type';
 
 @Component({
-  selector: 'app-nzx-configurable-query-demo',
+  selector: 'nzx-configurable-query-demo',
   templateUrl: './nzx-configurable-query-demo.component.html',
   styleUrls: ['./nzx-configurable-query-demo.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush

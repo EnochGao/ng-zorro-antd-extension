@@ -1,0 +1,15 @@
+{
+  "editor.renderWhitespace": "all",
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.tabCompletion": "on",
+  "editor.cursorWidth": 4,
+  "workbench.activityBar.iconClickBehavior": "focus",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+}

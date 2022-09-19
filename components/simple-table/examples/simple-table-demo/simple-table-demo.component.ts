@@ -8,7 +8,7 @@ interface Person {
 }
 
 @Component({
-  selector: 'app-simple-table-demo',
+  selector: 'nzx-simple-table-demo',
   templateUrl: './simple-table-demo.component.html',
   styleUrls: ['./simple-table-demo.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
