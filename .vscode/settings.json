@@ -5,6 +5,7 @@
   "editor.tabCompletion": "on",
   "editor.cursorWidth": 4,
   "workbench.activityBar.iconClickBehavior": "focus",
+  "workbench.startupEditor": "readme",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

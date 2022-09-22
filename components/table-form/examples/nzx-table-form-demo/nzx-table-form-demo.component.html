@@ -1,18 +1,30 @@
 <div class="container">
   <form nz-form [formGroup]="form" (ngSubmit)="submit()">
-    <nzx-table-form #table="nzxTableForm" nzxBorder nzxSize="small"
-      [tableFormConfig]="tableFormConfig" [enableExpand]="true" [enableNo]="true"
-      [nzxFooter]="footer" [errorTemplate]="errorTemp" [enableLimit]="true" [maxLimit]="2"
-      [tableValidatorFn]="customValidate" (limitMessage)="errorMsg($event)"
-      formControlName="students">
+    <nzx-table-form
+      #table="nzxTableForm"
+      nzxBorder
+      nzxSize="small"
+      [tableFormConfig]="tableFormConfig"
+      [enableExpand]="true"
+      [enableNo]="true"
+      [nzxFooter]="footer"
+      [errorTemplate]="errorTemp"
+      [enableLimit]="true"
+      [maxLimit]="2"
+      [tableValidatorFn]="customValidate"
+      (limitMessage)="errorMsg($event)"
+      formControlName="students"
+    >
       <th colspan="8">
-        <h1>
-          学生信息表单(表头)
-        </h1>
+        <h1>学生信息表单(表头)</h1>
       </th>
 
-      <ng-template nzxTableFormTd controlName="stars" let-formControl="formControl"
-        let-config="config">
+      <ng-template
+        nzxTableFormTd
+        controlName="stars"
+        let-formControl="formControl"
+        let-config="config"
+      >
         <nz-form-item>
           <nz-form-control [nzErrorTip]="config.errorTip">
             <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
@@ -20,70 +32,117 @@
         </nz-form-item>
       </ng-template>
 
-      <ng-template nzxTableFormTh width="140px" let-form>操作
-        <button nz-button nzType="primary" nzShape="circle" type="button" [disabled]="form.disabled"
-          (click)="table.addRow()">
-          <span nz-icon nzType="plus"></span></button>
+      <ng-template nzxTableFormTh width="140px" let-form
+        >操作
+        <button
+          nz-button
+          nzType="primary"
+          nzShape="circle"
+          type="button"
+          [disabled]="form.disabled"
+          (click)="table.addRow()"
+        >
+          <span nz-icon nzType="plus"></span>
+        </button>
       </ng-template>
 
       <ng-template nzxTableFormTd let-formGroup let-i="index">
-        <a nz-button nzType="link" [disabled]="formGroup.disabled"
-          (click)="table.deleteRow(i)">删除</a>
-        <a nz-button nzType="link"
-          (click)="formGroup.get('expand').patchValue(!formGroup.value.expand)">折叠</a>
+        <a
+          nz-button
+          nzType="link"
+          [disabled]="formGroup.disabled"
+          (click)="table.deleteRow(i)"
+          >删除</a
+        >
+        <a
+          nz-button
+          nzType="link"
+          (click)="formGroup.get('expand').patchValue(!formGroup.value.expand)"
+          >折叠</a
+        >
       </ng-template>
 
       <ng-template nzxTableFormExpand let-formGroup let-i="index">
-        本行值为： {{formGroup.value|json}}
+        本行值为： {{ formGroup.value | json }}
       </ng-template>
     </nzx-table-form>
   </form>
 
   <ng-template #footer>
-    <h2>页脚
-      <button nz-button nzType="primary" [disabled]="form.invalid||table.invalid">提交</button>
-      <button nz-button type="button" (click)="table.clearTable()">清空table</button>
-      <button nz-button type="button" nzType="dashed" (click)="form.disable()">禁用table</button>
-      <button nz-button type="button" nzType="dashed" (click)="form.enable()">启用table</button>
-      <button nz-button type="button" nzType="primary" [nzLoading]="loading"
-        (click)="lazyLoad()">远程加载下拉地址</button>
+    <h2>
+      页脚
+      <button
+        nz-button
+        nzType="primary"
+        [disabled]="form.invalid || table.invalid"
+      >
+        提交
+      </button>
+      <button nz-button type="button" (click)="table.clearTable()">
+        清空table
+      </button>
+      <button nz-button type="button" nzType="dashed" (click)="form.disable()">
+        禁用table
+      </button>
+      <button nz-button type="button" nzType="dashed" (click)="form.enable()">
+        启用table
+      </button>
+      <button
+        nz-button
+        type="button"
+        nzType="primary"
+        [nzLoading]="loading"
+        (click)="lazyLoad()"
+      >
+        远程加载下拉地址
+      </button>
     </h2>
   </ng-template>
 
   <ng-template #errorTemp let-control>
     <div class="right">
-      <span [ngStyle]="{'color':'red'}">
-        {{control?.errors?.tableError}}
+      <span [ngStyle]="{ color: 'red' }">
+        {{ control?.errors?.tableError }}
       </span>
     </div>
   </ng-template>
 
   <pre>
     表单值：
-  {{form.value|json}}
+  {{ form.value | json }}
   </pre>
-
 
   渲染只读：
 
-  <nzx-table-form nzxBorder nzxSize="small" [tableFormConfig]="tableFormConfig2"
-    [enableExpand]="true" [(ngModel)]="students">
-
-    <ng-template nzxTableFormTd controlName="stars" let-formControl="formControl"
-      let-config="config">
+  <nzx-table-form
+    nzxBorder
+    nzxSize="small"
+    [tableFormConfig]="tableFormConfig2"
+    [enableExpand]="true"
+    [(ngModel)]="students"
+  >
+    <ng-template
+      nzxTableFormTd
+      controlName="stars"
+      let-formControl="formControl"
+      let-config="config"
+    >
       <nz-rate [formControl]="formControl" nzAllowHalf nzDisabled></nz-rate>
     </ng-template>
 
-    <ng-template nzxTableFormTh width="80px">折叠
-    </ng-template>
+    <ng-template nzxTableFormTh width="80px">折叠 </ng-template>
 
     <ng-template nzxTableFormTd let-formGroup let-i="index">
-      <a nz-button nzType="link"
-        (click)="formGroup.get('expand').patchValue(!formGroup.value.expand)">折叠</a>
+      <a
+        nz-button
+        nzType="link"
+        (click)="formGroup.get('expand').patchValue(!formGroup.value.expand)"
+        >折叠</a
+      >
     </ng-template>
 
     <ng-template nzxTableFormExpand let-formGroup let-i="index">
-      本行值为： {{formGroup.value|json}}
+      本行值为： {{ formGroup.value | json }}
     </ng-template>
   </nzx-table-form>
 </div>

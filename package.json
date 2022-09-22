@@ -10,7 +10,7 @@
     "start:docs": "npx docgeni serve --port 4600",
     "build:docs": "npx docgeni build --production --base-href=/ng-zorro-antd-extension/",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --fix",
     "prepare": "husky install"
   },
   "dependencies": {

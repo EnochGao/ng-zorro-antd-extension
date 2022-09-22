@@ -1,102 +1,174 @@
-<nz-table [formGroup]="form" #basicTable [nzData]="formGroups" nzHideOnSinglePage
-  [nzTableLayout]="tableLayout" [nzFooter]="nzxFooter" [nzBordered]="nzxBordered"
-  [nzSize]="nzxSize">
-
+<nz-table
+  #basicTable
+  [formGroup]="form"
+  [nzData]="formGroups"
+  [nzTableLayout]="tableLayout"
+  [nzFooter]="nzxFooter"
+  [nzBordered]="nzxBordered"
+  [nzSize]="nzxSize"
+  nzHideOnSinglePage
+>
   <thead>
     <ng-content></ng-content>
-
     <tr>
       <!-- 序号列标题 -->
       <th *ngIf="enableNo" [nzAlign]="tableAlign" [nzWidth]="serialNumberWidth">
-        <span *ngIf="!serialNumberTemplate">
-          序号
-        </span>
+        <span *ngIf="!serialNumberTemplate"> 序号 </span>
         <ng-container *ngIf="serialNumberTemplate">
           <ng-container *ngTemplateOutlet="serialNumberTemplate"></ng-container>
         </ng-container>
       </th>
       <!-- 表单列form header -->
-      <ng-container *ngFor="let item of headerConfig;let index=index">
+      <ng-container *ngFor="let item of headerConfig; let index = index">
         <ng-container *ngIf="item.isShow">
-          <th *ngIf="!item.templateRef" [nzAlign]="tableAlign" [nzWidth]="item.width">
-            <label *ngIf="item.showRequiredTip" [ngStyle]="{'color': 'red'}">*</label>
-            {{item.header}}
+          <th
+            *ngIf="!item.templateRef"
+            [nzAlign]="tableAlign"
+            [nzWidth]="item.width"
+          >
+            <label *ngIf="item.showRequiredTip" [ngStyle]="{ color: 'red' }">
+              *
+            </label>
+            {{ item.header }}
           </th>
-          <th *ngIf="item.templateRef" [nzAlign]="tableAlign" [nzWidth]="item.width">
-            <ng-container [ngTemplateOutlet]="item.templateRef"
-              [ngTemplateOutletContext]="{$implicit:item,index}"></ng-container>
+          <th
+            *ngIf="item.templateRef"
+            [nzAlign]="tableAlign"
+            [nzWidth]="item.width"
+          >
+            <ng-container
+              [ngTemplateOutlet]="item.templateRef"
+              [ngTemplateOutletContext]="{ $implicit: item, index }"
+            >
+            </ng-container>
           </th>
         </ng-container>
       </ng-container>
       <!-- 自定义展示列header -->
-      <th *ngFor="let item of thTemplateOfNullInForm;let i=index" [nzAlign]="tableAlign"
-        [nzWidth]="item.width">
+      <th
+        *ngFor="let item of thTemplateOfNullInForm; let i = index"
+        [nzAlign]="tableAlign"
+        [nzWidth]="item.width"
+      >
         <ng-container
-          *ngTemplateOutlet="item.templateRef;context:{$implicit:form,index:i,disabled:isDisabled}">
+          *ngTemplateOutlet="
+            item.templateRef;
+            context: { $implicit: form, index: i, disabled: isDisabled }
+          "
+        >
         </ng-container>
       </th>
     </tr>
   </thead>
 
   <tbody formArrayName="formArray">
-    <ng-container *ngFor="let fg of basicTable.data;let i=index;">
+    <ng-container *ngFor="let fg of basicTable.data; let i = index">
       <tr>
         <!-- 序号列 -->
         <td *ngIf="enableNo" [nzAlign]="tableAlign">
-          {{i+1}}
+          {{ i + 1 }}
         </td>
         <!-- 表单列将放进form -->
         <ng-container [formGroup]="fg">
           <ng-container *ngFor="let item of tdConfig">
             <ng-container *ngIf="item.isShow">
               <td *ngIf="!item.templateRef" [nzAlign]="tableAlign">
-                <nz-form-item [ngStyle]="{'margin-bottom': 0}">
+                <nz-form-item [ngStyle]="{ 'margin-bottom': 0 }">
                   <nz-form-control [nzErrorTip]="item.errorTip">
+                    <input
+                      *ngIf="
+                        item.type === 'input' &&
+                        item.controlMode !== 'readonly' &&
+                        !!item.controlName
+                      "
+                      nz-input
+                      [placeholder]="item.placeholder || '请输入'"
+                      [formControlName]="item.controlName"
+                      [maxlength]="item.maxLength"
+                    />
 
-                    <input nz-input [placeholder]="item.placeholder||'请输入'"
-                      *ngIf="item.type==='input'&&item.controlMode!=='readonly'&&!!item.controlName"
-                      [formControlName]="item.controlName" [maxlength]="item.maxLength" />
+                    <textarea
+                      *ngIf="
+                        item.type === 'textarea' &&
+                        item.controlMode !== 'readonly' &&
+                        !!item.controlName
+                      "
+                      nz-input
+                      [nzAutosize]="{ minRows: 3 }"
+                      [placeholder]="item.placeholder || '请输入'"
+                      [formControlName]="item.controlName"
+                      [maxlength]="item.maxLength"
+                    ></textarea>
 
-                    <textarea [nzAutosize]="{ minRows: 3}" nz-input
-                      [placeholder]="item.placeholder||'请输入'"
-                      *ngIf="item.type==='textarea'&&item.controlMode!=='readonly'&&!!item.controlName"
-                      [formControlName]="item.controlName" [maxlength]="item.maxLength"></textarea>
-
-                    <nz-input-number [ngStyle]="{'width': 'auto'}"
-                      *ngIf="item.type==='number'&&item.controlMode!=='readonly'&&!!item.controlName"
-                      [formControlName]="item.controlName" [nzMin]="1" [nzStep]="1"
-                      [nzMax]="item.max" [nzPlaceHolder]="item.placeholder||'输入数字'">
+                    <nz-input-number
+                      *ngIf="
+                        item.type === 'number' &&
+                        item.controlMode !== 'readonly' &&
+                        !!item.controlName
+                      "
+                      [ngStyle]="{ width: 'auto' }"
+                      [formControlName]="item.controlName"
+                      [nzMin]="1"
+                      [nzStep]="1"
+                      [nzMax]="item.max"
+                      [nzPlaceHolder]="item.placeholder || '输入数字'"
+                    >
                     </nz-input-number>
 
                     <nz-date-picker
-                      *ngIf="item.type==='date'&&item.controlMode!=='readonly'&&!!item.controlName"
-                      [formControlName]="item.controlName">
+                      *ngIf="
+                        item.type === 'date' &&
+                        item.controlMode !== 'readonly' &&
+                        !!item.controlName
+                      "
+                      [formControlName]="item.controlName"
+                    >
                     </nz-date-picker>
 
-                    <nz-select nzShowSearch="true" [nzAllowClear]="item.allowClear"
-                      *ngIf="item.type==='select'&&item.controlMode!=='readonly'&&!!item.controlName"
+                    <nz-select
+                      *ngIf="
+                        item.type === 'select' &&
+                        item.controlMode !== 'readonly' &&
+                        !!item.controlName
+                      "
+                      nzShowSearch="true"
+                      [nzAllowClear]="item.allowClear"
                       [formControlName]="item.controlName"
-                      [nzPlaceHolder]="item.placeholder||'请选择'">
-                      <nz-option [nzValue]="option.value" [nzLabel]="option.label"
-                        *ngFor="let option of item.options">
+                      [nzPlaceHolder]="item.placeholder || '请选择'"
+                    >
+                      <nz-option
+                        [nzValue]="option.value"
+                        [nzLabel]="option.label"
+                        *ngFor="let option of item.options"
+                      >
                       </nz-option>
                     </nz-select>
 
-                    <nz-radio-group [formControlName]="item.controlName"
-                      *ngIf="item.type==='radio'&&item.controlMode!=='readonly'&&!!item.controlName">
-                      <label *ngFor="let option of item.options" nz-radio
-                        [nzValue]="option.value">{{option.label}}</label>
+                    <nz-radio-group
+                      *ngIf="
+                        item.type === 'radio' &&
+                        item.controlMode !== 'readonly' &&
+                        !!item.controlName
+                      "
+                      [formControlName]="item.controlName"
+                    >
+                      <label
+                        *ngFor="let option of item.options"
+                        nz-radio
+                        [nzValue]="option.value"
+                      >
+                        {{ option.label }}
+                      </label>
                     </nz-radio-group>
 
-                    <span *ngIf="item.controlMode==='readonly'">
+                    <span *ngIf="item.controlMode === 'readonly'">
                       <ng-container *ngIf="item.format">
-                        {{ item.format(fg.get(item.controlName)?.value)}}
+                        {{ item.format(fg.get(item.controlName)?.value) }}
                       </ng-container>
                       <ng-container *ngIf="!item.format">
-                        {{ fg.get(item.controlName)?.value}}
+                        {{ fg.get(item.controlName)?.value }}
                       </ng-container>
                     </span>
-
                   </nz-form-control>
                 </nz-form-item>
               </td>
@@ -104,36 +176,53 @@
 
             <ng-container *ngIf="item.templateRef">
               <td *ngIf="item.isShow" [nzAlign]="tableAlign">
-                <ng-container [ngTemplateOutlet]="item.templateRef" [ngTemplateOutletContext]="{
-                      $implicit:fg,
-                      config:item,
-                      formControl:fg.get(item.controlName),
-                      errorTip:item.errorTip,
-                      index:i,
-                      disabled:isDisabled}">
+                <ng-container
+                  [ngTemplateOutlet]="item.templateRef"
+                  [ngTemplateOutletContext]="{
+                    $implicit: fg,
+                    config: item,
+                    formControl: fg.get(item.controlName),
+                    errorTip: item.errorTip,
+                    index: i,
+                    disabled: isDisabled
+                  }"
+                >
                 </ng-container>
               </td>
             </ng-container>
           </ng-container>
         </ng-container>
         <!-- 自定义展示列 -->
-        <td *ngFor="let item of tdTemplateOfNullInForm;" [nzAlign]="tableAlign">
-          <ng-container [ngTemplateOutlet]="item.templateRef"
-            [ngTemplateOutletContext]="{$implicit:fg,index:i,disabled:isDisabled}"></ng-container>
+        <td *ngFor="let item of tdTemplateOfNullInForm" [nzAlign]="tableAlign">
+          <ng-container
+            [ngTemplateOutlet]="item.templateRef"
+            [ngTemplateOutletContext]="{
+              $implicit: fg,
+              index: i,
+              disabled: isDisabled
+            }"
+          ></ng-container>
         </td>
       </tr>
       <tr *ngIf="enableExpand" [nzExpand]="fg.value.expand">
-        <ng-container [ngTemplateOutlet]="tableExpandDirective?.templateRef"
-          [ngTemplateOutletContext]="{$implicit:fg,index:i,disabled:isDisabled}">
+        <ng-container
+          [ngTemplateOutlet]="tableExpandDirective?.templateRef"
+          [ngTemplateOutletContext]="{
+            $implicit: fg,
+            index: i,
+            disabled: isDisabled
+          }"
+        >
         </ng-container>
       </tr>
     </ng-container>
 
     <tr *ngIf="form.get('formArray')?.errors" [nzExpand]="true">
-      <ng-container [ngTemplateOutlet]="errorTemplate"
-        [ngTemplateOutletContext]="{$implicit:form.get('formArray')}">
+      <ng-container
+        [ngTemplateOutlet]="errorTemplate"
+        [ngTemplateOutletContext]="{ $implicit: form.get('formArray') }"
+      >
       </ng-container>
     </tr>
   </tbody>
-
 </nz-table>
