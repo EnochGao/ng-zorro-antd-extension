@@ -34,16 +34,16 @@ export interface QueryControlOptions {
    */
   menuList?: Array<Options<any>>;
   /**
-  * 控件为select时允许单独清空
-  */
+   * 控件为select时允许单独清空
+   */
   nzxAllowClear?: boolean;
   /**
-  * 查询项所占栅格数
-  */
+   * 查询项所占栅格数
+   */
   nzxSpan?: number;
   /**
-  * 控件默认值，注意默认值重置时不会清空
-  */
+   * 控件默认值，注意默认值重置时不会清空
+   */
   default?: any;
   /**
    * 查询项label所占栅格数
@@ -54,13 +54,17 @@ export interface QueryControlOptions {
    */
   nzxRSpan?: number;
   /**
-  * 校验错误提示
-  */
+   * 校验错误提示
+   */
   errorTip?: string;
   /**
-   * 是否要隐藏
+   * 是否要折叠（nzxCollapse必须为true才生效）
    */
   collapse?: boolean;
+  /**
+   * 隐藏控件(主要用来携带查询参数但界面不可见)
+   */
+  hidden?: boolean;
   /**
    * 控件实例，可选
    */

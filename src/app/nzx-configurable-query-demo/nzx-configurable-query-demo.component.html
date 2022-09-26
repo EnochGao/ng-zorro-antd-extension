@@ -1,7 +1,10 @@
 <div class="container">
   <div>例子1： 自定义拓展查询职业等级</div>
 
-  <nzx-configurable-query [controls]="controls" (queryParamsChange)="queryParams=$event">
+  <nzx-configurable-query
+    [controls]="controls"
+    (queryParamsChange)="queryParams = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -9,23 +12,29 @@
 
   查询参数：
   <pre>
-  {{queryParams|json}}
+  {{ queryParams | json }}
   </pre>
 
   <div>例子2： 一行展示</div>
-  <nzx-configurable-query [nzxCollapse]="false" [controls]="controls2"
-    (queryParamsChange)="queryParams2=$event">
+  <nzx-configurable-query
+    [nzxCollapse]="false"
+    [controls]="controls2"
+    (queryParamsChange)="queryParams2 = $event"
+  >
   </nzx-configurable-query>
 
   查询参数：
   <pre>
-  {{queryParams2|json}}
+  {{ queryParams2 | json }}
   </pre>
 
   <div>例子3： 全展示禁用折叠</div>
-  <nzx-configurable-query [nzxCollapse]="false" [nzxBtnSpan]="24" [controls]=" controls3"
-    (queryParamsChange)="queryParams3=$event">
-
+  <nzx-configurable-query
+    [nzxCollapse]="false"
+    [nzxBtnSpan]="24"
+    [controls]="controls3"
+    (queryParamsChange)="queryParams3 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -33,13 +42,16 @@
 
   查询参数：
   <pre>
-  {{queryParams3|json}}
+  {{ queryParams3 | json }}
   </pre>
 
   <div>例子4： 一行展示两个control</div>
-  <nzx-configurable-query [controls]="controls4" [lineNumber]="2" [nzxBtnSpan]="24"
-    (queryParamsChange)="queryParams4=$event">
-
+  <nzx-configurable-query
+    [controls]="controls4"
+    [lineNumber]="2"
+    [nzxBtnSpan]="24"
+    (queryParamsChange)="queryParams4 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -47,14 +59,17 @@
 
   查询参数：
   <pre>
-  {{queryParams4|json}}
+  {{ queryParams4 | json }}
   </pre>
 
   <div>例子5： 简化查询</div>
 
-  <nzx-configurable-query [controls]="controls5" [lineNumber]="2" [nzxBtnSpan]="24"
-    (queryParamsChange)="queryParams5=$event">
-
+  <nzx-configurable-query
+    [controls]="controls5"
+    [lineNumber]="2"
+    [nzxBtnSpan]="24"
+    (queryParamsChange)="queryParams5 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -62,14 +77,17 @@
 
   查询参数：
   <pre>
-  {{queryParams5|json}}
+  {{ queryParams5 | json }}
   </pre>
 
   <div>例子6： 初始化界面主动查询</div>
 
-  <nzx-configurable-query [controls]="controls6" [lineNumber]="2" [initQuery]="true"
-    (queryParamsChange)="queryParams6=$event">
-
+  <nzx-configurable-query
+    [controls]="controls6"
+    [lineNumber]="2"
+    [initQuery]="true"
+    (queryParamsChange)="queryParams6 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -77,17 +95,21 @@
 
   查询参数：
   <pre>
-  {{queryParams6|json}}
+  {{ queryParams6 | json }}
   </pre>
 
   <div>例子7： 模拟远程加载下拉</div>
-  <nzx-configurable-query #query7 [controls]="controls7" [initQuery]="true" [nzxCollapse]="false"
-    (queryParamsChange)="queryParams7=$event">
+  <nzx-configurable-query
+    #query7
+    [controls]="controls7"
+    [initQuery]="true"
+    [nzxCollapse]="false"
+    (queryParamsChange)="queryParams7 = $event"
+  >
   </nzx-configurable-query>
 
   查询参数：
   <pre>
-  {{queryParams7|json}}
+  {{ queryParams7 | json }}
   </pre>
-
 </div>

@@ -115,15 +115,23 @@ export class ConfigurableQueryComponent
    * 根据controlName设置config值
    */
   setControl(controlName: string, config: Partial<QueryControlOptions>): void {
+    let control = this.getControl(controlName);
+    if (control) {
+      control = { ...control, ...config };
+    }
+  }
+
+  /**
+   * 根据controlName获取config项
+   */
+  getControl(controlName: string): QueryControlOptions | undefined {
     const index = this.controls.findIndex(
       (item) => item.controlName === controlName
     );
     if (index > -1) {
-      this.controls[index] = {
-        ...this.controls[index],
-        ...config,
-      };
+      return this.controls[index];
     }
+    return void 0;
   }
 
   search(): void {

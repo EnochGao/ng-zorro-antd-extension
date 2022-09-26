@@ -3,6 +3,7 @@
     <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
       <ng-container *ngFor="let control of controls">
         <div
+          *ngIf="!control.hidden"
           nz-col
           [nzSpan]="control.nzxSpan || 24 / lineNumber"
           [hidden]="nzxCollapse && control.collapse"
