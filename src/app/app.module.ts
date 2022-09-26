@@ -21,33 +21,51 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 
-import { PlusOutline } from '@ant-design/icons-angular/icons';
+import {
+  PlusOutline,
+  GithubOutline,
+  UserOutline,
+} from '@ant-design/icons-angular/icons';
 
 registerLocaleData(zh);
 
-const icons: IconDefinition[] = [PlusOutline];
-
+const icons: IconDefinition[] = [PlusOutline, GithubOutline, UserOutline];
 
 const routes: Routes = [
   {
     path: 'checkbox',
-    loadChildren: () => import('./checkbox-group-demo/checkbox-group-demo.module').then((m) => m.CheckboxGroupDemoModule)
+    loadChildren: () =>
+      import('./checkbox-group-demo/checkbox-group-demo.module').then(
+        (m) => m.CheckboxGroupDemoModule
+      ),
   },
   {
     path: 'simple-table',
-    loadChildren: () => import('./simple-table-demo/simple-table-demo.module').then((m) => m.SimpleTableDemoModule)
+    loadChildren: () =>
+      import('./simple-table-demo/simple-table-demo.module').then(
+        (m) => m.SimpleTableDemoModule
+      ),
   },
   {
     path: 'nzx-configurable-query',
-    loadChildren: () => import('./nzx-configurable-query-demo/nzx-configurable-query-demo.module').then((m) => m.NzxConfigurableQueryDemoModule)
+    loadChildren: () =>
+      import(
+        './nzx-configurable-query-demo/nzx-configurable-query-demo.module'
+      ).then((m) => m.NzxConfigurableQueryDemoModule),
   },
   {
     path: 'nzx-map-pipe',
-    loadChildren: () => import('./nzx-map-pipe-demo/nzx-map-pipe-demo.module').then((m) => m.NzxMapPipeDemoModule)
+    loadChildren: () =>
+      import('./nzx-map-pipe-demo/nzx-map-pipe-demo.module').then(
+        (m) => m.NzxMapPipeDemoModule
+      ),
   },
   {
     path: 'nzx-table-form',
-    loadChildren: () => import('./nzx-table-form-demo/nzx-table-form-demo.module').then((m) => m.NzxMapPipeDemoModule)
+    loadChildren: () =>
+      import('./nzx-table-form-demo/nzx-table-form-demo.module').then(
+        (m) => m.NzxMapPipeDemoModule
+      ),
   },
   { path: '**', redirectTo: 'checkbox', pathMatch: 'full' },
 ];
@@ -60,9 +78,7 @@ const ngZorroConfig: NzConfig = {
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -74,17 +90,15 @@ const ngZorroConfig: NzConfig = {
     NzSliderModule,
     NzMenuModule,
     NzCheckboxExtensionModule,
-    RouterModule.forRoot(
-      routes,
-      {
-        // enableTracing: true,
-        preloadingStrategy: PreloadAllModules
-      })
+    RouterModule.forRoot(routes, {
+      // enableTracing: true,
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
-    { provide: NZ_CONFIG, useValue: ngZorroConfig }
+    { provide: NZ_CONFIG, useValue: ngZorroConfig },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

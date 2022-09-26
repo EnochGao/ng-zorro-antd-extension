@@ -111,6 +111,21 @@ export class ConfigurableQueryComponent
     this.params = params;
   }
 
+  /**
+   * 根据controlName设置config值
+   */
+  setControl(controlName: string, config: Partial<QueryControlOptions>): void {
+    const index = this.controls.findIndex(
+      (item) => item.controlName === controlName
+    );
+    if (index > -1) {
+      this.controls[index] = {
+        ...this.controls[index],
+        ...config,
+      };
+    }
+  }
+
   search(): void {
     if (this.queryForm.invalid) {
       Object.values(this.queryForm.controls).forEach((control) => {

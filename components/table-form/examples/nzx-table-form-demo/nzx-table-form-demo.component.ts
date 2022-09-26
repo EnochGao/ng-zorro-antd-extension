@@ -1,14 +1,28 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { TableFormComponent } from 'ng-zorro-antd-extension/table-form/table-form.component';
-import { LimitMessage, TableFormConfig } from 'ng-zorro-antd-extension/table-form/type';
+import {
+  LimitMessage,
+  TableFormConfig,
+} from 'ng-zorro-antd-extension/table-form/type';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'nzx-table-form-demo',
   templateUrl: './nzx-table-form-demo.component.html',
   styleUrls: ['./nzx-table-form-demo.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxTableFormDemoComponent implements OnInit {
   form: FormGroup;
@@ -25,7 +39,6 @@ export class NzxTableFormDemoComponent implements OnInit {
       validation: [Validators.required],
       errorTip: '必填,最多不超过10个字',
     },
-
     {
       header: '年龄',
       controlName: 'age',
@@ -50,9 +63,7 @@ export class NzxTableFormDemoComponent implements OnInit {
       header: '地址',
       controlName: 'address',
       type: 'select',
-      options: [
-        { label: '青岛', value: '青岛' },
-      ],
+      options: [{ label: '青岛', value: '青岛' }],
       validation: [Validators.required],
       errorTip: '必填',
     },
@@ -68,26 +79,26 @@ export class NzxTableFormDemoComponent implements OnInit {
       controlName: 'class',
       controlMode: 'readonly',
       defaultValue: 1,
-      format: (value) => `${value}班`
+      format: (value) => `${value}班`,
     },
   ];
   tableFormConfig2: TableFormConfig[] = [
     {
       header: '姓名',
       controlName: 'name',
-      controlMode: 'readonly'
+      controlMode: 'readonly',
     },
 
     {
       header: '年龄',
       controlName: 'age',
-      controlMode: 'readonly'
+      controlMode: 'readonly',
     },
     {
       header: '性别',
       controlName: 'gender',
       controlMode: 'readonly',
-      format: (value) => `${value === 1 ? '男' : '女'}`
+      format: (value) => `${value === 1 ? '男' : '女'}`,
     },
     {
       header: '地址',
@@ -103,13 +114,13 @@ export class NzxTableFormDemoComponent implements OnInit {
       header: '班级',
       controlName: 'class',
       controlMode: 'readonly',
-      format: (value) => `${value}班`
+      format: (value) => `${value}班`,
     },
     {
       header: 'id不在列表中展示',
       controlName: 'id',
       controlMode: 'readonly',
-      isShow: false
+      isShow: false,
     },
   ];
 
@@ -124,20 +135,19 @@ export class NzxTableFormDemoComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
-      students: [[], []]
+      students: [[], []],
     });
 
     this.form2 = this.fb.group({
-      students: [[], []]
+      students: [[], []],
     });
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(res => {
+    this.form.valueChanges.subscribe((res) => {
       // console.log('value::', res);
-
     });
-  };
+  }
 
   lazyLoad() {
     const list = [
@@ -148,9 +158,6 @@ export class NzxTableFormDemoComponent implements OnInit {
     this.loading = true;
 
     setTimeout(() => {
-      // or:
-      // this.tableFormConfig[3].options = list;
-      // this.table1.updateTableConfig()
 
       this.table1.setConfig('address', { options: list });
 
@@ -170,7 +177,7 @@ export class NzxTableFormDemoComponent implements OnInit {
     this.students = students.map((item: any, index: number) => {
       return {
         ...item,
-        id: index + 1
+        id: index + 1,
       };
     });
 
@@ -178,7 +185,7 @@ export class NzxTableFormDemoComponent implements OnInit {
   }
 
   customValidate = (control: AbstractControl) => {
-    const valueList: Array<{ name: string; }> = control.value;
+    const valueList: Array<{ name: string }> = control.value;
     const index = valueList.length - 1;
     let lastItem = index > -1 ? valueList[index] : null;
     const flag = valueList.some((item, i) => {
@@ -193,5 +200,4 @@ export class NzxTableFormDemoComponent implements OnInit {
     }
     return null;
   };
-
 }

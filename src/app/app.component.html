@@ -1,11 +1,13 @@
 <nz-layout>
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <nz-sider nzCollapsible [nzTrigger]="null">
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-submenu nzTitle="组件" nzIcon="user" nzOpen>
         <ul>
           <li nz-menu-item [routerLink]="['checkbox']">nzx-checkbox-group</li>
           <li nz-menu-item [routerLink]="['simple-table']">nzx-simple-table</li>
-          <li nz-menu-item [routerLink]="['nzx-configurable-query']">nzx-configurable-query</li>
+          <li nz-menu-item [routerLink]="['nzx-configurable-query']">
+            nzx-configurable-query
+          </li>
           <li nz-menu-item [routerLink]="['nzx-table-form']">nzx-table-form</li>
         </ul>
       </li>
@@ -24,11 +26,11 @@
 
   <nz-layout>
     <nz-header>
-      <i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-        (click)="isCollapsed = !isCollapsed"></i>
-      <a href="https://github.com/EnochGao/ng-zorro-antd-extension" target="_blank">
-        <i nz-icon nzType="github" nzTheme="outline">
-        </i>
+      <a
+        href="https://github.com/EnochGao/ng-zorro-antd-extension"
+        target="_blank"
+      >
+        <i nz-icon nzType="github" nzTheme="outline"> </i>
       </a>
     </nz-header>
     <nz-content>
