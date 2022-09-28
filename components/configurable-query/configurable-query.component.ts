@@ -1,6 +1,7 @@
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   EventEmitter,
@@ -63,7 +64,7 @@ export class ConfigurableQueryComponent
   @ContentChildren(ControlDirective)
   controlTemplateList!: QueryList<ControlDirective>;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
     this.queryForm = this.fb.group({});
   }
 
@@ -117,7 +118,12 @@ export class ConfigurableQueryComponent
   setControl(controlName: string, config: Partial<QueryControlOptions>): void {
     let control = this.getControl(controlName);
     if (control) {
-      control = { ...control, ...config };
+      for (const key in config) {
+        if (Object.prototype.hasOwnProperty.call(config, key)) {
+          control[key as keyof QueryControlOptions] =
+            config[key as keyof QueryControlOptions];
+        }
+      }
     }
   }
 

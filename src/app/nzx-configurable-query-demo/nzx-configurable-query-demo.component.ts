@@ -289,6 +289,6 @@ export class NzxConfigurableQueryDemoComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.query7.setControl('city', { menuList: this.cityList });
-    }, 3000);
+    }, 2000);
   }
 }
