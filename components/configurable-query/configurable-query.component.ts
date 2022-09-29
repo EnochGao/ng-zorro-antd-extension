@@ -118,12 +118,9 @@ export class ConfigurableQueryComponent
   setControl(controlName: string, config: Partial<QueryControlOptions>): void {
     let control = this.getControl(controlName);
     if (control) {
-      for (const key in config) {
-        if (Object.prototype.hasOwnProperty.call(config, key)) {
-          control[key as keyof QueryControlOptions] =
-            config[key as keyof QueryControlOptions];
-        }
-      }
+      Object.keys(config).forEach((key) => {
+        (control as any)[key] = (config as any)[key];
+      });
     }
   }
 

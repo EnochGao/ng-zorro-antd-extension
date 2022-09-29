@@ -1,5 +1,18 @@
+<h1 align="center">
+ng-zorro-antd-extension
+</h1>
 
-# 基于ng-zorro的组件扩展包
+<div align="center">
+
+基于ng-zorro的组件扩展包
+
+[![npm package](https://img.shields.io/npm/v/ng-zorro-antd-extension.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-extension)
+[![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-extension.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-extension)
+
+</div>
+
+
+# 文档
 
 [文档](https://enochgao.github.io/ng-zorro-antd-extension/)
 
@@ -11,6 +24,8 @@ ng zorro安装成功之后然后再安装扩展包，推荐使用v14.0.0以上�
 
 ```bash
 npm install ng-zorro-antd-extension --save
+or
+ng add ng-zorro-antd-extension
 ```
 
 ng-zorro-antd-extension: v13.0.0(只包含多选框，简单表格，映射管道)

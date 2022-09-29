@@ -14,6 +14,13 @@ features:
     description: 基于ng-zorro组件开发的拓展包
 ---
 
+<div align="center">
+
+[![npm package](https://img.shields.io/npm/v/ng-zorro-antd-extension.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-extension)
+[![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-extension.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-extension)
+
+</div>
+
 ## 安装
 
 首先要安装ng-zorro：[ng zorro安装](https://ng.ant.design/docs/getting-started/zh)
@@ -22,6 +29,8 @@ ng zorro安装成功之后然后再安装扩展包，推荐使用v14.0.0以上�
 
 ```bash
 npm install ng-zorro-antd-extension --save
+or
+ng add ng-zorro-antd-extension
 ```
 
 ng-zorro-antd-extension: v13.0.0(只包含多选框，简单表格，映射管道)
@@ -44,4 +53,4 @@ ng-zorro-antd-extension: v14.0.0
 |ng-zorro-antd|^14.0.0|
 |@ant-design/icons-angular|^14.0.0|
 
-该组件包是项目中所开发的组件，以用于生产环境，后续有扩展再添加，欢迎fork贡献代码
+欢迎star fork
