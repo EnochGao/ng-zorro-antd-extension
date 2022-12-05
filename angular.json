@@ -41,7 +41,12 @@
             },
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.less"
@@ -213,7 +218,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/custom-site/src/favicon.ico",
-              "projects/custom-site/src/assets"
+              "projects/custom-site/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "assets/"
+              }
             ],
             "styles": [
               "projects/custom-site/src/styles.scss"

@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { IconDefinition } from '@ant-design/icons-angular';
 import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
@@ -21,15 +20,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 
-import {
-  PlusOutline,
-  GithubOutline,
-  UserOutline,
-} from '@ant-design/icons-angular/icons';
-
 registerLocaleData(zh);
-
-const icons: IconDefinition[] = [PlusOutline, GithubOutline, UserOutline];
 
 const routes: Routes = [
   {
@@ -85,7 +76,7 @@ const ngZorroConfig: NzConfig = {
     HttpClientModule,
     FormsModule,
     NzGridModule,
-    NzIconModule.forRoot(icons),
+    NzIconModule,
     NzLayoutModule,
     NzSliderModule,
     NzMenuModule,
