@@ -15,7 +15,7 @@ label: new
 引入
 
 ```ts
-import { TableFormModule } from 'ng-zorro-antd-extension/table-form/table-form.module';
+import { TableFormModule } from 'ng-zorro-antd-extension/table-form';
 
 ```
 

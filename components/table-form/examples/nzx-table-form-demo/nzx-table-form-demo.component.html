@@ -2,7 +2,7 @@
   <form nz-form [formGroup]="form" (ngSubmit)="submit()">
     <nzx-table-form
       #table="nzxTableForm"
-      nzxBorder
+      [nzxBordered]="true"
       nzxSize="small"
       [tableFormConfig]="tableFormConfig"
       [enableExpand]="true"
@@ -115,8 +115,8 @@
   渲染只读：
 
   <nzx-table-form
-    nzxBorder
     nzxSize="small"
+    [nzxBordered]="true"
     [tableFormConfig]="tableFormConfig2"
     [enableExpand]="true"
     [(ngModel)]="students"
