@@ -55,14 +55,17 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
   constructor(private cd: ChangeDetectorRef) {}
 
   writeValue(v: (string | number)[] | any): void {
+    this.reset();
     let list = this.customFormateInFn(v) || [];
-    list.forEach((value: string | number) => {
-      const index = this.checkOptions.findIndex((i) => i.value === value);
-      if (index > -1) {
-        this.checkOptions[index]['checked'] = true;
-      }
-    });
-    this.cd.markForCheck();
+    setTimeout(() => {
+      list.forEach((value: string | number) => {
+        const index = this.checkOptions.findIndex((i) => i.value === value);
+        if (index > -1) {
+          this.checkOptions[index]['checked'] = true;
+        }
+        this.cd.markForCheck();
+      });
+    }, 0);
   }
 
   registerOnChange(fn: any): void {
@@ -79,5 +82,9 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
   emit(value: Options<number | string>[]): void {
     const checkedList = value.filter((i) => i['checked']).map((i) => i.value);
     this.propagateChange(this.customFormateOutFn(checkedList));
+  }
+
+  private reset() {
+    this.checkOptions.forEach((i) => (i['checked'] = false));
   }
 }
