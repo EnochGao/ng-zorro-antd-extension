@@ -226,7 +226,8 @@
               }
             ],
             "styles": [
-              "projects/custom-site/src/styles.scss"
+              "projects/custom-site/src/styles.scss",
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": []
           },
@@ -300,6 +301,14 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
     }
   }
 }
