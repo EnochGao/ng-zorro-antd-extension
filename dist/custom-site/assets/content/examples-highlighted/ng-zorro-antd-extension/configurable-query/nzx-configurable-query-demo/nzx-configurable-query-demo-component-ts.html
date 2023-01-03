@@ -1,0 +1,296 @@
+<div><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  ChangeDetectionStrategy<span class="token punctuation">,</span>
+  Component<span class="token punctuation">,</span>
+  OnInit<span class="token punctuation">,</span>
+  ViewChild<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> FormControl<span class="token punctuation">,</span> Validators <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/forms'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ConfigurableQueryComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/configurable-query'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  NzxQueryParams<span class="token punctuation">,</span>
+  QueryControlOptions<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/configurable-query/type'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-configurable-query-demo'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token punctuation">:</span> <span class="token string">'./nzx-configurable-query-demo.component.html'</span><span class="token punctuation">,</span>
+  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./nzx-configurable-query-demo.component.less'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  changeDetection<span class="token punctuation">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxConfigurableQueryDemoComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+  queryParams<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      controlInstance<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">FormControl</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'假设必填默认'</span><span class="token punctuation">,</span>
+      nzxAllowClear<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'birthday'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'出生日期'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'日期'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'datePicker'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'level'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'职业等级'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  queryParams2<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls2<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'birthday'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'出生日期'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'日期'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'datePicker'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  queryParams3<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls3<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      controlInstance<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">FormControl</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'假设必填默认'</span><span class="token punctuation">,</span>
+      nzxAllowClear<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'birthday'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'出生日期'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'日期'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'datePicker'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'level'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'职业等级'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  queryParams4<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls4<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      controlInstance<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">FormControl</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'假设必填默认'</span><span class="token punctuation">,</span>
+      nzxAllowClear<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'birthday'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'出生日期'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'日期'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'datePicker'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'level'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'职业等级'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  queryParams5<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls5<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'searchType'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      nzxSpan<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      nzxRSpan<span class="token punctuation">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'班级'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'searchKey'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'搜索内容'</span><span class="token punctuation">,</span>
+      nzxSpan<span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+      nzxRSpan<span class="token punctuation">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      controlInstance<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">FormControl</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'假设必填默认'</span><span class="token punctuation">,</span>
+      nzxAllowClear<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'birthday'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'出生日期'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'日期'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'datePicker'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'level'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'职业等级'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  queryParams6<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls6<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'searchType'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      nzxSpan<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      nzxRSpan<span class="token punctuation">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'班级'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'searchKey'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'搜索内容'</span><span class="token punctuation">,</span>
+      nzxSpan<span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+      nzxRSpan<span class="token punctuation">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      controlInstance<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">FormControl</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'假设必填默认'</span><span class="token punctuation">,</span>
+      nzxAllowClear<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'birthday'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'出生日期'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'日期'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'datePicker'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'level'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'职业等级'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'Template'</span><span class="token punctuation">,</span>
+      collapse<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  queryParams7<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  controls7<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'city'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'城市'</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'城市'</span><span class="token punctuation">,</span>
+      controlType<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      menuList<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'班级'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  cityList <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'青岛'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'青岛'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'潍坊'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'潍坊'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'烟台'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'烟台'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  @<span class="token function">ViewChild</span><span class="token punctuation">(</span><span class="token string">'query7'</span><span class="token punctuation">)</span> <span class="token keyword">private</span> query7<span class="token operator">!</span><span class="token punctuation">:</span> ConfigurableQueryComponent<span class="token punctuation">;</span>
+
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>query7<span class="token punctuation">.</span><span class="token function">setControl</span><span class="token punctuation">(</span><span class="token string">'city'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> menuList<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>cityList <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div>

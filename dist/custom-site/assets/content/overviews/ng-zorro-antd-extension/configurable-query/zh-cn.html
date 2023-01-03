@@ -1,0 +1,17 @@
+<p>通过配置项生成一个查询表单控件，支持自定义拓展</p>
+<p>引入</p>
+<pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxConfigurableQueryModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/configurable-query'</span><span class="token punctuation">;</span></div></code></pre>
+<p>使用</p>
+<pre class="language-html"><code class="language-html"><div>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>例子1： 自定义拓展查询职业等级，更多使用方法请查看示例<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-configurable-query</span> <span class="token attr-name">[controls]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>controls<span class="token punctuation">"</span></span> <span class="token attr-name">(queryParamsChange)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>queryParams<span class="token punctuation">=</span>$event<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxControl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>level<span class="token punctuation">"</span></span> <span class="token attr-name">let-formControl</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-rate</span> <span class="token attr-name">[formControl]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formControl<span class="token punctuation">"</span></span> <span class="token attr-name">nzAllowHalf</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-rate</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-configurable-query</span><span class="token punctuation">></span></span>
+
+  查询参数：
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span>
+  {{queryParams|json}}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+</div></code></pre>
