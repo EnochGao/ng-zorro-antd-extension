@@ -1,15 +1,41 @@
-<form [formGroup]="form1">
-  <nzx-checkbox-group [checkOptions]="checkOptions1" formControlName="value"></nzx-checkbox-group>
-</form>
+<nz-card nzTitle="form">
+  <form [formGroup]="form">
+    <nzx-checkbox-group
+      [customFormateInFn]="inFn"
+      [customFormateOutFn]="outFn"
+      [checkOptions]="checkOptions"
+      formControlName="value"
+    ></nzx-checkbox-group>
+  </form>
+  <br />
+  <pre>
+form value:
+{{ form.value | json }}
+  </pre>
 
-<pre>
-{{form1.value|json}}
-</pre>
+  <button nz-button (click)="reset()">reset</button>
+  <button nz-button nzType="primary" (click)="patchValue()">
+    update value
+  </button>
+  <button nz-button (click)="disabledToggle()">disable/enable</button>
+</nz-card>
 
-<form [formGroup]="form">
-  <nzx-checkbox-group [customFormateInFn]="inFn" [customFormateOutFn]="outFn"
-    [checkOptions]="checkOptions" formControlName="value"></nzx-checkbox-group>
-</form>
-<pre>
-{{form.value|json}}
-</pre>
+<nz-card nzTitle="form1">
+  <form [formGroup]="form1">
+    <nzx-checkbox-group
+      [checkOptions]="checkOptions"
+      formControlName="value"
+    ></nzx-checkbox-group>
+  </form>
+  <br />
+  <pre>
+form1 value:
+{{ form1.value | json }}
+  </pre>
+
+  <button nz-button (click)="reset1()">reset</button>
+  <button nz-button nzType="primary" (click)="patchValue1()">
+    update value
+  </button>
+  <button nz-button (click)="disabledToggle1()">disable/enable</button>
+</nz-card>
