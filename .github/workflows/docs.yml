@@ -44,6 +44,9 @@ jobs:
       # 运行构建脚本
       - name: Build site
         run: yarn build:docs
+        
+      - name: Copy index.html
+        run: cp dist/custom-site/index.html dist/custom-site/404.html
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
