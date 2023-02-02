@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CheckboxGroupExtensionComponent } from 'ng-zorro-antd-extension/checkbox';
 
 @Component({
   selector: 'app-checkbox-group-demo',
@@ -24,6 +30,9 @@ export class CheckboxGroupDemoComponent implements OnInit {
   };
   outFn = (v: number[]) => v.reduce((pre, cur) => pre + cur, 0);
 
+  @ViewChild('nzxCheckbox')
+  nzxCheckboxRef!: CheckboxGroupExtensionComponent;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -34,6 +43,17 @@ export class CheckboxGroupDemoComponent implements OnInit {
     this.form1 = this.fb.group({
       value: [[], []],
     });
+  }
+
+  lazyLoad() {
+    setTimeout(() => {
+      this.checkOptions = [
+        { label: '客户信赖', value: 1, disabled: true },
+        { label: '技术评估', value: 2 },
+      ];
+      this.form.get('value')?.patchValue(1);
+      this.nzxCheckboxRef.updateView();
+    }, 1000);
   }
 
   reset() {

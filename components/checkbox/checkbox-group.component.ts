@@ -21,7 +21,7 @@ import { Options } from 'ng-zorro-antd-extension/types';
     <nz-checkbox-group
       [nzDisabled]="nzDisabled"
       [ngModel]="_checkOptions"
-      (ngModelChange)="emit($event)"
+      (ngModelChange)="valueChange($event)"
     >
     </nz-checkbox-group>
   `,
@@ -40,9 +40,11 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
       return { ...i, checked: false };
     });
   }
+
   _checkOptions: Array<{
     label: string;
     value: number | string;
+    disabled?: boolean;
     checked?: boolean;
   }> = [];
 
@@ -59,22 +61,22 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
     checkedList;
 
   nzDisabled = false;
-
+  private templateValue: any;
   private propagateChange = (_: any) => {};
 
   constructor(private cd: ChangeDetectorRef) {}
 
   writeValue(v: (string | number)[] | any): void {
     this._checkOptions.forEach((i) => (i['checked'] = false));
-    let list = this.customFormateInFn(v) || [];
+    this.templateValue = v;
+    this._updateView();
+  }
 
-    list.forEach((value: string | number) => {
-      const index = this._checkOptions.findIndex((i) => i.value === value);
-      if (index > -1) {
-        this._checkOptions[index]['checked'] = true;
-      }
-    });
-    this.cd.markForCheck();
+  /**更新视图 */
+  updateView() {
+    setTimeout(() => {
+      this._updateView();
+    }, 0);
   }
 
   registerOnChange(fn: any): void {
@@ -88,7 +90,7 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
     this.cd.markForCheck();
   }
 
-  emit(
+  valueChange(
     value: Array<{
       label: string;
       value: number | string;
@@ -97,5 +99,16 @@ export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
   ): void {
     const checkedList = value.filter((i) => i['checked']).map((i) => i.value);
     this.propagateChange(this.customFormateOutFn(checkedList));
+  }
+
+  private _updateView() {
+    let list = this.customFormateInFn(this.templateValue) || [];
+    list.forEach((value: string | number) => {
+      const index = this._checkOptions.findIndex((i) => i.value === value);
+      if (index > -1) {
+        this._checkOptions[index]['checked'] = true;
+      }
+    });
+    this.cd.markForCheck();
   }
 }

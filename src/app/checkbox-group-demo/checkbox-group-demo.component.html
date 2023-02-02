@@ -1,6 +1,7 @@
 <nz-card nzTitle="form">
   <form [formGroup]="form">
     <nzx-checkbox-group
+      #nzxCheckbox
       [customFormateInFn]="inFn"
       [customFormateOutFn]="outFn"
       [checkOptions]="checkOptions"
@@ -18,6 +19,7 @@ form value:
     update value
   </button>
   <button nz-button (click)="disabledToggle()">disable/enable</button>
+  <button nz-button (click)="lazyLoad()">lazyLoad(1s)</button>
 </nz-card>
 
 <nz-card nzTitle="form1">
