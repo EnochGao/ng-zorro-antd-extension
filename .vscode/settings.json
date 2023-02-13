@@ -1,7 +1,7 @@
 {
   "editor.renderWhitespace": "all",
   "editor.cursorBlinking": "phase",
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.tabCompletion": "on",
   "editor.cursorWidth": 4,
   "workbench.activityBar.iconClickBehavior": "focus",

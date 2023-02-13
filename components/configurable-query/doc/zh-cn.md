@@ -3,7 +3,6 @@ category: component
 title: 查询组件
 subtitle: nzx-configurable-query
 order: 3
-label: new
 ---
 
 通过配置项生成一个查询表单控件，支持自定义拓展

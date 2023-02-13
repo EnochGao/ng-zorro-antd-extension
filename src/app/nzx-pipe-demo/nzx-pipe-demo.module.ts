@@ -4,20 +4,16 @@ import { RouterModule } from '@angular/router';
 import { PipesModule } from 'ng-zorro-antd-extension/pipes';
 import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzxMapPipeDemoComponent } from './nzx-map-pipe-demo.component';
+import { NzxPipeDemoComponent } from './nzx-pipe-demo.component';
 
 @NgModule({
-  declarations: [
-    NzxMapPipeDemoComponent
-  ],
+  declarations: [NzxPipeDemoComponent],
   imports: [
     CommonModule,
     NzButtonModule,
     SimpleTableModule,
     PipesModule,
-    RouterModule.forChild([
-      { path: '', component: NzxMapPipeDemoComponent }
-    ])
-  ]
+    RouterModule.forChild([{ path: '', component: NzxPipeDemoComponent }]),
+  ],
 })
-export class NzxMapPipeDemoModule { }
+export class NzxMapPipeDemoModule {}

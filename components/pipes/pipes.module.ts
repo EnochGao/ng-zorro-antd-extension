@@ -1,17 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { MapPipe } from './map.pipe';
+import { NzxSafeNullPipe } from './nzx-safe-null.pipe';
 
 @NgModule({
-  declarations: [
-    MapPipe
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    MapPipe
-  ]
+  declarations: [MapPipe, NzxSafeNullPipe],
+  exports: [MapPipe, NzxSafeNullPipe],
 })
-export class PipesModule { }
+export class PipesModule {}

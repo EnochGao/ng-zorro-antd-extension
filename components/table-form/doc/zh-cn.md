@@ -3,7 +3,6 @@ category: component
 title: 表格表单
 subtitle: nzx-table-form
 order: 4
-label: new
 ---
 
 表格表单。整个table为一个表单控件，适合当填写的表单为一个list集合的情况。

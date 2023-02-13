@@ -4,4 +4,5 @@
  */
 
 export * from './map.pipe';
+export * from './nzx-safe-null.pipe';
 export * from './pipes.module';

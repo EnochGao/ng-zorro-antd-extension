@@ -19,6 +19,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzxConfig, NZX_CONFIG } from 'ng-zorro-antd-extension/core/config';
 
 registerLocaleData(zh);
 
@@ -47,7 +48,7 @@ const routes: Routes = [
   {
     path: 'nzx-map-pipe',
     loadChildren: () =>
-      import('./nzx-map-pipe-demo/nzx-map-pipe-demo.module').then(
+      import('./nzx-pipe-demo/nzx-pipe-demo.module').then(
         (m) => m.NzxMapPipeDemoModule
       ),
   },
@@ -63,9 +64,13 @@ const routes: Routes = [
 
 const ngZorroConfig: NzConfig = {
   // 注意组件名称没有 nz 前缀
-  // table: { nzSize: 'small', nzBordered: true, },
-  // descriptions: { nzSize: 'small', nzBordered: true },
-  // button: { nzSize: 'small' },
+  table: { nzSize: 'small', nzBordered: true },
+};
+
+const ngZorroExtensionConfig: NzxConfig = {
+  nzxSafeNull: {
+    placeholder: '空',
+  },
 };
 
 @NgModule({
@@ -89,6 +94,7 @@ const ngZorroConfig: NzConfig = {
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
     { provide: NZ_CONFIG, useValue: ngZorroConfig },
+    { provide: NZX_CONFIG, useValue: ngZorroExtensionConfig },
   ],
   bootstrap: [AppComponent],
 })
