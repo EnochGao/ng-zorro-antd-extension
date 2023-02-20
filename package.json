@@ -20,15 +20,15 @@
     "email": "enochgao@qq.com"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "build:lib": "ng build ng-zorro-antd-extension-lib",
-    "watch": "ng build --watch --configuration development",
+    "ng": "npx ng",
+    "start": "npx ng serve",
+    "build": "npx ng build",
+    "build:lib": "npx ng build ng-zorro-antd-extension-lib",
+    "watch": "npx ng build --watch --configuration development",
     "start:docs": "npx docgeni serve --port 4600",
     "build:docs": "npx docgeni build --production --base-href=/ng-zorro-antd-extension/",
-    "test": "ng test",
-    "lint": "ng lint --fix",
+    "test": "npx ng test",
+    "lint": "npx ng lint --fix",
     "prepare": "husky install"
   },
   "dependencies": {
