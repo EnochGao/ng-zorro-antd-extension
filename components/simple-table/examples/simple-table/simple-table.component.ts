@@ -17,8 +17,8 @@ interface Person {
   templateUrl: './simple-table.component.html',
   styleUrls: ['./simple-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // standalone: true,
-  // imports: [CommonModule, NzxSimpleTableModule, NzButtonModule],
+  standalone: true,
+  imports: [CommonModule, NzxSimpleTableModule, NzButtonModule],
 })
 export class NzxSimpleTableExampleComponent implements OnInit {
   config: Array<NzxSimpleTableConfig<Person>> = [

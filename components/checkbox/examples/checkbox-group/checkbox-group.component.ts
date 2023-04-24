@@ -7,31 +7,29 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCardModule } from 'ng-zorro-antd/card';
+
 import {
   NzxCheckboxExtensionModule,
   NzxCheckboxGroupExtensionComponent,
 } from 'ng-zorro-antd-extension/checkbox';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzCardModule } from 'ng-zorro-antd/card';
 
-/**
- * @title 多选框
- * @order 1
- */
 @Component({
   selector: 'nzx-checkbox-group-demo',
   templateUrl: './checkbox-group.component.html',
   styleUrls: ['./checkbox-group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  // standalone: true,
-  // imports: [
-  //   CommonModule,
-  //   ReactiveFormsModule,
-  //   NzCardModule,
-  //   NzButtonModule,
-  //   NzxCheckboxExtensionModule,
-  // ],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NzCardModule,
+    NzButtonModule,
+    NzxCheckboxExtensionModule,
+  ],
 })
 export class NzxCheckboxGroupExampleComponent implements OnInit {
   checkOptions: any[] = [

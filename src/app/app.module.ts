@@ -14,6 +14,7 @@ import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 import { NzxConfig, NZX_CONFIG } from 'ng-zorro-antd-extension/core/config';
 
 registerLocaleData(zh);
+
 const ngZorroConfig: NzConfig = {
   // 注意组件名称没有 nz 前缀
   table: { nzSize: 'small', nzBordered: true },

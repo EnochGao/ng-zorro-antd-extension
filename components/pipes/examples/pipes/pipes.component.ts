@@ -19,8 +19,8 @@ interface Person {
   templateUrl: './pipes.component.html',
   styleUrls: ['./pipes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // standalone: true,
-  // imports: [CommonModule, NzxPipesModule, NzxSimpleTableModule, NzButtonModule],
+  standalone: true,
+  imports: [CommonModule, NzxPipesModule, NzxSimpleTableModule, NzButtonModule],
 })
 export class NzxPipeExampleComponent {
   config: Array<NzxSimpleTableConfig<Person>> = [

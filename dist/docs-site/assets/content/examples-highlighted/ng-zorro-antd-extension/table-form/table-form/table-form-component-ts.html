@@ -1,0 +1,228 @@
+<div><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  ChangeDetectionStrategy<span class="token punctuation">,</span>
+  ChangeDetectorRef<span class="token punctuation">,</span>
+  Component<span class="token punctuation">,</span>
+  OnInit<span class="token punctuation">,</span>
+  ViewChild<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  AbstractControl<span class="token punctuation">,</span>
+  FormBuilder<span class="token punctuation">,</span>
+  FormGroup<span class="token punctuation">,</span>
+  FormsModule<span class="token punctuation">,</span>
+  ReactiveFormsModule<span class="token punctuation">,</span>
+  Validators<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/forms'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzMessageModule<span class="token punctuation">,</span> NzMessageService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/message'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxTableFormComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/table-form'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  LimitMessage<span class="token punctuation">,</span>
+  TableFormConfig<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/table-form/type'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CommonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzIconModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/icon'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzFormModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/form'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzButtonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/button'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxPipesModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/pipes'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzTableModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/table'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzRateModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/rate'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxTableFormModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/table-form'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-table-form-demo'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token punctuation">:</span> <span class="token string">'./table-form.component.html'</span><span class="token punctuation">,</span>
+  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./table-form.component.scss'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  changeDetection<span class="token punctuation">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush<span class="token punctuation">,</span>
+  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    CommonModule<span class="token punctuation">,</span>
+    FormsModule<span class="token punctuation">,</span>
+    ReactiveFormsModule<span class="token punctuation">,</span>
+    NzIconModule<span class="token punctuation">,</span>
+    NzFormModule<span class="token punctuation">,</span>
+    NzButtonModule<span class="token punctuation">,</span>
+    NzxPipesModule<span class="token punctuation">,</span>
+    NzTableModule<span class="token punctuation">,</span>
+    NzRateModule<span class="token punctuation">,</span>
+    NzMessageModule<span class="token punctuation">,</span>
+    NzxTableFormModule<span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxTableFormExampleComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+  form<span class="token punctuation">:</span> FormGroup<span class="token punctuation">;</span>
+  form2<span class="token punctuation">:</span> FormGroup<span class="token punctuation">;</span>
+
+  tableFormConfig<span class="token punctuation">:</span> TableFormConfig<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      showRequiredTip<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+      placeholder<span class="token punctuation">:</span> <span class="token string">'请输入姓名不超过10个字'</span><span class="token punctuation">,</span>
+      maxLength<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'input'</span><span class="token punctuation">,</span>
+      validation<span class="token punctuation">:</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'必填,最多不超过10个字'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'年龄'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'age'</span><span class="token punctuation">,</span>
+      defaultValue<span class="token punctuation">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'number'</span><span class="token punctuation">,</span>
+      validation<span class="token punctuation">:</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'必填'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'radio'</span><span class="token punctuation">,</span>
+      options<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      defaultValue<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      validation<span class="token punctuation">:</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'必填'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'地址'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'address'</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      options<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'青岛'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'青岛'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      validation<span class="token punctuation">:</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'必填'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'小星星（自定义控件）'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'stars'</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'template'</span><span class="token punctuation">,</span>
+      validation<span class="token punctuation">:</span> <span class="token punctuation">[</span>Validators<span class="token punctuation">.</span>required<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      errorTip<span class="token punctuation">:</span> <span class="token string">'必填'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'班级（readonly模式）'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'class'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+      defaultValue<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      format<span class="token punctuation">:</span> <span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">班`</span></span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  tableFormConfig2<span class="token punctuation">:</span> TableFormConfig<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'年龄'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'age'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'gender'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+      format<span class="token punctuation">:</span> <span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">'男'</span> <span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'地址'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'address'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'小星星（自定义控件）'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'stars'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'班级'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'class'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+      format<span class="token punctuation">:</span> <span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">班`</span></span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      header<span class="token punctuation">:</span> <span class="token string">'id不在列表中展示'</span><span class="token punctuation">,</span>
+      controlName<span class="token punctuation">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span>
+      controlMode<span class="token punctuation">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+      isShow<span class="token punctuation">:</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  students<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  loading <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+
+  @<span class="token function">ViewChild</span><span class="token punctuation">(</span><span class="token string">'table'</span><span class="token punctuation">)</span> <span class="token keyword">private</span> table1<span class="token operator">!</span><span class="token punctuation">:</span> NzxTableFormComponent<span class="token punctuation">;</span>
+
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">private</span> fb<span class="token punctuation">:</span> FormBuilder<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> logger<span class="token punctuation">:</span> NzMessageService<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> cd<span class="token punctuation">:</span> ChangeDetectorRef
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>form <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>fb<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      students<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>form2 <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>fb<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      students<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span>valueChanges<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// console.log('value::', res);</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">lazyLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'青岛'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'青岛'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'潍坊'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'潍坊'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> label<span class="token punctuation">:</span> <span class="token string">'烟台'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string">'烟台'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>table1<span class="token punctuation">.</span><span class="token function">setConfig</span><span class="token punctuation">(</span><span class="token string">'address'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> options<span class="token punctuation">:</span> list <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>cd<span class="token punctuation">.</span><span class="token function">markForCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">errorMsg</span><span class="token punctuation">(</span>message<span class="token punctuation">:</span> LimitMessage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'max'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>logger<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> students <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span>value<span class="token punctuation">.</span>students as <span class="token keyword">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>students <span class="token operator">=</span> students<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">,</span> index<span class="token punctuation">:</span> <span class="token keyword">number</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>item<span class="token punctuation">,</span>
+        id<span class="token punctuation">:</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  customValidate <span class="token operator">=</span> <span class="token punctuation">(</span>control<span class="token punctuation">:</span> AbstractControl<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> valueList<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token keyword">string</span> <span class="token punctuation">}</span><span class="token operator">></span> <span class="token operator">=</span> control<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> index <span class="token operator">=</span> valueList<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> lastItem <span class="token operator">=</span> index <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">?</span> valueList<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> flag <span class="token operator">=</span> valueList<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!==</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> item<span class="token punctuation">.</span>name <span class="token operator">===</span> lastItem<span class="token operator">?</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> tableError<span class="token punctuation">:</span> <span class="token string">'姓名不能重复'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div>

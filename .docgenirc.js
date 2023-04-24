@@ -21,7 +21,7 @@ module.exports = {
     {
       name: "ng-zorro-antd-extension",
       rootDir: "./components",
-      include: [],
+      include: ["./"],
       exclude: "",
       categories: [
         {

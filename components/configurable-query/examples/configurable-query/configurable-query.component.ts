@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { NzRateModule } from 'ng-zorro-antd/rate';
+
 import {
   NzxConfigurableQueryComponent,
   NzxConfigurableQueryModule,
@@ -15,20 +17,19 @@ import {
   NzxQueryParams,
   QueryControlOptions,
 } from 'ng-zorro-antd-extension/configurable-query/type';
-import { NzRateModule } from 'ng-zorro-antd/rate';
 
 @Component({
   selector: 'nzx-configurable-query-demo',
   templateUrl: './configurable-query.component.html',
   styleUrls: ['./configurable-query.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // standalone: true,
-  // imports: [
-  //   CommonModule,
-  //   ReactiveFormsModule,
-  //   NzRateModule,
-  //   NzxConfigurableQueryModule,
-  // ],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NzRateModule,
+    NzxConfigurableQueryModule,
+  ],
 })
 export class NzxConfigurableQueryExampleComponent implements OnInit {
   queryParams: NzxQueryParams = {};
