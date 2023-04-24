@@ -44,9 +44,6 @@ jobs:
       # 运行构建脚本
       - name: Build site
         run: yarn build
-        
-      - name: Copy index.html
-        run: cp dist/docs-site/index.html dist/docs-site/404.html
 
       - name: Copy index.html
         run: cp dist/docs-site/index.html dist/docs-site/404.html
