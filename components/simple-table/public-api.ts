@@ -3,7 +3,6 @@
  * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
  */
 
-
 export * from './directive/td.directive';
 export * from './directive/th.directive';
 export * from './directive/expand.directive';

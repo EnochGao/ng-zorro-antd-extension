@@ -10,11 +10,11 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 
-import { ConfigurableQueryComponent } from './configurable-query.component';
+import { NzxConfigurableQueryComponent } from './configurable-query.component';
 import { ControlDirective } from './control.directive';
 
 @NgModule({
-  declarations: [ConfigurableQueryComponent, ControlDirective],
+  declarations: [NzxConfigurableQueryComponent, ControlDirective],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -27,6 +27,6 @@ import { ControlDirective } from './control.directive';
     NzDatePickerModule,
     NzIconModule,
   ],
-  exports: [ControlDirective, ConfigurableQueryComponent],
+  exports: [ControlDirective, NzxConfigurableQueryComponent],
 })
 export class NzxConfigurableQueryModule {}

@@ -31,7 +31,7 @@ import { NzxQueryParams, QueryControlOptions } from './type';
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxConfigurableQuery',
 })
-export class ConfigurableQueryComponent
+export class NzxConfigurableQueryComponent
   implements OnInit, AfterContentInit, OnDestroy
 {
   /** 配置项 */

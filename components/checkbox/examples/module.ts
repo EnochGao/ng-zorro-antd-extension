@@ -1,20 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckboxGroupDemoComponent } from './checkbox-group-demo/checkbox-group-demo.component';
-
-import { NzCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
+import { NzxCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
+
+import { NzxCheckboxGroupExampleComponent } from './checkbox-group/checkbox-group.component';
+
 @NgModule({
-  declarations: [CheckboxGroupDemoComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NzCardModule,
     NzButtonModule,
-    NzCheckboxExtensionModule,
+    NzxCheckboxExtensionModule,
   ],
+  declarations: [NzxCheckboxGroupExampleComponent],
 })
-export class CheckboxGroupDemoModule {}
+export class NzxCheckboxGroupExamplesModule {}

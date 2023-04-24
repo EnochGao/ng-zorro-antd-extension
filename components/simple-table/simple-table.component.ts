@@ -121,7 +121,7 @@ export interface NzxSimpleTableConfig<T> {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SimpleTableComponent<T> implements AfterContentInit {
+export class NzxSimpleTableComponent<T> implements AfterContentInit {
   /** th td 布局方式 */
   @Input() nzxAlign: 'left' | 'right' | 'center' | null = 'center';
   /** table 标题 */

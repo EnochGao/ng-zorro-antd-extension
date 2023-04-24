@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'nzxMap'
 })
-export class MapPipe implements PipeTransform {
+export class NzxMapPipe implements PipeTransform {
 
   transform(value: string | number, data?: { [key: string | number]: any; }, separator = ','): any {
     if ((value !== null) && (value !== undefined)) {

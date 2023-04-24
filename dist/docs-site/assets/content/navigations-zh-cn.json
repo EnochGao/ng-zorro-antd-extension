@@ -1,0 +1,43 @@
+{
+  "navs": [
+    {
+      "title": "组件",
+      "path": "components",
+      "lib": "ng-zorro-antd-extension",
+      "items": [
+        {
+          "id": "component",
+          "title": "组件",
+          "items": []
+        },
+        {
+          "id": "pipe",
+          "title": "管道",
+          "items": []
+        }
+      ]
+    }
+  ],
+  "docs": [],
+  "homeMeta": {
+    "title": "首页",
+    "order": 10,
+    "hero": {
+      "title": "zorro extension",
+      "description": "基于ng-zorro的组件扩展包"
+    },
+    "features": [
+      {
+        "icon": "https://angular.cn/assets/images/logos/angular/angular.svg",
+        "title": "Angular",
+        "description": "基于Angular"
+      },
+      {
+        "icon": "https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg",
+        "title": "ng-zorro",
+        "description": "基于ng-zorro组件开发的拓展包"
+      }
+    ],
+    "contentPath": "docs/index.html"
+  }
+}

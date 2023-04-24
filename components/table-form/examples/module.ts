@@ -1,20 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PipesModule } from 'ng-zorro-antd-extension/pipes';
-import { TableFormModule } from 'ng-zorro-antd-extension/table-form/table-form.module';
+import { NzxPipesModule } from 'ng-zorro-antd-extension/pipes';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { NzxTableFormDemoComponent } from './nzx-table-form-demo/nzx-table-form-demo.component';
+import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
+import { NzxTableFormExampleComponent } from './table-form/table-form.component';
 
 @NgModule({
-  declarations: [
-    NzxTableFormDemoComponent
-  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,11 +19,12 @@ import { NzxTableFormDemoComponent } from './nzx-table-form-demo/nzx-table-form-
     NzIconModule,
     NzFormModule,
     NzButtonModule,
-    PipesModule,
+    NzxPipesModule,
     NzTableModule,
     NzRateModule,
-    TableFormModule,
     NzMessageModule,
-  ]
+    NzxTableFormModule,
+  ],
+  declarations: [NzxTableFormExampleComponent],
 })
-export class NzxMapPipeDemoModule { }
+export class NzxTableFormExamplesModule {}

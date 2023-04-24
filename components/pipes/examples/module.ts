@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PipesModule } from 'ng-zorro-antd-extension/pipes';
-import { SimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
+import { NzxPipesModule } from '../pipes.module';
+import { NzxSimpleTableModule } from 'ng-zorro-antd-extension/simple-table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
+import { NzxPipeExampleComponent } from './pipes/pipes.component';
 
 @NgModule({
-  declarations: [PipeDemoComponent],
-  imports: [CommonModule, PipesModule, SimpleTableModule, NzButtonModule],
+  imports: [CommonModule, NzxPipesModule, NzxSimpleTableModule, NzButtonModule],
+  declarations: [NzxPipeExampleComponent],
 })
-export class NzxMapPipeDemoModule {}
+export class NzxPipeExamplesModule {}

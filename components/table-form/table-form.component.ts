@@ -32,9 +32,9 @@ import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
 import { validForm } from 'ng-zorro-antd-extension/util';
-import { TableFormExpandDirective } from './directive/table-expand.directive';
-import { TableFormTdDirective } from './directive/table-td.directive';
-import { TableFormThDirective } from './directive/table-th.directive';
+import { NzxTableFormExpandDirective } from './directive/table-expand.directive';
+import { NzxTableFormTdDirective } from './directive/table-td.directive';
+import { NzxTableFormThDirective } from './directive/table-th.directive';
 
 import {
   LimitMessage,
@@ -51,14 +51,14 @@ import {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TableFormComponent),
+      useExisting: forwardRef(() => NzxTableFormComponent),
       multi: true,
     },
-    { provide: NG_VALIDATORS, useExisting: TableFormComponent, multi: true },
+    { provide: NG_VALIDATORS, useExisting: NzxTableFormComponent, multi: true },
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class TableFormComponent
+export class NzxTableFormComponent
   implements
     OnInit,
     ControlValueAccessor,
@@ -136,12 +136,12 @@ export class TableFormComponent
 
   private destroyed$: Subject<void> = new Subject<void>();
 
-  @ContentChildren(TableFormTdDirective)
-  tableTdDirectiveList!: QueryList<TableFormTdDirective>;
-  @ContentChildren(TableFormThDirective)
-  tableThDirectiveList!: QueryList<TableFormThDirective>;
-  @ContentChild(TableFormExpandDirective)
-  tableExpandDirective!: TableFormExpandDirective;
+  @ContentChildren(NzxTableFormTdDirective)
+  tableTdDirectiveList!: QueryList<NzxTableFormTdDirective>;
+  @ContentChildren(NzxTableFormThDirective)
+  tableThDirectiveList!: QueryList<NzxTableFormThDirective>;
+  @ContentChild(NzxTableFormExpandDirective)
+  tableExpandDirective!: NzxTableFormExpandDirective;
 
   constructor(private cd: ChangeDetectorRef, private fb: FormBuilder) {}
 
@@ -313,8 +313,8 @@ export class TableFormComponent
    * 匹配投影模板template放到config中
    */
   private matchTemplate(
-    thList: QueryList<TableFormThDirective>,
-    tdList: QueryList<TableFormTdDirective>
+    thList: QueryList<NzxTableFormThDirective>,
+    tdList: QueryList<NzxTableFormTdDirective>
   ): void {
     this.headerConfig = this.headerConfig.map((item) => {
       const ThDirective = thList.find(

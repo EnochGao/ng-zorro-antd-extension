@@ -29,12 +29,12 @@ import { Options } from 'ng-zorro-antd-extension/types';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxGroupExtensionComponent),
+      useExisting: forwardRef(() => NzxCheckboxGroupExtensionComponent),
       multi: true,
     },
   ],
 })
-export class CheckboxGroupExtensionComponent implements ControlValueAccessor {
+export class NzxCheckboxGroupExtensionComponent implements ControlValueAccessor {
   @Input() set checkOptions(value: Array<Options<string | number>>) {
     this._checkOptions = value.map((i) => {
       return { ...i, checked: false };
