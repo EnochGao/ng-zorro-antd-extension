@@ -17,8 +17,8 @@ import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 
 import { NzxTableFormComponent } from 'ng-zorro-antd-extension/table-form';
 import {
-  LimitMessage,
-  TableFormConfig,
+  NzxLimitMessage,
+  NzxTableFormConfig,
 } from 'ng-zorro-antd-extension/table-form/type';
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -53,7 +53,7 @@ export class NzxTableFormExampleComponent implements OnInit {
   form: FormGroup;
   form2: FormGroup;
 
-  tableFormConfig: TableFormConfig[] = [
+  tableFormConfig: NzxTableFormConfig[] = [
     {
       header: '姓名',
       controlName: 'name',
@@ -107,7 +107,7 @@ export class NzxTableFormExampleComponent implements OnInit {
       format: (value) => `${value}班`,
     },
   ];
-  tableFormConfig2: TableFormConfig[] = [
+  tableFormConfig2: NzxTableFormConfig[] = [
     {
       header: '姓名',
       controlName: 'name',
@@ -190,7 +190,7 @@ export class NzxTableFormExampleComponent implements OnInit {
     }, 3000);
   }
 
-  errorMsg(message: LimitMessage) {
+  errorMsg(message: NzxLimitMessage) {
     if (message.type === 'max') {
       this.logger.warning(message.msg);
     }

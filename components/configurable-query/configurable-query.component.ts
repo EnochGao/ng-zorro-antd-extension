@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject, takeUntil } from 'rxjs';
 import { ControlDirective } from './control.directive';
-import { NzxQueryParams, QueryControlOptions } from './type';
+import { NzxQueryParams, NzxQueryControlOptions } from './type';
 
 /**
  * 查询组件
@@ -35,7 +35,7 @@ export class NzxConfigurableQueryComponent
   implements OnInit, AfterContentInit, OnDestroy
 {
   /** 配置项 */
-  @Input() controls: Array<QueryControlOptions> = [];
+  @Input() controls: Array<NzxQueryControlOptions> = [];
   /** 查询表单排列方式 */
   @Input() nzxJustify: NzJustify = 'start';
   /** 查询项间隔 */
@@ -115,7 +115,7 @@ export class NzxConfigurableQueryComponent
   /**
    * 根据controlName设置config值
    */
-  setControl(controlName: string, config: Partial<QueryControlOptions>): void {
+  setControl(controlName: string, config: Partial<NzxQueryControlOptions>): void {
     let control = this.getControl(controlName);
     if (control) {
       Object.keys(config).forEach((key) => {
@@ -127,7 +127,7 @@ export class NzxConfigurableQueryComponent
   /**
    * 根据controlName获取config项
    */
-  getControl(controlName: string): QueryControlOptions | undefined {
+  getControl(controlName: string): NzxQueryControlOptions | undefined {
     const index = this.controls.findIndex(
       (item) => item.controlName === controlName
     );

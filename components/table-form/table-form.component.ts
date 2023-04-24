@@ -37,10 +37,10 @@ import { NzxTableFormTdDirective } from './directive/table-td.directive';
 import { NzxTableFormThDirective } from './directive/table-th.directive';
 
 import {
-  LimitMessage,
-  TableFormConfig,
-  TableFormHeaderConfig,
-  TableFormTdConfig,
+  NzxLimitMessage,
+  NzxTableFormConfig,
+  NzxTableFormHeaderConfig,
+  NzxTableFormTdConfig,
 } from './type';
 
 @Component({
@@ -102,13 +102,13 @@ export class NzxTableFormComponent
   ): ValidationErrors | null => null;
 
   /** table config */
-  @Input() tableFormConfig: TableFormConfig[] = [];
+  @Input() tableFormConfig: NzxTableFormConfig[] = [];
 
   /** 数量限制回调 */
-  @Output() limitMessage = new EventEmitter<LimitMessage>();
+  @Output() limitMessage = new EventEmitter<NzxLimitMessage>();
 
-  headerConfig!: Array<TableFormHeaderConfig>;
-  tdConfig!: Array<TableFormTdConfig>;
+  headerConfig!: Array<NzxTableFormHeaderConfig>;
+  tdConfig!: Array<NzxTableFormTdConfig>;
 
   thTemplateOfNullInForm: {
     templateRef: TemplateRef<unknown>;
@@ -185,7 +185,7 @@ export class NzxTableFormComponent
   /**
    * 根据controlName设置config值
    */
-  setConfig(controlName: string, config: Partial<TableFormConfig>): void {
+  setConfig(controlName: string, config: Partial<NzxTableFormConfig>): void {
     const index = this.tableFormConfig.findIndex(
       (item) => item.controlName === controlName
     );
@@ -354,7 +354,7 @@ export class NzxTableFormComponent
   /**
    * 解析配置生成controls
    */
-  private parseFormConfig(customFormConfig: TableFormConfig[]): {
+  private parseFormConfig(customFormConfig: NzxTableFormConfig[]): {
     [key: string]: any;
   } {
     const controls: { [key: string]: any } = {};
@@ -376,8 +376,8 @@ export class NzxTableFormComponent
    *
    */
   private parseHeader(
-    customFormConfig: TableFormConfig[]
-  ): Array<TableFormHeaderConfig> {
+    customFormConfig: NzxTableFormConfig[]
+  ): Array<NzxTableFormHeaderConfig> {
     return customFormConfig.map((item) => ({
       header: item.header,
       width: item?.width,
@@ -392,8 +392,8 @@ export class NzxTableFormComponent
    * 解析配置生成Content
    */
   private parseTd(
-    customFormConfig: TableFormConfig[]
-  ): Array<TableFormTdConfig> {
+    customFormConfig: NzxTableFormConfig[]
+  ): Array<NzxTableFormTdConfig> {
     return customFormConfig.map((item) => ({
       controlName: item?.controlName,
       isShow: item.isShow ?? true,

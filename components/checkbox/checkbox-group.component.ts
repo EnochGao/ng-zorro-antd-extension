@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { Options } from 'ng-zorro-antd-extension/types';
+import { NzxOptions } from 'ng-zorro-antd-extension/types';
 
 /**
  * nzx-checkbox-group
@@ -34,8 +34,10 @@ import { Options } from 'ng-zorro-antd-extension/types';
     },
   ],
 })
-export class NzxCheckboxGroupExtensionComponent implements ControlValueAccessor {
-  @Input() set checkOptions(value: Array<Options<string | number>>) {
+export class NzxCheckboxGroupExtensionComponent
+  implements ControlValueAccessor
+{
+  @Input() set checkOptions(value: Array<NzxOptions<string | number>>) {
     this._checkOptions = value.map((i) => {
       return { ...i, checked: false };
     });

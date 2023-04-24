@@ -10,9 +10,9 @@ import {
 } from '@angular/core';
 import { NzTableSize } from 'ng-zorro-antd/table';
 
-import { ExpandDirective } from './directive/expand.directive';
-import { TdDirective } from './directive/td.directive';
-import { ThDirective } from './directive/th.directive';
+import { NzxExpandDirective } from './directive/expand.directive';
+import { NzxTdDirective } from './directive/td.directive';
+import { NzxThDirective } from './directive/th.directive';
 
 /**
  * nzx-simple-table 组件配置格式
@@ -139,12 +139,12 @@ export class NzxSimpleTableComponent<T> implements AfterContentInit {
   /** table 配置项 */
   @Input() nzxConfig: Array<NzxSimpleTableConfig<T>> = [];
 
-  tdList: Array<TdDirective> = [];
-  thList: Array<ThDirective> = [];
+  tdList: Array<NzxTdDirective> = [];
+  thList: Array<NzxThDirective> = [];
 
-  @ContentChild(ExpandDirective) expandDirective!: ExpandDirective;
-  @ContentChildren(ThDirective) private _thList!: QueryList<ThDirective>;
-  @ContentChildren(TdDirective) private _tdList!: QueryList<TdDirective>;
+  @ContentChild(NzxExpandDirective) expandDirective!: NzxExpandDirective;
+  @ContentChildren(NzxThDirective) private _thList!: QueryList<NzxThDirective>;
+  @ContentChildren(NzxTdDirective) private _tdList!: QueryList<NzxTdDirective>;
 
   ngAfterContentInit(): void {
     this.thList = this._thList.toArray();

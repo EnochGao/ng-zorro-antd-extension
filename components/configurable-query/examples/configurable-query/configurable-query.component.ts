@@ -15,7 +15,7 @@ import {
 } from 'ng-zorro-antd-extension/configurable-query';
 import {
   NzxQueryParams,
-  QueryControlOptions,
+  NzxQueryControlOptions,
 } from 'ng-zorro-antd-extension/configurable-query/type';
 
 @Component({
@@ -34,7 +34,7 @@ import {
 export class NzxConfigurableQueryExampleComponent implements OnInit {
   queryParams: NzxQueryParams = {};
 
-  controls: Array<QueryControlOptions> = [
+  controls: Array<NzxQueryControlOptions> = [
     {
       controlName: 'name',
       label: '姓名',
@@ -70,7 +70,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ];
   queryParams2: NzxQueryParams = {};
 
-  controls2: Array<QueryControlOptions> = [
+  controls2: Array<NzxQueryControlOptions> = [
     {
       controlName: 'name',
       label: '姓名',
@@ -86,7 +86,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ];
   queryParams3: NzxQueryParams = {};
 
-  controls3: Array<QueryControlOptions> = [
+  controls3: Array<NzxQueryControlOptions> = [
     {
       controlName: 'name',
       label: '姓名',
@@ -122,7 +122,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ];
   queryParams4: NzxQueryParams = {};
 
-  controls4: Array<QueryControlOptions> = [
+  controls4: Array<NzxQueryControlOptions> = [
     {
       controlName: 'name',
       label: '姓名',
@@ -158,7 +158,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ];
   queryParams5: NzxQueryParams = {};
 
-  controls5: Array<QueryControlOptions> = [
+  controls5: Array<NzxQueryControlOptions> = [
     {
       controlName: 'searchType',
       placeholder: '请选择',
@@ -213,7 +213,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ];
   queryParams6: NzxQueryParams = {};
 
-  controls6: Array<QueryControlOptions> = [
+  controls6: Array<NzxQueryControlOptions> = [
     {
       controlName: 'searchType',
       placeholder: '请选择',
@@ -271,7 +271,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
 
   queryParams7: NzxQueryParams = {};
 
-  controls7: Array<QueryControlOptions> = [
+  controls7: Array<NzxQueryControlOptions> = [
     {
       controlName: 'name',
       label: '姓名',

@@ -1,12 +1,8 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[nzxExpandTr]'
+  selector: '[nzxExpandTr]',
 })
-export class ExpandDirective {
-
-  constructor(
-    public templateRef: TemplateRef<unknown>,
-  ) { }
-
+export class NzxExpandDirective {
+  constructor(public templateRef: TemplateRef<unknown>) {}
 }
