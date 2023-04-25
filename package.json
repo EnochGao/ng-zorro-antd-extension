@@ -22,7 +22,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npx docgeni serve --port 4600",
-    "build": "npx docgeni build --production --base-href=/docs-site/",
+    "build": "npx docgeni build --production --base-href=/ng-zorro-antd-extension/",
     "build:lib": "ng build ng-zorro-antd-extension",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
