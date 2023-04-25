@@ -10,17 +10,17 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
-import { TableFormExpandDirective } from './directive/table-expand.directive';
-import { TableFormTdDirective } from './directive/table-td.directive';
-import { TableFormThDirective } from './directive/table-th.directive';
-import { TableFormComponent } from './table-form.component';
+import { NzxTableFormExpandDirective } from './directive/table-expand.directive';
+import { NzxTableFormTdDirective } from './directive/table-td.directive';
+import { NzxTableFormThDirective } from './directive/table-th.directive';
+import { NzxTableFormComponent } from './table-form.component';
 
 @NgModule({
   declarations: [
-    TableFormComponent,
-    TableFormTdDirective,
-    TableFormThDirective,
-    TableFormExpandDirective,
+    NzxTableFormComponent,
+    NzxTableFormTdDirective,
+    NzxTableFormThDirective,
+    NzxTableFormExpandDirective,
   ],
   imports: [
     CommonModule,
@@ -35,11 +35,10 @@ import { TableFormComponent } from './table-form.component';
     NzInputNumberModule,
   ],
   exports: [
-    TableFormComponent,
-    TableFormTdDirective,
-    TableFormThDirective,
-    TableFormExpandDirective,
-  ]
+    NzxTableFormComponent,
+    NzxTableFormTdDirective,
+    NzxTableFormThDirective,
+    NzxTableFormExpandDirective,
+  ],
 })
-export class TableFormModule {
-}
+export class NzxTableFormModule {}

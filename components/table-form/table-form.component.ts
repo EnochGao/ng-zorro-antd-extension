@@ -32,15 +32,15 @@ import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
 import { validForm } from 'ng-zorro-antd-extension/util';
-import { TableFormExpandDirective } from './directive/table-expand.directive';
-import { TableFormTdDirective } from './directive/table-td.directive';
-import { TableFormThDirective } from './directive/table-th.directive';
+import { NzxTableFormExpandDirective } from './directive/table-expand.directive';
+import { NzxTableFormTdDirective } from './directive/table-td.directive';
+import { NzxTableFormThDirective } from './directive/table-th.directive';
 
 import {
-  LimitMessage,
-  TableFormConfig,
-  TableFormHeaderConfig,
-  TableFormTdConfig,
+  NzxLimitMessage,
+  NzxTableFormConfig,
+  NzxTableFormHeaderConfig,
+  NzxTableFormTdConfig,
 } from './type';
 
 @Component({
@@ -51,14 +51,14 @@ import {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TableFormComponent),
+      useExisting: forwardRef(() => NzxTableFormComponent),
       multi: true,
     },
-    { provide: NG_VALIDATORS, useExisting: TableFormComponent, multi: true },
+    { provide: NG_VALIDATORS, useExisting: NzxTableFormComponent, multi: true },
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class TableFormComponent
+export class NzxTableFormComponent
   implements
     OnInit,
     ControlValueAccessor,
@@ -102,13 +102,13 @@ export class TableFormComponent
   ): ValidationErrors | null => null;
 
   /** table config */
-  @Input() tableFormConfig: TableFormConfig[] = [];
+  @Input() tableFormConfig: NzxTableFormConfig[] = [];
 
   /** 数量限制回调 */
-  @Output() limitMessage = new EventEmitter<LimitMessage>();
+  @Output() limitMessage = new EventEmitter<NzxLimitMessage>();
 
-  headerConfig!: Array<TableFormHeaderConfig>;
-  tdConfig!: Array<TableFormTdConfig>;
+  headerConfig!: Array<NzxTableFormHeaderConfig>;
+  tdConfig!: Array<NzxTableFormTdConfig>;
 
   thTemplateOfNullInForm: {
     templateRef: TemplateRef<unknown>;
@@ -136,12 +136,12 @@ export class TableFormComponent
 
   private destroyed$: Subject<void> = new Subject<void>();
 
-  @ContentChildren(TableFormTdDirective)
-  tableTdDirectiveList!: QueryList<TableFormTdDirective>;
-  @ContentChildren(TableFormThDirective)
-  tableThDirectiveList!: QueryList<TableFormThDirective>;
-  @ContentChild(TableFormExpandDirective)
-  tableExpandDirective!: TableFormExpandDirective;
+  @ContentChildren(NzxTableFormTdDirective)
+  tableTdDirectiveList!: QueryList<NzxTableFormTdDirective>;
+  @ContentChildren(NzxTableFormThDirective)
+  tableThDirectiveList!: QueryList<NzxTableFormThDirective>;
+  @ContentChild(NzxTableFormExpandDirective)
+  tableExpandDirective!: NzxTableFormExpandDirective;
 
   constructor(private cd: ChangeDetectorRef, private fb: FormBuilder) {}
 
@@ -185,7 +185,7 @@ export class TableFormComponent
   /**
    * 根据controlName设置config值
    */
-  setConfig(controlName: string, config: Partial<TableFormConfig>): void {
+  setConfig(controlName: string, config: Partial<NzxTableFormConfig>): void {
     const index = this.tableFormConfig.findIndex(
       (item) => item.controlName === controlName
     );
@@ -313,8 +313,8 @@ export class TableFormComponent
    * 匹配投影模板template放到config中
    */
   private matchTemplate(
-    thList: QueryList<TableFormThDirective>,
-    tdList: QueryList<TableFormTdDirective>
+    thList: QueryList<NzxTableFormThDirective>,
+    tdList: QueryList<NzxTableFormTdDirective>
   ): void {
     this.headerConfig = this.headerConfig.map((item) => {
       const ThDirective = thList.find(
@@ -354,7 +354,7 @@ export class TableFormComponent
   /**
    * 解析配置生成controls
    */
-  private parseFormConfig(customFormConfig: TableFormConfig[]): {
+  private parseFormConfig(customFormConfig: NzxTableFormConfig[]): {
     [key: string]: any;
   } {
     const controls: { [key: string]: any } = {};
@@ -376,8 +376,8 @@ export class TableFormComponent
    *
    */
   private parseHeader(
-    customFormConfig: TableFormConfig[]
-  ): Array<TableFormHeaderConfig> {
+    customFormConfig: NzxTableFormConfig[]
+  ): Array<NzxTableFormHeaderConfig> {
     return customFormConfig.map((item) => ({
       header: item.header,
       width: item?.width,
@@ -392,8 +392,8 @@ export class TableFormComponent
    * 解析配置生成Content
    */
   private parseTd(
-    customFormConfig: TableFormConfig[]
-  ): Array<TableFormTdConfig> {
+    customFormConfig: NzxTableFormConfig[]
+  ): Array<NzxTableFormTdConfig> {
     return customFormConfig.map((item) => ({
       controlName: item?.controlName,
       isShow: item.isShow ?? true,

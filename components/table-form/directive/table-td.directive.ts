@@ -1,13 +1,10 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[nzxTableFormTd]'
+  selector: '[nzxTableFormTd]',
 })
-export class TableFormTdDirective {
+export class NzxTableFormTdDirective {
   @Input() controlName!: string;
 
-  constructor(
-    public templateRef: TemplateRef<any>,
-  ) { }
-
+  constructor(public templateRef: TemplateRef<any>) {}
 }

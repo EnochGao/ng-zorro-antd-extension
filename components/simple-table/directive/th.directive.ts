@@ -1,14 +1,10 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[nzxTh]'
+  selector: '[nzxTh]',
 })
-export class ThDirective {
-
+export class NzxThDirective {
   @Input() width: string | null = null;
 
-  constructor(
-    public templateRef: TemplateRef<unknown>,
-  ) { }
-
+  constructor(public templateRef: TemplateRef<unknown>) {}
 }

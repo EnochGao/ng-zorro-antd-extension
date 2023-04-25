@@ -9,15 +9,22 @@ label: new
 - 映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接
 - 缺省管道(nzxSafeNull)，属性值为`null`、`undefined`、`''`时展示默认占位符，支持通过 nzxConfig 全局配置
 
-引入
+## 基本使用
+
+### 版本
+
+nzxMap:<label type="success">v13.0.0+</label>
+nzxSafeNull:<label type="success">v14.0.0+</label>
+
+### 引入
 
 ```ts
-import { PipesModule } from "ng-zorro-antd-extension/pipes";
+import { NzxPipesModule } from "ng-zorro-antd-extension/pipes";
 ```
 
 nzxSafeNull 管道支持全局配置
 
-module:
+### module
 
 ```ts
 const ngZorroExtensionConfig: NzxConfig = {
@@ -38,7 +45,7 @@ const ngZorroExtensionConfig: NzxConfig = {
 export class AppModule {}
 ```
 
-html:
+### html
 
 ```html
 <nzx-simple-table [nzxConfig]="config" [nzxData]="list" [nzxExpand]="true">
@@ -46,26 +53,20 @@ html:
     <button nz-button nzType="primary" (click)="add()">添加</button>
   </ng-template>
 
-  <ng-template nzxTd key="class" let-data>
-    {{ data.class | nzxMap : classMap }}
-  </ng-template>
-  <ng-template nzxTd key="course" let-data>
-    {{ data.course | nzxMap : null : "*_*" | nzxSafeNull : "***" }}
-  </ng-template>
-  <ng-template nzxTd key="post" let-data>
-    {{ data.post | nzxSafeNull : "组员" }}
-  </ng-template>
+  <ng-template nzxTd key="class" let-data> {{ data.class | nzxMap : classMap }} </ng-template>
+  <ng-template nzxTd key="course" let-data> {{ data.course | nzxMap : null : "*_*" | nzxSafeNull : "***" }} </ng-template>
+  <ng-template nzxTd key="post" let-data> {{ data.post | nzxSafeNull : "组员" }} </ng-template>
 
   <ng-template nzxTd let-data>
     <button nz-button nzType="link" (click)="remove(data)">删除</button>
-    <button nz-button nzType="link" (click)="data.expand = !data.expand">
-      展开
-    </button>
+    <button nz-button nzType="link" (click)="data.expand = !data.expand">展开</button>
   </ng-template>
 
   <ng-template nzxExpandTr let-data> {{ data | json }} </ng-template>
 </nzx-simple-table>
 ```
+
+### ts
 
 ```typescript
 interface Person {

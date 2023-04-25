@@ -1,6 +1,6 @@
 import { TemplateRef } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { Options } from 'ng-zorro-antd-extension/types';
+import { NzxOptions } from 'ng-zorro-antd-extension/types';
 
 /**
  * 查询参数
@@ -12,7 +12,7 @@ export interface NzxQueryParams {
 /**
  * 配置项
  */
-export interface QueryControlOptions {
+export interface NzxQueryControlOptions {
   /**
    * 控件名对应查询参数的key
    */
@@ -32,7 +32,7 @@ export interface QueryControlOptions {
   /**
    * 控件为select时下拉集合
    */
-  menuList?: Array<Options<any>>;
+  menuList?: Array<NzxOptions<any>>;
   /**
    * 控件为select时允许单独清空
    */
