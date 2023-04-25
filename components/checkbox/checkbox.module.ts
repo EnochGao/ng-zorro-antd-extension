@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
-import { NzxCheckboxGroupExtensionComponent } from './checkbox-group.component';
+import { NzxCheckboxGroupComponent } from './checkbox-group.component';
 
 @NgModule({
-  declarations: [NzxCheckboxGroupExtensionComponent],
+  declarations: [NzxCheckboxGroupComponent],
   imports: [CommonModule, FormsModule, NzCheckboxModule],
-  exports: [NzxCheckboxGroupExtensionComponent],
+  exports: [NzxCheckboxGroupComponent],
 })
-export class NzxCheckboxExtensionModule {}
+export class NzxCheckboxModule {}

@@ -12,11 +12,10 @@ import { NzxOptions } from 'ng-zorro-antd-extension/types';
 /**
  * nzx-checkbox-group
  * 自定义选择框,选择时传出的值为数组形式如：[1,2]
- *
  */
 @Component({
   selector: 'nzx-checkbox-group',
-  exportAs: 'nzxCheckboxGroupExtension',
+  exportAs: 'nzxCheckboxGroup',
   template: `
     <nz-checkbox-group
       [nzDisabled]="nzDisabled"
@@ -29,12 +28,12 @@ import { NzxOptions } from 'ng-zorro-antd-extension/types';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NzxCheckboxGroupExtensionComponent),
+      useExisting: forwardRef(() => NzxCheckboxGroupComponent),
       multi: true,
     },
   ],
 })
-export class NzxCheckboxGroupExtensionComponent
+export class NzxCheckboxGroupComponent
   implements ControlValueAccessor
 {
   @Input() set checkOptions(value: Array<NzxOptions<string | number>>) {

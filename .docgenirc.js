@@ -17,12 +17,15 @@ module.exports = {
       lib: "ng-zorro-antd-extension",
     },
   ],
+
   libs: [
     {
       name: "ng-zorro-antd-extension",
+      abbrName: "nzx",
       rootDir: "./components",
-      include: ["./"],
+      include: [],
       exclude: "",
+      // apiMode: "automatic",
       categories: [
         {
           id: "component",

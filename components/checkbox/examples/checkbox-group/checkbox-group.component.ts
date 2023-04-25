@@ -12,12 +12,12 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
 import {
-  NzxCheckboxExtensionModule,
-  NzxCheckboxGroupExtensionComponent,
+  NzxCheckboxModule,
+  NzxCheckboxGroupComponent,
 } from 'ng-zorro-antd-extension/checkbox';
 
 @Component({
-  selector: 'nzx-checkbox-group-demo',
+  selector: 'nzx-checkbox-group-example',
   templateUrl: './checkbox-group.component.html',
   styleUrls: ['./checkbox-group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +28,7 @@ import {
     ReactiveFormsModule,
     NzCardModule,
     NzButtonModule,
-    NzxCheckboxExtensionModule,
+    NzxCheckboxModule,
   ],
 })
 export class NzxCheckboxGroupExampleComponent implements OnInit {
@@ -49,7 +49,7 @@ export class NzxCheckboxGroupExampleComponent implements OnInit {
   outFn = (v: number[]) => v.reduce((pre, cur) => pre + cur, 0);
 
   @ViewChild('nzxCheckbox')
-  nzxCheckboxRef!: NzxCheckboxGroupExtensionComponent;
+  nzxCheckboxRef!: NzxCheckboxGroupComponent;
 
   constructor(private fb: FormBuilder) {}
 
