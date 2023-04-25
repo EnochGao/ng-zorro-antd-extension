@@ -1,0 +1,45 @@
+<p>去空格指令，用来自动去除表单输入框中的前后空格</p>
+
+        <h2 id="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" class="docs-header-link">
+          <span header-link="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"></span>
+          基本使用
+        </h2>
+      
+        <h3 id="%E7%89%88%E6%9C%AC" class="docs-header-link">
+          <span header-link="%E7%89%88%E6%9C%AC"></span>
+          版本
+        </h3>
+      <div class="dg-paragraph"><label type="success">v15.2.0+</label></div>
+
+        <h3 id="%E5%BC%95%E5%85%A5" class="docs-header-link">
+          <span header-link="%E5%BC%95%E5%85%A5"></span>
+          引入
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxTrimDirective <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/trim"</span><span class="token punctuation">;</span></div></code></pre>
+
+        <h3 id="html" class="docs-header-link">
+          <span header-link="html"></span>
+          html
+        </h3>
+      <pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">nz-input</span> <span class="token attr-name">[(ngModel)]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span> <span class="token attr-name">nzxTrim</span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name">rows</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span> <span class="token attr-name">nz-input</span> <span class="token attr-name">formControlName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span> <span class="token attr-name">nzxTrim</span> <span class="token attr-name">trimType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>trimEnd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">></span></span></div></code></pre>
+
+        <h3 id="%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7" class="docs-header-link">
+          <span header-link="%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7"></span>
+          内置属性
+        </h3>
+      <table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trimType</td>
+<td><code>trim | trimStart | trimEnd</code></td>
+<td>trim</td>
+</tr>
+</tbody></table>

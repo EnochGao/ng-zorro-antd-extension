@@ -17,8 +17,8 @@
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> NzxTableFormComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/table-form'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>
-  LimitMessage<span class="token punctuation">,</span>
-  TableFormConfig<span class="token punctuation">,</span>
+  NzxLimitMessage<span class="token punctuation">,</span>
+  NzxTableFormConfig<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/table-form/type'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> CommonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/common'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> NzIconModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/icon'</span><span class="token punctuation">;</span>
@@ -53,7 +53,7 @@
   form<span class="token punctuation">:</span> FormGroup<span class="token punctuation">;</span>
   form2<span class="token punctuation">:</span> FormGroup<span class="token punctuation">;</span>
 
-  tableFormConfig<span class="token punctuation">:</span> TableFormConfig<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  tableFormConfig<span class="token punctuation">:</span> NzxTableFormConfig<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       header<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
@@ -107,7 +107,7 @@
       format<span class="token punctuation">:</span> <span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">班`</span></span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
-  tableFormConfig2<span class="token punctuation">:</span> TableFormConfig<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  tableFormConfig2<span class="token punctuation">:</span> NzxTableFormConfig<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       header<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
@@ -190,7 +190,7 @@
     <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
-  <span class="token function">errorMsg</span><span class="token punctuation">(</span>message<span class="token punctuation">:</span> LimitMessage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">errorMsg</span><span class="token punctuation">(</span>message<span class="token punctuation">:</span> NzxLimitMessage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'max'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>logger<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>

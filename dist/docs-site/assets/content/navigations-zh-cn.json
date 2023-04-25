@@ -16,7 +16,7 @@
               "path": "checkbox",
               "importSpecifier": "ng-zorro-antd-extension/checkbox",
               "examples": [
-                "ng-zorro-antd-extension-checkbox-checkbox-group-example"
+                "nzx-checkbox-checkbox-group-example"
               ],
               "overview": true,
               "api": true,
@@ -33,7 +33,7 @@
               "path": "simple-table",
               "importSpecifier": "ng-zorro-antd-extension/simple-table",
               "examples": [
-                "ng-zorro-antd-extension-simple-table-simple-table-example"
+                "nzx-simple-table-simple-table-example"
               ],
               "overview": true,
               "api": true,
@@ -50,7 +50,7 @@
               "path": "configurable-query",
               "importSpecifier": "ng-zorro-antd-extension/configurable-query",
               "examples": [
-                "ng-zorro-antd-extension-configurable-query-configurable-query-example"
+                "nzx-configurable-query-configurable-query-example"
               ],
               "overview": true,
               "api": true,
@@ -67,13 +67,40 @@
               "path": "table-form",
               "importSpecifier": "ng-zorro-antd-extension/table-form",
               "examples": [
-                "ng-zorro-antd-extension-table-form-table-form-example"
+                "nzx-table-form-table-form-example"
               ],
               "overview": true,
               "api": true,
               "order": 4,
               "category": "component",
               "originPath": "components/table-form/doc/zh-cn.md",
+              "toc": "content",
+              "channelPath": "components"
+            }
+          ]
+        },
+        {
+          "id": "directive",
+          "title": "指令",
+          "items": [
+            {
+              "id": "trim",
+              "title": "去空格",
+              "subtitle": "nzx-trim",
+              "path": "trim",
+              "importSpecifier": "ng-zorro-antd-extension/trim",
+              "examples": [
+                "nzx-trim-trim-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 1,
+              "category": "directive",
+              "label": {
+                "text": "New",
+                "color": "#73D897"
+              },
+              "originPath": "components/trim/doc/zh-cn.md",
               "toc": "content",
               "channelPath": "components"
             }
@@ -90,7 +117,7 @@
               "path": "pipes",
               "importSpecifier": "ng-zorro-antd-extension/pipes",
               "examples": [
-                "ng-zorro-antd-extension-pipes-pipes-example"
+                "nzx-pipes-pipes-example"
               ],
               "overview": true,
               "api": false,
@@ -107,9 +134,68 @@
           ]
         }
       ]
+    },
+    {
+      "id": "changelog",
+      "path": "changelog",
+      "channelPath": "changelog",
+      "title": "变更日志",
+      "items": [
+        {
+          "id": "chnagelog",
+          "path": "chnagelog",
+          "channelPath": "changelog",
+          "title": "变更记录",
+          "subtitle": "v15.2.0",
+          "order": 1,
+          "toc": "content",
+          "headings": [
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            }
+          ],
+          "contentPath": "docs/changelog/chnagelog.html",
+          "originPath": "docs/changelog/chnagelog.md"
+        }
+      ],
+      "order": 3
     }
   ],
   "docs": [
+    {
+      "id": "chnagelog",
+      "path": "chnagelog",
+      "channelPath": "changelog",
+      "title": "变更记录",
+      "subtitle": "v15.2.0",
+      "order": 1,
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "contentPath": "docs/changelog/chnagelog.html",
+      "originPath": "docs/changelog/chnagelog.md"
+    },
     {
       "id": "checkbox",
       "title": "多选框",
@@ -117,7 +203,7 @@
       "path": "checkbox",
       "importSpecifier": "ng-zorro-antd-extension/checkbox",
       "examples": [
-        "ng-zorro-antd-extension-checkbox-checkbox-group-example"
+        "nzx-checkbox-checkbox-group-example"
       ],
       "overview": true,
       "api": true,
@@ -134,7 +220,7 @@
       "path": "configurable-query",
       "importSpecifier": "ng-zorro-antd-extension/configurable-query",
       "examples": [
-        "ng-zorro-antd-extension-configurable-query-configurable-query-example"
+        "nzx-configurable-query-configurable-query-example"
       ],
       "overview": true,
       "api": true,
@@ -151,7 +237,7 @@
       "path": "pipes",
       "importSpecifier": "ng-zorro-antd-extension/pipes",
       "examples": [
-        "ng-zorro-antd-extension-pipes-pipes-example"
+        "nzx-pipes-pipes-example"
       ],
       "overview": true,
       "api": false,
@@ -172,7 +258,7 @@
       "path": "simple-table",
       "importSpecifier": "ng-zorro-antd-extension/simple-table",
       "examples": [
-        "ng-zorro-antd-extension-simple-table-simple-table-example"
+        "nzx-simple-table-simple-table-example"
       ],
       "overview": true,
       "api": true,
@@ -189,7 +275,7 @@
       "path": "table-form",
       "importSpecifier": "ng-zorro-antd-extension/table-form",
       "examples": [
-        "ng-zorro-antd-extension-table-form-table-form-example"
+        "nzx-table-form-table-form-example"
       ],
       "overview": true,
       "api": true,
@@ -198,13 +284,34 @@
       "originPath": "components/table-form/doc/zh-cn.md",
       "toc": "content",
       "channelPath": "components"
+    },
+    {
+      "id": "trim",
+      "title": "去空格",
+      "subtitle": "nzx-trim",
+      "path": "trim",
+      "importSpecifier": "ng-zorro-antd-extension/trim",
+      "examples": [
+        "nzx-trim-trim-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 1,
+      "category": "directive",
+      "label": {
+        "text": "New",
+        "color": "#73D897"
+      },
+      "originPath": "components/trim/doc/zh-cn.md",
+      "toc": "content",
+      "channelPath": "components"
     }
   ],
   "homeMeta": {
     "title": "首页",
     "order": 10,
     "hero": {
-      "title": "zorro extension",
+      "title": "Zorro Extension",
       "description": "基于ng-zorro的组件扩展包"
     },
     "features": [
@@ -215,7 +322,7 @@
       },
       {
         "icon": "https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg",
-        "title": "ng-zorro",
+        "title": "NG-ZORRO",
         "description": "基于ng-zorro组件开发的拓展包"
       }
     ],

@@ -2,11 +2,31 @@
 <li>映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接</li>
 <li>缺省管道(nzxSafeNull)，属性值为<code>null</code>、<code>undefined</code>、<code>&#39;&#39;</code>时展示默认占位符，支持通过 nzxConfig 全局配置</li>
 </ul>
-<p>引入</p>
-<pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> PipesModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/pipes"</span><span class="token punctuation">;</span></div></code></pre>
+
+        <h2 id="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" class="docs-header-link">
+          <span header-link="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"></span>
+          基本使用
+        </h2>
+      
+        <h3 id="%E7%89%88%E6%9C%AC" class="docs-header-link">
+          <span header-link="%E7%89%88%E6%9C%AC"></span>
+          版本
+        </h3>
+      <p>nzxMap:<label type="success">v13.0.0+</label>
+nzxSafeNull:<label type="success">v14.0.0+</label></p>
+
+        <h3 id="%E5%BC%95%E5%85%A5" class="docs-header-link">
+          <span header-link="%E5%BC%95%E5%85%A5"></span>
+          引入
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxPipesModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/pipes"</span><span class="token punctuation">;</span></div></code></pre>
 <p>nzxSafeNull 管道支持全局配置</p>
-<p>module:</p>
-<pre class="language-ts"><code class="language-ts"><div><span class="token keyword">const</span> ngZorroExtensionConfig<span class="token punctuation">:</span> NzxConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+        <h3 id="module" class="docs-header-link">
+          <span header-link="module"></span>
+          module
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">const</span> ngZorroExtensionConfig<span class="token punctuation">:</span> NzxConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
   nzxSafeNull<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     placeholder<span class="token punctuation">:</span> <span class="token string">"空"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -22,32 +42,33 @@
   bootstrap<span class="token punctuation">:</span> <span class="token punctuation">[</span>AppComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></div></code></pre>
-<p>html:</p>
-<pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-simple-table</span> <span class="token attr-name">[nzxConfig]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>config<span class="token punctuation">"</span></span> <span class="token attr-name">[nzxData]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span> <span class="token attr-name">[nzxExpand]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+        <h3 id="html" class="docs-header-link">
+          <span header-link="html"></span>
+          html
+        </h3>
+      <pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-simple-table</span> <span class="token attr-name">[nzxConfig]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>config<span class="token punctuation">"</span></span> <span class="token attr-name">[nzxData]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span> <span class="token attr-name">[nzxExpand]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTh</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>160px<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>add()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>添加<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
 
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>class<span class="token punctuation">"</span></span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span>
-    {{ data.class | nzxMap : classMap }}
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>course<span class="token punctuation">"</span></span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span>
-    {{ data.course | nzxMap : null : "*_*" | nzxSafeNull : "***" }}
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span>
-    {{ data.post | nzxSafeNull : "组员" }}
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>class<span class="token punctuation">"</span></span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span> {{ data.class | nzxMap : classMap }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>course<span class="token punctuation">"</span></span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span> {{ data.course | nzxMap : null : "*_*" | nzxSafeNull : "***" }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span> {{ data.post | nzxSafeNull : "组员" }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
 
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTd</span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>remove(data)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>删除<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>data.expand <span class="token punctuation">=</span> !data.expand<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      展开
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>data.expand <span class="token punctuation">=</span> !data.expand<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>展开<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
 
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxExpandTr</span> <span class="token attr-name">let-data</span><span class="token punctuation">></span></span> {{ data | json }} <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-simple-table</span><span class="token punctuation">></span></span></div></code></pre>
-<pre class="language-typescript"><code class="language-typescript"><div><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+
+        <h3 id="ts" class="docs-header-link">
+          <span header-link="ts"></span>
+          ts
+        </h3>
+      <pre class="language-typescript"><code class="language-typescript"><div><span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
   id<span class="token punctuation">:</span> <span class="token keyword">number</span><span class="token punctuation">;</span>
   name<span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">;</span>
   post<span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">;</span>

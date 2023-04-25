@@ -15,7 +15,7 @@
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/configurable-query'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>
   NzxQueryParams<span class="token punctuation">,</span>
-  QueryControlOptions<span class="token punctuation">,</span>
+  NzxQueryControlOptions<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/configurable-query/type'</span><span class="token punctuation">;</span>
 
 @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -34,7 +34,7 @@
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxConfigurableQueryExampleComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
   queryParams<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
       label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
@@ -70,7 +70,7 @@
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
   queryParams2<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls2<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls2<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
       label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
@@ -86,7 +86,7 @@
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
   queryParams3<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls3<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls3<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
       label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
@@ -122,7 +122,7 @@
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
   queryParams4<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls4<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls4<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
       label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
@@ -158,7 +158,7 @@
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
   queryParams5<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls5<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls5<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'searchType'</span><span class="token punctuation">,</span>
       placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
@@ -213,7 +213,7 @@
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
   queryParams6<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls6<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls6<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'searchType'</span><span class="token punctuation">,</span>
       placeholder<span class="token punctuation">:</span> <span class="token string">'请选择'</span><span class="token punctuation">,</span>
@@ -271,7 +271,7 @@
 
   queryParams7<span class="token punctuation">:</span> NzxQueryParams <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  controls7<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>QueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+  controls7<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxQueryControlOptions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       controlName<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
       label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
