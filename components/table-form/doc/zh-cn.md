@@ -13,6 +13,10 @@ order: 4
 
 ## 基本使用
 
+### 版本
+
+<label type="success">v14.0.0+</label>
+
 ### 引入
 
 ```ts

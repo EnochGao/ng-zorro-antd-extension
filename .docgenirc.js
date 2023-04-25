@@ -4,13 +4,14 @@
 module.exports = {
   mode: "full",
   theme: "angular",
-  title: "zorro extension",
+  title: "Zorro Extension",
   description: "ng zorro 拓展包",
   siteProjectName: "docs-site",
   logoUrl: "https://avatars.githubusercontent.com/u/41459067?v=4",
   repoUrl: "https://github.com/EnochGao/ng-zorro-antd-extension",
+  footer:
+    "Open-source MIT Licensed | Copyright © 2022-present Powered by EnochGao",
   navs: [
-    null,
     {
       title: "组件",
       path: "components",
@@ -30,6 +31,10 @@ module.exports = {
         {
           id: "component",
           title: "组件",
+        },
+        {
+          id: "directive",
+          title: "指令",
         },
         {
           id: "pipe",

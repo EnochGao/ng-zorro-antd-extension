@@ -11,6 +11,11 @@ label: new
 
 ## 基本使用
 
+### 版本
+
+nzxMap:<label type="success">v13.0.0+</label>
+nzxSafeNull:<label type="success">v14.0.0+</label>
+
 ### 引入
 
 ```ts

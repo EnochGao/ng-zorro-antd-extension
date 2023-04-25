@@ -11,6 +11,10 @@ order: 1
 
 ## 基本使用
 
+### 版本
+
+<label type="success">v13.0.0+</label>
+
 ### 引入
 
 ```ts
