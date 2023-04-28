@@ -51,6 +51,8 @@ export class NzxConfigurableQueryComponent
 
   /** 查询重置时会触发抛出查询参数 */
   @Output() queryParamsChange = new EventEmitter<NzxQueryParams>();
+  @Output() queryChange = new EventEmitter<NzxQueryParams>();
+  @Output() resetChange = new EventEmitter<NzxQueryParams>();
 
   queryParams: NzxQueryParams = {};
   queryForm!: FormGroup;
@@ -110,12 +112,16 @@ export class NzxConfigurableQueryComponent
 
   setQueryParams(params: NzxQueryParams) {
     this.params = params;
+    this.queryForm.patchValue(this.params);
   }
 
   /**
    * 根据controlName设置config值
    */
-  setControl(controlName: string, config: Partial<NzxQueryControlOptions>): void {
+  setControl(
+    controlName: string,
+    config: Partial<NzxQueryControlOptions>
+  ): void {
     let control = this.getControl(controlName);
     if (control) {
       Object.keys(config).forEach((key) => {
@@ -147,12 +153,13 @@ export class NzxConfigurableQueryComponent
       });
     } else {
       this.queryParamsChange.emit(this.queryParams);
+      this.queryChange.emit(this.queryParams);
     }
   }
 
   reset() {
     this.queryForm.reset(this.defaultValue);
-    this.search();
+    this.resetChange.emit(this.queryParams);
   }
 
   toggleCollapse() {

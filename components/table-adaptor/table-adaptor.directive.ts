@@ -2,12 +2,11 @@
 import {
   Directive,
   EventEmitter,
+  inject,
   Input,
   OnDestroy,
   OnInit,
-  Optional,
   Output,
-  inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { format, isDate } from 'date-fns';
@@ -39,7 +38,7 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   readonly _nzModuleName: NzxConfigKey = NZ_CONFIG_MODULE_NAME;
 
   @Input() queryParams: Partial<NzxTableQueryParams> = {};
-  @Input() cacheQuery = false;
+  @Input() enableCache = false;
   @Input() dateFormat = 'yyyy-MM-dd';
 
   @Output() nzxQueryParams: EventEmitter<NzxTableQueryParams> =
@@ -47,9 +46,7 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   @Output() nzxQueryCacheQueryParams: EventEmitter<NzxTableQueryParams> =
     new EventEmitter();
 
-  private pageIndex = 1;
-  private pageSize = 10;
-  private nzTableParam!: NzTableQueryParams;
+  private nzTableQueryParams!: NzTableQueryParams;
   private destroy$ = new Subject();
   private nzxConfigService!: NzxConfigService;
 
@@ -57,47 +54,19 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   private nzTableDataService: NzTableDataService<any> =
     inject(NzTableDataService);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    // 服务端分页
+    setTimeout(() => {
+      this.nzTable.nzShowSizeChanger = true;
+      this.nzTable.nzFrontPagination = false;
+      this.nzTableDataService.updateFrontPagination(false);
+    }, 0);
 
-  ngOnInit() {
-    if (this.cacheQuery) {
-      const str = sessionStorage.getItem(CACHE_KEY + this.router.url);
-      if (str) {
-        const page = JSON.parse(str);
-        this.pageSize = page.pageSize;
-        this.pageIndex = page.pageIndex;
-
-        for (const key in page) {
-          if (
-            Object.prototype.hasOwnProperty.call(page, key) &&
-            key !== 'pageSize' &&
-            key !== 'pageIndex'
-          ) {
-            this.queryParams[key] = page[key];
-          }
-        }
-
-        this.nzxQueryCacheQueryParams.emit(page);
-      }
-    }
-
-    // this.pageIndex = this.queryParams?.pageIndex || 1;
-    // this.pageSize = this.queryParams?.pageSize || 10;
-    this.nzTable.nzFrontPagination = false;
     // 用来解决nzTable分页不能及时更新界面问题
-    this.nzTableDataService.updateFrontPagination(false);
-    this.nzTable.nzPageIndex = this.pageIndex;
-    this.nzTableDataService.updatePageIndex(this.pageIndex);
-    this.nzTable.nzPageSize = this.pageSize;
-    this.nzTableDataService.updatePageSize(this.pageSize);
-    this.nzTable.nzShowSizeChanger = true;
-
     this.nzTable.nzQueryParams
       .pipe(takeUntil(this.destroy$))
       .subscribe((queryParams: NzTableQueryParams) => {
-        this.pageIndex = queryParams.pageIndex;
-        this.pageSize = queryParams.pageSize;
-        this.nzTableParam = queryParams;
+        this.nzTableQueryParams = queryParams;
         this.emit();
       });
 
@@ -109,6 +78,21 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
           this.nzTable.onPageIndexChange(index);
         }
       });
+  }
+
+  ngOnInit() {
+    this.nzTableDataService.updatePageIndex(1);
+    this.nzTableDataService.updatePageSize(10);
+
+    if (this.enableCache) {
+      const str = sessionStorage.getItem(CACHE_KEY + this.router.url);
+      if (str) {
+        const page = JSON.parse(str);
+        this.nzTableDataService.updatePageIndex(page.pageIndex);
+        this.nzTableDataService.updatePageSize(page.pageSize);
+        this.nzxQueryCacheQueryParams.emit(page);
+      }
+    }
   }
 
   ngOnDestroy(): void {
@@ -124,13 +108,16 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
    * 默认跳转第一页
    */
   refresh(currentPage?: boolean) {
-    setTimeout(() => {
-      if (currentPage) {
+    if (currentPage) {
+      this.emit();
+    } else {
+      if (this.nzTable.nzPageIndex === 1) {
+        // 当前页标不变主动查询一次
         this.emit();
       } else {
-        this.queryToFirstPage();
+        this.nzTableDataService.updatePageIndex(1);
       }
-    }, 0);
+    }
   }
 
   /**
@@ -146,24 +133,21 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
         }
       }
     }
-    this.queryToFirstPage();
-  }
-
-  private queryToFirstPage() {
-    this.pageIndex = 1;
-    this.nzTableDataService.updatePageIndex(this.pageIndex);
-    this.emit();
+    if (this.nzTable.nzPageIndex === 1) {
+      // 当前页标不变主动查询一次
+      this.emit();
+    } else {
+      this.nzTableDataService.updatePageIndex(1);
+    }
   }
 
   private emit() {
-    const queryParams = Object.assign(this.queryParams, {
-      pageSize: this.pageSize,
-      pageIndex: this.pageIndex,
-      sort: this.nzTableParam?.sort,
-      filter: this.nzTableParam?.filter,
-    });
+    const queryParams: NzxTableQueryParams = {
+      ...this.queryParams,
+      ...this.nzTableQueryParams,
+    };
 
-    if (this.cacheQuery) {
+    if (this.enableCache) {
       sessionStorage.setItem(
         CACHE_KEY + this.router.url,
         JSON.stringify(queryParams)

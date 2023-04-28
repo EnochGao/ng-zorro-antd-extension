@@ -6,7 +6,7 @@ order: 2
 label: new
 ---
 
-用来链接 table 和查询组件，方便进行分页查询
+用来链接 nz-table 和查询组件，方便进行分页查询
 
 ## 基本使用
 
@@ -23,13 +23,41 @@ import { NzxTableAdaptorModule } from "ng-zorro-antd-extension/table-adaptor";
 ### html
 
 ```html
-<input nz-input [(ngModel)]="value" nzxTrim />
+<nzx-configurable-query
+  #configQuery
+  [nzxCollapse]="false"
+  [controls]="controls"
+  (queryChange)="adaptor.refresh()"
+  (resetChange)="adaptor.reset()"
+>
+</nzx-configurable-query>
 
-<textarea rows="4" nz-input formControlName="value" nzxTrim trimType="trimEnd"></textarea>
+<nz-table
+  nzxTableAdaptor
+  #adaptor="NzxTableAdaptor"
+  [enableCache]="true"
+  [queryParams]="configQuery.queryParams"
+  (nzxQueryParams)="loadData($event)"
+  (nzxQueryCacheQueryParams)="configQuery.setQueryParams($event)"
+  #nzTable
+  [nzData]="list"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+>
+</nz-table>
 ```
 
 ### 内置属性
 
-| 属性     | 类型                           | 默认值 |
-| -------- | ------------------------------ | ------ |
-| trimType | `trim \| trimStart \| trimEnd` | trim   |
+| 属性        | 类型                         | 默认值       | 说明         |
+| ----------- | ---------------------------- | ------------ | ------------ |
+| enableCache | boolean                      | false        | 缓存查询条件 |
+| queryParams | Partial<NzxTableQueryParams> | {}           | 查询组件值   |
+| dateFormat  | string                       | 'yyyy-MM-dd' | 日期格式化   |
+
+### 内置方法
+
+| 属性                     | 类型                | 默认值 | 说明                             |
+| ------------------------ | ------------------- | ------ | -------------------------------- |
+| nzxQueryParams           | NzxTableQueryParams | -      | 用来调接口查询                   |
+| nzxQueryCacheQueryParams | NzxTableQueryParams | -      | 可选，用来设置查询祖甲氨参数回显 |

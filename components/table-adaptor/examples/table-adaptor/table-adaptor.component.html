@@ -2,7 +2,8 @@
   #configQuery
   [nzxCollapse]="false"
   [controls]="controls"
-  (queryParamsChange)="adaptor.refresh()"
+  (queryChange)="adaptor.refresh()"
+  (resetChange)="adaptor.reset()"
 >
 </nzx-configurable-query>
 
@@ -13,17 +14,15 @@
   <button type="button" nz-button (click)="refresh(true)">
     操作后刷新列表当前页
   </button>
-
-  <label nz-checkbox [(ngModel)]="cacheQuery">刷新缓存</label>
 </div>
 
 <nz-table
   nzxTableAdaptor
   #adaptor="NzxTableAdaptor"
-  [cacheQuery]="true"
+  [enableCache]="true"
   [queryParams]="configQuery.queryParams"
-  (nzxQueryParams)="loadData($event);"
-  (nzxQueryCacheQueryParams)="cache($event)"
+  (nzxQueryParams)="loadData($event)"
+  (nzxQueryCacheQueryParams)="configQuery.setQueryParams($event)"
   #nzTable
   [nzData]="list"
   [nzLoading]="loading"

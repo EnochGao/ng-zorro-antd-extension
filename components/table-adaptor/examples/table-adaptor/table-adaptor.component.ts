@@ -35,8 +35,6 @@ interface RandomUser {
     HttpClientModule,
 
     FormsModule,
-    NzCheckboxModule,
-
     NzButtonModule,
     NzTableModule,
     NzxConfigurableQueryModule,
@@ -64,19 +62,9 @@ export class NzxTableAdaptorExampleComponent {
   loading = true;
   total = 1;
 
-  cacheQuery = false;
-
   @ViewChild('adaptor') private adaptorRef!: NzxTableAdaptor;
-  @ViewChild('configQuery', { static: true })
-  private configQuery!: NzxConfigurableQueryComponent;
 
   constructor(private http: HttpClient) {}
-
-  cache(data: any) {
-    console.log('cache::', data);
-
-    this.configQuery.setQueryParams({ nat: 'cn' });
-  }
 
   refresh(current: boolean = false) {
     this.adaptorRef.refresh(current);
