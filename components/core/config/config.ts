@@ -3,6 +3,7 @@ import { InjectionToken } from '@angular/core';
 export interface NzxConfig {
   nzxSafeNull?: SafeNull;
   nzxTrim?: Trim;
+  nzxTableAdaptor?: TableAdaptor;
 }
 
 export interface SafeNull {
@@ -11,6 +12,7 @@ export interface SafeNull {
 export interface Trim {
   trimType: 'trim' | 'trimStart' | 'trimEnd';
 }
+export interface TableAdaptor {}
 
 export type NzxConfigKey = keyof NzxConfig;
 

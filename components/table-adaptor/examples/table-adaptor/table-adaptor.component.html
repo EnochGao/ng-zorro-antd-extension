@@ -1,0 +1,50 @@
+<nzx-configurable-query
+  #configQuery
+  [nzxCollapse]="false"
+  [controls]="controls"
+  (queryParamsChange)="adaptor.refresh()"
+>
+</nzx-configurable-query>
+
+<div>
+  <button type="button" nz-button (click)="refresh()">
+    操作后刷新列表到第一页
+  </button>
+  <button type="button" nz-button (click)="refresh(true)">
+    操作后刷新列表当前页
+  </button>
+
+  <label nz-checkbox [(ngModel)]="cacheQuery">刷新缓存</label>
+</div>
+
+<nz-table
+  nzxTableAdaptor
+  #adaptor="NzxTableAdaptor"
+  [cacheQuery]="true"
+  [queryParams]="configQuery.queryParams"
+  (nzxQueryParams)="loadData($event);"
+  (nzxQueryCacheQueryParams)="cache($event)"
+  #nzTable
+  [nzData]="list"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+>
+  <thead>
+    <tr>
+      <th nzColumnKey="name" [nzSortFn]="true">姓名</th>
+      <th nzColumnKey="gender" [nzFilters]="filterGender" [nzFilterFn]="true">
+        性别
+      </th>
+      <th nzColumnKey="nat" [nzSortFn]="true">国籍</th>
+      <th nzColumnKey="email" [nzSortFn]="true">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of list">
+      <td>{{ data.name.first }} {{ data.name.last }}</td>
+      <td>{{ data.gender }}</td>
+      <td>{{ data.nat }}</td>
+      <td>{{ data.email }}</td>
+    </tr>
+  </tbody>
+</nz-table>

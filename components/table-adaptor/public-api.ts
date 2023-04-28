@@ -3,5 +3,5 @@
  * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
  */
 
-export * from './valid';
-export * from './trim-object';
+export * from './table-adaptor.module';
+export * from './table-adaptor.directive';
