@@ -11,4 +11,7 @@ order: 1
 
 ### 新功能
 
-- 增加 trim 组件，支持去除输入框前后空格
+- 增加 nzxTrim 指令，支持去除输入框前后空格
+- 增加查询连接器指令，方便链接 nz-table 和查询组件进行查询，支持当前界面缓存
+- nzx-configurable-query 组件增加 queryChange 和 resetChange 事件区分查询和重置
+- util 包增加 trimObject 函数，用来清除对象中的空属性值

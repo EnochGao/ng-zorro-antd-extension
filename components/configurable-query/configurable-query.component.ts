@@ -49,9 +49,16 @@ export class NzxConfigurableQueryComponent
   /** 初始化时，主动查询 */
   @Input() initQuery = false;
 
-  /** 查询重置时会触发抛出查询参数 */
+  /**
+   * 下个版本即将废弃请使用 queryChange和resetChange
+   *
+   * 查询重置时会触发抛出查询参数
+   * @deprecated
+   *  */
   @Output() queryParamsChange = new EventEmitter<NzxQueryParams>();
+  /** 重置时会触发抛出查询参数 */
   @Output() queryChange = new EventEmitter<NzxQueryParams>();
+  /** 查询时会触发抛出查询参数 */
   @Output() resetChange = new EventEmitter<NzxQueryParams>();
 
   queryParams: NzxQueryParams = {};
