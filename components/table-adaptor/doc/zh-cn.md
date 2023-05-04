@@ -8,11 +8,11 @@ label: new
 
 用来链接 nz-table 和查询组件，方便进行分页查询
 
-## 基本使用
-
-### 版本
+## 支持版本
 
 <label type="success">v15.2.0+</label>
+
+## 基本使用
 
 ### 引入
 
@@ -52,7 +52,7 @@ import { NzxTableAdaptorModule } from "ng-zorro-antd-extension/table-adaptor";
 | 属性        | 类型                         | 默认值       | 说明         |
 | ----------- | ---------------------------- | ------------ | ------------ |
 | enableCache | boolean                      | false        | 缓存查询条件 |
-| queryParams | Partial<NzxTableQueryParams> | {}           | 查询组件值   |
+| queryParams | `Partial<NzxTableQueryParams>` | {}           | 查询组件值   |
 | dateFormat  | string                       | 'yyyy-MM-dd' | 日期格式化   |
 
 ### 内置方法

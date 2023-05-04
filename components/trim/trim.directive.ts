@@ -16,7 +16,7 @@ const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTrim';
 
 @Directive({
   selector: '[nzxTrim]',
-  exportAs: 'nzxTrim',
+  exportAs: 'NzxTrim',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

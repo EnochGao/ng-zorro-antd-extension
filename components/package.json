@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-extension",
-  "version": "15.1.0",
+  "version": "15.3.0",
   "license": "MIT",
   "description": "An extension based on ng-zorro-antd",
   "keywords": [
@@ -33,6 +33,9 @@
     "ng-zorro-antd": "^15.0.0"
   },
   "dependencies": {
+    "ng-zorro-antd": "^15.0.0",
+    "@wangeditor/editor": "^5.0.0",
+    "date-fns": "^2.16.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
