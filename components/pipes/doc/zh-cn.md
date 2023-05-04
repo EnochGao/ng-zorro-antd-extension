@@ -9,12 +9,13 @@ label: new
 - 映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接
 - 缺省管道(nzxSafeNull)，属性值为`null`、`undefined`、`''`时展示默认占位符，支持通过 nzxConfig 全局配置
 
-## 基本使用
-
-### 版本
+## 支持版本
 
 nzxMap:<label type="success">v13.0.0+</label>
+
 nzxSafeNull:<label type="success">v14.0.0+</label>
+
+## 基本使用
 
 ### 引入
 
