@@ -6,3 +6,5 @@
 export * from './wang-editor.module';
 export * from './wang-editor.component';
 export * from './wang-toolbar.component';
+
+export * from './type';
