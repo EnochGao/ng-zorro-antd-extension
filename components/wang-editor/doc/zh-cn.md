@@ -10,7 +10,7 @@ label: new
 
 ## 支持版本
 
-<label type="success">v15.3.0+</label>
+<label type="success">v15.3.1+</label>
 
 ## 基本使用
 
