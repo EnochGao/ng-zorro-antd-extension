@@ -17,11 +17,6 @@ import {
 } from 'ng-zorro-antd-extension/checkbox';
 
 @Component({
-  selector: 'nzx-checkbox-group-example',
-  templateUrl: './checkbox-group.component.html',
-  styleUrls: ['./checkbox-group.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
     CommonModule,
@@ -30,6 +25,9 @@ import {
     NzButtonModule,
     NzxCheckboxModule,
   ],
+  selector: 'nzx-checkbox-group-example',
+  templateUrl: './checkbox-group.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxCheckboxGroupExampleComponent implements OnInit {
   checkOptions: any[] = [

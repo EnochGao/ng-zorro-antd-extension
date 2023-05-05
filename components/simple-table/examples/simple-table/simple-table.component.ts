@@ -13,12 +13,11 @@ interface Person {
 }
 
 @Component({
-  selector: 'nzx-simple-table-demo',
-  templateUrl: './simple-table.component.html',
-  styleUrls: ['./simple-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [CommonModule, NzxSimpleTableModule, NzButtonModule],
+  selector: 'nzx-simple-table-demo',
+  templateUrl: './simple-table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxSimpleTableExampleComponent implements OnInit {
   config: Array<NzxSimpleTableConfig<Person>> = [

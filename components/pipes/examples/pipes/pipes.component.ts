@@ -15,12 +15,11 @@ interface Person {
   course?: string[];
 }
 @Component({
-  selector: 'nzx-pipe-demo',
-  templateUrl: './pipes.component.html',
-  styleUrls: ['./pipes.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [CommonModule, NzxPipesModule, NzxSimpleTableModule, NzButtonModule],
+  selector: 'nzx-pipe-demo',
+  templateUrl: './pipes.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxPipeExampleComponent {
   config: Array<NzxSimpleTableConfig<Person>> = [
