@@ -4,17 +4,16 @@ ng-zorro-antd-extension
 
 <div align="center">
 
-基于ng-zorro的组件扩展包
+基于 ng-zorro 的组件扩展包
 
 [![npm package](https://img.shields.io/npm/v/ng-zorro-antd-extension.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-extension)
 [![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-extension.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-extension)
 
 </div>
 
-
 # 文档
 
-[文档](https://enochgao.github.io/ng-zorro-antd-extension/)
+功能更新以及版本详情，请查看--->[文档地址](https://enochgao.github.io/ng-zorro-antd-extension/)
 
 ## 安装
 

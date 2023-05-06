@@ -40,6 +40,10 @@ module.exports = {
           id: "pipe",
           title: "管道",
         },
+        {
+          id: "util",
+          title: "工具函数",
+        },
       ],
     },
   ],
