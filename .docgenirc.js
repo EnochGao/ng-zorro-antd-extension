@@ -16,6 +16,11 @@ module.exports = {
       title: "组件",
       path: "components",
       lib: "ng-zorro-antd-extension",
+      locales: {
+        "en-us": {
+          title: "Components",
+        },
+      },
     },
   ],
 
@@ -26,11 +31,15 @@ module.exports = {
       rootDir: "./components",
       include: [],
       exclude: "",
-      // apiMode: "automatic",
       categories: [
         {
           id: "component",
           title: "组件",
+          locales: {
+            "en-us": {
+              title: "Component",
+            },
+          },
         },
         {
           id: "directive",
@@ -52,6 +61,7 @@ module.exports = {
       key: "zh-cn",
       name: "中文",
     },
+    { key: "en-us", name: "English" },
   ],
   defaultLocale: "zh-cn",
 };
