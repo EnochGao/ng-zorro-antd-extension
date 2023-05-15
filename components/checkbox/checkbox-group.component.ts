@@ -15,7 +15,7 @@ import { NzxOptions } from 'ng-zorro-antd-extension/types';
  */
 @Component({
   selector: 'nzx-checkbox-group',
-  exportAs: 'nzxCheckboxGroup',
+  exportAs: 'NzxCheckboxGroup',
   template: `
     <nz-checkbox-group
       [nzDisabled]="nzDisabled"

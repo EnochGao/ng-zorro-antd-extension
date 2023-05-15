@@ -46,7 +46,22 @@ import { NzxTableAdaptorModule } from "ng-zorro-antd-extension/table-adaptor";
 >
 </nz-table>
 ```
+另外可以继承`NzxPageTableBase`类，减少属性书写
+```ts
+export class NzxPageTableBase<T = any> {
+  /** 列表数据 */
+  list: Array<T> = [];
+  /** loading加载条标志位 */
+  loading = false;
+  /** 分页总条数 */
+  nzTotal = 0;
 
+  /** 表单指令实例用来刷新重置 */
+  @ViewChild(NzxTableAdaptor, { static: true })
+  public nzxTableAdaptorRef!: NzxTableAdaptor;
+}
+```
+详见示例Page Table Basic
 ### 内置属性
 
 | 属性        | 类型                         | 默认值       | 说明         |

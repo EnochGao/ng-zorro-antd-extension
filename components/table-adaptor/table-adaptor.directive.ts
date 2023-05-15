@@ -9,18 +9,20 @@ import {
   Output,
 } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { Subject, takeUntil } from 'rxjs';
 import { format, isDate } from 'date-fns';
-import {
-  NzxConfigKey,
-  NzxConfigService,
-} from 'ng-zorro-antd-extension/core/config';
-import { trimObject } from 'ng-zorro-antd-extension/util';
 import {
   NzTableComponent,
   NzTableDataService,
   NzTableQueryParams,
 } from 'ng-zorro-antd/table';
-import { Subject, takeUntil } from 'rxjs';
+
+import { trimObject } from 'ng-zorro-antd-extension/util';
+import {
+  NzxConfigKey,
+  NzxConfigService,
+} from 'ng-zorro-antd-extension/core/config';
 
 const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTableAdaptor';
 
@@ -41,6 +43,28 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   @Input() enableCache = false;
   @Input() dateFormat = 'yyyy-MM-dd';
 
+  @Input() customFormateOutFn: (queryParams: any) => any = (
+    queryParams: any
+  ) => {
+    for (const key in queryParams) {
+      if (Object.prototype.hasOwnProperty.call(queryParams, key)) {
+        if (isDate(queryParams[key])) {
+          queryParams[key] = format(queryParams[key], this.dateFormat);
+        }
+        if (Array.isArray(queryParams[key])) {
+          queryParams[key] = queryParams[key].map((el: any) => {
+            if (isDate(el)) {
+              return format(el, this.dateFormat);
+            }
+            return el;
+          });
+        }
+      }
+    }
+
+    return trimObject(queryParams);
+  };
+
   @Output() nzxQueryParams: EventEmitter<NzxTableQueryParams> =
     new EventEmitter();
   @Output() nzxQueryCacheQueryParams: EventEmitter<NzxTableQueryParams> =
@@ -51,6 +75,7 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   private nzxConfigService!: NzxConfigService;
 
   private nzTable: NzTableComponent<any> = inject(NzTableComponent);
+
   private nzTableDataService: NzTableDataService<any> =
     inject(NzTableDataService);
 
@@ -154,22 +179,6 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
       );
     }
 
-    for (const key in queryParams) {
-      if (Object.prototype.hasOwnProperty.call(queryParams, key)) {
-        if (isDate(queryParams[key])) {
-          queryParams[key] = format(queryParams[key], this.dateFormat);
-        }
-        if (Array.isArray(queryParams[key])) {
-          queryParams[key] = queryParams[key].map((el: any) => {
-            if (isDate(el)) {
-              return format(el, this.dateFormat);
-            }
-            return el;
-          });
-        }
-      }
-    }
-
-    this.nzxQueryParams.emit(trimObject(queryParams));
+    this.nzxQueryParams.emit(this.customFormateOutFn(queryParams));
   }
 }

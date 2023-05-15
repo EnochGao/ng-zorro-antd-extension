@@ -5,3 +5,4 @@
 
 export * from './table-adaptor.module';
 export * from './table-adaptor.directive';
+export * from './page-table-basic';

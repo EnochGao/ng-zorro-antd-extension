@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
@@ -13,10 +13,11 @@ import {
   NzxQueryControlOptions,
 } from 'ng-zorro-antd-extension/configurable-query';
 import {
-  NzxTableAdaptor,
   NzxTableAdaptorModule,
   NzxTableQueryParams,
 } from 'ng-zorro-antd-extension/table-adaptor';
+
+import { NzxPageTableBase } from 'ng-zorro-antd-extension/table-adaptor';
 
 interface RandomUser {
   gender: string;
@@ -40,10 +41,10 @@ interface RandomUser {
     NzxConfigurableQueryModule,
     NzxTableAdaptorModule,
   ],
-  selector: 'nzx-table-adaptor-example',
-  templateUrl: './table-adaptor.component.html',
+  selector: 'nzx-page-table-basic-example',
+  templateUrl: './page-table-basic.component.html',
 })
-export class NzxTableAdaptorExampleComponent {
+export class NzxPageTableBasicExampleComponent extends NzxPageTableBase<RandomUser> {
   controls: Array<NzxQueryControlOptions> = [
     {
       controlName: 'nat',
@@ -58,16 +59,12 @@ export class NzxTableAdaptorExampleComponent {
     { text: 'female', value: 'female' },
   ];
 
-  list: RandomUser[] = [];
-  loading = true;
-  total = 1;
-
-  @ViewChild('adaptor') private adaptorRef!: NzxTableAdaptor;
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   refresh(current: boolean = false) {
-    this.adaptorRef.refresh(current);
+    this.nzxTableAdaptorRef.refresh(current);
   }
 
   loadData(params: NzxTableQueryParams) {
@@ -76,7 +73,7 @@ export class NzxTableAdaptorExampleComponent {
 
     this.getUsers(params).subscribe((data) => {
       this.loading = false;
-      this.total = 200;
+      this.nzTotal = 200;
       this.list = data.results;
     });
   }
