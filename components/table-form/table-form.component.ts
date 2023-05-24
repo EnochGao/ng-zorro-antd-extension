@@ -12,7 +12,6 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewEncapsulation,
 } from '@angular/core';
 
 import {
@@ -31,7 +30,7 @@ import {
 import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
-import { validForm } from 'ng-zorro-antd-extension/util';
+import { updateControlStatus } from 'ng-zorro-antd-extension/util';
 import { NzxTableFormExpandDirective } from './directive/table-expand.directive';
 import { NzxTableFormTdDirective } from './directive/table-td.directive';
 import { NzxTableFormThDirective } from './directive/table-th.directive';
@@ -47,7 +46,7 @@ import {
   selector: 'nzx-table-form',
   templateUrl: './table-form.component.html',
   styleUrls: ['./table-form.component.less'],
-  exportAs: 'nzxTableForm',
+  exportAs: 'NzxTableForm',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -56,7 +55,6 @@ import {
     },
     { provide: NG_VALIDATORS, useExisting: NzxTableFormComponent, multi: true },
   ],
-  encapsulation: ViewEncapsulation.None,
 })
 export class NzxTableFormComponent
   implements
@@ -115,16 +113,18 @@ export class NzxTableFormComponent
     width?: string;
   }[] = [];
   tdTemplateOfNullInForm: { templateRef: TemplateRef<unknown> }[] = [];
-
+  /** 整个table-form */
   form!: FormGroup;
   isDisabled = false;
 
-  get tableList() {
+  /** formGroup下的formArray,formArray中是多行formGroup*/
+  get tableFormArray(): FormArray<FormGroup> {
     return this.form.get('formArray') as FormArray<FormGroup>;
   }
 
-  get formGroups() {
-    return this.tableList.controls.concat([]);
+  /** table formGroups集合 */
+  get formGroupList() {
+    return this.tableFormArray.controls.concat([]);
   }
 
   get invalid() {
@@ -137,9 +137,11 @@ export class NzxTableFormComponent
   private destroyed$: Subject<void> = new Subject<void>();
 
   @ContentChildren(NzxTableFormTdDirective)
-  tableTdDirectiveList!: QueryList<NzxTableFormTdDirective>;
+  private tableTdDirectiveList!: QueryList<NzxTableFormTdDirective>;
+
   @ContentChildren(NzxTableFormThDirective)
-  tableThDirectiveList!: QueryList<NzxTableFormThDirective>;
+  private tableThDirectiveList!: QueryList<NzxTableFormThDirective>;
+
   @ContentChild(NzxTableFormExpandDirective)
   tableExpandDirective!: NzxTableFormExpandDirective;
 
@@ -175,7 +177,7 @@ export class NzxTableFormComponent
    * 若table为空或者有一行数据校验不通过，则整个组件校验不通过
    */
   validate(control: AbstractControl): ValidationErrors | null {
-    const arr = (this.tableList.controls as FormGroup[]) || [];
+    const arr = (this.tableFormArray.controls as FormGroup[]) || [];
     if (arr.some((row) => row.status === 'INVALID')) {
       return { tableRequiredError: true };
     }
@@ -202,21 +204,26 @@ export class NzxTableFormComponent
    * 重置table表单为空
    */
   clearTable(): void {
-    this.tableList.clear();
+    this.tableFormArray.clear();
     this.cd.markForCheck();
   }
 
   /**
    * 添加table一行
    */
-  addRow(): void {
+  addRow(rowValue?: any): void {
     if (this.form.valid) {
-      if (this.enableLimit && this.tableList.length < this.maxLimit) {
+      if (this.enableLimit && this.tableFormArray.length < this.maxLimit) {
         const controlsConfigTemp = Object.assign({}, this.controlsConfig);
         if (this.enableExpand) {
           controlsConfigTemp['expand'] = [false];
         }
-        this.tableList.push(this.fb.group(controlsConfigTemp));
+        const form = this.fb.group(controlsConfigTemp);
+        if (rowValue) {
+          form.patchValue(rowValue);
+        }
+
+        this.tableFormArray.push(form);
       } else if (this.enableLimit) {
         this.limitMessage.emit({
           type: 'max',
@@ -228,12 +235,15 @@ export class NzxTableFormComponent
         if (this.enableExpand) {
           controlsConfigTemp['expand'] = [false];
         }
-        this.tableList.push(this.fb.group(controlsConfigTemp));
+        const form = this.fb.group(controlsConfigTemp);
+        if (rowValue) {
+          form.patchValue(rowValue);
+        }
+
+        this.tableFormArray.push(form);
       }
     } else {
-      this.tableList.controls.forEach((item: FormGroup) => {
-        validForm(item);
-      });
+      updateControlStatus(this.tableFormArray);
     }
     this.cd.markForCheck();
   }
@@ -243,8 +253,8 @@ export class NzxTableFormComponent
    */
   deleteRow(i: number): void {
     if (this.enableLimit) {
-      if (this.tableList.length > this.minLimit) {
-        this.tableList.removeAt(i);
+      if (this.tableFormArray.length > this.minLimit) {
+        this.tableFormArray.removeAt(i);
       } else {
         this.limitMessage.emit({
           type: 'min',
@@ -253,12 +263,12 @@ export class NzxTableFormComponent
         });
       }
     } else {
-      this.tableList.removeAt(i);
+      this.tableFormArray.removeAt(i);
     }
   }
 
   writeValue(obj: any): void {
-    this.tableList.clear();
+    this.tableFormArray.clear();
     if (obj && obj.length > 0) {
       if (this.tdConfig.length > 0) {
         obj.forEach((item: any, i: number) => {
@@ -266,8 +276,8 @@ export class NzxTableFormComponent
           if (this.enableExpand) {
             controlsConfigTemp['expand'] = [false];
           }
-          this.tableList.push(this.fb.group(controlsConfigTemp));
-          this.tableList.controls[i].patchValue(item);
+          this.tableFormArray.push(this.fb.group(controlsConfigTemp));
+          this.tableFormArray.controls[i].patchValue(item);
         });
       }
     }
@@ -284,15 +294,11 @@ export class NzxTableFormComponent
     this.isDisabled = isDisabled;
     if (isDisabled) {
       setTimeout(() => {
-        (this.form.get('formArray') as FormArray).controls.forEach((i) =>
-          i.disable()
-        );
+        this.tableFormArray.controls.forEach((i) => i.disable());
       }, 0);
     } else {
       setTimeout(() => {
-        (this.form.get('formArray') as FormArray).controls.forEach((i) =>
-          i.enable()
-        );
+        this.tableFormArray.controls.forEach((i) => i.enable());
       }, 0);
     }
   }

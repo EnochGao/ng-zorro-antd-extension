@@ -1,7 +1,7 @@
 <div class="container">
   <form nz-form [formGroup]="form" (ngSubmit)="submit()">
     <nzx-table-form
-      #table="nzxTableForm"
+      #table="NzxTableForm"
       [nzxBordered]="true"
       nzxSize="small"
       [tableFormConfig]="tableFormConfig"
@@ -32,15 +32,36 @@
         </nz-form-item>
       </ng-template>
 
-      <ng-template nzxTableFormTh width="140px" let-form
-        >操作
+      <ng-template nzxTableFormTh width="140px" let-form>
         <button
           nz-button
           nzType="primary"
+          nzSize="small"
           nzShape="circle"
           type="button"
           [disabled]="form.disabled"
           (click)="table.addRow()"
+        >
+          <span nz-icon nzType="plus"></span>
+        </button>
+        /
+        <button
+          nz-button
+          nzSize="small"
+          nzShape="circle"
+          type="button"
+          [disabled]="form.disabled"
+          (click)="
+            table.addRow({
+              name: 'enochgao',
+              age: 18,
+              gender: 1,
+              address: '青岛',
+              stars: 1,
+              class: 1,
+              expand: true
+            })
+          "
         >
           <span nz-icon nzType="plus"></span>
         </button>

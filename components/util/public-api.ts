@@ -3,7 +3,7 @@
  * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
  */
 
-export * from './lib/validForm';
+export * from './lib/updateControlStatus';
 export * from './lib/trimObject';
 export * from './lib/cloneDeep';
 export * from './lib/isArray';

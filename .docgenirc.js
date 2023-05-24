@@ -44,14 +44,29 @@ module.exports = {
         {
           id: "directive",
           title: "指令",
+          locales: {
+            "en-us": {
+              title: "Directive",
+            },
+          },
         },
         {
           id: "pipe",
           title: "管道",
+          locales: {
+            "en-us": {
+              title: "Pipe",
+            },
+          },
         },
         {
           id: "util",
           title: "工具函数",
+          locales: {
+            "en-us": {
+              title: "Util",
+            },
+          },
         },
       ],
     },

@@ -1,0 +1,15 @@
+<nz-card nzTitle="函数式选择文件">
+  <a nz-button nzType="link" (click)="selectFile()">选择单文件(jpg)</a>
+  <a nz-button nzType="link" (click)="selectMultipleFile()"
+    >选择多文件(图片，pdf)</a
+  >
+</nz-card>
+<nz-card nzTitle="文件下载">
+  <img
+    *ngIf="imageUrl"
+    [ngStyle]="{ border: '1px dashed #ccc', height: '150px', width: '150px' }"
+    nz-image
+    [nzSrc]="imageUrl"
+  />
+  <a nz-button nzType="link" (click)="downloadFile()">下载文件</a>
+</nz-card>
