@@ -26,6 +26,7 @@ import { PageTableRequire } from '../type';
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'NzxTableSelect',
 })
 export class NzxTableSelectComponent<T extends PageTableRequire>
   extends NzxAbstractTableSelect<T>

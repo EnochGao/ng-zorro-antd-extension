@@ -1,0 +1,11 @@
+<nz-card nzTitle="nzx-table-select">
+  <nzx-table-select
+    [tableConfig]="tableConfig"
+    [list]="list"
+    [(ngModel)]="selected"
+  >
+    <ng-template nzxTableSelectKey="rate"></ng-template>
+  </nzx-table-select>
+
+  选中：{{ selected | json }}
+</nz-card>

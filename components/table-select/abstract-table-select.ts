@@ -23,28 +23,7 @@ import { NzxTableQueryParams } from 'ng-zorro-antd-extension/table-adaptor';
 export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   implements ControlValueAccessor, AfterContentInit
 {
-  @Input() controls: Array<NzxQueryControlOptions> = [
-    {
-      nzxSpan: 10,
-      nzxRSpan: 24,
-      controlName: 'searchType',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '编码', value: 0 },
-        { label: 'SPU名称', value: 1 },
-      ],
-      default: 0,
-    },
-    {
-      nzxSpan: 14,
-      nzxRSpan: 24,
-      controlName: 'searchKey',
-      placeholder: '请输入搜索关键字',
-      controlType: 'input',
-      default: null,
-    },
-  ];
+  @Input() controls: Array<NzxQueryControlOptions> = [];
   @Input() checkboxWidth = '20px';
   /** 确保list中有唯一标识字段默认字段为id */
   @Input() uniqueKey = 'id';

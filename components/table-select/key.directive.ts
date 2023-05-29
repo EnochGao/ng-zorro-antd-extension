@@ -2,9 +2,10 @@
 import { Directive, Input, TemplateRef, inject } from '@angular/core';
 
 @Directive({
-  selector: '[nzxKey]',
+  selector: '[nzxTableSelectKey]',
+  exportAs: 'NzxTableSelectKey',
 })
 export class NzxKeyDirective {
-  @Input('nzxKey') key!: string;
+  @Input('nzxTableSelectKey') key!: string;
   templateRef = inject(TemplateRef);
 }
