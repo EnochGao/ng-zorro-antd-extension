@@ -50,6 +50,7 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   indeterminate = false;
 
   @ContentChildren(NzxKeyDirective) private dirs!: QueryList<NzxKeyDirective>;
+  private isDisabled = false;
 
   private propagateChange = (_: any) => {};
 
@@ -77,7 +78,19 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
 
   registerOnTouched(fn: any): void {}
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
+    this.updateDisabledState();
+  }
+
+  updateDisabledState() {
+    this.list = this.list.map((item) => {
+      return {
+        ...item,
+        disabled: this.isDisabled,
+      };
+    });
+  }
 
   /** 更新选中集合 */
   updateCheckedSet(data: T, checked: boolean): void {
@@ -121,31 +134,6 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
       this.list?.some((item) =>
         this.setOfCheckedId.has(this.getValue(item, this.uniqueKey))
       ) && !this.checked;
-
-    if (this.mode === 'single') {
-      if (this.setOfCheckedId.size > 0) {
-        const value = Array.from(this.setOfCheckedId)[0];
-        this.list = this.list.map((item) => {
-          if (this.getValue(item, this.uniqueKey) === value) {
-            return {
-              ...item,
-              disabled: false,
-            };
-          }
-          return {
-            ...item,
-            // disabled: true,
-          };
-        });
-      } else {
-        this.list = this.list.map((item) => {
-          return {
-            ...item,
-            disabled: false,
-          };
-        });
-      }
-    }
   }
 
   /*** 每条checkbox选中*/

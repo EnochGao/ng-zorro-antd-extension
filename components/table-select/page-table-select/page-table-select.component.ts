@@ -53,6 +53,7 @@ export class NzxPageTableSelectComponent<T extends PageTableRequire>
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['list'] || changes['nzTotal']) {
       this.refreshCheckedStatus();
+      super.updateDisabledState();
     }
   }
 }

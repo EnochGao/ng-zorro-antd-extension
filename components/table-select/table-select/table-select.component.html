@@ -33,7 +33,6 @@
       <td
         [nzChecked]="setOfCheckedId.has(this.getValue(data, this.uniqueKey))"
         [nzDisabled]="data.disabled!"
-        [nzShowCheckbox]="!data.disabled"
         (nzCheckedChange)="onItemChecked(data, $event)"
       ></td>
       <td *ngFor="let item of tableConfig">

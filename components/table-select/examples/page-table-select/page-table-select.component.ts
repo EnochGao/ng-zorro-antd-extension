@@ -3,21 +3,25 @@ import {
   ChangeDetectorRef,
   Component,
 } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NzMessageModule } from 'ng-zorro-antd/message';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { NzxQueryControlOptions } from 'ng-zorro-antd-extension/configurable-query';
+import { NzxTableQueryParams } from 'ng-zorro-antd-extension/table-adaptor';
 import { NzxTableSelectModule } from 'ng-zorro-antd-extension/table-select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzRateModule } from 'ng-zorro-antd/rate';
-import { Observable, catchError, of } from 'rxjs';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzxTableQueryParams } from 'ng-zorro-antd-extension/table-adaptor';
-import { NzxQueryControlOptions } from 'ng-zorro-antd-extension/configurable-query';
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { Observable, catchError, finalize, of } from 'rxjs';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @Component({
   selector: 'nzx-page-table-select-demo',
@@ -29,18 +33,32 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NzIconModule,
     NzFormModule,
     NzImageModule,
     NzButtonModule,
     NzCardModule,
-    NzRateModule,
-    NzMessageModule,
+    NzSwitchModule,
+    NzRadioModule,
     NzxTableSelectModule,
   ],
 })
 export class NzxPageTableSelectExampleComponent {
+  settingForm: FormGroup;
+  listOfSwitch = [{ name: 'Disable', formControlName: 'disabled' }];
+  listOfRadio = [
+    {
+      name: 'Mode',
+      formControlName: 'mode',
+      listOfOption: [
+        { value: 'single', label: '单选' },
+        { value: 'multiple', label: '多选' },
+      ],
+    },
+  ];
+
   selected = [];
+  loading = false;
+
   list: any[] = [];
   controls: Array<NzxQueryControlOptions> = [
     {
@@ -66,17 +84,32 @@ export class NzxPageTableSelectExampleComponent {
     { label: 'photo', key: 'picture' },
   ];
 
-  constructor(private http: HttpClient, private cd: ChangeDetectorRef) {}
+  constructor(
+    private http: HttpClient,
+    private cd: ChangeDetectorRef,
+    private fb: FormBuilder
+  ) {
+    this.settingForm = this.fb.group({
+      disabled: false,
+
+      mode: 'single',
+    });
+  }
 
   queryParamsChange(params: NzxTableQueryParams) {
-    console.log('ssssssss', params);
-
-    this.getUsers(params).subscribe((res) => {
-      console.log('result::', res);
-      this.list = res.results;
-      this.total = 200;
-      this.cd.markForCheck();
-    });
+    this.loading = true;
+    this.getUsers(params)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+          this.cd.markForCheck();
+        })
+      )
+      .subscribe((res) => {
+        console.log('result::', res);
+        this.list = res.results;
+        this.total = 200;
+      });
   }
 
   private getUsers(
