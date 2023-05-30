@@ -45,6 +45,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzFormModule,
     NzButtonModule,
     NzxPipesModule,
+    NzRateModule,
     NzMessageModule,
     NzCardModule,
     NzxTableSelectModule,
@@ -66,16 +67,16 @@ export class NzxTableSelectExampleComponent {
   ];
 
   list = [
-    { id: 1, name: '张三', age: 18, class: 1 },
-    { id: 2, name: '李四', age: 19, class: 3 },
-    { id: 3, name: 'enochgao', age: 20, class: 2 },
-    { id: 4, name: 'enochgao', age: 20, class: 2 },
-    { id: 5, name: 'enochgao', age: 20, class: 2 },
-    { id: 6, name: 'enochgao', age: 20, class: 2 },
-    { id: 7, name: 'enochgao', age: 20, class: 2 },
-    { id: 8, name: 'enochgao', age: 20, class: 2 },
-    { id: 9, name: 'enochgao', age: 20, class: 2 },
-    { id: 10, name: 'enochgao', age: 20, class: 2 },
-    { id: 11, name: 'enochgao', age: 20, class: 2 },
+    { id: 1, name: '张三', age: 18, class: 1, stars: 1 },
+    { id: 2, name: '李四', age: 19, class: 3, stars: 2 },
+    { id: 3, name: 'enochgao', age: 20, class: 2, stars: 3 },
+    { id: 4, name: 'enochgao', age: 20, class: 2, stars: 4 },
+    { id: 5, name: 'enochgao', age: 20, class: 2, stars: 5 },
+    { id: 6, name: 'enochgao', age: 20, class: 2, stars: 1 },
+    { id: 7, name: 'enochgao', age: 20, class: 2, stars: 2 },
+    { id: 8, name: 'enochgao', age: 20, class: 2, stars: 3 },
+    { id: 9, name: 'enochgao', age: 20, class: 2, stars: 4 },
+    { id: 10, name: 'enochgao', age: 20, class: 2, stars: 5 },
+    { id: 11, name: 'enochgao', age: 20, class: 2, stars: 1 },
   ];
 }

@@ -19,7 +19,6 @@ import { NzxPipesModule } from 'ng-zorro-antd-extension/pipes';
   ],
   imports: [
     CommonModule,
-
     NzTableModule,
     NzxConfigurableQueryModule,
     NzxTableAdaptorModule,

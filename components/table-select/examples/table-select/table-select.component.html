@@ -3,8 +3,11 @@
     [tableConfig]="tableConfig"
     [list]="list"
     [(ngModel)]="selected"
+    mode="single"
   >
-    <ng-template nzxTableSelectKey="rate"></ng-template>
+    <ng-template nzxTableSelectKey="stars" let-data>
+      <nz-rate [ngModel]="data.stars" nzDisabled></nz-rate>
+    </ng-template>
   </nzx-table-select>
 
   选中：{{ selected | json }}

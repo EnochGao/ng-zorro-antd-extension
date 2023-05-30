@@ -1,0 +1,24 @@
+<nz-card nzTitle="nzx-page-table-select">
+  <nzx-page-table-select
+    [tableConfig]="tableConfig"
+    mode="multiple"
+    uniqueKey="login.uuid"
+    [controls]="controls"
+    [list]="list"
+    [nzTotal]="total"
+    [(ngModel)]="selected"
+    (nzxQueryParamsChange)="queryParamsChange($event)"
+  >
+    <ng-template nzxTableSelectKey="picture" let-data>
+      <img
+        nz-image
+        width="100px"
+        height="100px"
+        [nzSrc]="data.picture.large"
+        alt=""
+      />
+    </ng-template>
+  </nzx-page-table-select>
+
+  选中：{{ selected | json }}
+</nz-card>

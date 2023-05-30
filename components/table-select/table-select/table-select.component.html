@@ -12,12 +12,12 @@
   <thead>
     <tr>
       <th
-        *ngIf="model === 'single'"
+        *ngIf="mode === 'single'"
         [nzShowCheckbox]="false"
         [nzWidth]="checkboxWidth"
       ></th>
       <th
-        *ngIf="model === 'multiple'"
+        *ngIf="mode === 'multiple'"
         [nzWidth]="checkboxWidth"
         [(nzChecked)]="checked"
         [nzIndeterminate]="indeterminate"
@@ -31,7 +31,7 @@
   <tbody>
     <tr *ngFor="let data of table.data">
       <td
-        [nzChecked]="setOfCheckedId.has(data[uniqueKey])"
+        [nzChecked]="setOfCheckedId.has(this.getValue(data, this.uniqueKey))"
         [nzDisabled]="data.disabled!"
         [nzShowCheckbox]="!data.disabled"
         (nzCheckedChange)="onItemChecked(data, $event)"

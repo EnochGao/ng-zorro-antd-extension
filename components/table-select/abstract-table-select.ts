@@ -40,7 +40,7 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
    *  - single 单选
    *  - multiple 多选
    */
-  @Input() model: 'single' | 'multiple' = 'single';
+  @Input() mode: 'single' | 'multiple' = 'single';
 
   @Input() tableConfig: Array<TableSelectConfig<T>> = [];
 
@@ -56,7 +56,7 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   ngAfterContentInit(): void {
     const list = this.dirs.toArray();
     list.forEach((d) => {
-      const c = this.tableConfig.find((t) => t.key === d.key);
+      const c = this.tableConfig?.find((t) => t.key === d.key);
       if (c) {
         c.template = d.templateRef;
       }
@@ -82,21 +82,25 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   /** 更新选中集合 */
   updateCheckedSet(data: T, checked: boolean): void {
     if (checked) {
-      if (this.model === 'single') {
+      if (this.mode === 'single') {
         this.setOfCheckedId.clear();
         this.selectedData = [];
       }
-      this.setOfCheckedId.add(data[this.uniqueKey]);
+      this.setOfCheckedId.add(this.getValue(data, this.uniqueKey));
       const exited = this.selectedData.some(
-        (i) => i[this.uniqueKey] === data[this.uniqueKey]
+        (i) =>
+          this.getValue(i, this.uniqueKey) ===
+          this.getValue(data, this.uniqueKey)
       );
       if (!exited) {
         this.selectedData.push(data);
       }
     } else {
-      this.setOfCheckedId.delete(data[this.uniqueKey]);
+      this.setOfCheckedId.delete(this.getValue(data, this.uniqueKey));
       this.selectedData = this.selectedData.filter(
-        (i) => i[this.uniqueKey] !== data[this.uniqueKey]
+        (i) =>
+          this.getValue(i, this.uniqueKey) ===
+          this.getValue(data, this.uniqueKey)
       );
     }
     this.propagateChange(this.selectedData);
@@ -111,18 +115,18 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   /*** 刷新checkbox选中状态 */
   refreshCheckedStatus(): void {
     this.checked = this.list?.every((item) =>
-      this.setOfCheckedId.has(item[this.uniqueKey])
+      this.setOfCheckedId.has(this.getValue(item, this.uniqueKey))
     );
     this.indeterminate =
       this.list?.some((item) =>
-        this.setOfCheckedId.has(item[this.uniqueKey])
+        this.setOfCheckedId.has(this.getValue(item, this.uniqueKey))
       ) && !this.checked;
 
-    if (this.model === 'single') {
+    if (this.mode === 'single') {
       if (this.setOfCheckedId.size > 0) {
         const value = Array.from(this.setOfCheckedId)[0];
         this.list = this.list.map((item) => {
-          if (item[this.uniqueKey] === value) {
+          if (this.getValue(item, this.uniqueKey) === value) {
             return {
               ...item,
               disabled: false,
@@ -148,5 +152,18 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   onItemChecked(data: T, checked: boolean): void {
     this.updateCheckedSet(data, checked);
     this.refreshCheckedStatus();
+  }
+
+  private getValue(obj: any, keys: string[] | string): any {
+    if (!obj || !keys) {
+      return undefined;
+    }
+    if (typeof keys === 'string') {
+      keys = keys.split('.');
+    }
+    if (keys.length === 1) {
+      return obj[keys[0]];
+    }
+    return this.getValue(obj[keys[0]], keys.slice(1));
   }
 }

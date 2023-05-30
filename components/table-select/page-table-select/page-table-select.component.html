@@ -1,10 +1,11 @@
 <nzx-configurable-query
+  [hidden]="controls && controls.length === 0"
   #configQuery
   [controls]="controls"
   [nzxCollapse]="nzxCollapse"
   [nzxBtnSpan]="nzxBtnSpan"
   (queryChange)="adaptor.refresh()"
-  (resetChange)="adaptor.refresh()"
+  (resetChange)="adaptor.reset()"
 >
 </nzx-configurable-query>
 
@@ -22,12 +23,12 @@
   <thead>
     <tr>
       <th
-        *ngIf="model === 'single'"
+        *ngIf="mode === 'single'"
         [nzShowCheckbox]="false"
         [nzWidth]="checkboxWidth"
       ></th>
       <th
-        *ngIf="model === 'multiple'"
+        *ngIf="mode === 'multiple'"
         [nzWidth]="checkboxWidth"
         [nzShowCheckbox]="table.data.length > 0"
         [(nzChecked)]="checked"
@@ -42,7 +43,7 @@
   <tbody>
     <tr *ngFor="let data of table.data">
       <td
-        [nzChecked]="setOfCheckedId.has(data[uniqueKey])"
+        [nzChecked]="setOfCheckedId.has(this.getValue(data, this.uniqueKey))"
         [nzDisabled]="data.disabled!"
         [nzShowCheckbox]="!data.disabled"
         (nzCheckedChange)="onItemChecked(data, $event)"
