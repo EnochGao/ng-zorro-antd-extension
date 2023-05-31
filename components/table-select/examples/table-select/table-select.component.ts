@@ -30,6 +30,8 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
 import { NzxTableSelectModule } from 'ng-zorro-antd-extension/table-select';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @Component({
   selector: 'nzx-table-select-demo',
@@ -47,11 +49,26 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzxPipesModule,
     NzRateModule,
     NzMessageModule,
+    NzSwitchModule,
+    NzRadioModule,
     NzCardModule,
     NzxTableSelectModule,
   ],
 })
 export class NzxTableSelectExampleComponent {
+  settingForm: FormGroup;
+  listOfSwitch = [{ name: 'Disable', formControlName: 'disabled' }];
+  listOfRadio = [
+    {
+      name: 'Mode',
+      formControlName: 'mode',
+      listOfOption: [
+        { value: 'single', label: '单选' },
+        { value: 'multiple', label: '多选' },
+      ],
+    },
+  ];
+
   selected = [];
   tableConfig = [
     { label: '姓名', key: 'name' },
@@ -79,4 +96,12 @@ export class NzxTableSelectExampleComponent {
     { id: 10, name: 'enochgao', age: 20, class: 2, stars: 5 },
     { id: 11, name: 'enochgao', age: 20, class: 2, stars: 1 },
   ];
+
+  constructor(private cd: ChangeDetectorRef, private fb: FormBuilder) {
+    this.settingForm = this.fb.group({
+      disabled: false,
+
+      mode: 'single',
+    });
+  }
 }

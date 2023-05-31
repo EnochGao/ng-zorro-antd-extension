@@ -13,7 +13,7 @@ import {
   NzxQueryParams,
 } from 'ng-zorro-antd-extension/configurable-query';
 import { NzxKeyDirective } from './key.directive';
-import { PageTableRequire, TableSelectConfig } from './type';
+import { PageTableRequire, TableSelectConfig, TableSelectMode } from './type';
 import { NzxTableQueryParams } from 'ng-zorro-antd-extension/table-adaptor';
 
 /**
@@ -25,8 +25,9 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
 {
   @Input() controls: Array<NzxQueryControlOptions> = [];
   @Input() checkboxWidth = '20px';
-  /** 确保list中有唯一标识字段默认字段为id */
-  @Input() uniqueKey = 'id';
+  /** 唯一标识字段，默认字段为id, 可以使用.分隔层级
+   * 比如login对象下的uuid可以使用传入'login.uuid'等同于['login','uuid']*/
+  @Input() uniqueKey: string | string[] = 'id';
   @Input() nzxBtnSpan = 24;
   @Input() nzxCollapse = false;
   @Input() list: T[] = [];
@@ -40,7 +41,7 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
    *  - single 单选
    *  - multiple 多选
    */
-  @Input() mode: 'single' | 'multiple' = 'single';
+  @Input() mode: TableSelectMode = 'single';
 
   @Input() tableConfig: Array<TableSelectConfig<T>> = [];
 

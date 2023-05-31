@@ -13,7 +13,10 @@ ng-zorro-antd-extension
 
 # 文档
 
-功能更新以及版本详情，请查看--->[文档地址](https://enochgao.github.io/ng-zorro-antd-extension/)
+功能更新以及版本详情
+
+- 请查看--->[文档地址](https://enochgao.github.io/ng-zorro-antd-extension/)
+- 国内镜像--->[文档地址](http://enochgao.gitee.io/ng-zorro-antd-extension/)
 
 ## 安装
 

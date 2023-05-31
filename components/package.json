@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-extension",
-  "version": "15.5.0",
+  "version": "15.6.0",
   "license": "MIT",
   "description": "An extension based on ng-zorro-antd",
   "keywords": [
@@ -28,9 +28,9 @@
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../publish/"
   },
   "peerDependencies": {
-    "@angular/common": "^15.0.0",
-    "@angular/core": "^15.0.0",
-    "ng-zorro-antd": "^15.0.0",
+    "@angular/common": "^15.0.0||^16.0.0",
+    "@angular/core": "^15.0.0||^16.0.0",
+    "ng-zorro-antd": "^15.0.0||^16.0.0",
     "@wangeditor/editor": "^5.0.0",
     "date-fns": "^2.16.1"
   },

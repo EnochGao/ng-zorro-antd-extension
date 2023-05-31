@@ -4,6 +4,7 @@ export interface NzxConfig {
   nzxSafeNull?: SafeNull;
   nzxTrim?: Trim;
   nzxTableAdaptor?: TableAdaptor;
+  nzxTimerButton?: TimerButton;
 }
 
 export interface SafeNull {
@@ -12,7 +13,14 @@ export interface SafeNull {
 export interface Trim {
   trimType: 'trim' | 'trimStart' | 'trimEnd';
 }
-export interface TableAdaptor {}
+export interface TableAdaptor {
+  enableCache: boolean;
+  dateFormat: string;
+  customFormateOutFn: (queryParams: any) => any;
+}
+export interface TimerButton {
+  duration: number;
+}
 
 export type NzxConfigKey = keyof NzxConfig;
 

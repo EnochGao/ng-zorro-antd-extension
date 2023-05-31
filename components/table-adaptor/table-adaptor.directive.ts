@@ -20,6 +20,7 @@ import {
 
 import { trimObject } from 'ng-zorro-antd-extension/util';
 import {
+  ExtensionWithConfig,
   NzxConfigKey,
   NzxConfigService,
 } from 'ng-zorro-antd-extension/core/config';
@@ -40,12 +41,12 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   readonly _nzModuleName: NzxConfigKey = NZ_CONFIG_MODULE_NAME;
 
   @Input() queryParams: Partial<NzxTableQueryParams> = {};
-  @Input() enableCache = false;
-  @Input() dateFormat = 'yyyy-MM-dd';
+  @ExtensionWithConfig() @Input() enableCache = false;
+  @ExtensionWithConfig() @Input() dateFormat = 'yyyy-MM-dd';
 
-  @Input() customFormateOutFn: (queryParams: any) => any = (
+  @ExtensionWithConfig() @Input() customFormateOutFn: (
     queryParams: any
-  ) => {
+  ) => any = (queryParams: any) => {
     for (const key in queryParams) {
       if (Object.prototype.hasOwnProperty.call(queryParams, key)) {
         if (isDate(queryParams[key])) {

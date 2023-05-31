@@ -6,6 +6,8 @@ export interface PageTableRequire {
   [key: string]: any;
 }
 
+export type TableSelectMode = 'single' | 'multiple';
+
 export interface TableSelectConfig<T = any> {
   label: string;
   key: string;

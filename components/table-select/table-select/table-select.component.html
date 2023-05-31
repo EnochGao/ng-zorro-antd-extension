@@ -20,6 +20,7 @@
         *ngIf="mode === 'multiple'"
         [nzWidth]="checkboxWidth"
         [(nzChecked)]="checked"
+        [nzDisabled]="isDisabled"
         [nzIndeterminate]="indeterminate"
         (nzCheckedChange)="onAllChecked($event)"
       ></th>

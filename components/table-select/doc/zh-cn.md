@@ -17,5 +17,7 @@ label: new
 ### 引入
 
 ```ts
-import { NzxTableSelectModule } from 'ng-zorro-antd-extension/table-select';
+import { NzxTableSelectModule } from "ng-zorro-antd-extension/table-select";
 ```
+
+详情使用见示例
