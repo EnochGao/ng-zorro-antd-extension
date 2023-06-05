@@ -63,7 +63,9 @@ export class NzxConfigurableQueryComponent
   /**是否展开状态*/
   isCollapse = true;
 
-  private queryParams: NzxQueryParams = {};
+  /** 查询组件出参*/
+  queryParams: NzxQueryParams = {};
+
   private defaultValue: NzxQueryParams = {};
   private params: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
@@ -80,7 +82,14 @@ export class NzxConfigurableQueryComponent
     this.queryForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
-        this.queryParams = val;
+        if (val) {
+          this.queryParams = {
+            ...val,
+            ...this.fixedParams,
+          };
+        } else {
+          this.queryParams = this.fixedParams;
+        }
       });
 
     this._nzxBtnSpan = this.nzxBtnSpan;
@@ -102,7 +111,10 @@ export class NzxConfigurableQueryComponent
       );
     }
 
-    this.queryParams = this.queryForm.value;
+    this.queryParams = {
+      ...this.queryForm.value,
+      ...this.fixedParams,
+    };
 
     this.defaultValue = Object.assign({}, this.queryParams);
 
@@ -168,14 +180,14 @@ export class NzxConfigurableQueryComponent
         }
       });
     } else {
-      this.queryChange.emit({ ...this.queryParams, ...this.fixedParams });
+      this.queryChange.emit(this.queryParams);
     }
   }
 
   /** 重置 */
   reset() {
     this.queryForm.reset(this.defaultValue);
-    this.resetChange.emit({ ...this.queryParams, ...this.fixedParams });
+    this.resetChange.emit(this.queryParams);
   }
 
   toggleCollapse() {
