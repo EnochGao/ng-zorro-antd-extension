@@ -295,14 +295,64 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
     { label: '潍坊', value: '潍坊' },
     { label: '烟台', value: '烟台' },
   ];
-
   @ViewChild('query7') private query7!: NzxConfigurableQueryComponent;
 
-  constructor() {}
+  queryParams8: NzxQueryParams = {};
+  controls8: Array<NzxQueryControlOptions> = [
+    {
+      controlName: 'name',
+      label: '姓名',
+      placeholder: '姓名',
+      controlType: 'input',
+    },
+    {
+      controlName: 'city',
+      label: '城市',
+      placeholder: '城市',
+      controlType: 'select',
+      menuList: [
+        { label: '班级', value: 1 },
+        { label: '姓名', value: 2 },
+      ],
+    },
+  ];
+  @ViewChild('query8') private query8!: NzxConfigurableQueryComponent;
+
+  queryParams9: NzxQueryParams = {};
+  controls9: Array<NzxQueryControlOptions> = [
+    {
+      controlName: 'name',
+      label: '姓名',
+      placeholder: '姓名',
+      controlType: 'input',
+    },
+    {
+      controlName: 'city',
+      label: '城市',
+      placeholder: '城市',
+      controlType: 'select',
+      menuList: [
+        { label: '班级', value: 1 },
+        { label: '姓名', value: 2 },
+      ],
+    },
+  ];
+  @ViewChild('query9', { static: true })
+  private query9!: NzxConfigurableQueryComponent;
 
   ngOnInit(): void {
     setTimeout(() => {
       this.query7.setControl('city', { menuList: this.cityList });
     }, 3000);
+    const cacheStr = sessionStorage.getItem('cacheParams');
+    if (cacheStr) {
+      this.query9.setQueryParams(JSON.parse(cacheStr));
+    }
+  }
+
+  queryChange(params: NzxQueryParams) {
+    sessionStorage.setItem('cacheParams', JSON.stringify(params));
+    console.log(params);
+    this.queryParams9 = params;
   }
 }

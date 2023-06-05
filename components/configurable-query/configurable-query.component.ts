@@ -12,7 +12,7 @@ import {
   QueryList,
 } from '@angular/core';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject, takeUntil } from 'rxjs';
@@ -49,22 +49,21 @@ export class NzxConfigurableQueryComponent
   /** 初始化时，主动查询 */
   @Input() initQuery = false;
 
-  /**
-   * 下个版本即将废弃请使用 queryChange和resetChange
-   *
-   * 查询重置时会触发抛出查询参数
-   * @deprecated
-   *  */
-  @Output() queryParamsChange = new EventEmitter<NzxQueryParams>();
+  /** 缺省 固定参数 */
+  @Input() fixedParams = {};
+
   /** 重置时会触发抛出查询参数 */
   @Output() queryChange = new EventEmitter<NzxQueryParams>();
   /** 查询时会触发抛出查询参数 */
   @Output() resetChange = new EventEmitter<NzxQueryParams>();
 
-  queryParams: NzxQueryParams = {};
+  /** form 表单*/
   queryForm!: FormGroup;
+
+  /**是否展开状态*/
   isCollapse = true;
 
+  private queryParams: NzxQueryParams = {};
   private defaultValue: NzxQueryParams = {};
   private params: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
@@ -119,7 +118,7 @@ export class NzxConfigurableQueryComponent
 
   setQueryParams(params: NzxQueryParams) {
     this.params = params;
-    this.queryForm.patchValue(this.params);
+    this.queryForm.patchValue(params);
   }
 
   /**
@@ -150,6 +149,16 @@ export class NzxConfigurableQueryComponent
     return void 0;
   }
 
+  /**
+   * 检索给定控件名称或路径的子控件。这个 getFormControl 签名支持字符串和 const 数组（.getFormControl(['foo', 'bar'] as const)）
+   */
+  getFormControl(
+    path: string | readonly (string | number)[]
+  ): AbstractControl<any, any> | null {
+    return this.queryForm.get(path);
+  }
+
+  /** 查询 */
   search(): void {
     if (this.queryForm.invalid) {
       Object.values(this.queryForm.controls).forEach((control) => {
@@ -159,14 +168,14 @@ export class NzxConfigurableQueryComponent
         }
       });
     } else {
-      this.queryParamsChange.emit(this.queryParams);
-      this.queryChange.emit(this.queryParams);
+      this.queryChange.emit({ ...this.queryParams, ...this.fixedParams });
     }
   }
 
+  /** 重置 */
   reset() {
     this.queryForm.reset(this.defaultValue);
-    this.resetChange.emit(this.queryParams);
+    this.resetChange.emit({ ...this.queryParams, ...this.fixedParams });
   }
 
   toggleCollapse() {
