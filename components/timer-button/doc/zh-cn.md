@@ -1,8 +1,8 @@
 ---
-category: component
+category: directive
 title: 倒计时button
-subtitle: nzxTimerButton
-order: 7
+subtitle: nzx-timer-button
+order: 4
 label: new
 ---
 

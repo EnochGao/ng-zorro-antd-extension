@@ -65,7 +65,6 @@ export class NzxTimerButtonDirective implements OnInit, OnDestroy {
             takeUntil(this.destroy$)
           )
           .subscribe((i) => {
-            console.log(i);
             this.remainingTime.emit(i);
             if (i === 0) {
               this.disabled = false;

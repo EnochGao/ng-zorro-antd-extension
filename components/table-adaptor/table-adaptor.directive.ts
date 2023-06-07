@@ -40,20 +40,26 @@ const CACHE_KEY = 'NZX_TABLE_ADAPTOR';
 export class NzxTableAdaptor implements OnInit, OnDestroy {
   readonly _nzModuleName: NzxConfigKey = NZ_CONFIG_MODULE_NAME;
 
-  @Input() queryParams: Partial<NzxTableQueryParams> = {};
+  @Input() set queryParams(value: any) {
+    this._queryParams = value;
+  }
+  get queryParams() {
+    return this._queryParams;
+  }
+
   @ExtensionWithConfig() @Input() enableCache = false;
   @ExtensionWithConfig() @Input() dateFormat = 'yyyy-MM-dd';
 
-  @ExtensionWithConfig() @Input() customFormateOutFn: (
-    queryParams: any
-  ) => any = (queryParams: any) => {
-    for (const key in queryParams) {
-      if (Object.prototype.hasOwnProperty.call(queryParams, key)) {
-        if (isDate(queryParams[key])) {
-          queryParams[key] = format(queryParams[key], this.dateFormat);
+  @ExtensionWithConfig() @Input() customFormateOutFn: (params: any) => any = (
+    params: any
+  ) => {
+    for (const key in params) {
+      if (Object.prototype.hasOwnProperty.call(params, key)) {
+        if (isDate(params[key])) {
+          params[key] = format(params[key], this.dateFormat);
         }
-        if (Array.isArray(queryParams[key])) {
-          queryParams[key] = queryParams[key].map((el: any) => {
+        if (Array.isArray(params[key])) {
+          params[key] = params[key].map((el: any) => {
             if (isDate(el)) {
               return format(el, this.dateFormat);
             }
@@ -63,7 +69,7 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
       }
     }
 
-    return trimObject(queryParams);
+    return trimObject(params);
   };
 
   @Output() nzxQueryParams: EventEmitter<NzxTableQueryParams> =
@@ -71,9 +77,11 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   @Output() nzxQueryCacheQueryParams: EventEmitter<NzxTableQueryParams> =
     new EventEmitter();
 
+  private _queryParams: Partial<NzxTableQueryParams> = {};
+
   private nzTableQueryParams!: NzTableQueryParams;
   private destroy$ = new Subject();
-  private nzxConfigService!: NzxConfigService;
+  private nzxConfigService: NzxConfigService = inject(NzxConfigService);
 
   private nzTable: NzTableComponent<any> = inject(NzTableComponent);
 
@@ -91,8 +99,8 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
     // 用来解决nzTable分页不能及时更新界面问题
     this.nzTable.nzQueryParams
       .pipe(takeUntil(this.destroy$))
-      .subscribe((queryParams: NzTableQueryParams) => {
-        this.nzTableQueryParams = queryParams;
+      .subscribe((params: NzTableQueryParams) => {
+        this.nzTableQueryParams = params;
         this.emit();
       });
 
@@ -149,13 +157,13 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   /**
    * 重置查询条件并查询
    */
-  reset(queryParams?: any) {
-    if (queryParams) {
-      this.queryParams = queryParams;
+  reset(params?: any) {
+    if (params) {
+      this._queryParams = params;
     } else {
-      for (const key in this.queryParams) {
-        if (Object.prototype.hasOwnProperty.call(this.queryParams, key)) {
-          this.queryParams[key] = '';
+      for (const key in this._queryParams) {
+        if (Object.prototype.hasOwnProperty.call(this._queryParams, key)) {
+          this._queryParams[key] = '';
         }
       }
     }
@@ -168,18 +176,18 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   }
 
   private emit() {
-    const queryParams: NzxTableQueryParams = {
-      ...this.queryParams,
+    const params: NzxTableQueryParams = {
+      ...this._queryParams,
       ...this.nzTableQueryParams,
     };
 
     if (this.enableCache) {
       sessionStorage.setItem(
         CACHE_KEY + this.router.url,
-        JSON.stringify(queryParams)
+        JSON.stringify(params)
       );
     }
 
-    this.nzxQueryParams.emit(this.customFormateOutFn(queryParams));
+    this.nzxQueryParams.emit(this.customFormateOutFn(params));
   }
 }

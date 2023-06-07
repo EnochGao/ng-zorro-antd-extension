@@ -39,6 +39,13 @@ or
 ng add ng-zorro-antd-extension
 ```
 
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ENDS   |
+| ------- | ------------- | ----------------------- | ---------- |
+| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
+| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
+| ^16.0.0 | ^16.0.0       | ^15.6.0 ^16.0.0         | 2024-11-08 |
+
 Install the specified version if required using:
 
 ```bash
@@ -46,22 +53,5 @@ npm install ng-zorro-antd-extension@13.0.0 --save
 ```
 
 v13.0.0(contains only multi-select, simple table, mapping pipeline), v14.0.0+ is recommended
-
-| dependencies              | version |
-| ------------------------- | ------- |
-| angular                   | ^13.0.0 |
-| ng-zorro-antd             | ^13.0.0 |
-| @ant-design/icons-angular | ^13.0.0 |
-
-| dependencies              | version |
-| ------------------------- | ------- |
-| angular                   | ^14.0.0 |
-| ng-zorro-antd             | ^14.0.0 |
-| @ant-design/icons-angular | ^14.0.0 |
-
-| dependencies  | version |
-| ------------- | ------- |
-| angular       | ^15.0.0 |
-| ng-zorro-antd | ^15.0.0 |
 
 Welcome to [github](https://github.com/EnochGao/ng-zorro-antd-extension) star fork pr

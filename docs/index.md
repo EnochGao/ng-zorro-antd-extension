@@ -39,29 +39,19 @@ npm install ng-zorro-antd-extension --save
 ng add ng-zorro-antd-extension
 ```
 
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ENDS   |
+| ------- | ------------- | ----------------------- | ---------- |
+| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
+| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
+| ^16.0.0 | ^16.0.0       | ^15.6.0 ^16.0.0         | 2024-11-08 |
+
 如需指定版本
 
 ```bash
 npm install ng-zorro-antd-extension@13.0.0 --save
 ```
 
-v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用 v14.0.0+以上版本，具体 feature 请查看组件文档中基本使用下的版本
-
-| 依赖环境                  | 版本    |
-| ------------------------- | ------- |
-| angular                   | ^13.0.0 |
-| ng-zorro-antd             | ^13.0.0 |
-| @ant-design/icons-angular | ^13.0.0 |
-
-| 依赖环境                  | 版本    |
-| ------------------------- | ------- |
-| angular                   | ^14.0.0 |
-| ng-zorro-antd             | ^14.0.0 |
-| @ant-design/icons-angular | ^14.0.0 |
-
-| 依赖环境      | 版本    |
-| ------------- | ------- |
-| angular       | ^15.0.0 |
-| ng-zorro-antd | ^15.0.0 |
+注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用最新版本，具体 feature 请查看组件文档中基本使用下的版本
 
 欢迎在 [github](https://github.com/EnochGao/ng-zorro-antd-extension) star fork pr

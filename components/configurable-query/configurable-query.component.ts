@@ -52,9 +52,9 @@ export class NzxConfigurableQueryComponent
   /** 缺省 固定参数 */
   @Input() fixedParams = {};
 
-  /** 重置时会触发抛出查询参数 */
-  @Output() queryChange = new EventEmitter<NzxQueryParams>();
   /** 查询时会触发抛出查询参数 */
+  @Output() queryChange = new EventEmitter<NzxQueryParams>();
+  /** 重置时会触发抛出查询参数 */
   @Output() resetChange = new EventEmitter<NzxQueryParams>();
 
   /** form 表单*/
@@ -64,8 +64,15 @@ export class NzxConfigurableQueryComponent
   isCollapse = true;
 
   /** 查询组件出参*/
-  queryParams: NzxQueryParams = {};
+  get queryParams() {
+    return this._queryParams;
+  }
 
+  set queryParams(value: any) {
+    this._queryParams = value;
+  }
+
+  private _queryParams: NzxQueryParams = {};
   private defaultValue: NzxQueryParams = {};
   private params: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
@@ -83,12 +90,12 @@ export class NzxConfigurableQueryComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
         if (val) {
-          this.queryParams = {
+          this._queryParams = {
             ...val,
             ...this.fixedParams,
           };
         } else {
-          this.queryParams = this.fixedParams;
+          this._queryParams = this.fixedParams;
         }
       });
 
@@ -111,12 +118,12 @@ export class NzxConfigurableQueryComponent
       );
     }
 
-    this.queryParams = {
+    this._queryParams = {
       ...this.queryForm.value,
       ...this.fixedParams,
     };
 
-    this.defaultValue = Object.assign({}, this.queryParams);
+    this.defaultValue = Object.assign({}, this._queryParams);
 
     if (this.params) {
       // 缓存回显查询条件
@@ -180,14 +187,14 @@ export class NzxConfigurableQueryComponent
         }
       });
     } else {
-      this.queryChange.emit(this.queryParams);
+      this.queryChange.emit(this._queryParams);
     }
   }
 
   /** 重置 */
   reset() {
     this.queryForm.reset(this.defaultValue);
-    this.resetChange.emit(this.queryParams);
+    this.resetChange.emit(this._queryParams);
   }
 
   toggleCollapse() {
