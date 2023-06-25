@@ -14,3 +14,4 @@ export * from './lib/isObject';
 export * from './lib/isString';
 export * from './lib/toNumber';
 export * from './lib/toString';
+export * from './lib/fileUtil';

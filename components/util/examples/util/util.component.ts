@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import {
   downloadFile,
   selectFile,
-} from 'ng-zorro-antd-extension/util/lib/fileUtil';
+} from 'ng-zorro-antd-extension/util';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzFormModule } from 'ng-zorro-antd/form';
