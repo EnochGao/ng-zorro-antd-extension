@@ -17,7 +17,7 @@ label: new
 ### 引入
 
 ```ts
-import { NzxTrimDirective } from "ng-zorro-antd-extension/trim";
+import { NzxTrimModule } from "ng-zorro-antd-extension/trim";
 ```
 
 ### html
