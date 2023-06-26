@@ -88,6 +88,7 @@ export class NzxWangEditorDirective
         onCreated(editor) {
           that.editor = editor; // 记录 editor 实例
           that.onCreated.emit(editor);
+          that.cd.markForCheck();
           if (that.defaultConfig.onCreated) {
             const info = that.genErrorInfo('onCreated');
             throw new Error(info);
