@@ -9,11 +9,23 @@ import { CommonModule } from '@angular/common';
 import {
   downloadFile,
   selectFile,
+  updateControlStatus,
 } from 'ng-zorro-antd-extension/util';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 @Component({
   selector: 'nzx-util-demo',
@@ -22,21 +34,93 @@ import { NzImageModule } from 'ng-zorro-antd/image';
   standalone: true,
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    NzGridModule,
     NzFormModule,
     NzButtonModule,
     NzMessageModule,
     NzCardModule,
     NzImageModule,
+    NzInputModule,
+    NzSpaceModule,
   ],
 })
 export class NzxUtilExampleComponent {
   imageUrl!: string;
+  form: FormGroup;
+
+  get aliases() {
+    return this.form.get('aliases') as FormArray;
+  }
 
   private file!: File;
   constructor(
     private logger: NzMessageService,
-    private cd: ChangeDetectorRef
-  ) {}
+    private cd: ChangeDetectorRef,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      userName: ['', [Validators.required]],
+      address: this.fb.group({
+        street: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+      }),
+      aliases: this.fb.array([]),
+    });
+  }
+
+  addAlias() {
+    this.aliases.push(this.fb.control('', [Validators.required]));
+  }
+
+  patchValue() {
+    this.form.reset({
+      userName: null,
+      address: {
+        street: null,
+        city: null,
+      },
+      aliases: [],
+    });
+    this.aliases.clear();
+
+    const aliases: string[] = ['zhangsan', ''];
+
+    for (let index = 0; index < aliases.length; index++) {
+      this.addAlias();
+    }
+
+    this.form.patchValue({
+      userName: 'enochgao',
+      address: {
+        street: '',
+        city: 'qingdao',
+      },
+      aliases,
+    });
+  }
+
+  markAsDirty(): void {
+    updateControlStatus(this.form);
+  }
+
+  markAsPristine() {
+    updateControlStatus(this.form, true);
+  }
+
+  markAsFullClean() {
+    updateControlStatus(this.form, true, (control: AbstractControl) => {
+      control.markAsUntouched();
+    });
+  }
+
+  remove(i: number) {
+    this.aliases.removeAt(i);
+  }
+
+  logForm() {
+    console.log('submit', this.form);
+  }
 
   selectFile() {
     selectFile('.jpg').subscribe((file) => {

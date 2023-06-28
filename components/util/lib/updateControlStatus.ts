@@ -1,37 +1,58 @@
-import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 
-export function updateControlStatus(control: FormGroup | FormArray) {
-  if (control instanceof FormGroup) {
-    for (const key in control.controls) {
-      if (Object.prototype.hasOwnProperty.call(control.controls, key)) {
-        if (control.controls[key].invalid) {
-          control.controls[key].markAsDirty();
-        } else {
-          (control.controls[key] as AbstractControl).markAsPristine();
-        }
-        control.controls[key].updateValueAndValidity({ onlySelf: true });
-
-        if (
-          (control.controls[key] as any)?.controls &&
-          (control.controls[key] as any)?.controls
-        ) {
-          updateControlStatus(control.controls[key] as any);
-        }
-      }
+function updateControl(
+  control: AbstractControl,
+  markAsClean: boolean,
+  customOperate?: (control: AbstractControl) => void
+) {
+  if (markAsClean) {
+    control.markAsPristine();
+    if (customOperate) {
+      customOperate(control);
+    }
+    control.updateValueAndValidity({
+      onlySelf: true,
+    });
+  } else {
+    if (control.invalid) {
+      control.markAsDirty();
+      control.updateValueAndValidity({ onlySelf: true });
     }
   }
+  if ((control as any)?.controls) {
+    updateControlStatus(control as any, markAsClean);
+  }
+}
 
-  if (control instanceof FormArray) {
-    for (const item of control.controls) {
-      if (item.invalid) {
-        item.markAsDirty();
-      } else {
-        item.markAsPristine();
-      }
-      item.updateValueAndValidity({ onlySelf: true });
-      if ((item as any)?.controls && (item as any)?.controls) {
-        updateControlStatus(item as any);
+/**
+ * 用来更新控件的状态，默认标注控件以及子控件为dirty，通常用来更新ng zorro中表单错误及时更新错误提示
+ *
+ * @param abstractControl FormControl、FormArray、FormGroup实例
+ * @param markAsClean 是否标记控件为干净状态，实际只设置pristine为true，如要设置更多参数请使用customOperate自定义
+ * @param customOperate 当markAsClean为true时可以自定义操作，用来完全让control干净，比如markAsUntouched
+ */
+export function updateControlStatus(
+  abstractControl: AbstractControl,
+  markAsClean = false,
+  customOperate?: (control: AbstractControl) => void
+) {
+  if (abstractControl instanceof FormGroup) {
+    for (const key in abstractControl.controls) {
+      if (Object.prototype.hasOwnProperty.call(abstractControl.controls, key)) {
+        const control = abstractControl.controls[key];
+        updateControl(control, markAsClean, customOperate);
       }
     }
+  } else if (abstractControl instanceof FormArray) {
+    for (const control of abstractControl.controls) {
+      updateControl(control, markAsClean, customOperate);
+    }
+  } else if (abstractControl instanceof FormControl) {
+    updateControl(abstractControl, markAsClean, customOperate);
   }
 }

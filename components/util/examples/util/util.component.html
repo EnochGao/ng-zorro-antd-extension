@@ -1,3 +1,95 @@
+<nz-card nzTitle="更新控件状态（updateControlStatus）">
+  <form nz-form [formGroup]="form">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Username</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="必填">
+        <input nz-input formControlName="userName" />
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row>
+      <div nz-col nzPush="6" [nzSpan]="12">
+        <h4>address</h4>
+      </div>
+    </div>
+
+    <ng-container formGroupName="address">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>street</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="必填">
+          <input nz-input formControlName="street" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>city</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="必填">
+          <input nz-input formControlName="city" />
+        </nz-form-control>
+      </nz-form-item>
+    </ng-container>
+
+    <div nz-row>
+      <div nz-col nzPush="6" [nzSpan]="12">
+        <h4>
+          aliases formArray
+          <button nz-button type="button" (click)="addAlias()">+ Add</button>
+        </h4>
+      </div>
+    </div>
+
+    <ng-container formArrayName="aliases">
+      <nz-form-item *ngFor="let alias of aliases.controls; let i = index">
+        <nz-form-label [nzSpan]="7" [nzRequired]="!!!i" [nzNoColon]="!!i">
+          <span *ngIf="!i"> Alias </span>
+        </nz-form-label>
+
+        <nz-form-control [nzSpan]="12" nzErrorTip="必填">
+          <input nz-input [formControlName]="i" />
+        </nz-form-control>
+        <div nz-col [nzSpan]="2">
+          <a nz-button nzType="link" nzDanger (click)="remove(i)">remove</a>
+        </div>
+      </nz-form-item>
+    </ng-container>
+
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <nz-space>
+          <button
+            *nzSpaceItem
+            nz-button
+            nzType="primary"
+            (click)="markAsDirty()"
+          >
+            markAsDirty
+          </button>
+
+          <button
+            *nzSpaceItem
+            nz-button
+            nzType="primary"
+            (click)="markAsPristine()"
+          >
+            markAsPristine
+          </button>
+          <button
+            *nzSpaceItem
+            nz-button
+            nzType="primary"
+            (click)="markAsFullClean()"
+          >
+            markAsFullClean
+          </button>
+
+          <button *nzSpaceItem nz-button (click)="patchValue()">
+            pathValue
+          </button>
+          <button *nzSpaceItem nz-button (click)="logForm()">logForm</button>
+        </nz-space>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-card>
+
 <nz-card nzTitle="函数式选择文件">
   <a nz-button nzType="link" (click)="selectFile()">选择单文件(jpg)</a>
   <a nz-button nzType="link" (click)="selectMultipleFile()"
