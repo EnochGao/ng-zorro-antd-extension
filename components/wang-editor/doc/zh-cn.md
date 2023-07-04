@@ -36,16 +36,8 @@ import { NzxWangEditorModule } from "ng-zorro-antd-extension/wang-editor";
 
 ```html
 <div [ngStyle]="{ border: '1px solid #ccc', 'z-index': 100 }">
-  <nzx-wang-toolbar
-    [ngStyle]="{ 'border-bottom': '1px solid #ccc' }"
-    [editor]="editorRef.editor">
-  </nzx-wang-toolbar>
-  <nzx-wang-editor
-    [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }"
-    #editorRef="NzxWangEditor"
-    [(ngModel)]="value"
-    >
-  </nzx-wang-editor>
+  <nzx-wang-toolbar [ngStyle]="{ 'border-bottom': '1px solid #ccc' }" [editor]="editorRef.editor"> </nzx-wang-toolbar>
+  <nzx-wang-editor [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }" #editorRef="NzxWangEditor" [(ngModel)]="value"> </nzx-wang-editor>
 </div>
 ```
 
@@ -53,15 +45,8 @@ import { NzxWangEditorModule } from "ng-zorro-antd-extension/wang-editor";
 
 ```html
 <div [ngStyle]="{ border: '1px solid #ccc', 'z-index': 100 }">
-  <div nzxWangToolbar
-    [ngStyle]="{ 'border-bottom': '1px solid #ccc' }"
-    [editor]="editorRef1.editor">
-  </div>
-  <div nzxWangEditor
-    [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }"
-    #editorRef1="NzxWangEditor"
-    [(ngModel)]="value">
-  </div>
+  <div nzxWangToolbar [ngStyle]="{ 'border-bottom': '1px solid #ccc' }" [editor]="editorRef1.editor"></div>
+  <div nzxWangEditor [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }" #editorRef1="NzxWangEditor" [(ngModel)]="value"></div>
 </div>
 ```
 
@@ -69,28 +54,29 @@ import { NzxWangEditorModule } from "ng-zorro-antd-extension/wang-editor";
 
 nzx-wang-toolbar
 
-| 属性          | 类型                    | 默认值  |
-| ------------- | ----------------------- | ------- |
-| mode          | Mode                    | default |
-| editor        | IDomEditor              | --      |
-| defaultConfig |` Partial<IToolbarConfig>` | {}      |
-| toolbar       | Toolbar                 | --      |
+| 属性          | 类型                       | 默认值  |
+| ------------- | -------------------------- | ------- |
+| mode          | Mode                       | default |
+| editor        | IDomEditor                 | --      |
+| defaultConfig | ` Partial<IToolbarConfig>` | {}      |
+| toolbar       | Toolbar                    | --      |
 
 nzx-wang-editor
 
-| 属性           | 类型                    | 默认值  |
-| -------------- | ----------------------- | ------- |
-| mode           | Mode                    | default |
-| editor         | IDomEditor              | --      |
-| defaultConfig  |`Partial<IToolbarConfig>` | {}      |
-| defaultHtml    | string                  | ''      |
-| defaultContent | SlateDescendant[]       | []      |
-| height         | string                  | 35px    |
-| onCreated      | EventEmitter            | --      |
-| onDestroyed    | EventEmitter            | --      |
-| onMaxLength    | EventEmitter            | --      |
-| onFocus        | EventEmitter            | --      |
-| onBlur         | EventEmitter            | --      |
-| customAlert    | EventEmitter            | --      |
-| customPaste    | EventEmitter            | --      |
-| onChange       | EventEmitter            | --      |
+| 属性           | 类型                      | 默认值  |
+| -------------- | ------------------------- | ------- |
+| mode           | Mode                      | default |
+| editor         | IDomEditor                | --      |
+| defaultConfig  | `Partial<IToolbarConfig>` | {}      |
+| defaultHtml    | string                    | ''      |
+| defaultContent | SlateDescendant[]         | []      |
+| height         | string                    | 35px    |
+| textRequired   | boolean                   | false   |
+| onCreated      | EventEmitter              | --      |
+| onDestroyed    | EventEmitter              | --      |
+| onMaxLength    | EventEmitter              | --      |
+| onFocus        | EventEmitter              | --      |
+| onBlur         | EventEmitter              | --      |
+| customAlert    | EventEmitter              | --      |
+| customPaste    | EventEmitter              | --      |
+| onChange       | EventEmitter              | --      |

@@ -13,7 +13,14 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
+} from '@angular/forms';
 import {
   createEditor,
   IDomEditor,
@@ -32,17 +39,24 @@ import { Mode } from './type';
       useExisting: forwardRef(() => NzxWangEditorDirective),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: NzxWangEditorDirective,
+      multi: true,
+    },
   ],
   exportAs: 'NzxWangEditor',
 })
 export class NzxWangEditorDirective
-  implements OnInit, ControlValueAccessor, OnDestroy, OnChanges
+  implements OnInit, ControlValueAccessor, OnDestroy, OnChanges, Validator
 {
   @Input() mode: Mode = 'default';
   @Input() defaultContent: SlateDescendant[] = [];
   @Input() defaultHtml = '';
   @Input() defaultConfig: Partial<IEditorConfig> = {};
   @Input() height = '350px';
+  /**富文本编辑器必填，必须有text内容 */
+  @Input() textRequired = false;
 
   @Output() onCreated = new EventEmitter();
   @Output() onDestroyed = new EventEmitter();
@@ -70,6 +84,18 @@ export class NzxWangEditorDirective
     if (changes['defaultConfig'] && !changes['defaultConfig'].isFirstChange()) {
       this.init();
     }
+  }
+
+  validate(control: AbstractControl<any, any>): ValidationErrors | null {
+    let result: ValidationErrors | null = null;
+    if (this.textRequired) {
+      if (!this.editor?.getText()) {
+        result = {
+          editorTextRequired: true,
+        };
+      }
+    }
+    return result;
   }
 
   private init() {
