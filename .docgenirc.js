@@ -4,7 +4,7 @@
 module.exports = {
   mode: "full",
   theme: "angular",
-  title: "Zorro Extension",
+  title: "ng-zorro-antd-extension",
   description: "ng zorro 拓展包",
   siteProjectName: "docs-site",
   logoUrl: "https://avatars.githubusercontent.com/u/41459067?v=4",
