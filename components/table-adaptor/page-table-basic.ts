@@ -11,6 +11,6 @@ export class NzxPageTableBase<T = any> {
   nzTotal = 0;
 
   /** 表单指令实例用来刷新重置 */
-  @ViewChild(NzxTableAdaptor, { static: true })
+  @ViewChild(NzxTableAdaptor)
   public nzxTableAdaptorRef!: NzxTableAdaptor;
 }
