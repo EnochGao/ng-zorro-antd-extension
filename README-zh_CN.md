@@ -4,51 +4,57 @@ ng-zorro-antd-extension
 
 <div align="center">
 
-Component package based on ng-zorro-antd
+基于 ng-zorro 的组件扩展包
 
 [![npm package](https://img.shields.io/npm/v/ng-zorro-antd-extension.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-extension)
 [![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-extension.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-extension)
 
 </div>
 
-English | [简体中文](README-zh_CN.md)
+# 文档
 
-## Docs
+功能更新以及版本详情
 
-- [Docs github](https://enochgao.github.io/ng-zorro-antd-extension/)
-- [Docs gitee](http://enochgao.gitee.io/ng-zorro-antd-extension/)
+- 请查看--->[文档地址](https://enochgao.github.io/ng-zorro-antd-extension/)
+- 国内镜像--->[文档地址](http://enochgao.gitee.io/ng-zorro-antd-extension/)
 
-## Installation
+## 安装
 
-1、Make sure to install ng-zorro first：[ng-zorro-antd install](https://ng.ant.design/docs/getting-started/en)
+1、首先要安装 ng-zorro：[ng zorro 安装](https://ng.ant.design/docs/getting-started/zh)
 
-2、After ng zorro is successfully installed, then install the package
+2、ng zorro 安装成功之后然后再安装扩展包
 
-Using
+使用
 
 ```bash
 npm install ng-zorro-antd-extension --save
 ```
 
-or
+或者
 
 ```bash
 ng add ng-zorro-antd-extension
 ```
 
-| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends   |
+如需指定版本
+
+```bash
+npm install ng-zorro-antd-extension@13.0.0 --save
+```
+
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ENDS   |
 | ------- | ------------- | ----------------------- | ---------- |
 | ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
 | ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
 | ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
 | ^16.0.0 | ^16.0.0       | ^15.6.0 ^16.0.0         | 2024-11-08 |
 
-Install the specified version if required using:
+如需指定版本
 
 ```bash
 npm install ng-zorro-antd-extension@13.0.0 --save
 ```
 
-v13.0.0(contains only multi-select, simple table, mapping pipeline), v15.0.0+ is recommended
+注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用最新版本，具体 feature 请查看组件文档中基本使用下的版本
 
-Welcome star fork pr
+欢迎 star fork pr
