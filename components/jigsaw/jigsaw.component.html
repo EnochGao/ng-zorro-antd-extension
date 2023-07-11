@@ -1,0 +1,44 @@
+<div
+  class="container"
+  [ngStyle]="{
+    position: 'relative',
+    width: width + 'px',
+    height: height + 'px'
+  }"
+  (selectstart)="selectstart()"
+>
+  <div
+    class="jigsaw-loadingContainer"
+    [ngStyle]="{ display: isLoading ? '' : 'none' }"
+  >
+    <div class="jigsaw-loadingIcon"></div>
+    <span>加载中...</span>
+  </div>
+
+  <canvas #canvasCtx [width]="width" [height]="height"></canvas>
+
+  <div class="jigsaw-refreshIcon" (click)="refresh()"></div>
+
+  <canvas
+    #blockCtx
+    class="jigsaw-block"
+    [width]="width"
+    [height]="height"
+  ></canvas>
+
+  <div
+    #sliderContainer
+    class="jigsaw-sliderContainer"
+    [ngStyle]="{
+      width: width + 'px',
+      'pointer-events': isLoading ? 'none' : ''
+    }"
+  >
+    <div #sliderMask class="jigsaw-sliderMask">
+      <div #slider class="jigsaw-slider">
+        <span class="jigsaw-sliderIcon"></span>
+      </div>
+    </div>
+    <span class="jigsaw-sliderText">向右滑动填充拼图</span>
+  </div>
+</div>
