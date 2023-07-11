@@ -23,9 +23,7 @@ import { NzxJigsawModule } from "ng-zorro-antd-extension/jigsaw";
 ### html
 
 ```html
-<input nz-input [(ngModel)]="value" nzxTrim />
-
-<textarea rows="4" nz-input formControlName="value" nzxTrim trimType="trimEnd"></textarea>
+<nzx-jigsaw (nzxOnFail)="fail()" (nzxOnRefresh)="refresh()" (nzxOnSuccess)="success()"></nzx-jigsaw>
 ```
 
 ### 内置属性

@@ -24,6 +24,8 @@
     class="jigsaw-block"
     [width]="width"
     [height]="height"
+    (touchstart)="handleDragStart($event)"
+    (mousedown)="handleDragStart($event)"
   ></canvas>
 
   <div
@@ -35,10 +37,15 @@
     }"
   >
     <div #sliderMask class="jigsaw-sliderMask">
-      <div #slider class="jigsaw-slider">
+      <div
+        #slider
+        class="jigsaw-slider"
+        (touchstart)="handleDragStart($event)"
+        (mousedown)="handleDragStart($event)"
+      >
         <span class="jigsaw-sliderIcon"></span>
       </div>
     </div>
-    <span class="jigsaw-sliderText">向右滑动填充拼图</span>
+    <span class="jigsaw-sliderText">{{ text }}</span>
   </div>
 </div>

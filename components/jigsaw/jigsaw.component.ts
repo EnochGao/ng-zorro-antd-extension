@@ -4,62 +4,148 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 
-const w = 310; // canvas宽度
-const h = 155; // canvas高度
 const l = 42; // 滑块边长
 const r = 9; // 滑块半径
 const PI = Math.PI;
 const L = l + r * 2 + 3; // 滑块实际边长
+
 @Component({
   selector: 'nzx-jigsaw',
   templateUrl: './jigsaw.component.html',
   styleUrls: ['./jigsaw.component.less'],
 })
-export class NzxJigsawComponent implements OnInit, AfterViewInit {
+export class NzxJigsawComponent implements AfterViewInit {
   @Input() width = 310;
   @Input() height = 155;
 
-  @Output() jwRefresh = new EventEmitter();
-  @Output() jwSuccess = new EventEmitter();
-  @Output() jwFail = new EventEmitter();
+  @Output() nzxOnRefresh = new EventEmitter();
+  @Output() nzxOnSuccess = new EventEmitter();
+  @Output() nzxOnFail = new EventEmitter();
 
-  @ViewChild('canvasCtx') private canvasRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('blockCtx') private blockRef!: ElementRef<HTMLCanvasElement>;
+  isLoading = false;
+  text = '向右滑动填充拼图';
+
+  @ViewChild('canvasCtx')
+  private canvasRef!: ElementRef<HTMLCanvasElement>;
+
+  @ViewChild('blockCtx')
+  private blockRef!: ElementRef<HTMLCanvasElement>;
+
   @ViewChild('sliderContainer')
   private sliderContainerRef!: ElementRef<HTMLDivElement>;
+
   @ViewChild('slider')
   private sliderRef!: ElementRef<HTMLDivElement>;
+
   @ViewChild('sliderMask')
   private sliderMaskRef!: ElementRef<HTMLDivElement>;
 
-  img: any;
-  x: number = 0;
-  y: number = 0;
+  private img: any;
+  private x: number = 0;
+  private y: number = 0;
 
-  isLoading = false;
-
-  constructor() {}
+  private originX: number = 0;
+  private originY: number = 0;
+  private trail: any[] = [];
+  private isMouseDown = false;
 
   ngAfterViewInit(): void {
-    console.log('dddd', this.canvasRef);
     this.initImg();
+
+    const handleDragMove = (e: any) => {
+      if (!this.isMouseDown) return false;
+      e.preventDefault();
+      const eventX = e.clientX || e.touches[0].clientX;
+      const eventY = e.clientY || e.touches[0].clientY;
+      const moveX = eventX - this.originX;
+      const moveY = eventY - this.originY;
+      if (moveX < 0 || moveX + 38 >= this.width) return false;
+      this.sliderRef.nativeElement.style.left = moveX + 'px';
+      const blockLeft = ((this.width - 40 - 20) / (this.width - 40)) * moveX;
+      this.blockRef.nativeElement.style.left = blockLeft + 'px';
+      this.sliderContainerRef.nativeElement.classList.add(
+        'jigsaw-sliderContainer_active'
+      );
+      this.sliderMaskRef.nativeElement.style.width = moveX + 'px';
+      this.trail.push(moveY);
+      return false;
+    };
+
+    const handleDragEnd = (e: any) => {
+      if (!this.isMouseDown) return false;
+      this.isMouseDown = false;
+      const eventX = e.clientX || e.changedTouches[0].clientX;
+      if (eventX === this.originX) return false;
+      this.sliderContainerRef.nativeElement.classList.remove(
+        'jigsaw-sliderContainer_active'
+      );
+      this.trail = this.trail;
+      const { spliced, verified } = this.verify();
+
+      if (spliced) {
+        if (verified) {
+          this.sliderContainerRef.nativeElement.classList.add(
+            'jigsaw-sliderContainer_success'
+          );
+          this.nzxOnSuccess.emit();
+        } else {
+          this.sliderContainerRef.nativeElement.classList.add(
+            'jigsaw-sliderContainer_fail'
+          );
+          this.text = '请再试一次';
+          console.log('请再试一次');
+
+          this.reset();
+        }
+      } else {
+        this.sliderContainerRef.nativeElement.classList.add(
+          'jigsaw-sliderContainer_fail'
+        );
+        this.nzxOnFail.emit();
+        setTimeout(() => this.reset(), 1000);
+      }
+      return false;
+    };
+
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('touchmove', handleDragMove);
+    document.addEventListener('mouseup', handleDragEnd);
+    document.addEventListener('touchend', handleDragEnd);
   }
 
-  ngOnInit() {
-    console.log(11);
-  }
   selectstart() {
     return false;
   }
 
   refresh() {
     this.reset();
-    this.jwRefresh.emit();
+    this.nzxOnRefresh.emit();
+  }
+
+  handleDragStart(e: any) {
+    this.originX = e.clientX || e.touches[0].clientX;
+    this.originY = e.clientY || e.touches[0].clientY;
+    this.isMouseDown = true;
+  }
+
+  private verify() {
+    const arr = this.trail; // 拖动时y轴的移动距离
+    const average = arr.reduce((x: number, y: number) => x + y) / arr.length;
+    const deviations = arr.map((x) => x - average);
+    const stddev = Math.sqrt(
+      deviations
+        .map((x: number) => x * x)
+        .reduce((x: number, y: number) => x + y) / arr.length
+    );
+    const left = parseInt(this.blockRef.nativeElement.style.left);
+    return {
+      spliced: Math.abs(left - this.x) < 10,
+      verified: stddev !== 0, // 简单验证拖动轨迹，为零时表示Y轴上下没有波动，可能非人为操作
+    };
   }
 
   private reset() {
