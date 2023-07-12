@@ -3,7 +3,6 @@ category: directive
 title: 富文本编辑器
 subtitle: nzx-wang-editor
 order: 1
-label: new
 ---
 
 富文本编辑器，易于在 angular 中使用基于[wangEditor 5](https://www.npmjs.com/package/@wangeditor/editor)的包装组件。详情查看[文档](https://www.wangeditor.com/)

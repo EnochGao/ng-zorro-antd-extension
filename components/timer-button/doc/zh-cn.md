@@ -3,7 +3,6 @@ category: directive
 title: 倒计时button
 subtitle: nzx-timer-button
 order: 4
-label: new
 ---
 
 nzxTimerButton：倒计时 button，只能作用到 button 元素上，一般用来获取验证码。支持全局配置

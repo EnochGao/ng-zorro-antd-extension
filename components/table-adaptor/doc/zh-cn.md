@@ -3,7 +3,6 @@ category: directive
 title: 查询连接器
 subtitle: nzx-table-adaptor
 order: 2
-label: new
 ---
 
 用来链接 nz-table 和查询组件，方便进行分页查询

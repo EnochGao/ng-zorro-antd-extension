@@ -3,7 +3,6 @@ category: pipe
 title: 管道
 subtitle: pipes
 order: 2
-label: new
 ---
 
 - 映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接

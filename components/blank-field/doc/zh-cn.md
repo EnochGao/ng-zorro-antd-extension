@@ -3,7 +3,6 @@ category: component
 title: 空表单控件
 subtitle: nzx-blank-filed
 order: 5
-label: new
 ---
 
 空表单控件，方便 angular 表单中自定义显示

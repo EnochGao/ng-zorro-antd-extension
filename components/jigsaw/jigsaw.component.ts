@@ -1,5 +1,7 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -7,6 +9,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { isString } from 'ng-zorro-antd-extension/util';
 
 const l = 42; // 滑块边长
 const r = 9; // 滑块半径
@@ -17,17 +20,20 @@ const L = l + r * 2 + 3; // 滑块实际边长
   selector: 'nzx-jigsaw',
   templateUrl: './jigsaw.component.html',
   styleUrls: ['./jigsaw.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxJigsawComponent implements AfterViewInit {
   @Input() width = 310;
   @Input() height = 155;
+  @Input() nzxLoadingText = '加载中...';
+  @Input() nzxTipText = '向右滑动填充拼图';
+  @Input() nzxBgImgUrl: string | string[] = '';
 
-  @Output() nzxOnRefresh = new EventEmitter();
-  @Output() nzxOnSuccess = new EventEmitter();
-  @Output() nzxOnFail = new EventEmitter();
+  @Output() nzxOnRefresh = new EventEmitter<void>();
+  @Output() nzxOnSuccess = new EventEmitter<void>();
+  @Output() nzxOnFail = new EventEmitter<void>();
 
   isLoading = false;
-  text = '向右滑动填充拼图';
 
   @ViewChild('canvasCtx')
   private canvasRef!: ElementRef<HTMLCanvasElement>;
@@ -53,11 +59,15 @@ export class NzxJigsawComponent implements AfterViewInit {
   private trail: any[] = [];
   private isMouseDown = false;
 
+  constructor(private cd: ChangeDetectorRef) {}
+
   ngAfterViewInit(): void {
     this.initImg();
 
     const handleDragMove = (e: any) => {
-      if (!this.isMouseDown) return false;
+      if (!this.isMouseDown) {
+        return false;
+      }
       e.preventDefault();
       const eventX = e.clientX || e.touches[0].clientX;
       const eventY = e.clientY || e.touches[0].clientY;
@@ -68,7 +78,7 @@ export class NzxJigsawComponent implements AfterViewInit {
       const blockLeft = ((this.width - 40 - 20) / (this.width - 40)) * moveX;
       this.blockRef.nativeElement.style.left = blockLeft + 'px';
       this.sliderContainerRef.nativeElement.classList.add(
-        'jigsaw-sliderContainer_active'
+        'nzx-jigsaw-slider-container-active'
       );
       this.sliderMaskRef.nativeElement.style.width = moveX + 'px';
       this.trail.push(moveY);
@@ -76,12 +86,16 @@ export class NzxJigsawComponent implements AfterViewInit {
     };
 
     const handleDragEnd = (e: any) => {
-      if (!this.isMouseDown) return false;
+      if (!this.isMouseDown) {
+        return false;
+      }
       this.isMouseDown = false;
       const eventX = e.clientX || e.changedTouches[0].clientX;
-      if (eventX === this.originX) return false;
+      if (eventX === this.originX) {
+        return false;
+      }
       this.sliderContainerRef.nativeElement.classList.remove(
-        'jigsaw-sliderContainer_active'
+        'nzx-jigsaw-slider-container-active'
       );
       this.trail = this.trail;
       const { spliced, verified } = this.verify();
@@ -89,21 +103,19 @@ export class NzxJigsawComponent implements AfterViewInit {
       if (spliced) {
         if (verified) {
           this.sliderContainerRef.nativeElement.classList.add(
-            'jigsaw-sliderContainer_success'
+            'nzx-jigsaw-slider-container-success'
           );
           this.nzxOnSuccess.emit();
         } else {
           this.sliderContainerRef.nativeElement.classList.add(
-            'jigsaw-sliderContainer_fail'
+            'nzx-jigsaw-slider-container-fail'
           );
-          this.text = '请再试一次';
-          console.log('请再试一次');
-
+          this.nzxTipText = '请再试一次';
           this.reset();
         }
       } else {
         this.sliderContainerRef.nativeElement.classList.add(
-          'jigsaw-sliderContainer_fail'
+          'nzx-jigsaw-slider-container-fail'
         );
         this.nzxOnFail.emit();
         setTimeout(() => this.reset(), 1000);
@@ -151,7 +163,8 @@ export class NzxJigsawComponent implements AfterViewInit {
   private reset() {
     const { width, height } = this;
     // 重置样式
-    this.sliderContainerRef.nativeElement.className = 'jigsaw-sliderContainer';
+    this.sliderContainerRef.nativeElement.className =
+      'nzx-jigsaw-slider-container';
     this.sliderRef.nativeElement.style.left = 0 + 'px';
     this.blockRef.nativeElement.width = width;
     this.blockRef.nativeElement.style.left = 0 + 'px';
@@ -167,17 +180,27 @@ export class NzxJigsawComponent implements AfterViewInit {
 
     // 重新加载图片
     this.isLoading = true;
+    this.cd.markForCheck();
     this.setImageSrc(this.getRandomImgSrc(), this.img);
   }
 
   private initImg() {
-    const img = this.createImg(() => {
+    const img: HTMLImageElement = new Image();
+    img.style.objectFit = 'cover';
+    img.crossOrigin = 'Anonymous';
+    img.onload = () => {
       this.isLoading = false;
       this.draw(img);
-    });
+    };
+    img.onerror = () => {
+      // 图片加载失败的时候重新加载其他图片
+      this.setImageSrc(this.getRandomImgSrc(), img);
+    };
+    this.setImageSrc(this.getRandomImgSrc(), img);
     this.img = img;
   }
-  private draw(img: any) {
+
+  private draw(img: HTMLImageElement) {
     const { width, height } = this;
     // 随机位置创建拼图形状
     this.x = this.getRandomNumberByRange(L + 10, width - (L + 10));
@@ -210,6 +233,7 @@ export class NzxJigsawComponent implements AfterViewInit {
       .getImageData(this.x - 3, y, L, L);
     this.blockRef.nativeElement!.width = L;
     this.blockRef.nativeElement.getContext('2d')!.putImageData(ImageData, 0, y);
+    this.cd.markForCheck();
   }
 
   private setImageSrc(src: string, img: HTMLImageElement) {
@@ -217,36 +241,38 @@ export class NzxJigsawComponent implements AfterViewInit {
     if (isIE) {
       // IE浏览器无法通过img.crossOrigin跨域，使用ajax获取图片blob然后转为dataURL显示
       const xhr = new XMLHttpRequest();
-      xhr.onloadend = function (e: any) {
+      xhr.onloadend = (e: any) => {
         const file = new FileReader(); // FileReader仅支持IE10+
         file.readAsDataURL(e.target.response);
-        file.onloadend = function (e) {
+        file.onloadend = (e) => {
           img.src = e.target?.result as string;
         };
       };
       xhr.open('GET', src);
       xhr.responseType = 'blob';
       xhr.send();
-    } else img.src = src;
-  }
-
-  private createImg(onload: any) {
-    const img: any = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = onload;
-    img.onerror = () => {
-      // 图片加载失败的时候重新加载其他图片
-      this.setImageSrc(this.getRandomImgSrc(), img);
-    };
-    this.setImageSrc(this.getRandomImgSrc(), img);
-    return img;
+    } else {
+      img.src = src;
+    }
   }
 
   private getRandomImgSrc() {
-    return `https://picsum.photos/id/${this.getRandomNumberByRange(
-      0,
-      1084
-    )}/${310}/${155}`;
+    if (this.nzxBgImgUrl && typeof this.nzxBgImgUrl == 'string') {
+      return this.nzxBgImgUrl;
+    }
+
+    if (
+      this.nzxBgImgUrl &&
+      Array.isArray(this.nzxBgImgUrl) &&
+      this.nzxBgImgUrl.length
+    ) {
+      return this.nzxBgImgUrl[
+        this.getRandomNumberByRange(0, this.nzxBgImgUrl.length - 1)
+      ];
+    }
+    return `https://picsum.photos/id/${this.getRandomNumberByRange(0, 1084)}/${
+      this.width
+    }/${this.height}`;
   }
 
   private getRandomNumberByRange(start: number, end: number) {

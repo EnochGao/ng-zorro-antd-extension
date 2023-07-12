@@ -20,13 +20,13 @@ export class NzxJigsawExampleComponent {
   logger = inject(NzMessageService);
 
   fail() {
-    this.logger.error('失败');
+    this.logger.error('验证失败');
   }
 
   refresh() {
-    this.logger.warning('刷新');
+    this.logger.warning('验证刷新');
   }
   success() {
-    this.logger.success('成功');
+    this.logger.success('验证成功');
   }
 }

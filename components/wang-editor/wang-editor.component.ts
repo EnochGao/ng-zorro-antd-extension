@@ -26,8 +26,6 @@ import {
   IDomEditor,
   IEditorConfig,
   SlateDescendant,
-  SlateEditor,
-  SlateTransforms,
 } from '@wangeditor/editor';
 import { Mode } from './type';
 
@@ -186,10 +184,16 @@ export class NzxWangEditorDirective
     });
   }
 
-  writeValue(obj: any): void {
+  writeValue(html: any): void {
     setTimeout(() => {
-      if (obj === this.currentValue) return; // 和当前内容一样，则忽略
-      this.setHtml(obj);
+      if (html === this.currentValue) return; // 和当前内容一样，则忽略
+      if (html) {
+        if (this.editor) {
+          this.editor.setHtml(html);
+        }
+      } else {
+        this.editor.clear();
+      }
     }, 0);
   }
 
@@ -219,42 +223,5 @@ export class NzxWangEditorDirective
     let info = `请使用 '(${fnName})=' 事件!`;
     info += `\nPlease use '(${fnName})' event!`;
     return info;
-  }
-
-  private setHtml(newHtml: string) {
-    const editor = this.editor;
-    if (editor == null) return;
-
-    // 记录编辑器当前状态
-    const isEditorDisabled = editor.isDisabled();
-    const isEditorFocused = editor.isFocused();
-    const editorSelectionStr = JSON.stringify(editor.selection);
-
-    // 删除并重新设置 HTML
-    editor.enable();
-    editor.focus();
-    editor.select([]);
-    editor.deleteFragment();
-    SlateTransforms.setNodes(editor, { type: 'paragraph' } as any, {
-      mode: 'highest',
-    });
-    editor.dangerouslyInsertHtml(newHtml);
-
-    // 恢复编辑器状态
-    if (!isEditorFocused) {
-      editor.deselect();
-      editor.blur();
-    }
-    if (isEditorDisabled) {
-      editor.deselect();
-      editor.disable();
-    }
-    if (editor.isFocused()) {
-      try {
-        editor.select(JSON.parse(editorSelectionStr)); // 选中原来的位置
-      } catch (ex) {
-        editor.select(SlateEditor.start(editor, [])); // 选中开始
-      }
-    }
   }
 }

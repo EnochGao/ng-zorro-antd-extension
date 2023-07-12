@@ -1,8 +1,8 @@
-.container {
-  position: "relative";
+.nzx-jigsaw-container {
+  position: relative;
 }
 
-.jigsaw-block {
+.nzx-jigsaw-block {
   position: absolute;
   left: 0;
   top: 0;
@@ -10,75 +10,58 @@
   cursor: grab;
 }
 
-.jigsaw-block:active {
+.nzx-jigsaw-block:active {
   cursor: grabbing;
 }
 
-.jigsaw-sliderContainer {
+.nzx-jigsaw-slider-container {
   position: relative;
   text-align: center;
-  width: 310px;
-  height: 40px;
   line-height: 40px;
-  margin-top: 15px;
+  height: 40px;
   background: #f7f9fa;
   color: #45494c;
   border: 1px solid #e4e7eb;
 }
 
-.jigsaw-sliderContainer_active .jigsaw-slider {
-  height: 38px;
+.nzx-jigsaw-slider-container-active .nzx-jigsaw-slider {
   top: -1px;
   border: 1px solid #1991fa;
 }
 
-.jigsaw-sliderContainer_active .jigsaw-sliderMask {
-  height: 38px;
+.nzx-jigsaw-slider-container-active .nzx-jigsaw-slider-mask {
   border-width: 1px;
 }
 
-.jigsaw-sliderContainer_success .jigsaw-slider {
-  height: 38px;
+.nzx-jigsaw-slider-container-success .nzx-jigsaw-slider {
   top: -1px;
   border: 1px solid #52ccba;
   background-color: #52ccba !important;
 }
 
-.jigsaw-sliderContainer_success .jigsaw-sliderMask {
-  height: 38px;
+.nzx-jigsaw-slider-container-success .nzx-jigsaw-slider-mask {
   border: 1px solid #52ccba;
   background-color: #d2f4ef;
 }
 
-.jigsaw-sliderContainer_success .jigsaw-sliderIcon {
-  background-position: 0 -26px !important;
-}
-
-.jigsaw-jigsaw-sliderContainer_fail .jigsaw-slider {
-  height: 38px;
+.nzx-jigsaw-slider-container-fail .nzx-jigsaw-slider {
   top: -1px;
   border: 1px solid #f57a7a;
   background-color: #f57a7a !important;
 }
 
-.jigsaw-sliderContainer_fail .jigsaw-sliderMask {
-  height: 38px;
+.nzx-jigsaw-slider-container-fail .nzx-jigsaw-slider-mask {
   border: 1px solid #f57a7a;
   background-color: #fce1e1;
 }
 
-.jigsaw-sliderContainer_fail .jigsaw-sliderIcon {
-  top: 14px;
-  background-position: 0 -82px !important;
-}
-
-.jigsaw-sliderContainer_active .jigsaw-sliderText,
-.jigsaw-sliderContainer_success .jigsaw-sliderText,
-.jigsaw-sliderContainer_fail .jigsaw-sliderText {
+.nzx-jigsaw-slider-container-active .nzx-jigsaw-slider-text,
+.nzx-jigsaw-slider-container-success .nzx-jigsaw-slider-text,
+.nzx-jigsaw-slider-container-fail .nzx-jigsaw-slider-text {
   display: none;
 }
 
-.jigsaw-sliderMask {
+.nzx-jigsaw-slider-mask {
   position: absolute;
   left: 0;
   top: 0;
@@ -87,7 +70,7 @@
   background: #d1e9fe;
 }
 
-.jigsaw-slider {
+.nzx-jigsaw-slider {
   position: absolute;
   top: 0;
   left: 0;
@@ -100,51 +83,27 @@
   cursor: grab;
 }
 
-.jigsaw-slider:active {
+.nzx-jigsaw-slider:active {
   cursor: grabbing;
 }
 
-.jigsaw-slider:hover {
+.nzx-jigsaw-slider:hover {
   background: #1991fa;
 }
 
-.jigsaw-sliderIcon {
-  position: absolute;
-  top: 15px;
-  left: 13px;
-  width: 14px;
-  height: 12px;
-  background: url(https://cstaticdun.126.net//2.13.6/images/icon_light.4353d81.png)
-    0 -13px;
-  background-size: 32px 544px;
-}
-
-.jigsaw-slider:hover .jigsaw-sliderIcon {
-  background-position: 0 0;
-}
-
-.jigsaw-refreshIcon {
+.nzx-jigsaw-refresh-icon {
   position: absolute;
   right: 5px;
   top: 5px;
-  width: 30px;
-  height: 30px;
+  font-size: 24px;
   cursor: pointer;
-  background: url(https://cstaticdun.126.net//2.13.6/images/icon_light.4353d81.png)
-    0 -233px;
-  background-size: 32px 544px;
+  color: white;
 }
 
-.jigsaw-refreshIcon:hover {
-  background-position: 0 -266px;
-}
-
-.jigsaw-loadingContainer {
+.nzx-jigsaw-loading-container {
   position: absolute;
   left: 0;
   top: 0;
-  width: 310px;
-  height: 155px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,22 +114,7 @@
   background: #edf0f2;
 }
 
-.jigsaw-loadingIcon {
-  width: 32px;
-  height: 32px;
+.nzx-jigsaw-loading-icon {
+  font-size: 32px;
   margin-bottom: 10px;
-  background: url(https://cstaticdun.126.net//2.13.6/images/icon_light.4353d81.png)
-    0 -332px;
-  background-size: 32px 544px;
-  animation: loading-icon-rotate 0.8s linear infinite;
-}
-
-@keyframes loading-icon-rotate {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }

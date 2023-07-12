@@ -1,27 +1,36 @@
 <div
-  class="container"
+  class="nzx-jigsaw-container"
   [ngStyle]="{
-    position: 'relative',
-    width: width + 'px',
-    height: height + 'px'
+    width: width + 'px'
   }"
   (selectstart)="selectstart()"
 >
   <div
-    class="jigsaw-loadingContainer"
-    [ngStyle]="{ display: isLoading ? '' : 'none' }"
+    class="nzx-jigsaw-loading-container"
+    [ngStyle]="{
+      display: isLoading ? '' : 'none',
+      width: width + 'px',
+      height: height + 'px'
+    }"
   >
-    <div class="jigsaw-loadingIcon"></div>
-    <span>加载中...</span>
+    <span class="nzx-jigsaw-loading-icon" nz-icon [nzType]="'loading'"></span>
+    <span>{{ nzxLoadingText }}</span>
   </div>
 
   <canvas #canvasCtx [width]="width" [height]="height"></canvas>
 
-  <div class="jigsaw-refreshIcon" (click)="refresh()"></div>
+  <span
+    class="nzx-jigsaw-refresh-icon"
+    nz-icon
+    nzType="redo"
+    nzTheme="outline"
+    [nzRotate]="-80"
+    (click)="refresh()"
+  ></span>
 
   <canvas
     #blockCtx
-    class="jigsaw-block"
+    class="nzx-jigsaw-block"
     [width]="width"
     [height]="height"
     (touchstart)="handleDragStart($event)"
@@ -30,22 +39,22 @@
 
   <div
     #sliderContainer
-    class="jigsaw-sliderContainer"
+    class="nzx-jigsaw-slider-container"
     [ngStyle]="{
       width: width + 'px',
       'pointer-events': isLoading ? 'none' : ''
     }"
   >
-    <div #sliderMask class="jigsaw-sliderMask">
+    <div #sliderMask class="nzx-jigsaw-slider-mask">
       <div
         #slider
-        class="jigsaw-slider"
+        class="nzx-jigsaw-slider"
         (touchstart)="handleDragStart($event)"
         (mousedown)="handleDragStart($event)"
       >
-        <span class="jigsaw-sliderIcon"></span>
+        <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
       </div>
     </div>
-    <span class="jigsaw-sliderText">{{ text }}</span>
+    <span class="nzx-jigsaw-slider-text">{{ nzxTipText }}</span>
   </div>
 </div>

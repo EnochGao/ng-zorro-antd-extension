@@ -3,7 +3,6 @@ category: directive
 title: 去空格
 subtitle: nzx-trim
 order: 1
-label: new
 ---
 
 去空格指令，用来自动去除表单输入框中的前后空格

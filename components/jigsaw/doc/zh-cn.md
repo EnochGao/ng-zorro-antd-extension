@@ -6,7 +6,7 @@ order: 7
 label: new
 ---
 
-七巧板拼图
+纯前端实现七巧板拼图
 
 ## 支持版本
 
@@ -28,6 +28,18 @@ import { NzxJigsawModule } from "ng-zorro-antd-extension/jigsaw";
 
 ### 内置属性
 
-| 属性     | 类型                           | 默认值 |
-| -------- | ------------------------------ | ------ |
-| trimType | `trim \| trimStart \| trimEnd` | trim   |
+| 属性           | 类型                    | 默认值               |
+| -------------- | ----------------------- | -------------------- |
+| width          | `number`                | `310`                |
+| height         | `number`                | `155`                |
+| nzxLoadingText | `string`                | `'加载中...'`        |
+| nzxTipText     | `string`                | `'向右滑动填充拼图'` |
+| nzxBgImgUrl   | `string`\|\| `string[]` | `''`                 |
+
+### 内置事件
+
+| 事件         | 类型                 | 默认值 |
+| ------------ | -------------------- | ------ |
+| nzxOnRefresh | `EventEmitter<void>` | -      |
+| nzxOnSuccess | `EventEmitter<void>` | -      |
+| nzxOnFail    | `EventEmitter<void>` | -      |

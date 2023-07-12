@@ -3,7 +3,7 @@ category: util
 title: 工具函数
 subtitle: util
 order: 1
-label: new
+# label: new
 ---
 
 常用工具函数，减少项目包体积
