@@ -12,6 +12,7 @@ import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 import { NzxConfig, NZX_CONFIG } from 'ng-zorro-antd-extension/core/config';
+import { NzxAclModule } from 'ng-zorro-antd-extension/acl';
 
 registerLocaleData(zh);
 
@@ -33,6 +34,7 @@ const ngZorroExtensionConfig: NzxConfig = {
     BrowserAnimationsModule,
     DocgeniTemplateModule,
     NzIconModule,
+    NzxAclModule.forRoot(),
     RouterModule.forRoot([]),
   ],
   providers: [
