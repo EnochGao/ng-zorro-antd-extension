@@ -17,7 +17,7 @@ label: new
 ### 引入
 
 ```ts
-import { NzxAclService } from "ng-zorro-antd-extension/acl";
+import { NzxAclModule, NzxAclService } from 'ng-zorro-antd-extension/acl';
 ```
 
 appModule 中

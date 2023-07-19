@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { NzxMapPipe } from './map.pipe';
-import { NzxSafeNullPipe } from './nzx-safe-null.pipe';
+import { NzxSafeNullPipe } from './safe-null.pipe';
 
 @NgModule({
   declarations: [NzxMapPipe, NzxSafeNullPipe],

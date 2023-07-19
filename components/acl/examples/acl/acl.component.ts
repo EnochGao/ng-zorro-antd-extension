@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { NzxAclModule } from 'ng-zorro-antd-extension/acl/nzx-acl.module';
 
-import { NzxAclService } from 'ng-zorro-antd-extension/acl';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 
+import { NzxAclModule, NzxAclService } from 'ng-zorro-antd-extension/acl';
 @Component({
   standalone: true,
   imports: [CommonModule, NzButtonModule, NzDividerModule, NzxAclModule],
