@@ -5,4 +5,9 @@
 
 export * from './map.pipe';
 export * from './safe-null.pipe';
+export * from './safe-url.pipe';
+export * from './safe-html.pipe';
+export * from './safe-resource-url.pipe';
+export * from './safe-script.pipe';
+export * from './safe-style.pipe';
 export * from './pipes.module';

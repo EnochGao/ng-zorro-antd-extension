@@ -2,6 +2,7 @@ import { InjectionToken } from '@angular/core';
 
 export interface NzxConfig {
   nzxSafeNull?: SafeNull;
+  nzxSafeUrl?: SafeUrl;
   nzxTrim?: Trim;
   nzxTableAdaptor?: TableAdaptor;
   nzxTimerButton?: TimerButton;
@@ -9,6 +10,9 @@ export interface NzxConfig {
 
 export interface SafeNull {
   placeholder?: any;
+}
+export interface SafeUrl {
+  protocol: 'http' | 'https';
 }
 export interface Trim {
   trimType: 'trim' | 'trimStart' | 'trimEnd';
