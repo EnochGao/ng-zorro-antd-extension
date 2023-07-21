@@ -3,7 +3,6 @@ category: component
 title: 七巧板
 subtitle: nzx-jigsaw
 order: 7
-label: new
 ---
 
 纯前端实现七巧板拼图

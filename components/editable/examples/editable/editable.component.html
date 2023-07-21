@@ -1,0 +1,24 @@
+<nz-table nzBordered nzTemplateMode>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list">
+      <td nzBreakWord>
+        <nzx-editable [(nzxDetail)]="item.name">
+          <span *nzxEditableDetail>{{ item.name }} </span>
+        </nzx-editable>
+      </td>
+      <td>
+        <nzx-editable [(nzxDetail)]="item.age">
+          <span *nzxEditableDetail>{{ item.age }} </span>
+        </nzx-editable>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<button nz-button (click)="log()">table value</button>
