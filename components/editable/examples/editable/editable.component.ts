@@ -8,7 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NzxEditableModule } from 'ng-zorro-antd-extension/editable';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
@@ -17,10 +19,11 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     CommonModule,
     FormsModule,
     NzTableModule,
-    ReactiveFormsModule,
     NzButtonModule,
-    NzxEditableModule,
     NzInputModule,
+    NzCardModule,
+    NzSpaceModule,
+    NzxEditableModule,
   ],
   selector: 'nzx-editable-example',
   templateUrl: './editable.component.html',
@@ -33,10 +36,12 @@ export class NzxEditableExampleComponent {
     {
       name: 'EnochGao',
       age: 18,
+      country: 'china',
     },
     {
       name: 'zhangsan',
       age: 20,
+      country: 'china england usa china england usa china england usa china england usa',
     },
   ];
 

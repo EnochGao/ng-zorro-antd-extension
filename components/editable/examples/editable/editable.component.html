@@ -1,24 +1,35 @@
-<nz-table nzBordered nzTemplateMode>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of list">
-      <td nzBreakWord>
-        <nzx-editable [(nzxDetail)]="item.name">
-          <span *nzxEditableDetail>{{ item.name }} </span>
-        </nzx-editable>
-      </td>
-      <td>
-        <nzx-editable [(nzxDetail)]="item.age">
-          <span *nzxEditableDetail>{{ item.age }} </span>
-        </nzx-editable>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+<nz-card nzTitle="table td editable">
+  <nz-space [ngStyle]="{ 'margin-bottom': '10px' }">
+    <button *nzSpaceItem nz-button nzType="dashed" (click)="log()">
+      log table value
+    </button>
+  </nz-space>
 
-<button nz-button (click)="log()">table value</button>
+  <nz-table nzBordered nzTemplateMode>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th nzAlign="center">Age</th>
+        <th>country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list">
+        <td nzBreakWord>
+          <nzx-editable [(nzxDetail)]="item.name">
+            <span *nzxEditableDetail>{{ item.name }} </span>
+          </nzx-editable>
+        </td>
+        <td nzAlign="center">
+          <nzx-editable [(nzxDetail)]="item.age" [nzxShowBtn]="false">
+            <span *nzxEditableDetail>{{ item.age }} </span>
+          </nzx-editable>
+        </td>
+        <td nzBreakWord>
+          <span>{{ item.country }} </span>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
+<nz-card nzTitle="title"> </nz-card>

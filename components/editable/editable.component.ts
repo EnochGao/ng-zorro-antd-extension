@@ -15,8 +15,13 @@ import { NzxEditableDetailDirective } from './editable-detail.directive';
 @Component({
   selector: 'nzx-editable',
   template: `
-    <div nz-row nzAlign="middle">
-      <div nz-col [nzSpan]="22">
+    <div nz-row nzAlign="middle" [ngStyle]="{ 'flex-wrap': 'nowrap' }">
+      <div
+        class="nzx-editable-cell"
+        nz-col
+        [nzFlex]="1"
+        (dblclick)="editable = true"
+      >
         <ng-container *ngIf="!editable">
           <ng-container
             *ngTemplateOutlet="editableDetailTemplate"
@@ -32,8 +37,7 @@ import { NzxEditableDetailDirective } from './editable-detail.directive';
           (blur)="editable = false"
         />
       </div>
-
-      <div nz-col [nzSpan]="2" [ngStyle]="{ 'text-align': 'right' }">
+      <div nz-col *ngIf="!editable && nzxShowBtn">
         <button
           nz-button
           nzType="primary"
@@ -46,10 +50,27 @@ import { NzxEditableDetailDirective } from './editable-detail.directive';
       </div>
     </div>
   `,
+  styles: [
+    `
+      .nzx-editable-cell {
+        position: relative;
+        padding: 5px 12px;
+        cursor: pointer;
+      }
+
+      .nzx-editable-cell:hover {
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        padding: 4px 11px;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'NzxEditable',
 })
 export class NzxEditableComponent implements OnChanges {
   @Input() nzxDetail: string | number = '';
+  @Input() nzxShowBtn = true;
   @Output() nzxDetailChange = new EventEmitter();
 
   editable = false;
