@@ -16,20 +16,42 @@
     <tbody>
       <tr *ngFor="let item of list">
         <td nzBreakWord>
-          <nzx-editable [(nzxDetail)]="item.name">
-            <span *nzxEditableDetail>{{ item.name }} </span>
-          </nzx-editable>
+          <span nzx-editable [(nzxContent)]="item.name"></span>
         </td>
         <td nzAlign="center">
-          <nzx-editable [(nzxDetail)]="item.age" [nzxShowBtn]="false">
-            <span *nzxEditableDetail>{{ item.age }} </span>
-          </nzx-editable>
+          <span nzx-editable [(nzxContent)]="item.age"></span>
         </td>
         <td nzBreakWord>
-          <span>{{ item.country }} </span>
+          <span
+            nzx-editable
+            [(nzxContent)]="item.country"
+            [nzxShowBtn]="false"
+          ></span>
         </td>
       </tr>
     </tbody>
   </nz-table>
 </nz-card>
-<nz-card nzTitle="title"> </nz-card>
+
+<nz-card nzTitle="detail editable">
+  <nz-space [ngStyle]="{ 'margin-bottom': '10px' }">
+    <button *nzSpaceItem nz-button nzType="dashed" (click)="logDetail()">
+      log detail value
+    </button>
+  </nz-space>
+  <nz-descriptions nzTitle="User Info">
+    <nz-descriptions-item nzTitle="UserName">
+      <span nzx-editable [(nzxContent)]="userDetail.userName"></span>
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Age">
+      <span nzx-editable [(nzxContent)]="userDetail.age"></span>
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Live">
+      <span
+        nzx-editable
+        [(nzxContent)]="userDetail.live"
+        [nzxShowBtn]="false"
+      ></span>
+    </nz-descriptions-item>
+  </nz-descriptions>
+</nz-card>
