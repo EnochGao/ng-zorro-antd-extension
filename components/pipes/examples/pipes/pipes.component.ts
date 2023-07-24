@@ -6,6 +6,7 @@ import {
   NzxSimpleTableModule,
 } from 'ng-zorro-antd-extension/simple-table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCardModule } from 'ng-zorro-antd/card';
 interface Person {
   id: number;
   name: string;
@@ -16,12 +17,20 @@ interface Person {
 }
 @Component({
   standalone: true,
-  imports: [CommonModule, NzxPipesModule, NzxSimpleTableModule, NzButtonModule],
+  imports: [
+    CommonModule,
+    NzCardModule,
+    NzxPipesModule,
+    NzxSimpleTableModule,
+    NzButtonModule,
+  ],
   selector: 'nzx-pipe-demo',
   templateUrl: './pipes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxPipeExampleComponent {
+  unsafeUrl = 'http://www.runoob.com/images/pulpit.jpg';
+
   config: Array<NzxSimpleTableConfig<Person>> = [
     { header: 'id', key: 'id', width: '50px' },
     {

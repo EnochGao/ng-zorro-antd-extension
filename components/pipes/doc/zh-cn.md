@@ -3,6 +3,7 @@ category: pipe
 title: 管道
 subtitle: pipes
 order: 2
+label: new
 ---
 
 - 映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接
@@ -10,9 +11,15 @@ order: 2
 
 ## 支持版本
 
-nzxMap:<label type="success">v13.0.0+</label>
-
-nzxSafeNull:<label type="success">v14.0.0+</label>
+| pipe               | version support                        |
+| ------------------ | -------------------------------------- |
+| nzxMap             | <label type="success">v13.0.0+</label> |
+| nzxSafeNull        | <label type="success">v14.0.0+</label> |
+| nzxSafeHtml        | <label type="success">v15.10.0+</label> |
+| nzxSafeResourceUrl | <label type="success">v15.10.0+</label> |
+| nzxSafeScript      | <label type="success">v15.10.0+</label> |
+| nzxSafeStyle       | <label type="success">v15.10.0+</label> |
+| nzxSafeUrl         | <label type="success">v15.10.0+</label> |
 
 ## 基本使用
 

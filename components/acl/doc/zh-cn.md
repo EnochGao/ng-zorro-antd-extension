@@ -3,7 +3,6 @@ category: directive
 title: 访问控制
 subtitle: nzx-acl
 order: 5
-label: new
 ---
 
 简单实现访问控制
@@ -17,7 +16,7 @@ label: new
 ### 引入
 
 ```ts
-import { NzxAclService } from "ng-zorro-antd-extension/acl";
+import { NzxAclModule, NzxAclService } from "ng-zorro-antd-extension/acl";
 ```
 
 appModule 中
