@@ -6,10 +6,13 @@ import {
   ContentChildren,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
   QueryList,
+  SimpleChanges,
+  TemplateRef,
 } from '@angular/core';
 
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
@@ -18,6 +21,7 @@ import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject, takeUntil } from 'rxjs';
 import { ControlDirective } from './control.directive';
 import { NzxQueryParams, NzxQueryControlOptions } from './type';
+import { isArray } from 'ng-zorro-antd-extension/util';
 
 /**
  * 查询组件
@@ -32,7 +36,7 @@ import { NzxQueryParams, NzxQueryControlOptions } from './type';
   exportAs: 'NzxConfigurableQuery',
 })
 export class NzxConfigurableQueryComponent
-  implements OnInit, AfterContentInit, OnDestroy
+  implements OnChanges, OnInit, AfterContentInit, OnDestroy
 {
   /** 配置项 */
   @Input() controls: Array<NzxQueryControlOptions> = [];
@@ -60,9 +64,6 @@ export class NzxConfigurableQueryComponent
   /** form 表单*/
   queryForm!: FormGroup;
 
-  /**是否展开状态*/
-  isCollapse = true;
-
   /** 查询组件出参*/
   get queryParams() {
     return this._queryParams;
@@ -72,17 +73,37 @@ export class NzxConfigurableQueryComponent
     this._queryParams = value;
   }
 
+  get collapseText() {
+    return this.isCollapse ? '展开' : '收起';
+  }
+
+  get collapseIcon() {
+    return this.isCollapse ? 'down' : 'up';
+  }
+
+  /**是否展开状态*/
+  private isCollapse = true;
   private _queryParams: NzxQueryParams = {};
   private defaultValue: NzxQueryParams = {};
   private params: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
   private _nzxBtnSpan: number | null = null;
 
-  @ContentChildren(ControlDirective)
+  @ContentChildren(ControlDirective, { descendants: true })
   controlTemplateList!: QueryList<ControlDirective>;
 
   constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
     this.queryForm = this.fb.group({});
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['controls'] && !changes['controls'].isFirstChange()) {
+      this.clearForm();
+      const controls = changes['controls'].currentValue;
+      if (Array.isArray(controls)) {
+        this.generateForm();
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -103,20 +124,7 @@ export class NzxConfigurableQueryComponent
   }
 
   ngAfterContentInit(): void {
-    for (const control of this.controls) {
-      if (control.controlType === 'Template') {
-        const item = this.controlTemplateList.find(
-          (directive) => directive.nzxControl === control.controlName
-        );
-        if (item) {
-          control.templateRef = item.templateRef;
-        }
-      }
-      this.queryForm.addControl(
-        control.controlName,
-        control.controlInstance ?? this.fb.control(control.default ?? null)
-      );
-    }
+    this.generateForm();
 
     this._queryParams = {
       ...this.queryForm.value,
@@ -135,7 +143,7 @@ export class NzxConfigurableQueryComponent
     }
   }
 
-  setQueryParams(params: NzxQueryParams) {
+  setQueryParams(params: NzxQueryParams): void {
     this.params = params;
     this.queryForm.patchValue(params);
   }
@@ -156,6 +164,41 @@ export class NzxConfigurableQueryComponent
   }
 
   /**
+   * 动态添加控件
+   */
+  addControl(config: NzxQueryControlOptions): void {
+    const control = this.getControl(config.controlName);
+    if (!control) {
+      this.collapse();
+      this.queryForm.addControl(
+        config.controlName,
+        config.controlInstance ?? this.fb.control(config.default ?? null)
+      );
+      this.controls.push(config);
+      this.cd.markForCheck();
+    } else {
+      throw `The control name: '${config.controlName}' already exists!`;
+    }
+  }
+
+  /**
+   * 根据控件名删除控件
+   */
+  removeControl(controlName: string): void {
+    const control = this.getControl(controlName);
+    if (control) {
+      this.collapse();
+      this.queryForm.removeControl(controlName);
+      this.controls = this.controls.filter(
+        (c) => c.controlName !== controlName
+      );
+      this.cd.markForCheck();
+    } else {
+      throw `The control name: '${controlName}' not find!`;
+    }
+  }
+
+  /**
    * 根据controlName获取config项
    */
   getControl(controlName: string): NzxQueryControlOptions | undefined {
@@ -169,7 +212,8 @@ export class NzxConfigurableQueryComponent
   }
 
   /**
-   * 检索给定控件名称或路径的子控件。这个 getFormControl 签名支持字符串和 const 数组（.getFormControl(['foo', 'bar'] as const)）
+   * 检索给定控件名称或路径的子控件。
+   * 这个 getFormControl 签名支持字符串和 const 数组（.getFormControl(['foo', 'bar'] as const)）
    */
   getFormControl(
     path: string | readonly (string | number)[]
@@ -192,12 +236,13 @@ export class NzxConfigurableQueryComponent
   }
 
   /** 重置 */
-  reset() {
+  reset(): void {
     this.queryForm.reset(this.defaultValue);
     this.resetChange.emit(this._queryParams);
   }
 
-  toggleCollapse() {
+  /**展开、收起*/
+  toggleCollapse(): void {
     this.controls.forEach((control) => {
       if (this.isCollapse && control.collapse === true) {
         // 展开
@@ -215,5 +260,40 @@ export class NzxConfigurableQueryComponent
   ngOnDestroy(): void {
     this.destroy$.complete();
     this.destroy$.unsubscribe();
+  }
+  /** 清空表单 */
+  private clearForm(): void {
+    Object.keys(this.queryForm.controls).forEach((key) => {
+      this.queryForm.removeControl(key);
+    });
+  }
+
+  /** 折叠 */
+  private collapse(): void {
+    this.isCollapse = true;
+    this.controls.forEach((control) => {
+      if (control.collapse === false) {
+        control.collapse = true;
+        this.nzxBtnSpan = this._nzxBtnSpan;
+      }
+    });
+  }
+
+  /** 生成表单 */
+  private generateForm(): void {
+    for (const control of this.controls) {
+      if (control.controlType === 'Template') {
+        const item = this.controlTemplateList.find(
+          (directive) => directive.nzxControl === control.controlName
+        );
+        if (item) {
+          control.templateRef = item.templateRef;
+        }
+      }
+      this.queryForm.addControl(
+        control.controlName,
+        control.controlInstance ?? this.fb.control(control.default ?? null)
+      );
+    }
   }
 }

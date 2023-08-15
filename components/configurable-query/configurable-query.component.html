@@ -80,8 +80,8 @@
           nzType="link"
           (click)="toggleCollapse()"
         >
-          {{ isCollapse ? "展开" : "收起" }}
-          <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+          {{ collapseText }}
+          <i nz-icon [nzType]="collapseIcon"></i>
         </a>
       </div>
     </div>

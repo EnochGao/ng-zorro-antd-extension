@@ -149,4 +149,52 @@
   <pre>
   {{ queryParams9 | json }}
   </pre>
+
+  <div>例子10： 动态添加删除控件</div>
+  <nz-space>
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="addGender()"
+    >
+      add gender
+    </button>
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="addLevel()"
+    >
+      add level
+    </button>
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="removeLevel()"
+    >
+      remove level
+    </button>
+  </nz-space>
+
+  <ng-template #levelRef let-formControl>
+    <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
+  </ng-template>
+
+  <nzx-configurable-query
+    #query10
+    [controls]="controls10"
+    (queryChange)="queryParams10 = $event"
+    (resetChange)="queryParams10 = $event"
+  >
+  </nzx-configurable-query>
+
+  查询参数：
+  <pre>
+  {{ queryParams10 | json }}
+  </pre>
 </div>

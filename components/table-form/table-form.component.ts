@@ -80,6 +80,8 @@ export class NzxTableFormComponent
   @Input() minLimit: number = 0;
   /** 自定义footer */
   @Input() nzxFooter?: string | TemplateRef<void>;
+  /**是否在前端对数据进行分页，如果在服务器分页数据或者需要在前端显示全部数据时传入 false */
+  @Input() nzxFrontPagination = true;
 
   /**
    * 校验整个table的错误提示自定义模板

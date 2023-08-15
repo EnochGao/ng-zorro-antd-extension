@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -18,6 +19,9 @@ import {
   NzxQueryControlOptions,
 } from 'ng-zorro-antd-extension/configurable-query/type';
 
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+
 @Component({
   selector: 'nzx-configurable-query-demo',
   templateUrl: './configurable-query.component.html',
@@ -29,6 +33,8 @@ import {
     ReactiveFormsModule,
     NzRateModule,
     NzxConfigurableQueryModule,
+    NzButtonModule,
+    NzSpaceModule,
   ],
 })
 export class NzxConfigurableQueryExampleComponent implements OnInit {
@@ -339,6 +345,60 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ];
   @ViewChild('query9', { static: true })
   private query9!: NzxConfigurableQueryComponent;
+
+  queryParams10: NzxQueryParams = {};
+
+  controls10: Array<NzxQueryControlOptions> = [
+    {
+      controlName: 'name',
+      label: '姓名',
+      placeholder: '姓名',
+      controlType: 'input',
+    },
+
+    {
+      controlName: 'birthday',
+      label: '出生日期',
+      placeholder: '日期',
+      controlType: 'datePicker',
+      collapse: true,
+    },
+  ];
+
+  @ViewChild('levelRef', { static: true })
+  private levelRef!: TemplateRef<any>;
+  @ViewChild('query10', { static: true })
+  private query10!: NzxConfigurableQueryComponent;
+
+  addGender() {
+    this.query10.addControl({
+      controlName: 'gender',
+      label: '性别',
+      placeholder: '请选择',
+      controlType: 'select',
+      menuList: [
+        { label: '男', value: 1 },
+        { label: '女', value: 2 },
+      ],
+      controlInstance: new FormControl(1, [Validators.required]),
+      errorTip: '假设必填默认',
+      nzxAllowClear: true,
+    });
+  }
+
+  addLevel() {
+    this.query10.addControl({
+      controlName: 'level',
+      label: '职业等级',
+      controlType: 'Template',
+      templateRef: this.levelRef,
+      collapse: true,
+    });
+  }
+
+  removeLevel() {
+    this.query10.removeControl('level');
+  }
 
   ngOnInit(): void {
     setTimeout(() => {

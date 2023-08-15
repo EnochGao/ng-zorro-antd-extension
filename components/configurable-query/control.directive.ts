@@ -1,12 +1,9 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[nzxControl]'
+  selector: '[nzxControl]',
 })
 export class ControlDirective {
-
   @Input() nzxControl!: string;
-
-  constructor(public templateRef: TemplateRef<unknown>) { }
-
+  constructor(public templateRef: TemplateRef<unknown>) {}
 }
