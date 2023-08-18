@@ -70,9 +70,11 @@
     <div class="nzx-query-btn" nz-col [nzSpan]="nzxBtnSpan || 24 / lineNumber">
       <div nz-row nzJustify="end" nzAlign="middle">
         <button nz-button nzType="primary" type="button" (click)="search()">
-          查询
+          {{ locale["query"] }}
         </button>
-        <button nz-button type="button" (click)="reset()">重置</button>
+        <button nz-button type="button" (click)="reset()">
+          {{ locale["reset"] }}
+        </button>
         <ng-content></ng-content>
         <a
           *ngIf="nzxCollapse"

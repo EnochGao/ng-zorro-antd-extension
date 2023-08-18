@@ -13,6 +13,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 import { NzxConfig, NZX_CONFIG } from 'ng-zorro-antd-extension/core/config';
 import { NzxAclModule } from 'ng-zorro-antd-extension/acl';
+import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 
 registerLocaleData(zh);
 
@@ -27,6 +28,11 @@ const ngZorroExtensionConfig: NzxConfig = {
   },
 };
 
+const customLanguagePack = {
+  zh_CN,
+  ...nzx_zh_CN,
+};
+
 @NgModule({
   declarations: [],
   imports: [
@@ -39,7 +45,7 @@ const ngZorroExtensionConfig: NzxConfig = {
   ],
   providers: [
     ...DOCGENI_SITE_PROVIDERS,
-    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: NZ_I18N, useValue: customLanguagePack },
     { provide: NZ_CONFIG, useValue: ngZorroConfig },
     { provide: NZX_CONFIG, useValue: ngZorroExtensionConfig },
   ],

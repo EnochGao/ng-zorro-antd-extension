@@ -12,7 +12,6 @@ import {
   Output,
   QueryList,
   SimpleChanges,
-  TemplateRef,
 } from '@angular/core';
 
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
@@ -20,8 +19,9 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject, takeUntil } from 'rxjs';
 import { ControlDirective } from './control.directive';
-import { NzxQueryParams, NzxQueryControlOptions } from './type';
-import { isArray } from 'ng-zorro-antd-extension/util';
+import { NzxQueryControlOptions, NzxQueryParams } from './type';
+import { NzI18nService } from 'ng-zorro-antd/i18n';
+import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
 
 /**
  * 查询组件
@@ -74,12 +74,14 @@ export class NzxConfigurableQueryComponent
   }
 
   get collapseText() {
-    return this.isCollapse ? '展开' : '收起';
+    return this.isCollapse ? this.locale.expand : this.locale.collapse;
   }
 
   get collapseIcon() {
     return this.isCollapse ? 'down' : 'up';
   }
+
+  locale!: NzxQueryI18nInterface;
 
   /**是否展开状态*/
   private isCollapse = true;
@@ -92,7 +94,11 @@ export class NzxConfigurableQueryComponent
   @ContentChildren(ControlDirective, { descendants: true })
   controlTemplateList!: QueryList<ControlDirective>;
 
-  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
+  constructor(
+    private i18n: NzI18nService,
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef
+  ) {
     this.queryForm = this.fb.group({});
   }
 
@@ -107,6 +113,10 @@ export class NzxConfigurableQueryComponent
   }
 
   ngOnInit(): void {
+    this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.locale = this.i18n.getLocaleData('Query');
+      this.cd.markForCheck();
+    });
     this.queryForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
