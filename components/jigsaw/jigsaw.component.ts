@@ -9,7 +9,6 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { isString } from 'ng-zorro-antd-extension/util';
 
 const l = 42; // 滑块边长
 const r = 9; // 滑块半径
