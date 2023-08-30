@@ -29,7 +29,7 @@ const ngZorroExtensionConfig: NzxConfig = {
 };
 
 const customLanguagePack = {
-  zh_CN,
+  ...zh_CN,
   ...nzx_zh_CN,
 };
 

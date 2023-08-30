@@ -36,6 +36,29 @@ npm install ng-zorro-antd-extension --save
 ng add ng-zorro-antd-extension
 ```
 
+3、app.module v15.11.0+
+
+```ts
+import zh from "@angular/common/locales/zh";
+import { NZ_I18N, zh_CN } from "ng-zorro-antd/i18n";
+import { nzx_zh_CN } from "ng-zorro-antd-extension/i18n";
+
+registerLocaleData(zh);
+
+const customLanguagePack = {
+  ...zh_CN,
+  ...nzx_zh_CN,
+};
+
+@NgModule({
+  declarations: [],
+  imports: [],
+  providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
+  bootstrap: [RootComponent],
+})
+export class AppModule {}
+```
+
 如需指定版本
 
 ```bash

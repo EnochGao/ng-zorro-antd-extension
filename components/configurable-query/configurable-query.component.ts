@@ -170,6 +170,7 @@ export class NzxConfigurableQueryComponent
       Object.keys(config).forEach((key) => {
         (control as any)[key] = (config as any)[key];
       });
+      this.cd.markForCheck();
     }
   }
 
