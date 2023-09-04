@@ -18,7 +18,7 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { NzJustify } from 'ng-zorro-antd/grid';
 import { Subject, takeUntil } from 'rxjs';
-import { ControlDirective } from './control.directive';
+import { NzxControlDirective } from './control.directive';
 import { NzxQueryControlOptions, NzxQueryParams } from './type';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
@@ -91,8 +91,8 @@ export class NzxConfigurableQueryComponent
   private destroy$ = new Subject<void>();
   private _nzxBtnSpan: number | null = null;
 
-  @ContentChildren(ControlDirective, { descendants: true })
-  controlTemplateList!: QueryList<ControlDirective>;
+  @ContentChildren(NzxControlDirective, { descendants: true })
+  controlTemplateList!: QueryList<NzxControlDirective>;
 
   constructor(
     private i18n: NzI18nService,
