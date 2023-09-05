@@ -80,7 +80,7 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   private _queryParams: Partial<NzxTableQueryParams> = {};
 
   private nzTableQueryParams!: NzTableQueryParams;
-  private destroy$ = new Subject();
+  private destroy$ = new Subject<void>();
   private nzxConfigService: NzxConfigService = inject(NzxConfigService);
 
   private nzTable: NzTableComponent<any> = inject(NzTableComponent);
@@ -130,8 +130,8 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next();
     this.destroy$.complete();
-    this.destroy$.unsubscribe();
   }
 
   /**

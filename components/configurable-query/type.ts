@@ -1,6 +1,7 @@
 import { TemplateRef } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { NzxOptions } from 'ng-zorro-antd-extension/types';
+import { NzxAbstractControl } from './controls/abstract.control';
 
 /**
  * 查询参数
@@ -8,6 +9,13 @@ import { NzxOptions } from 'ng-zorro-antd-extension/types';
 export interface NzxQueryParams {
   [key: string]: any;
 }
+type ControlType =
+  | 'input'
+  | 'select'
+  | 'datePicker'
+  | 'rangePicker'
+  | 'Template'
+  | string;
 
 /**
  * 配置项
@@ -20,7 +28,8 @@ export interface NzxQueryControlOptions {
   /**
    * 控件类型
    */
-  controlType: 'input' | 'select' | 'datePicker' | 'rangePicker' | 'Template';
+  controlType: ControlType;
+
   /**
    * 查询框label
    */
@@ -73,4 +82,14 @@ export interface NzxQueryControlOptions {
    * 自定义模板
    */
   templateRef?: TemplateRef<unknown>;
+
+  [key: string]: any;
+}
+
+export interface NzxQueryControlType {
+  key: string;
+  component: typeof NzxAbstractControl;
+}
+export interface NzxQueryConfig {
+  controlTypes: NzxQueryControlType[];
 }

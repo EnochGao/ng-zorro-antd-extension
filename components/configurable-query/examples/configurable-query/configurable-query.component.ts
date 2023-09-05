@@ -15,8 +15,8 @@ import {
   NzxConfigurableQueryModule,
 } from 'ng-zorro-antd-extension/configurable-query';
 import {
-  NzxQueryParams,
   NzxQueryControlOptions,
+  NzxQueryParams,
 } from 'ng-zorro-antd-extension/configurable-query/type';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';

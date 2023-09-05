@@ -15,53 +15,10 @@
             [nzSpan]="control.nzxRSpan || 18"
             [nzErrorTip]="control.errorTip"
           >
-            <input
-              *ngIf="control.controlType === 'input'"
-              nz-input
-              type="text"
-              placeholder="{{ control.placeholder }}"
-              [formControlName]="control.controlName"
-            />
-
-            <nz-select
-              *ngIf="control.controlType === 'select'"
-              [formControlName]="control.controlName"
-              [nzShowSearch]="true"
-              [nzAllowClear]="control.nzxAllowClear"
-              [nzPlaceHolder]="control.placeholder"
-            >
-              <nz-option
-                *ngFor="let item of control.menuList"
-                [nzValue]="item.value"
-                [nzLabel]="item.label"
-              >
-              </nz-option>
-            </nz-select>
-
-            <nz-date-picker
-              *ngIf="control.controlType === 'datePicker'"
-              [ngStyle]="{ width: '100%' }"
-              [formControlName]="control.controlName"
-              [nzPlaceHolder]="control.placeholder"
-            >
-            </nz-date-picker>
-
-            <nz-range-picker
-              *ngIf="control.controlType === 'rangePicker'"
-              [ngStyle]="{ width: '100%' }"
-              [formControlName]="control.controlName"
-            >
-            </nz-range-picker>
-
-            <ng-container *ngIf="control.controlType === 'Template'">
-              <ng-container
-                *ngTemplateOutlet="
-                  control.templateRef;
-                  context: { $implicit: queryForm.get(control.controlName) }
-                "
-              >
-              </ng-container>
-            </ng-container>
+            <nzx-configurable-query-control
+              [form]="queryForm"
+              [control]="control"
+            ></nzx-configurable-query-control>
           </nz-form-control>
         </nz-form-item>
       </div>

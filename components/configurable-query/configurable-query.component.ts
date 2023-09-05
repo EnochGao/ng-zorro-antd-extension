@@ -269,8 +269,8 @@ export class NzxConfigurableQueryComponent
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next();
     this.destroy$.complete();
-    this.destroy$.unsubscribe();
   }
   /** 清空表单 */
   private clearForm(): void {
