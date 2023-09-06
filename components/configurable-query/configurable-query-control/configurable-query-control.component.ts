@@ -34,11 +34,10 @@ export class NzxConfigurableQueryControlComponent implements OnInit, OnDestroy {
     this.nzxQueryConfigService.controlTypes$
       .pipe(takeUntil(this.destroy$))
       .subscribe((list) => {
-        console.log('list::', list);
-
         this.renderControl(list);
       });
   }
+
   ngOnDestroy(): void {
     if (this.destroy$) {
       this.destroy$.next();

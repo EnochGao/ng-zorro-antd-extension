@@ -63,6 +63,7 @@ export class NzxConfigurableQueryModule {
       ],
     };
   }
+
   static forChild(
     nzxQueryConfig: NzxQueryConfig
   ): ModuleWithProviders<NzxConfigurableQueryModule> {

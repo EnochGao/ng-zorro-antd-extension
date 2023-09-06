@@ -3,14 +3,12 @@ import { NzxAbstractControl } from './abstract.control';
 
 @Component({
   template: `
-    <ng-container [formGroup]="form">
-      <nz-date-picker
-        [ngStyle]="{ width: '100%' }"
-        [formControlName]="control.controlName"
-        [nzPlaceHolder]="control.placeholder"
-      >
-      </nz-date-picker>
-    </ng-container>
+    <nz-date-picker
+      [ngStyle]="{ width: '100%' }"
+      [formControl]="form.get(control.controlName)"
+      [nzPlaceHolder]="control.placeholder"
+    >
+    </nz-date-picker>
   `,
 })
 export class NzxDatePickerControlComponent extends NzxAbstractControl {}
