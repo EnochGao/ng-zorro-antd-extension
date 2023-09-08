@@ -46,6 +46,8 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
       label: '姓名',
       placeholder: '姓名',
       controlType: 'input',
+      controlInstance: new FormControl(null, [Validators.required]),
+      errorTip: '必填',
     },
     {
       controlName: 'gender',
@@ -56,8 +58,6 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
         { label: '男', value: 1 },
         { label: '女', value: 2 },
       ],
-      controlInstance: new FormControl(1, [Validators.required]),
-      errorTip: '假设必填默认',
       nzxAllowClear: true,
     },
     {

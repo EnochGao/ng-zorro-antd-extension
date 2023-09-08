@@ -13,6 +13,9 @@ import { NzxRangePickerControlComponent } from './controls/range-picker.control'
 import { NzxSelectControlComponent } from './controls/select.control';
 import { NzxTemplateControlComponent } from './controls/template.control';
 
+/**
+ * 用来动态添加control type类型控件
+ */
 @Injectable({ providedIn: 'root' })
 export class NzxQueryConfigService {
   private controlTypePoll: NzxQueryControlType[] = [

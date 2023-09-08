@@ -22,6 +22,7 @@ import { NzxControlDirective } from './control.directive';
 import { NzxQueryControlOptions, NzxQueryParams } from './type';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
+import { updateControlStatus } from 'ng-zorro-antd-extension/util';
 
 /**
  * 查询组件
@@ -235,12 +236,7 @@ export class NzxConfigurableQueryComponent
   /** 查询 */
   search(): void {
     if (this.queryForm.invalid) {
-      Object.values(this.queryForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
+      updateControlStatus(this.queryForm);
     } else {
       this.queryChange.emit(this._queryParams);
     }
@@ -248,8 +244,12 @@ export class NzxConfigurableQueryComponent
 
   /** 重置 */
   reset(): void {
-    this.queryForm.reset(this.defaultValue);
-    this.resetChange.emit(this._queryParams);
+    if (this.queryForm.invalid) {
+      updateControlStatus(this.queryForm);
+    } else {
+      this.queryForm.reset(this.defaultValue);
+      this.resetChange.emit(this._queryParams);
+    }
   }
 
   /**展开、收起*/
