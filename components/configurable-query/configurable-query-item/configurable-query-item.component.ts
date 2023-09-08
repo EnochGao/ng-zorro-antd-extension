@@ -4,7 +4,6 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  TemplateRef,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -15,15 +14,30 @@ import { NzxQueryConfigService } from '../query-config.service';
 import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
 
 @Component({
-  selector: 'nzx-configurable-query-control',
-  template: ` <ng-template></ng-template> `,
+  selector: 'nzx-configurable-query-item',
+  template: `
+    <nz-form-item>
+      <nz-form-label *ngIf="control.label" [nzSpan]="control.nzxLSpan || 6">
+        {{ control.label }}
+      </nz-form-label>
+      <nz-form-control
+        [nzSpan]="control.nzxRSpan || 18"
+        [nzValidateStatus]="
+          control?.controlInstance ?? form.get(control.controlName)
+        "
+        [nzErrorTip]="control.errorTip"
+      >
+        <ng-template #controlTemp></ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NzxConfigurableQueryControlComponent implements OnInit, OnDestroy {
+export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
   @Input() form!: FormGroup;
   @Input() control!: NzxQueryControlOptions;
 
-  @ViewChild(TemplateRef, { static: true, read: ViewContainerRef })
+  @ViewChild('controlTemp', { static: true, read: ViewContainerRef })
   private controlTemplateView!: ViewContainerRef;
 
   private destroy$ = new Subject<void>();

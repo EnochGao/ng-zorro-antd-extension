@@ -7,20 +7,10 @@
         [nzSpan]="control.nzxSpan || 24 / lineNumber"
         [hidden]="nzxCollapse && control.collapse"
       >
-        <nz-form-item>
-          <nz-form-label *ngIf="control.label" [nzSpan]="control.nzxLSpan || 6">
-            {{ control.label }}
-          </nz-form-label>
-          <nz-form-control
-            [nzSpan]="control.nzxRSpan || 18"
-            [nzErrorTip]="control.errorTip"
-          >
-            <nzx-configurable-query-control
-              [form]="queryForm"
-              [control]="control"
-            ></nzx-configurable-query-control>
-          </nz-form-control>
-        </nz-form-item>
+        <nzx-configurable-query-item
+          [form]="queryForm"
+          [control]="control"
+        ></nzx-configurable-query-item>
       </div>
     </ng-container>
 
