@@ -36,3 +36,7 @@ import { NzxConfigurableQueryModule } from "ng-zorro-antd-extension/configurable
   </pre
 >
 ```
+
+### 使用讲解
+
+<iframe width=1100 height=800 src="//player.bilibili.com/player.html?aid=618298852&bvid=BV1kh4y1P738&cid=1261329121&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
