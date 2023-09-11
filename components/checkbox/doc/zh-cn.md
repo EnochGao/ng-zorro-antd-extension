@@ -56,3 +56,7 @@ class CheckboxGroupDemoComponent implements OnInit {
   }
 }
 ```
+
+### 介绍使用
+
+<iframe src="//player.bilibili.com/player.html?aid=233260069&bvid=BV1C8411B7s5&cid=1261660796&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
