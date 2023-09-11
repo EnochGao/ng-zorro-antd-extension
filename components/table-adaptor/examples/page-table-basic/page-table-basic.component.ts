@@ -27,6 +27,7 @@ interface RandomUser {
     first: string;
     last: string;
   };
+  nat: string;
 }
 
 @Component({

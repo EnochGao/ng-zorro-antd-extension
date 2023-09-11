@@ -54,14 +54,14 @@ export interface NzxSimpleTableConfig<T> {
           <th
             [nzAlign]="nzxAlign"
             *ngFor="let config of nzxConfig"
-            [nzWidth]="config?.width"
+            [nzWidth]="config?.width!"
           >
             {{ config.header }}
           </th>
           <th
             [nzAlign]="nzxAlign"
             *ngFor="let item of thList; let i = index"
-            [nzWidth]="item?.width"
+            [nzWidth]="item?.width!"
           >
             <ng-container
               [ngTemplateOutlet]="item.templateRef"
@@ -108,9 +108,9 @@ export interface NzxSimpleTableConfig<T> {
               ></ng-container>
             </td>
           </tr>
-          <tr *ngIf="nzxExpand" [nzExpand]="data.expand">
+          <tr *ngIf="nzxExpand" [nzExpand]="data['expand']!">
             <ng-container
-              [ngTemplateOutlet]="expandDirective?.templateRef"
+              [ngTemplateOutlet]="expandDirective?.templateRef!"
               [ngTemplateOutletContext]="{ $implicit: data, index: i }"
             >
             </ng-container>
@@ -121,7 +121,13 @@ export interface NzxSimpleTableConfig<T> {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NzxSimpleTableComponent<T> implements AfterContentInit {
+export class NzxSimpleTableComponent<
+  T extends {
+    expand?: boolean;
+    [key: string]: any;
+  }
+> implements AfterContentInit
+{
   /** th td 布局方式 */
   @Input() nzxAlign: 'left' | 'right' | 'center' | null = 'center';
   /** table 标题 */

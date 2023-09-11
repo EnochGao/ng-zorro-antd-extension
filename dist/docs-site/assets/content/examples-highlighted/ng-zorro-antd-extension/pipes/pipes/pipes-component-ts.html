@@ -6,6 +6,7 @@
   NzxSimpleTableModule<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/simple-table'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> NzButtonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/button'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzCardModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/card'</span><span class="token punctuation">;</span>
 <span class="token keyword">interface</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
   id<span class="token punctuation">:</span> <span class="token keyword">number</span><span class="token punctuation">;</span>
   name<span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">;</span>
@@ -15,14 +16,21 @@
   course<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    CommonModule<span class="token punctuation">,</span>
+    NzCardModule<span class="token punctuation">,</span>
+    NzxPipesModule<span class="token punctuation">,</span>
+    NzxSimpleTableModule<span class="token punctuation">,</span>
+    NzButtonModule<span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
   selector<span class="token punctuation">:</span> <span class="token string">'nzx-pipe-demo'</span><span class="token punctuation">,</span>
   templateUrl<span class="token punctuation">:</span> <span class="token string">'./pipes.component.html'</span><span class="token punctuation">,</span>
-  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./pipes.component.scss'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   changeDetection<span class="token punctuation">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush<span class="token punctuation">,</span>
-  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
-  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>CommonModule<span class="token punctuation">,</span> NzxPipesModule<span class="token punctuation">,</span> NzxSimpleTableModule<span class="token punctuation">,</span> NzButtonModule<span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxPipeExampleComponent</span> <span class="token punctuation">{</span>
+  unsafeUrl <span class="token operator">=</span> <span class="token string">'http://www.runoob.com/images/pulpit.jpg'</span><span class="token punctuation">;</span>
+
   config<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxSimpleTableConfig<span class="token operator">&lt;</span>Person<span class="token operator">></span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span> header<span class="token punctuation">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> key<span class="token punctuation">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> width<span class="token punctuation">:</span> <span class="token string">'50px'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>

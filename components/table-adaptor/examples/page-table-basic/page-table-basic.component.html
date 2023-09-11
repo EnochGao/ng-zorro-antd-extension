@@ -20,6 +20,7 @@
   nzxTableAdaptor
   [enableCache]="true"
   [queryParams]="configQuery.queryParams"
+  expand
   (nzxQueryParams)="loadData($event)"
   (nzxQueryCacheQueryParams)="configQuery.setQueryParams($event)"
   #nzTable

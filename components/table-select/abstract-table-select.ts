@@ -51,7 +51,7 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
   indeterminate = false;
 
   @ContentChildren(NzxKeyDirective) private dirs!: QueryList<NzxKeyDirective>;
-  private isDisabled = false;
+  isDisabled = false;
 
   private propagateChange = (_: any) => {};
 
@@ -143,7 +143,7 @@ export abstract class NzxAbstractTableSelect<T extends PageTableRequire>
     this.refreshCheckedStatus();
   }
 
-  private getValue(obj: any, keys: string[] | string): any {
+  getValue(obj: any, keys: string[] | string): any {
     if (!obj || !keys) {
       return undefined;
     }

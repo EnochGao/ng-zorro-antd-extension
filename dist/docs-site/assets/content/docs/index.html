@@ -9,69 +9,73 @@
           <span header-link="%E5%AE%89%E8%A3%85"></span>
           安装
         </h2>
-      <p>1、首先要安装 ng-zorro：<a target="_blank" href="https://ng.ant.design/docs/getting-started/zh">ng zorro 安装</a></p>
-<p>2、ng zorro 安装成功之后然后再安装扩展包</p>
+      <p>1、首先要安装 ng-zorro-antd：<a target="_blank" href="https://ng.ant.design/docs/getting-started/zh">安装</a></p>
+<p>2、ng-zorro-antd 安装成功之后然后再安装扩展包</p>
 <p>使用</p>
 <pre class="language-bash"><code class="language-bash"><div><span class="token function">npm</span> <span class="token function">install</span> ng-zorro-antd-extension --save</div></code></pre>
 <p>或者</p>
 <pre class="language-bash"><code class="language-bash"><div><span class="token function">ng</span> add ng-zorro-antd-extension</div></code></pre>
+<p>3、app.module <label type="success">v15.11.0+</label></p>
+<pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> zh <span class="token keyword">from</span> <span class="token string">"@angular/common/locales/zh"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NZ_I18N<span class="token punctuation">,</span> zh_CN <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd/i18n"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> nzx_zh_CN <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/i18n"</span><span class="token punctuation">;</span>
+
+<span class="token function">registerLocaleData</span><span class="token punctuation">(</span>zh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> customLanguagePack <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>zh_CN<span class="token punctuation">,</span>
+  <span class="token operator">...</span>nzx_zh_CN<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+@<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  declarations<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> provide<span class="token punctuation">:</span> NZ_I18N<span class="token punctuation">,</span> useValue<span class="token punctuation">:</span> customLanguagePack <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  bootstrap<span class="token punctuation">:</span> <span class="token punctuation">[</span>RootComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></div></code></pre>
+<table>
+<thead>
+<tr>
+<th>angular</th>
+<th>ng-zorro-antd</th>
+<th>ng-zorro-antd-extension</th>
+<th>LTS ends</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^13.0.0</td>
+<td>^13.0.0</td>
+<td>^13.0.0</td>
+<td>end</td>
+</tr>
+<tr>
+<td>^14.0.0</td>
+<td>^14.0.0</td>
+<td>^14.0.0</td>
+<td>end</td>
+</tr>
+<tr>
+<td>^15.0.0</td>
+<td>^15.0.0</td>
+<td>^15.0.0</td>
+<td>2024-05-18</td>
+</tr>
+<tr>
+<td>^16.0.0</td>
+<td>^16.0.0</td>
+<td>^15.6.0</td>
+<td>2024-11-08</td>
+</tr>
+</tbody></table>
 <p>如需指定版本</p>
 <pre class="language-bash"><code class="language-bash"><div><span class="token function">npm</span> <span class="token function">install</span> ng-zorro-antd-extension@13.0.0 --save</div></code></pre>
-<p>v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用 v14.0.0+以上版本，具体 feature 请查看组件文档中基本使用下的版本</p>
-<table>
-<thead>
-<tr>
-<th>依赖环境</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>angular</td>
-<td>^13.0.0</td>
-</tr>
-<tr>
-<td>ng-zorro-antd</td>
-<td>^13.0.0</td>
-</tr>
-<tr>
-<td>@ant-design/icons-angular</td>
-<td>^13.0.0</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>依赖环境</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>angular</td>
-<td>^14.0.0</td>
-</tr>
-<tr>
-<td>ng-zorro-antd</td>
-<td>^14.0.0</td>
-</tr>
-<tr>
-<td>@ant-design/icons-angular</td>
-<td>^14.0.0</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>依赖环境</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>angular</td>
-<td>^15.0.0</td>
-</tr>
-<tr>
-<td>ng-zorro-antd</td>
-<td>^15.0.0</td>
-</tr>
-</tbody></table>
+<p>注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用 15.0.0+版本，具体 feature 请查看组件文档中基本使用下的版本</p>
+
+        <h3 id="%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D" class="docs-header-link">
+          <span header-link="%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D"></span>
+          使用介绍
+        </h3>
+      <iframe  src="//player.bilibili.com/player.html?aid=873336769&bvid=BV1kN4y1Q7vv&cid=1261626841&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 <p>欢迎在 <a target="_blank" href="https://github.com/EnochGao/ng-zorro-antd-extension">github</a> star fork pr</p>

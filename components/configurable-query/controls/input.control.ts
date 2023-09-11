@@ -3,12 +3,14 @@ import { NzxAbstractControl } from './abstract.control';
 
 @Component({
   template: `
-    <input
-      nz-input
-      type="text"
-      placeholder="{{ control.placeholder }}"
-      [formControl]="form.get(control.controlName)"
-    />
+    <ng-container [formGroup]="form">
+      <input
+        nz-input
+        type="text"
+        placeholder="{{ control.placeholder }}"
+        [formControlName]="control.controlName"
+      />
+    </ng-container>
   `,
 })
 export class NzxInputControlComponent extends NzxAbstractControl {}
