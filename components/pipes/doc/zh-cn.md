@@ -11,10 +11,10 @@ label: new
 
 ## 支持版本
 
-| pipe               | version support                        |
-| ------------------ | -------------------------------------- |
-| nzxMap             | <label type="success">v13.0.0+</label> |
-| nzxSafeNull        | <label type="success">v14.0.0+</label> |
+| pipe               | version support                         |
+| ------------------ | --------------------------------------- |
+| nzxMap             | <label type="success">v13.0.0+</label>  |
+| nzxSafeNull        | <label type="success">v14.0.0+</label>  |
 | nzxSafeHtml        | <label type="success">v15.10.0+</label> |
 | nzxSafeResourceUrl | <label type="success">v15.10.0+</label> |
 | nzxSafeScript      | <label type="success">v15.10.0+</label> |
@@ -155,3 +155,7 @@ export class PipeDemoComponent {
   }
 }
 ```
+
+### 使用讲解
+
+<iframe src="//player.bilibili.com/player.html?aid=915788247&bvid=BV1hu4y1k7kQ&cid=1263420449&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
