@@ -10,6 +10,7 @@ import {
   HostListener,
   Input,
   OnChanges,
+  OnInit,
   Output,
   SimpleChanges,
   TemplateRef,
@@ -54,19 +55,22 @@ import { isString, toNumber, toString } from 'ng-zorro-antd-extension/util';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   exportAs: 'NzxEditable',
 })
-export class NzxEditableComponent implements OnChanges, AfterViewInit {
+export class NzxEditableComponent implements OnChanges, OnInit {
   @Input() nzxContent: string | number = '';
   @Input() nzxShowBtn = true;
   @Output() nzxContentChange = new EventEmitter();
 
   @HostBinding('class') class = 'nzx-editable-cell';
 
-  @ViewChild('detailTemplate') private detailTemplateRef!: TemplateRef<any>;
-  @ViewChild('editTemplate') private editTemplateRef!: TemplateRef<any>;
-  @ViewChild('detailContainer', { read: ViewContainerRef })
+  @ViewChild('detailTemplate', { static: true })
+  private detailTemplateRef!: TemplateRef<any>;
+
+  @ViewChild('editTemplate', { static: true })
+  private editTemplateRef!: TemplateRef<any>;
+
+  @ViewChild('detailContainer', { static: true, read: ViewContainerRef })
   private detailContainerRef!: ViewContainerRef;
 
   private valueType: 'string' | 'number' = 'string';
@@ -76,10 +80,12 @@ export class NzxEditableComponent implements OnChanges, AfterViewInit {
     this.edit();
   }
 
-  ngAfterViewInit(): void {
-    this.detailContainerRef
-      .createEmbeddedView(this.detailTemplateRef)
-      .markForCheck();
+  ngOnInit(): void {
+    this.detailContainerRef.clear();
+    const view = this.detailContainerRef.createEmbeddedView(
+      this.detailTemplateRef
+    );
+    view.markForCheck();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -104,9 +110,10 @@ export class NzxEditableComponent implements OnChanges, AfterViewInit {
 
   blur() {
     this.detailContainerRef.clear();
-    this.detailContainerRef
-      .createEmbeddedView(this.detailTemplateRef)
-      .markForCheck();
+    const view = this.detailContainerRef.createEmbeddedView(
+      this.detailTemplateRef
+    );
+    view.markForCheck();
   }
 
   valueChange(value: any) {
