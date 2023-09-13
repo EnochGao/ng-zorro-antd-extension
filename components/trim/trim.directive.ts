@@ -12,10 +12,9 @@ import {
 
 import { ɵgetDOM as getDOM } from '@angular/common';
 import {
-  DefaultValueAccessor,
-  NG_VALUE_ACCESSOR,
   COMPOSITION_BUFFER_MODE,
   ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import {
   ExtensionWithConfig,
@@ -53,27 +52,40 @@ export class NzxTrimDirective implements ControlValueAccessor {
   @Input()
   trimType: 'trim' | 'trimStart' | 'trimEnd' = 'trim';
 
+  constructor(
+    private _renderer: Renderer2,
+    private _elementRef: ElementRef,
+    @Optional()
+    @Inject(COMPOSITION_BUFFER_MODE)
+    private _compositionMode: boolean
+  ) {
+    if (this._compositionMode == null) {
+      this._compositionMode = !this._isAndroid();
+    }
+  }
+
   @HostListener('input', ['$event.target.value'])
   input(val: string) {
     const value = val[this.trimType]();
     this.setProperty('value', value);
-    (this as any)._handleInput(value);
+    this._handleInput(value);
   }
 
   @HostListener('compositionstart', ['$event'])
   compositionstart(val: string) {
-    (this as any)._compositionStart();
+    this._compositionStart();
   }
 
   @HostListener('compositionend', ['$event.target.value'])
   compositionend(val: any) {
-    (this as any)._compositionEnd(val);
+    this._compositionEnd(val);
   }
 
   @HostListener('blur', ['$event.target.value'])
   blur(val: string) {
     this.onTouched();
   }
+
   /** @internal */
   _handleInput(value: any): void {
     if (!this._compositionMode || (this._compositionMode && !this._composing)) {
@@ -92,18 +104,7 @@ export class NzxTrimDirective implements ControlValueAccessor {
     this._compositionMode && this.onChange(value);
   }
 
-  constructor(
-    private _renderer: Renderer2,
-    private _elementRef: ElementRef,
-    @Optional()
-    @Inject(COMPOSITION_BUFFER_MODE)
-    private _compositionMode: boolean
-  ) {
-    if (this._compositionMode == null) {
-      this._compositionMode = !this._isAndroid();
-    }
-  }
-
+  /** @internal */
   _isAndroid(): boolean {
     const userAgent = getDOM() ? getDOM().getUserAgent() : '';
     return /android (\d+)/.test(userAgent.toLowerCase());
@@ -121,6 +122,7 @@ export class NzxTrimDirective implements ControlValueAccessor {
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
+
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
