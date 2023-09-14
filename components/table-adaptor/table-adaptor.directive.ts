@@ -28,7 +28,7 @@ import {
 const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTableAdaptor';
 
 export interface NzxTableQueryParams extends NzTableQueryParams {
-  [key: string]: string | number | Date | any;
+  [key: string]: any;
 }
 
 const CACHE_KEY = 'NZX_TABLE_ADAPTOR';

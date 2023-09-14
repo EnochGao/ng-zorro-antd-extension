@@ -1,0 +1,83 @@
+<div><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> inject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> FormBuilder<span class="token punctuation">,</span> FormsModule<span class="token punctuation">,</span> ReactiveFormsModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/forms'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CommonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxWangEditorModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/wang-editor'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzFormModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/form'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzButtonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/button'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    CommonModule<span class="token punctuation">,</span>
+    FormsModule<span class="token punctuation">,</span>
+    ReactiveFormsModule<span class="token punctuation">,</span>
+    NzFormModule<span class="token punctuation">,</span>
+    NzButtonModule<span class="token punctuation">,</span>
+    NzxWangEditorModule<span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-editor-example'</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;form nz-form [formGroup]="form">
+      &lt;nz-form-item>
+        &lt;nz-form-label [nzSpan]="6" nzRequired>中文&lt;/nz-form-label>
+        &lt;nz-form-control [nzSpan]="14" [nzErrorTip]="errorTip">
+          &lt;div [ngStyle]="{ border: '1px solid #ccc', 'z-index': 100 }">
+            &lt;nzx-wang-toolbar
+              [ngStyle]="{ 'border-bottom': '1px solid #ccc' }"
+              [editor]="editorRef.editor"
+            >
+            &lt;/nzx-wang-toolbar>
+            &lt;nzx-wang-editor
+              [textRequired]="true"
+              [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }"
+              #editorRef="NzxWangEditor"
+              formControlName="zh"
+            >
+            &lt;/nzx-wang-editor>
+          &lt;/div>
+
+          &lt;ng-template #errorTip let-control>
+            &lt;ng-container *ngIf="control.hasError('editorTextRequired')">
+              必填
+            &lt;/ng-container>
+          &lt;/ng-template>
+        &lt;/nz-form-control>
+      &lt;/nz-form-item>
+
+      &lt;nz-form-item>
+        &lt;nz-form-label [nzSpan]="6">英文&lt;/nz-form-label>
+        &lt;nz-form-control [nzSpan]="14">
+          &lt;div [ngStyle]="{ border: '1px solid #ccc', 'z-index': 100 }">
+            &lt;div
+              nzxWangToolbar
+              [ngStyle]="{ 'border-bottom': '1px solid #ccc' }"
+              [editor]="editorRef1.editor"
+            >&lt;/div>
+            &lt;div
+              nzxWangEditor
+              [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }"
+              #editorRef1="NzxWangEditor"
+              formControlName="en"
+            >&lt;/div>
+          &lt;/div>
+        &lt;/nz-form-control>
+      &lt;/nz-form-item>
+
+      &lt;nz-form-item>
+        &lt;nz-form-control [nzOffset]="20" [nzSpan]="4">
+          &lt;button nz-button nzType="primary" [disabled]="!form.valid">
+            Submit
+          &lt;/button>
+        &lt;/nz-form-control>
+      &lt;/nz-form-item>
+    &lt;/form>
+  `</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxWangEditorExampleComponent</span> <span class="token punctuation">{</span>
+  form <span class="token operator">=</span> <span class="token function">inject</span><span class="token punctuation">(</span>FormBuilder<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    zh<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    en<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</div>

@@ -23,7 +23,7 @@ import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
       <nz-form-control
         [nzSpan]="control.nzxRSpan || 18"
         [nzValidateStatus]="
-          control?.controlInstance ?? form.get(control.controlName)
+          control?.controlInstance ?? $any(form.get(control.controlName))
         "
         [nzErrorTip]="control.errorTip"
       >

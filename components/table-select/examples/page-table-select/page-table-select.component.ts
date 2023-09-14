@@ -12,7 +12,10 @@ import {
 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { NzxQueryControlOptions } from 'ng-zorro-antd-extension/configurable-query';
+import {
+  NzxQueryControlOptions,
+  NzxQueryParams,
+} from 'ng-zorro-antd-extension/configurable-query';
 import { NzxTableQueryParams } from 'ng-zorro-antd-extension/table-adaptor';
 import { NzxTableSelectModule } from 'ng-zorro-antd-extension/table-select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -96,7 +99,7 @@ export class NzxPageTableSelectExampleComponent {
     });
   }
 
-  queryParamsChange(params: NzxTableQueryParams) {
+  queryParamsChange(params: any) {
     this.loading = true;
     this.getUsers(params)
       .pipe(

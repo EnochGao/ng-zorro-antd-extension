@@ -3,7 +3,7 @@
   [formGroup]="form"
   [nzData]="formGroupList"
   [nzTableLayout]="tableLayout"
-  [nzFooter]="nzxFooter"
+  [nzFooter]="nzxFooter!"
   [nzBordered]="nzxBordered"
   [nzSize]="nzxSize"
   [nzFrontPagination]="nzxFrontPagination"
@@ -25,7 +25,7 @@
           <th
             *ngIf="!item.templateRef"
             [nzAlign]="tableAlign"
-            [nzWidth]="item.width"
+            [nzWidth]="item.width!"
           >
             <label *ngIf="item.showRequiredTip" [ngStyle]="{ color: 'red' }">
               *
@@ -35,7 +35,7 @@
           <th
             *ngIf="item.templateRef"
             [nzAlign]="tableAlign"
-            [nzWidth]="item.width"
+            [nzWidth]="item.width!"
           >
             <ng-container
               [ngTemplateOutlet]="item.templateRef"
@@ -49,7 +49,7 @@
       <th
         *ngFor="let item of thTemplateOfNullInForm; let i = index"
         [nzAlign]="tableAlign"
-        [nzWidth]="item.width"
+        [nzWidth]="item.width!"
       >
         <ng-container
           *ngTemplateOutlet="
@@ -85,7 +85,7 @@
                       nz-input
                       [placeholder]="item.placeholder || '请输入'"
                       [formControlName]="item.controlName"
-                      [maxlength]="item.maxLength"
+                      [maxlength]="item.maxLength!"
                     />
 
                     <textarea
@@ -98,7 +98,7 @@
                       [nzAutosize]="{ minRows: 3 }"
                       [placeholder]="item.placeholder || '请输入'"
                       [formControlName]="item.controlName"
-                      [maxlength]="item.maxLength"
+                      [maxlength]="item.maxLength!"
                     ></textarea>
 
                     <nz-input-number
@@ -111,7 +111,7 @@
                       [formControlName]="item.controlName"
                       [nzMin]="1"
                       [nzStep]="1"
-                      [nzMax]="item.max"
+                      [nzMax]="item.max!"
                       [nzPlaceHolder]="item.placeholder || '输入数字'"
                     >
                     </nz-input-number>
@@ -207,7 +207,7 @@
       </tr>
       <tr *ngIf="enableExpand" [nzExpand]="fg.value.expand">
         <ng-container
-          [ngTemplateOutlet]="tableExpandDirective?.templateRef"
+          [ngTemplateOutlet]="tableExpandDirective?.templateRef!"
           [ngTemplateOutletContext]="{
             $implicit: fg,
             index: i,
@@ -220,7 +220,7 @@
 
     <tr *ngIf="form.get('formArray')?.errors" [nzExpand]="true">
       <ng-container
-        [ngTemplateOutlet]="errorTemplate"
+        [ngTemplateOutlet]="errorTemplate!"
         [ngTemplateOutletContext]="{ $implicit: form.get('formArray') }"
       >
       </ng-container>

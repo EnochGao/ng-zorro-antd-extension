@@ -13,12 +13,11 @@
 <span class="token punctuation">}</span>
 
 @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  selector<span class="token punctuation">:</span> <span class="token string">'nzx-simple-table-demo'</span><span class="token punctuation">,</span>
-  templateUrl<span class="token punctuation">:</span> <span class="token string">'./simple-table.component.html'</span><span class="token punctuation">,</span>
-  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./simple-table.component.scss'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  changeDetection<span class="token punctuation">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush<span class="token punctuation">,</span>
   standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
   imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>CommonModule<span class="token punctuation">,</span> NzxSimpleTableModule<span class="token punctuation">,</span> NzButtonModule<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-simple-table-demo'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token punctuation">:</span> <span class="token string">'./simple-table.component.html'</span><span class="token punctuation">,</span>
+  changeDetection<span class="token punctuation">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxSimpleTableExampleComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
   config<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>NzxSimpleTableConfig<span class="token operator">&lt;</span>Person<span class="token operator">></span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span>

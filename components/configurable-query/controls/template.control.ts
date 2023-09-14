@@ -5,7 +5,7 @@ import { NzxAbstractControl } from './abstract.control';
   template: `
     <ng-container
       *ngTemplateOutlet="
-        control.templateRef;
+        control.templateRef!;
         context: { $implicit: form.get(control.controlName) }
       "
     >

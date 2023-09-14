@@ -32,3 +32,7 @@ import { NzxTrimModule } from "ng-zorro-antd-extension/trim";
 | 属性     | 类型                           | 默认值 |
 | -------- | ------------------------------ | ------ |
 | trimType | `trim \| trimStart \| trimEnd` | trim   |
+
+### 使用介绍
+
+<iframe src="//player.bilibili.com/player.html?aid=490987696&bvid=BV15N411W7wW&cid=1265460065&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
