@@ -4,7 +4,7 @@
 /src/assets/content
 
 # Compiled output
-/publish
+/dist
 /tmp
 /out-tsc
 /bazel-out

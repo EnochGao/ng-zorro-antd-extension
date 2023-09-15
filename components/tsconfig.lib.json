@@ -2,7 +2,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../publish",
+    "outDir": "../dist/ng-zorro-antd-extension",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,

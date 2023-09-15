@@ -26,7 +26,7 @@
     "build:lib": "npx ng build ng-zorro-antd-extension",
     "build:components": "cd components && npm run build && npm run postbuild",
     "build:all": "npm-run-all \"build:lib\" \"build:components\" \"deploy\"",
-    "deploy": "cd publish && npm publish",
+    "deploy": "cd dist/ng-zorro-antd-extension && npm publish",
     "watch": "npx ng build --watch --configuration development",
     "test": "npx ng test",
     "lint": "npx ng lint --fix",
