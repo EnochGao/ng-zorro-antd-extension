@@ -86,7 +86,7 @@ export class NzxTableFormComponent
   /**
    * 校验整个table的错误提示自定义模板
    */
-  @Input() errorTemplate?: TemplateRef<void>;
+  @Input() errorTemplate?: TemplateRef<any>;
   /** 启用序号 */
   @Input() enableNo = false;
 
