@@ -113,7 +113,6 @@ export class NzxTrimDirective implements ControlValueAccessor {
   writeValue(value: any): void {
     if (typeof value === 'string') {
       value = value[this.trimType]();
-      console.log(value);
     }
     const normalizedValue = value == null ? '' : value;
     this.setProperty('value', normalizedValue);

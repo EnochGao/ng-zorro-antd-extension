@@ -120,16 +120,12 @@ export class NzxEditableComponent implements OnInit {
   }
 
   valueChange(value: any) {
-    console.log('this._valueType::', this._valueType);
-    console.log('origin::', value);
-
     let result = value;
     if (this._valueType === 'number') {
       result = toNumber(value);
     } else {
       result = toString(value);
     }
-    console.log('result::', value);
     this.nzxContentChange.emit(result);
   }
 }
