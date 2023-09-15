@@ -2,23 +2,24 @@
 /* eslint-disable @angular-eslint/directive-selector */
 /* eslint-disable @angular-eslint/component-selector */
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   HostBinding,
   HostListener,
   Input,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
-  ViewEncapsulation,
 } from '@angular/core';
-import { isString, toNumber, toString } from 'ng-zorro-antd-extension/util';
+import {
+  isNumber,
+  isString,
+  toNumber,
+  toString,
+} from 'ng-zorro-antd-extension/util';
 
 @Component({
   selector: '[nzx-editable]',
@@ -29,8 +30,9 @@ import { isString, toNumber, toString } from 'ng-zorro-antd-extension/util';
       {{ nzxContent }}
       <button
         *ngIf="nzxShowBtn"
-        nz-trans-button
         class="ant-typography-edit"
+        type="button"
+        nz-trans-button
         (click)="edit()"
       >
         <span nz-icon nzType="edit" nzTheme="outline"></span>
@@ -57,9 +59,11 @@ import { isString, toNumber, toString } from 'ng-zorro-antd-extension/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxEditable',
 })
-export class NzxEditableComponent implements OnChanges, OnInit {
-  @Input() nzxContent: string | number = '';
+export class NzxEditableComponent implements OnInit {
+  @Input() nzxContent: string | number | null = '';
   @Input() nzxShowBtn = true;
+  @Input() nzxContentType: 'string' | 'number' | undefined;
+
   @Output() nzxContentChange = new EventEmitter();
 
   @HostBinding('class') class = 'nzx-editable-cell';
@@ -72,31 +76,30 @@ export class NzxEditableComponent implements OnChanges, OnInit {
 
   @ViewChild('detailContainer', { static: true, read: ViewContainerRef })
   private detailContainerRef!: ViewContainerRef;
-
-  private valueType: 'string' | 'number' = 'string';
+  private _valueType: 'string' | 'number' = 'string';
 
   @HostListener('dblclick')
-  private dblclick() {
+  dblclick() {
     this.edit();
   }
 
   ngOnInit(): void {
+    if (this.nzxContentType) {
+      this._valueType = this.nzxContentType;
+    } else {
+      if (isString(this.nzxContent)) {
+        this._valueType = 'string';
+      }
+      if (isNumber(this.nzxContent)) {
+        this._valueType = 'number';
+      }
+    }
+
     this.detailContainerRef.clear();
     const view = this.detailContainerRef.createEmbeddedView(
       this.detailTemplateRef
     );
     view.markForCheck();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['nzxContent']) {
-      const currentValue = changes['nzxContent'].currentValue;
-      if (isString(currentValue)) {
-        this.valueType = 'string';
-      } else {
-        this.valueType = 'number';
-      }
-    }
   }
 
   edit() {
@@ -117,12 +120,16 @@ export class NzxEditableComponent implements OnChanges, OnInit {
   }
 
   valueChange(value: any) {
+    console.log('this._valueType::', this._valueType);
+    console.log('origin::', value);
+
     let result = value;
-    if (this.valueType === 'number') {
+    if (this._valueType === 'number') {
       result = toNumber(value);
     } else {
       result = toString(value);
     }
+    console.log('result::', value);
     this.nzxContentChange.emit(result);
   }
 }

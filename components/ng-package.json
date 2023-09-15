@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../publish",
+  "dest": "../dist/ng-zorro-antd-extension",
   "deleteDestPath": true,
   "lib": {
     "entryFile": "./public-api.ts"

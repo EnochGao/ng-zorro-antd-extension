@@ -6,8 +6,8 @@ import { NzxAbstractControl } from './abstract.control';
     <ng-container [formGroup]="form">
       <nz-select
         [formControlName]="control.controlName"
-        [nzShowSearch]="true"
-        [nzAllowClear]="control.nzxAllowClear"
+        [nzShowSearch]="control.nzxShowSearch ?? true"
+        [nzAllowClear]="control.nzxAllowClear ?? true"
         [nzPlaceHolder]="control.placeholder!"
       >
         <nz-option

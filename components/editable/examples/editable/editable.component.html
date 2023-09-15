@@ -41,10 +41,18 @@
   </nz-space>
   <nz-descriptions nzTitle="User Info">
     <nz-descriptions-item nzTitle="UserName">
-      <span nzx-editable [(nzxContent)]="userDetail.userName"></span>
+      <span
+        nzx-editable
+        [(nzxContent)]="userDetail.userName"
+        nzxContentType="string"
+      ></span>
     </nz-descriptions-item>
     <nz-descriptions-item nzTitle="Age">
-      <span nzx-editable [(nzxContent)]="userDetail.age"></span>
+      <span
+        nzx-editable
+        [(nzxContent)]="userDetail.age"
+        nzxContentType="number"
+      ></span>
     </nz-descriptions-item>
     <nz-descriptions-item nzTitle="Live">
       <span

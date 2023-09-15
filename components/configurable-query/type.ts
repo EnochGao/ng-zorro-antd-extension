@@ -9,6 +9,7 @@ import { NzxAbstractControl } from './controls/abstract.control';
 export interface NzxQueryParams {
   [key: string]: any;
 }
+
 type ControlType =
   | 'input'
   | 'select'
@@ -46,6 +47,10 @@ export interface NzxQueryControlOptions {
    * 控件为select时允许单独清空
    */
   nzxAllowClear?: boolean;
+  /**
+   * 控件为select时允许前端搜索
+   */
+  nzxShowSearch?: boolean;
   /**
    * 查询项所占栅格数
    */
@@ -90,6 +95,7 @@ export interface NzxQueryControlType {
   key: string;
   component: typeof NzxAbstractControl;
 }
+
 export interface NzxQueryConfig {
   controlTypes: NzxQueryControlType[];
 }

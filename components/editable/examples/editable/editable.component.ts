@@ -29,8 +29,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 })
 export class NzxEditableExampleComponent {
   userDetail = {
-    userName: 'EnochGao',
-    age: 18,
+    userName: 'enochgao',
+    age: null,
     live: 'QingDao',
   };
 
