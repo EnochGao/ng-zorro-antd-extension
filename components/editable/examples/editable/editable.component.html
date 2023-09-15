@@ -44,11 +44,15 @@
       <span
         nzx-editable
         [(nzxContent)]="userDetail.userName"
-        nzxContentType="number"
+        nzxContentType="string"
       ></span>
     </nz-descriptions-item>
     <nz-descriptions-item nzTitle="Age">
-      <span nzx-editable [(nzxContent)]="userDetail.age"></span>
+      <span
+        nzx-editable
+        [(nzxContent)]="userDetail.age"
+        nzxContentType="number"
+      ></span>
     </nz-descriptions-item>
     <nz-descriptions-item nzTitle="Live">
       <span
