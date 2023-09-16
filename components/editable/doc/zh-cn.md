@@ -26,3 +26,7 @@ import { NzxEditableModule } from "ng-zorro-antd-extension/editable";
 ```html
 <span nzx-editable [(nzxContent)]="item.country" [nzxShowBtn]="false"></span>
 ```
+
+### 使用介绍
+
+<iframe src="//player.bilibili.com/player.html?aid=276001849&bvid=BV1yF411D7rh&cid=1268533102&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
