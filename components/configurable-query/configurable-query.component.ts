@@ -16,13 +16,13 @@ import {
 
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
+import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
+import { updateControlStatus } from 'ng-zorro-antd-extension/util';
 import { NzJustify } from 'ng-zorro-antd/grid';
+import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { Subject, takeUntil } from 'rxjs';
 import { NzxControlDirective } from './control.directive';
 import { NzxQueryControlOptions, NzxQueryParams } from './type';
-import { NzI18nService } from 'ng-zorro-antd/i18n';
-import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
-import { updateControlStatus } from 'ng-zorro-antd-extension/util';
 
 /**
  * 查询组件
@@ -105,10 +105,9 @@ export class NzxConfigurableQueryComponent
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['controls'] && !changes['controls'].isFirstChange()) {
-      this.clearForm();
       const controls = changes['controls'].currentValue;
       if (Array.isArray(controls)) {
-        this.generateForm();
+        this.generateForm(controls);
       }
     }
   }
@@ -135,7 +134,7 @@ export class NzxConfigurableQueryComponent
   }
 
   ngAfterContentInit(): void {
-    this.generateForm();
+    this.generateForm(this.controls);
 
     this._queryParams = {
       ...this.queryForm.value,
@@ -154,6 +153,7 @@ export class NzxConfigurableQueryComponent
     }
   }
 
+  /** 设置查询值进行回显 */
   setQueryParams(params: NzxQueryParams): void {
     this.params = params;
     this.queryForm.patchValue(params);
@@ -171,6 +171,7 @@ export class NzxConfigurableQueryComponent
       Object.keys(config).forEach((key) => {
         (control as any)[key] = (config as any)[key];
       });
+
       this.cd.markForCheck();
     }
   }
@@ -204,6 +205,7 @@ export class NzxConfigurableQueryComponent
       this.controls = this.controls.filter(
         (c) => c.controlName !== controlName
       );
+
       this.cd.markForCheck();
     } else {
       throw `The control name: '${controlName}' not find!`;
@@ -214,13 +216,7 @@ export class NzxConfigurableQueryComponent
    * 根据controlName获取config项
    */
   getControl(controlName: string): NzxQueryControlOptions | undefined {
-    const index = this.controls.findIndex(
-      (item) => item.controlName === controlName
-    );
-    if (index > -1) {
-      return this.controls[index];
-    }
-    return void 0;
+    return this.controls.find((config) => config.controlName === controlName);
   }
 
   /**
@@ -254,14 +250,14 @@ export class NzxConfigurableQueryComponent
 
   /**展开、收起*/
   toggleCollapse(): void {
-    this.controls.forEach((control) => {
-      if (this.isCollapse && control.collapse === true) {
+    this.controls.forEach((config) => {
+      if (this.isCollapse && config.collapse === true) {
         // 展开
-        control.collapse = false;
+        config.collapse = false;
         this.nzxBtnSpan = 24;
       }
-      if (!this.isCollapse && control.collapse === false) {
-        control.collapse = true;
+      if (!this.isCollapse && config.collapse === false) {
+        config.collapse = true;
         this.nzxBtnSpan = this._nzxBtnSpan;
       }
     });
@@ -272,6 +268,7 @@ export class NzxConfigurableQueryComponent
     this.destroy$.next();
     this.destroy$.complete();
   }
+
   /** 清空表单 */
   private clearForm(): void {
     Object.keys(this.queryForm.controls).forEach((key) => {
@@ -282,28 +279,29 @@ export class NzxConfigurableQueryComponent
   /** 折叠 */
   private collapse(): void {
     this.isCollapse = true;
-    this.controls.forEach((control) => {
-      if (control.collapse === false) {
-        control.collapse = true;
+    this.controls.forEach((config) => {
+      if (config.collapse === false) {
+        config.collapse = true;
         this.nzxBtnSpan = this._nzxBtnSpan;
       }
     });
   }
 
   /** 生成表单 */
-  private generateForm(): void {
-    for (const control of this.controls) {
-      if (control.controlType === 'Template') {
+  private generateForm(controlConfigs: Array<NzxQueryControlOptions>): void {
+    this.clearForm();
+    for (const config of controlConfigs) {
+      if (config.controlType === 'Template') {
         const item = this.controlTemplateList.find(
-          (directive) => directive.nzxControl === control.controlName
+          (directive) => directive.nzxControl === config.controlName
         );
         if (item) {
-          control.templateRef = item.templateRef;
+          config.templateRef = item.templateRef;
         }
       }
       this.queryForm.addControl(
-        control.controlName,
-        control.controlInstance ?? this.fb.control(control.default ?? null)
+        config.controlName,
+        config.controlInstance ?? this.fb.control(config.default ?? null)
       );
     }
   }
