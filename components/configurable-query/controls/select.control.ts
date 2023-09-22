@@ -5,7 +5,7 @@ import { NzxAbstractControl } from './abstract.control';
   template: `
     <ng-container [formGroup]="form">
       <nz-select
-        [formControlName]="control.controlName"
+        [formControlName]="control.controlName!"
         [nzShowSearch]="control.nzxShowSearch ?? true"
         [nzAllowClear]="control.nzxAllowClear ?? true"
         [nzPlaceHolder]="control.placeholder!"

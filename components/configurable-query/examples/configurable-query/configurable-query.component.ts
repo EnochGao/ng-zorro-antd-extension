@@ -50,6 +50,9 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
       errorTip: '必填',
     },
     {
+      label: '占位',
+    },
+    {
       controlName: 'gender',
       label: '性别',
       placeholder: '请选择',
@@ -134,6 +137,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
       label: '姓名',
       placeholder: '姓名',
       controlType: 'input',
+      nzxClass: 'test',
     },
     {
       controlName: 'gender',

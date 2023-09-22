@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -23,7 +22,7 @@ import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
       <nz-form-control
         [nzSpan]="control.nzxRSpan || 18"
         [nzValidateStatus]="
-          control?.controlInstance ?? $any(form.get(control.controlName))
+          control?.controlInstance ?? $any(form.get(control.controlName!))
         "
         [nzErrorTip]="control.errorTip"
       >
@@ -31,7 +30,6 @@ import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
       </nz-form-control>
     </nz-form-item>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
   @Input() form!: FormGroup;
