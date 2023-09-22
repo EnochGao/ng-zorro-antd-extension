@@ -1,15 +1,16 @@
 <form class="nzx-query-container" nz-form [formGroup]="queryForm">
   <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
-    <ng-container *ngFor="let control of controls">
+    <ng-container *ngFor="let config of controls">
       <div
-        *ngIf="!control.hidden"
+        *ngIf="!config.hidden"
         nz-col
-        [nzSpan]="control.nzxSpan || 24 / lineNumber"
-        [hidden]="nzxCollapse && control.collapse"
+        [nzSpan]="config.nzxSpan || 24 / lineNumber"
+        [hidden]="nzxCollapse && config.collapse"
       >
         <nzx-configurable-query-item
+          *ngIf="config.controlName"
           [form]="queryForm"
-          [control]="control"
+          [control]="config"
         ></nzx-configurable-query-item>
       </div>
     </ng-container>

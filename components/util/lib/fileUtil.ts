@@ -21,6 +21,7 @@ export function selectFile(
   input.multiple = multiple;
   input.click();
   input.remove();
+
   return fromEvent(input, 'change')
     .pipe(take(1))
     .pipe(
@@ -39,12 +40,34 @@ export function selectFile(
     );
 }
 
-/**文件下载*/
-export function downloadFile(file: Blob, fileName: string = '') {
+/**
+ * 文件下载
+ ** 此方法只适合文件较小的情况下使用
+ * 文件较大请使用downloadFileByUrl触发浏览器下载
+ * 此方法只适合文件较小的情况下使用
+ * 文件较大请使用downloadFileByUrl触发浏览器下载
+ */
+export function downloadFile(file: Blob, fileName = '') {
   const link = document.createElement('a');
   link.href = URL.createObjectURL(file);
   link.download = fileName;
   link.click();
   link.remove();
   URL.revokeObjectURL(link.href);
+}
+
+/**
+ * 通过url下载文件
+ */
+export function downloadFileByUrl(
+  url: string,
+  fileName = '',
+  target = '_blank'
+) {
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = target;
+  link.download = fileName;
+  link.click();
+  link.remove();
 }
