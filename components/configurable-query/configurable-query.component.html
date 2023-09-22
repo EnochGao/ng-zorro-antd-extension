@@ -8,6 +8,7 @@
         [hidden]="nzxCollapse && config.collapse"
       >
         <nzx-configurable-query-item
+          *ngIf="config.controlName"
           [form]="queryForm"
           [control]="config"
         ></nzx-configurable-query-item>

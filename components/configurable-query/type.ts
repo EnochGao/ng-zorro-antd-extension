@@ -25,11 +25,11 @@ export interface NzxQueryControlOptions {
   /**
    * 控件名对应查询参数的key
    */
-  controlName: string;
+  controlName?: string;
   /**
    * 控件类型
    */
-  controlType: ControlType;
+  controlType?: ControlType;
 
   /**
    * 查询框label

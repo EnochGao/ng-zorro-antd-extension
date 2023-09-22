@@ -8,7 +8,7 @@ import { NzxAbstractControl } from './abstract.control';
         nz-input
         type="text"
         [placeholder]="control.placeholder"
-        [formControlName]="control.controlName"
+        [formControlName]="control.controlName!"
       />
     </ng-container>
   `,

@@ -6,7 +6,7 @@ import { NzxAbstractControl } from './abstract.control';
     <ng-container [formGroup]="form">
       <nz-range-picker
         [ngStyle]="{ width: '100%' }"
-        [formControlName]="control.controlName"
+        [formControlName]="control.controlName!"
       >
       </nz-range-picker>
     </ng-container>

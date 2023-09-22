@@ -12,6 +12,7 @@ import {
   Output,
   QueryList,
   SimpleChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
@@ -183,10 +184,12 @@ export class NzxConfigurableQueryComponent
     const control = this.getControl(config.controlName);
     if (!control) {
       this.collapse();
-      this.queryForm.addControl(
-        config.controlName,
-        config.controlInstance ?? this.fb.control(config.default ?? null)
-      );
+      if (config.controlName) {
+        this.queryForm.addControl(
+          config.controlName,
+          config.controlInstance ?? this.fb.control(config.default ?? null)
+        );
+      }
       this.controls.push(config);
       this.cd.markForCheck();
     } else {
@@ -215,7 +218,9 @@ export class NzxConfigurableQueryComponent
   /**
    * 根据controlName获取config项
    */
-  getControl(controlName: string): NzxQueryControlOptions | undefined {
+  getControl(
+    controlName: string | undefined
+  ): NzxQueryControlOptions | undefined {
     return this.controls.find((config) => config.controlName === controlName);
   }
 
@@ -299,10 +304,12 @@ export class NzxConfigurableQueryComponent
           config.templateRef = item.templateRef;
         }
       }
-      this.queryForm.addControl(
-        config.controlName,
-        config.controlInstance ?? this.fb.control(config.default ?? null)
-      );
+      if (config.controlName) {
+        this.queryForm.addControl(
+          config.controlName,
+          config.controlInstance ?? this.fb.control(config.default ?? null)
+        );
+      }
     }
   }
 }
