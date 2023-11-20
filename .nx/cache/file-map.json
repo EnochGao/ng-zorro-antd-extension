@@ -1,0 +1,1201 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.1.2",
+  "deps": {
+    "@angular/animations": "^17.0.3",
+    "@angular/common": "^17.0.3",
+    "@angular/compiler": "^17.0.3",
+    "@angular/core": "^17.0.3",
+    "@angular/forms": "^17.0.3",
+    "@angular/platform-browser": "^17.0.3",
+    "@angular/platform-browser-dynamic": "^17.0.3",
+    "@angular/router": "^17.0.3",
+    "@wangeditor/editor": "^5.1.23",
+    "date-fns": "^2.29.2",
+    "ng-zorro-antd": "^17.0.0",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2",
+    "@angular-devkit/build-angular": "^17.0.1",
+    "@angular-eslint/builder": "17.1.0",
+    "@angular-eslint/eslint-plugin": "17.1.0",
+    "@angular-eslint/eslint-plugin-template": "17.1.0",
+    "@angular-eslint/schematics": "17.1.0",
+    "@angular-eslint/template-parser": "17.1.0",
+    "@angular/cli": "~17.0.1",
+    "@angular/compiler-cli": "^17.0.3",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@docgeni/cli": "^2.2.0",
+    "@docgeni/template": "^2.2.0",
+    "@types/jasmine": "~4.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.53.0",
+    "husky": "^8.0.1",
+    "jasmine-core": "~4.1.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^17.0.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "~5.2.2"
+  },
+  "pathMappings": {
+    "ng-zorro-antd-extension": [
+      "components/public-api.ts"
+    ],
+    "ng-zorro-antd-extension/*": [
+      "components/*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".docgenirc.js",
+        "hash": "13573351757470152700"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "2318401922603344947"
+      },
+      {
+        "file": ".github/workflows/docs.yml",
+        "hash": "2254413748914185920"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "383894340950776686"
+      },
+      {
+        "file": ".husky/commit-msg",
+        "hash": "13783233003910220812"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "4537134543220426703"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "5586092693580259292"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "4815948323043747099"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "14967417727663469276"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "5336636969995539451"
+      },
+      {
+        "file": ".workflow/build-docs.yml",
+        "hash": "17871156543146588467"
+      },
+      {
+        "file": "README-zh_CN.md",
+        "hash": "6440065655754721023"
+      },
+      {
+        "file": "README.md",
+        "hash": "5120694079036203275"
+      },
+      {
+        "file": "angular.json",
+        "hash": "3500483908211250088"
+      },
+      {
+        "file": "commitlint.config.js",
+        "hash": "11578723250774959554"
+      },
+      {
+        "file": "components/.eslintrc.json",
+        "hash": "528415626506386623"
+      },
+      {
+        "file": "components/LICENSE",
+        "hash": "1892375177258344692"
+      },
+      {
+        "file": "components/README-zh_CN.md",
+        "hash": "4174612801190368044"
+      },
+      {
+        "file": "components/README.md",
+        "hash": "2978010252791729789"
+      },
+      {
+        "file": "components/acl/doc/zh-cn.md",
+        "hash": "8780939269902092890"
+      },
+      {
+        "file": "components/acl/examples/acl/acl.component.ts",
+        "hash": "16783241565075343393"
+      },
+      {
+        "file": "components/acl/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/acl/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/acl/nzx-acl.directive.ts",
+        "hash": "15695588399932332961"
+      },
+      {
+        "file": "components/acl/nzx-acl.module.ts",
+        "hash": "10895434336672104276"
+      },
+      {
+        "file": "components/acl/nzx-acl.service.ts",
+        "hash": "10455203617571486706"
+      },
+      {
+        "file": "components/acl/public-api.ts",
+        "hash": "2641112293408498999"
+      },
+      {
+        "file": "components/blank-field/blank-field.component.ts",
+        "hash": "15557408541134390789"
+      },
+      {
+        "file": "components/blank-field/blank-field.module.ts",
+        "hash": "4381194131367306179"
+      },
+      {
+        "file": "components/blank-field/doc/zh-cn.md",
+        "hash": "2834609728545223026"
+      },
+      {
+        "file": "components/blank-field/examples/blank-field/blank-field.component.html",
+        "hash": "14202257227769092711"
+      },
+      {
+        "file": "components/blank-field/examples/blank-field/blank-field.component.ts",
+        "hash": "6149722713848946886"
+      },
+      {
+        "file": "components/blank-field/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/blank-field/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/blank-field/public-api.ts",
+        "hash": "9281865410287643650"
+      },
+      {
+        "file": "components/checkbox/api/zh-cn.js",
+        "hash": "253829998520894897"
+      },
+      {
+        "file": "components/checkbox/checkbox-group.component.ts",
+        "hash": "1659045602545607032"
+      },
+      {
+        "file": "components/checkbox/checkbox.module.ts",
+        "hash": "1938124899720447440"
+      },
+      {
+        "file": "components/checkbox/doc/zh-cn.md",
+        "hash": "16643304088804549106"
+      },
+      {
+        "file": "components/checkbox/examples/checkbox-group/checkbox-group.component.html",
+        "hash": "13953509679036544415"
+      },
+      {
+        "file": "components/checkbox/examples/checkbox-group/checkbox-group.component.ts",
+        "hash": "16314835709162743506"
+      },
+      {
+        "file": "components/checkbox/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/checkbox/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/checkbox/public-api.ts",
+        "hash": "16690848125205166704"
+      },
+      {
+        "file": "components/configurable-query/api/zh-cn.js",
+        "hash": "18213144039187995521"
+      },
+      {
+        "file": "components/configurable-query/configurable-query-item/configurable-query-item.component.ts",
+        "hash": "16020389639241119474"
+      },
+      {
+        "file": "components/configurable-query/configurable-query.component.html",
+        "hash": "1900106378428809553"
+      },
+      {
+        "file": "components/configurable-query/configurable-query.component.less",
+        "hash": "15100405643749065687"
+      },
+      {
+        "file": "components/configurable-query/configurable-query.component.ts",
+        "hash": "17563789898499669405"
+      },
+      {
+        "file": "components/configurable-query/configurable-query.module.ts",
+        "hash": "3194227141308428519"
+      },
+      {
+        "file": "components/configurable-query/control.directive.ts",
+        "hash": "6530587077761860603"
+      },
+      {
+        "file": "components/configurable-query/controls/abstract.control.ts",
+        "hash": "10677753125486174315"
+      },
+      {
+        "file": "components/configurable-query/controls/date-picker.control.ts",
+        "hash": "5272270631446343294"
+      },
+      {
+        "file": "components/configurable-query/controls/input.control.ts",
+        "hash": "6619246520295637448"
+      },
+      {
+        "file": "components/configurable-query/controls/range-picker.control.ts",
+        "hash": "8192053174726733343"
+      },
+      {
+        "file": "components/configurable-query/controls/select.control.ts",
+        "hash": "11494472604142710691"
+      },
+      {
+        "file": "components/configurable-query/controls/template.control.ts",
+        "hash": "12629380137786301645"
+      },
+      {
+        "file": "components/configurable-query/doc/zh-cn.md",
+        "hash": "15518991092612608340"
+      },
+      {
+        "file": "components/configurable-query/examples/configurable-query/configurable-query.component.html",
+        "hash": "12308473070151508528"
+      },
+      {
+        "file": "components/configurable-query/examples/configurable-query/configurable-query.component.scss",
+        "hash": "13991216381138246740"
+      },
+      {
+        "file": "components/configurable-query/examples/configurable-query/configurable-query.component.ts",
+        "hash": "9195723246565931195"
+      },
+      {
+        "file": "components/configurable-query/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/configurable-query/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/configurable-query/public-api.ts",
+        "hash": "1196818731107567538"
+      },
+      {
+        "file": "components/configurable-query/query-config.service.ts",
+        "hash": "1290035271636803422"
+      },
+      {
+        "file": "components/configurable-query/type.ts",
+        "hash": "5690958115331640277"
+      },
+      {
+        "file": "components/core/config/config.service.ts",
+        "hash": "12248582589678917915"
+      },
+      {
+        "file": "components/core/config/config.ts",
+        "hash": "10832775248568209460"
+      },
+      {
+        "file": "components/core/config/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/core/config/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/core/config/public-api.ts",
+        "hash": "4445337820425804273"
+      },
+      {
+        "file": "components/editable/doc/zh-cn.md",
+        "hash": "4954498606380714273"
+      },
+      {
+        "file": "components/editable/editable.component.ts",
+        "hash": "8974725009012723797"
+      },
+      {
+        "file": "components/editable/editable.module.ts",
+        "hash": "17309212749068014269"
+      },
+      {
+        "file": "components/editable/examples/editable/editable.component.html",
+        "hash": "4009923184556410988"
+      },
+      {
+        "file": "components/editable/examples/editable/editable.component.ts",
+        "hash": "14907685135438710135"
+      },
+      {
+        "file": "components/editable/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/editable/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/editable/public-api.ts",
+        "hash": "16923666611165461182"
+      },
+      {
+        "file": "components/i18n/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/i18n/languages/en_US.ts",
+        "hash": "14588714232399189355"
+      },
+      {
+        "file": "components/i18n/languages/zh_CN.ts",
+        "hash": "3194320748396270258"
+      },
+      {
+        "file": "components/i18n/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/i18n/nz-i18n.interface.ts",
+        "hash": "10607865194513321998"
+      },
+      {
+        "file": "components/i18n/public-api.ts",
+        "hash": "1716953223656443930"
+      },
+      {
+        "file": "components/jigsaw/doc/zh-cn.md",
+        "hash": "2208183869779588486"
+      },
+      {
+        "file": "components/jigsaw/examples/jigsaw/jigsaw.component.ts",
+        "hash": "6782510710160277621"
+      },
+      {
+        "file": "components/jigsaw/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/jigsaw/jigsaw.component.html",
+        "hash": "4473106439021468359"
+      },
+      {
+        "file": "components/jigsaw/jigsaw.component.less",
+        "hash": "4232709858999999599"
+      },
+      {
+        "file": "components/jigsaw/jigsaw.component.ts",
+        "hash": "12684620709050658002"
+      },
+      {
+        "file": "components/jigsaw/jigsaw.module.ts",
+        "hash": "10840869968532685"
+      },
+      {
+        "file": "components/jigsaw/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/jigsaw/public-api.ts",
+        "hash": "15941957328487393658"
+      },
+      {
+        "file": "components/karma.conf.js",
+        "hash": "1713037334993500761"
+      },
+      {
+        "file": "components/ng-package.json",
+        "hash": "11986581638078195636"
+      },
+      {
+        "file": "components/package.json",
+        "hash": "600180298246597578"
+      },
+      {
+        "file": "components/pipes/doc/zh-cn.md",
+        "hash": "11107881459684013262"
+      },
+      {
+        "file": "components/pipes/examples/pipes/pipes.component.html",
+        "hash": "3427447255089491437"
+      },
+      {
+        "file": "components/pipes/examples/pipes/pipes.component.ts",
+        "hash": "8474819139192229398"
+      },
+      {
+        "file": "components/pipes/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/pipes/map.pipe.ts",
+        "hash": "812837318612386218"
+      },
+      {
+        "file": "components/pipes/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/pipes/pipes.module.ts",
+        "hash": "3634270037760791811"
+      },
+      {
+        "file": "components/pipes/public-api.ts",
+        "hash": "5050703196594429317"
+      },
+      {
+        "file": "components/pipes/safe-html.pipe.ts",
+        "hash": "16082294350569950085"
+      },
+      {
+        "file": "components/pipes/safe-null.pipe.ts",
+        "hash": "14031559010678470596"
+      },
+      {
+        "file": "components/pipes/safe-resource-url.pipe.ts",
+        "hash": "8121558794210214626"
+      },
+      {
+        "file": "components/pipes/safe-script.pipe.ts",
+        "hash": "15131512450608263907"
+      },
+      {
+        "file": "components/pipes/safe-style.pipe.ts",
+        "hash": "10509396906698289597"
+      },
+      {
+        "file": "components/pipes/safe-url.pipe.ts",
+        "hash": "8047748088497514790"
+      },
+      {
+        "file": "components/public-api.ts",
+        "hash": "9045728368271676071"
+      },
+      {
+        "file": "components/schematics/collection.json",
+        "hash": "843275276487481958"
+      },
+      {
+        "file": "components/schematics/ng-add/index.ts",
+        "hash": "5274783988312353554"
+      },
+      {
+        "file": "components/simple-table/api/zh-cn.js",
+        "hash": "11799242969044270585"
+      },
+      {
+        "file": "components/simple-table/directive/expand.directive.ts",
+        "hash": "4523274746640682014"
+      },
+      {
+        "file": "components/simple-table/directive/td.directive.ts",
+        "hash": "14248893037668213237"
+      },
+      {
+        "file": "components/simple-table/directive/th.directive.ts",
+        "hash": "18014379611367211963"
+      },
+      {
+        "file": "components/simple-table/doc/zh-cn.md",
+        "hash": "10237855867763683653"
+      },
+      {
+        "file": "components/simple-table/examples/simple-table/simple-table.component.html",
+        "hash": "2360384929527658657"
+      },
+      {
+        "file": "components/simple-table/examples/simple-table/simple-table.component.ts",
+        "hash": "7804057686493312811"
+      },
+      {
+        "file": "components/simple-table/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/simple-table/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/simple-table/public-api.ts",
+        "hash": "193462288626847740"
+      },
+      {
+        "file": "components/simple-table/simple-table.component.ts",
+        "hash": "15624486221171670894"
+      },
+      {
+        "file": "components/simple-table/simple-table.module.ts",
+        "hash": "5072502253895118032"
+      },
+      {
+        "file": "components/table-adaptor/doc/zh-cn.md",
+        "hash": "16566375127023999761"
+      },
+      {
+        "file": "components/table-adaptor/examples/page-table-basic/page-table-basic.component.html",
+        "hash": "6525265999785634242"
+      },
+      {
+        "file": "components/table-adaptor/examples/page-table-basic/page-table-basic.component.ts",
+        "hash": "5529368801507702061"
+      },
+      {
+        "file": "components/table-adaptor/examples/table-adaptor/table-adaptor.component.html",
+        "hash": "9739437381086438932"
+      },
+      {
+        "file": "components/table-adaptor/examples/table-adaptor/table-adaptor.component.ts",
+        "hash": "9352502243324750415"
+      },
+      {
+        "file": "components/table-adaptor/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/table-adaptor/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/table-adaptor/page-table-basic.ts",
+        "hash": "3326101792391629874"
+      },
+      {
+        "file": "components/table-adaptor/public-api.ts",
+        "hash": "1006559297361919107"
+      },
+      {
+        "file": "components/table-adaptor/table-adaptor.directive.ts",
+        "hash": "203795126684016856"
+      },
+      {
+        "file": "components/table-adaptor/table-adaptor.module.ts",
+        "hash": "13914611507045335353"
+      },
+      {
+        "file": "components/table-form/api/zh-cn.js",
+        "hash": "8115369088045096329"
+      },
+      {
+        "file": "components/table-form/directive/table-expand.directive.ts",
+        "hash": "6545106202192687538"
+      },
+      {
+        "file": "components/table-form/directive/table-td.directive.ts",
+        "hash": "4359848257614492290"
+      },
+      {
+        "file": "components/table-form/directive/table-th.directive.ts",
+        "hash": "1660084094191696201"
+      },
+      {
+        "file": "components/table-form/doc/zh-cn.md",
+        "hash": "2943779826822913657"
+      },
+      {
+        "file": "components/table-form/examples/table-form/table-form.component.html",
+        "hash": "14587032148603022835"
+      },
+      {
+        "file": "components/table-form/examples/table-form/table-form.component.scss",
+        "hash": "17554342170002460751"
+      },
+      {
+        "file": "components/table-form/examples/table-form/table-form.component.ts",
+        "hash": "2202343686524120313"
+      },
+      {
+        "file": "components/table-form/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/table-form/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/table-form/public-api.ts",
+        "hash": "3527265313658647743"
+      },
+      {
+        "file": "components/table-form/table-form.component.html",
+        "hash": "14444938087104360539"
+      },
+      {
+        "file": "components/table-form/table-form.component.less",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "components/table-form/table-form.component.ts",
+        "hash": "9836832560483539763"
+      },
+      {
+        "file": "components/table-form/table-form.module.ts",
+        "hash": "3101782258318396694"
+      },
+      {
+        "file": "components/table-form/type.ts",
+        "hash": "4561034649490037659"
+      },
+      {
+        "file": "components/table-select/abstract-table-select.ts",
+        "hash": "16264203173676487846"
+      },
+      {
+        "file": "components/table-select/doc/zh-cn.md",
+        "hash": "461556481699744173"
+      },
+      {
+        "file": "components/table-select/examples/page-table-select/page-table-select.component.html",
+        "hash": "3109104440348942930"
+      },
+      {
+        "file": "components/table-select/examples/page-table-select/page-table-select.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "components/table-select/examples/page-table-select/page-table-select.component.ts",
+        "hash": "12228133391500890464"
+      },
+      {
+        "file": "components/table-select/examples/table-select/table-select.component.html",
+        "hash": "1243143676140514834"
+      },
+      {
+        "file": "components/table-select/examples/table-select/table-select.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "components/table-select/examples/table-select/table-select.component.ts",
+        "hash": "13464505859852857544"
+      },
+      {
+        "file": "components/table-select/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/table-select/key.directive.ts",
+        "hash": "9951398637794182738"
+      },
+      {
+        "file": "components/table-select/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/table-select/nzx-table-select.module.ts",
+        "hash": "6151625505339142287"
+      },
+      {
+        "file": "components/table-select/page-table-select/page-table-select.component.html",
+        "hash": "10684193506831148510"
+      },
+      {
+        "file": "components/table-select/page-table-select/page-table-select.component.less",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "components/table-select/page-table-select/page-table-select.component.ts",
+        "hash": "8626224343564608667"
+      },
+      {
+        "file": "components/table-select/public-api.ts",
+        "hash": "9532063061359616242"
+      },
+      {
+        "file": "components/table-select/table-select/table-select.component.html",
+        "hash": "3951733734374902642"
+      },
+      {
+        "file": "components/table-select/table-select/table-select.component.less",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "components/table-select/table-select/table-select.component.ts",
+        "hash": "4132029783378253761"
+      },
+      {
+        "file": "components/table-select/type.ts",
+        "hash": "6797931617315818883"
+      },
+      {
+        "file": "components/test.ts",
+        "hash": "6870769373629468259"
+      },
+      {
+        "file": "components/timer-button/doc/zh-cn.md",
+        "hash": "12415361499081921692"
+      },
+      {
+        "file": "components/timer-button/examples/timer-button/timer-button.component.html",
+        "hash": "3159614798295375096"
+      },
+      {
+        "file": "components/timer-button/examples/timer-button/timer-button.component.ts",
+        "hash": "2361594006080029438"
+      },
+      {
+        "file": "components/timer-button/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/timer-button/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/timer-button/public-api.ts",
+        "hash": "6405242774365539822"
+      },
+      {
+        "file": "components/timer-button/timer-button.directive.ts",
+        "hash": "9894629996328235477"
+      },
+      {
+        "file": "components/timer-button/timer-button.module.ts",
+        "hash": "7658764521842436041"
+      },
+      {
+        "file": "components/trim/doc/zh-cn.md",
+        "hash": "11866544249390750122"
+      },
+      {
+        "file": "components/trim/examples/trim/trim.component.ts",
+        "hash": "17621057327207752282"
+      },
+      {
+        "file": "components/trim/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/trim/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/trim/public-api.ts",
+        "hash": "14318514418834690303"
+      },
+      {
+        "file": "components/trim/trim.directive.ts",
+        "hash": "10332353810842501075"
+      },
+      {
+        "file": "components/trim/trim.module.ts",
+        "hash": "9788723483251672548"
+      },
+      {
+        "file": "components/tsconfig.json",
+        "hash": "11482419171042244560"
+      },
+      {
+        "file": "components/tsconfig.lib.json",
+        "hash": "4160188442475772602"
+      },
+      {
+        "file": "components/tsconfig.lib.prod.json",
+        "hash": "1939170332703490951"
+      },
+      {
+        "file": "components/tsconfig.schematics.json",
+        "hash": "17254517659109069047"
+      },
+      {
+        "file": "components/tsconfig.spec.json",
+        "hash": "8623830578685233180"
+      },
+      {
+        "file": "components/types/common.ts",
+        "hash": "18349223150283763182"
+      },
+      {
+        "file": "components/types/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/types/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/types/public-api.ts",
+        "hash": "12791555708455629888"
+      },
+      {
+        "file": "components/util/doc/zh-cn.md",
+        "hash": "5487354082396452603"
+      },
+      {
+        "file": "components/util/examples/util/util.component.html",
+        "hash": "9066294077024810729"
+      },
+      {
+        "file": "components/util/examples/util/util.component.ts",
+        "hash": "15639741168123469825"
+      },
+      {
+        "file": "components/util/index.ts",
+        "hash": "17589555808286336234"
+      },
+      {
+        "file": "components/util/lib/cloneDeep.ts",
+        "hash": "12182980865317285671"
+      },
+      {
+        "file": "components/util/lib/fileUtil.ts",
+        "hash": "11752646631186022779"
+      },
+      {
+        "file": "components/util/lib/isArray.ts",
+        "hash": "14442961769202509678"
+      },
+      {
+        "file": "components/util/lib/isDate.ts",
+        "hash": "9865462743923082105"
+      },
+      {
+        "file": "components/util/lib/isEmpty.ts",
+        "hash": "2104896731502884153"
+      },
+      {
+        "file": "components/util/lib/isNumber.ts",
+        "hash": "4623016182335930421"
+      },
+      {
+        "file": "components/util/lib/isObject.ts",
+        "hash": "2408056747536041177"
+      },
+      {
+        "file": "components/util/lib/isString.ts",
+        "hash": "4732985781305369953"
+      },
+      {
+        "file": "components/util/lib/toNumber.ts",
+        "hash": "451368772448331703"
+      },
+      {
+        "file": "components/util/lib/toString.ts",
+        "hash": "7449899950398388168"
+      },
+      {
+        "file": "components/util/lib/trimObject.ts",
+        "hash": "594713464782054366"
+      },
+      {
+        "file": "components/util/lib/updateControlStatus.ts",
+        "hash": "8768839179422653756"
+      },
+      {
+        "file": "components/util/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/util/public-api.ts",
+        "hash": "6004577739147826962"
+      },
+      {
+        "file": "components/wang-editor/doc/zh-cn.md",
+        "hash": "622688567182524556"
+      },
+      {
+        "file": "components/wang-editor/examples/editor/editor.component.ts",
+        "hash": "16608798650634311030"
+      },
+      {
+        "file": "components/wang-editor/index.ts",
+        "hash": "9198966054549799485"
+      },
+      {
+        "file": "components/wang-editor/ng-package.json",
+        "hash": "16761042429972996842"
+      },
+      {
+        "file": "components/wang-editor/public-api.ts",
+        "hash": "16245016358749323992"
+      },
+      {
+        "file": "components/wang-editor/type.ts",
+        "hash": "15347999607021910699"
+      },
+      {
+        "file": "components/wang-editor/wang-editor.component.ts",
+        "hash": "2944571164662759666"
+      },
+      {
+        "file": "components/wang-editor/wang-editor.module.ts",
+        "hash": "8601943191944636661"
+      },
+      {
+        "file": "components/wang-editor/wang-toolbar.component.ts",
+        "hash": "3290160436828443667"
+      },
+      {
+        "file": "docs/changelog/index.md",
+        "hash": "14443088926256735029"
+      },
+      {
+        "file": "docs/changelog/v15.10.0.md",
+        "hash": "2066865864062189344"
+      },
+      {
+        "file": "docs/changelog/v15.10.1.md",
+        "hash": "7229892678518180746"
+      },
+      {
+        "file": "docs/changelog/v15.10.2.md",
+        "hash": "15532575901341483360"
+      },
+      {
+        "file": "docs/changelog/v15.11.0.md",
+        "hash": "197815609752398663"
+      },
+      {
+        "file": "docs/changelog/v15.12.0.md",
+        "hash": "2901299297385556616"
+      },
+      {
+        "file": "docs/changelog/v15.2.md",
+        "hash": "12800839595886126969"
+      },
+      {
+        "file": "docs/changelog/v15.3.md",
+        "hash": "14587081783592774523"
+      },
+      {
+        "file": "docs/changelog/v15.4.md",
+        "hash": "7647478578479954340"
+      },
+      {
+        "file": "docs/changelog/v15.5.md",
+        "hash": "2055090007064859551"
+      },
+      {
+        "file": "docs/changelog/v15.6.md",
+        "hash": "7500424595650995535"
+      },
+      {
+        "file": "docs/changelog/v15.7.md",
+        "hash": "3210624946253802613"
+      },
+      {
+        "file": "docs/changelog/v15.8.0.md",
+        "hash": "13389136724518533174"
+      },
+      {
+        "file": "docs/changelog/v15.8.1.md",
+        "hash": "6519897909431931566"
+      },
+      {
+        "file": "docs/changelog/v15.8.2.md",
+        "hash": "1918228849261162169"
+      },
+      {
+        "file": "docs/changelog/v15.8.4.md",
+        "hash": "9377549248916586084"
+      },
+      {
+        "file": "docs/changelog/v15.8.5.md",
+        "hash": "17822209324918250179"
+      },
+      {
+        "file": "docs/changelog/v15.9.0.md",
+        "hash": "4958157461880414062"
+      },
+      {
+        "file": "docs/en-us/changelog/index.md",
+        "hash": "3673826825509790187"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.10.0.md",
+        "hash": "2996510216315617667"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.10.1.md",
+        "hash": "13454127715312149635"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.10.2.md",
+        "hash": "1384329791618856816"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.11.0.md",
+        "hash": "15517960311608530914"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.12.0.md",
+        "hash": "5169736402837312640"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.2.md",
+        "hash": "6561407847954002064"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.3.md",
+        "hash": "14105108745174797065"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.4.md",
+        "hash": "14731478686143117863"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.5.md",
+        "hash": "16882336759227045614"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.6.md",
+        "hash": "13983626301439581214"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.7.md",
+        "hash": "6662718572254558190"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.8.0.md",
+        "hash": "44223998756304469"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.8.1.md",
+        "hash": "3421959505189037161"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.8.2.md",
+        "hash": "17416825394508006348"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.8.4.md",
+        "hash": "2919738155567110432"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.8.5.md",
+        "hash": "12725609378498133170"
+      },
+      {
+        "file": "docs/en-us/changelog/v15.9.0.md",
+        "hash": "7901051375241415419"
+      },
+      {
+        "file": "docs/en-us/index.md",
+        "hash": "1908124445027013874"
+      },
+      {
+        "file": "docs/index.md",
+        "hash": "7534619284128575356"
+      },
+      {
+        "file": "karma.conf.js",
+        "hash": "135517763661576528"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "11457438977867468985"
+      },
+      {
+        "file": "package.json",
+        "hash": "10654162206424346169"
+      },
+      {
+        "file": "src/.gitignore",
+        "hash": "9607854512130743416"
+      },
+      {
+        "file": "src/app/app.module.ts",
+        "hash": "11183601979526031868"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/stack-blitz/angular.json",
+        "hash": "5255303707411480512"
+      },
+      {
+        "file": "src/assets/stack-blitz/bundle.json",
+        "hash": "15354975402216462600"
+      },
+      {
+        "file": "src/assets/stack-blitz/package.json",
+        "hash": "15787576145193178757"
+      },
+      {
+        "file": "src/assets/stack-blitz/src/style.scss",
+        "hash": "3672687807978862242"
+      },
+      {
+        "file": "src/environments/environment.prod.ts",
+        "hash": "5406836414239361753"
+      },
+      {
+        "file": "src/environments/environment.ts",
+        "hash": "17458466784506237106"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3464744996580215640"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "7240406601983369023"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "10677612470474905821"
+      },
+      {
+        "file": "src/polyfills.ts",
+        "hash": "2035846685621806592"
+      },
+      {
+        "file": "src/styles.scss",
+        "hash": "13329749358969995471"
+      },
+      {
+        "file": "src/test.ts",
+        "hash": "12412031923219697029"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "8825276143534388274"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "12263752508439073496"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "17198424518534092990"
+      }
+    ]
+  }
+}
