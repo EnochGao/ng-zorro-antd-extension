@@ -167,14 +167,14 @@ export class NzxConfigurableQueryComponent
     controlName: string,
     config: Partial<NzxQueryControlOptions>
   ): void {
-    let control = this.getControl(controlName);
-    if (control) {
-      Object.keys(config).forEach((key) => {
-        (control as any)[key] = (config as any)[key];
-      });
-
-      this.cd.markForCheck();
-    }
+    Promise.resolve().then(() => {
+      const control = this.getControl(controlName);
+      if (control) {
+        Object.keys(config).forEach((key) => {
+          (control as any)[key] = (config as any)[key];
+        });
+      }
+    });
   }
 
   /**
