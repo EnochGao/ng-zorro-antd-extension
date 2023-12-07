@@ -74,7 +74,7 @@
       },
       {
         "file": ".gitignore",
-        "hash": "383894340950776686"
+        "hash": "12589214002713811958"
       },
       {
         "file": ".husky/commit-msg",
@@ -106,11 +106,11 @@
       },
       {
         "file": "README-zh_CN.md",
-        "hash": "6440065655754721023"
+        "hash": "8788862049713866238"
       },
       {
         "file": "README.md",
-        "hash": "5120694079036203275"
+        "hash": "8874624114808759599"
       },
       {
         "file": "angular.json",
@@ -446,7 +446,7 @@
       },
       {
         "file": "components/package.json",
-        "hash": "600180298246597578"
+        "hash": "4128898934518569475"
       },
       {
         "file": "components/pipes/doc/zh-cn.md",
@@ -1106,11 +1106,11 @@
       },
       {
         "file": "docs/en-us/index.md",
-        "hash": "1908124445027013874"
+        "hash": "11631743655555390274"
       },
       {
         "file": "docs/index.md",
-        "hash": "7534619284128575356"
+        "hash": "11774131163181614028"
       },
       {
         "file": "karma.conf.js",
@@ -1118,11 +1118,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "11457438977867468985"
+        "hash": "8976520366631496702"
       },
       {
         "file": "package.json",
-        "hash": "10654162206424346169"
+        "hash": "7022415888086798102"
       },
       {
         "file": "src/.gitignore",

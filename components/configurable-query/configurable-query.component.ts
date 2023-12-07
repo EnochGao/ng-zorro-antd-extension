@@ -227,6 +227,7 @@ export class NzxConfigurableQueryComponent
   /**
    * 检索给定控件名称或路径的子控件。
    * 这个 getFormControl 签名支持字符串和 const 数组（.getFormControl(['foo', 'bar'] as const)）
+   * 注意调用时机，最好在afterViewInit中调用
    */
   getFormControl(
     path: string | readonly (string | number)[]

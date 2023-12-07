@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   OnInit,
@@ -37,7 +38,9 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzSpaceModule,
   ],
 })
-export class NzxConfigurableQueryExampleComponent implements OnInit {
+export class NzxConfigurableQueryExampleComponent
+  implements OnInit, AfterViewInit
+{
   queryParams: NzxQueryParams = {};
 
   controls: Array<NzxQueryControlOptions> = [
@@ -359,6 +362,16 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
       placeholder: '姓名',
       controlType: 'input',
     },
+    {
+      controlName: 'type',
+      label: '动态',
+      placeholder: '请选择',
+      controlType: 'select',
+      menuList: [
+        { label: '添加', value: true },
+        { label: '删除', value: false },
+      ],
+    },
 
     {
       controlName: 'birthday',
@@ -412,6 +425,16 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
     if (cacheStr) {
       this.query9.setQueryParams(JSON.parse(cacheStr));
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.query10.getFormControl('type')?.valueChanges.subscribe((value) => {
+      if (value) {
+        this.addLevel();
+      } else {
+        this.removeLevel();
+      }
+    });
   }
 
   queryChange(params: NzxQueryParams) {
