@@ -89,7 +89,7 @@ export class NzxConfigurableQueryComponent
   private isCollapse = true;
   private _queryParams: NzxQueryParams = {};
   private defaultValue: NzxQueryParams = {};
-  private params: NzxQueryParams = {};
+  private cacheParams: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
   private _nzxBtnSpan: number | null = null;
 
@@ -144,20 +144,15 @@ export class NzxConfigurableQueryComponent
 
     this.defaultValue = Object.assign({}, this._queryParams);
 
-    if (this.params) {
-      // 缓存回显查询条件
-      this.queryForm.patchValue(this.params);
-    }
-
     if (this.initQuery) {
       this.search();
     }
   }
 
   /** 设置查询值进行回显 */
-  setQueryParams(params: NzxQueryParams): void {
-    this.params = params;
-    this.queryForm.patchValue(params);
+  setQueryParams(cacheParams: NzxQueryParams): void {
+    this.cacheParams = cacheParams;
+    this.queryForm.patchValue(cacheParams);
   }
 
   /**
@@ -311,6 +306,10 @@ export class NzxConfigurableQueryComponent
           config.controlInstance ?? this.fb.control(config.default ?? null)
         );
       }
+    }
+    if (this.cacheParams) {
+      // 缓存回显查询条件
+      this.queryForm.patchValue(this.cacheParams);
     }
   }
 }

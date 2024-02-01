@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Directive,
   ElementRef,
@@ -32,11 +33,11 @@ const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTimerButton';
   selector: 'button[nzxTimerButton]',
   exportAs: 'NzxTimerButton',
 })
-export class NzxTimerButtonDirective implements OnInit, OnDestroy {
+export class NzxTimerButtonDirective implements AfterViewInit, OnDestroy {
   @ExtensionWithConfig() @Input() duration: number = 3;
 
-  @Output() isCompleted = new EventEmitter<boolean>(false);
-  @Output() remainingTime = new EventEmitter<number>();
+  @Output() isCompleted = new EventEmitter<boolean>(true);
+  @Output() remainingTime = new EventEmitter<number>(true);
 
   @HostBinding('attr.disabled') get _disabled() {
     return this.disabled || null;
@@ -50,7 +51,10 @@ export class NzxTimerButtonDirective implements OnInit, OnDestroy {
 
   constructor(private elementRef: ElementRef, private cd: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.isCompleted.emit(true);
+    this.remainingTime.emit(0);
+
     fromEvent<MouseEvent>(this.elementRef.nativeElement, 'click')
       .pipe(takeUntil(this.destroy$))
       .subscribe((event) => {
