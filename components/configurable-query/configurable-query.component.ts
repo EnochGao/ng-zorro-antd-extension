@@ -118,17 +118,14 @@ export class NzxConfigurableQueryComponent
       this.locale = this.i18n.getLocaleData('Query');
       this.cd.markForCheck();
     });
+
     this.queryForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
-        if (val) {
-          this._queryParams = {
-            ...val,
-            ...this.fixedParams,
-          };
-        } else {
-          this._queryParams = this.fixedParams;
-        }
+        this._queryParams = {
+          ...val,
+          ...this.fixedParams,
+        };
       });
 
     this._nzxBtnSpan = this.nzxBtnSpan;
@@ -136,13 +133,6 @@ export class NzxConfigurableQueryComponent
 
   ngAfterContentInit(): void {
     this.generateForm(this.controls);
-
-    this._queryParams = {
-      ...this.queryForm.value,
-      ...this.fixedParams,
-    };
-
-    this.defaultValue = Object.assign({}, this._queryParams);
 
     if (this.initQuery) {
       this.search();
@@ -233,19 +223,19 @@ export class NzxConfigurableQueryComponent
   search(): void {
     if (this.queryForm.invalid) {
       updateControlStatus(this.queryForm);
-    } else {
-      this.queryChange.emit(this._queryParams);
+      return;
     }
+    this.queryChange.emit(this._queryParams);
   }
 
   /** 重置 */
   reset(): void {
     if (this.queryForm.invalid) {
       updateControlStatus(this.queryForm);
-    } else {
-      this.queryForm.reset(this.defaultValue);
-      this.resetChange.emit(this._queryParams);
+      return;
     }
+    this.queryForm.reset(this.defaultValue);
+    this.resetChange.emit(this._queryParams);
   }
 
   /**展开、收起*/
@@ -269,8 +259,8 @@ export class NzxConfigurableQueryComponent
     this.destroy$.complete();
   }
 
-  /** 清空表单 */
-  private clearForm(): void {
+  /** 清空表单控件 */
+  private clearFormControl(): void {
     Object.keys(this.queryForm.controls).forEach((key) => {
       this.queryForm.removeControl(key);
     });
@@ -289,7 +279,8 @@ export class NzxConfigurableQueryComponent
 
   /** 生成表单 */
   private generateForm(controlConfigs: Array<NzxQueryControlOptions>): void {
-    this.clearForm();
+    this.clearFormControl();
+
     for (const config of controlConfigs) {
       if (config.controlType === 'Template') {
         const item = this.controlTemplateList.find(
@@ -306,6 +297,7 @@ export class NzxConfigurableQueryComponent
         );
       }
     }
+    this.defaultValue = this.queryForm.getRawValue();
     if (this.cacheParams) {
       // 缓存回显查询条件
       this.queryForm.patchValue(this.cacheParams);
