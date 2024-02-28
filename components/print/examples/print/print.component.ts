@@ -29,7 +29,17 @@ import { GoodEvaluatePdfComponent } from '../good-evaluate-pdf/good-evaluate-pdf
     </div>
 
     <div nz-row nzJustify="center">
-      <nzx-print #nzxPrint printTitle="HUAWEI Mate 60 Pro评价表">
+      <nzx-print
+        #nzxPrint
+        [enablePreview]="true"
+        printTitle="HUAWEI Mate 60 Pro评价表"
+      >
+        <div nzxPrintHeader>
+          我是header不参与打印
+          <button nz-button nzType="primary" (click)="nzxPrint.refresh()">
+            刷新
+          </button>
+        </div>
         <div nzxPrintContent>
           <nzx-good-evaluate-pdf></nzx-good-evaluate-pdf>
         </div>
@@ -39,7 +49,13 @@ import { GoodEvaluatePdfComponent } from '../good-evaluate-pdf/good-evaluate-pdf
     <div nz-row nzJustify="space-between" nzAlign="middle">
       <div nz-col>普通打印</div>
       <div nz-col>
-        <button nz-button nzType="primary" nzxPrint [printEl]="printRef">
+        <button
+          nz-button
+          nzType="primary"
+          nzxPrint
+          [printEl]="printRef"
+          printTitle="评价表"
+        >
           下载打印评价表
         </button>
       </div>
