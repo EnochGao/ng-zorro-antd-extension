@@ -6,7 +6,7 @@ order: 9
 label: new
 ---
 
-前端打印
+前端打印，注意：paged.js 主要兼容 Chromium 内核系列 pc 端浏览器
 
 ## 支持版本
 
