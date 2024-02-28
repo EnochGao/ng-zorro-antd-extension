@@ -43,10 +43,10 @@ import { GoodEvaluatePdfComponent } from '../good-evaluate-pdf/good-evaluate-pdf
           下载打印评价表
         </button>
       </div>
-      <div nz-row nzJustify="center">
-        <div #printRef>
-          <nzx-good-evaluate-pdf></nzx-good-evaluate-pdf>
-        </div>
+    </div>
+    <div nz-row nzJustify="center">
+      <div #printRef>
+        <nzx-good-evaluate-pdf></nzx-good-evaluate-pdf>
       </div>
     </div>
   `,

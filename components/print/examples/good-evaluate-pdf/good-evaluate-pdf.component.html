@@ -8,8 +8,6 @@
 <footer class="good-footer">页脚</footer>
 
 <section>
-  <div class="good-guide" [innerHTML]="guide"></div>
-
   <table class="good-description">
     <tbody>
       <tr>
@@ -57,7 +55,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]; let i = index">
+      <tr
+        *ngFor="
+          let item of [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1, 1, 1, 1,];
+          let i = index
+        "
+      >
         <td>{{ i + 1 }} 颜色</td>
         <td>符合人类审美</td>
         <td [ngStyle]="{ 'text-align': 'center' }">好</td>
