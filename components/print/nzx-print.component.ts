@@ -8,6 +8,7 @@ import {
   ElementRef,
   Inject,
   Input,
+  ViewChild,
 } from '@angular/core';
 import { getElementTag } from './util';
 
@@ -23,18 +24,8 @@ export class NzxPrintContentDirective {}
   selector: 'nzx-print',
   template: `
     <ng-content select="[nzxPrintHeader]"></ng-content>
-    <div id="nzx-print-iframe-content"></div>
+    <div #iframeContainer></div>
   `,
-  styles: [
-    `
-      #nzx-print-iframe-content {
-        iframe {
-          background: #fff;
-          border: 1px solid #ccc;
-        }
-      }
-    `,
-  ],
 })
 export class NzxPrintComponent implements AfterViewInit {
   @Input() printTitle = 'pdf';
@@ -44,6 +35,9 @@ export class NzxPrintComponent implements AfterViewInit {
   @Input() width = 814;
   @Input() height = 1143;
   @Input() enablePreview = true;
+
+  @ViewChild('iframeContainer', { read: ElementRef, static: true })
+  private containerRef!: ElementRef;
 
   @ContentChild(NzxPrintContentDirective, { read: ElementRef, static: true })
   private _printEl!: ElementRef;
@@ -80,10 +74,12 @@ export class NzxPrintComponent implements AfterViewInit {
   }
 
   private render() {
-    const container = this.document.getElementById('nzx-print-iframe-content');
     this.iframeEl = this.document.createElement('iframe');
     this.iframeEl.height = this.height + '';
     this.iframeEl.width = this.width + '';
+    this.iframeEl.style.border = '1px solid #ccc';
+    this.iframeEl.style.background = '#fff';
+
     if (!this.enablePreview) {
       this.iframeEl.style.visibility = 'hidden';
       if (this.platform.FIREFOX) {
@@ -98,9 +94,9 @@ export class NzxPrintComponent implements AfterViewInit {
         );
       }
     }
-    if (container) {
-      container.innerHTML = '';
-      container.appendChild(this.iframeEl);
+    if (this.containerRef) {
+      this.containerRef.nativeElement.innerHTML = '';
+      this.containerRef.nativeElement.appendChild(this.iframeEl);
     }
 
     if (this.iframeEl.contentWindow) {
