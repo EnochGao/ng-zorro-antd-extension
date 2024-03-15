@@ -8,9 +8,10 @@ import {
   ElementRef,
   Inject,
   Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
-import { getElementTag } from './util';
+import { getElementTag, getStyles } from './util';
 
 @Directive({
   selector: '[nzxPrintContent]',
@@ -27,7 +28,7 @@ export class NzxPrintContentDirective {}
     <div #iframeContainer></div>
   `,
 })
-export class NzxPrintComponent implements AfterViewInit {
+export class NzxPrintComponent implements OnInit, AfterViewInit {
   @Input() printTitle = 'pdf';
   /**
    * a4 794px1123px
@@ -35,6 +36,8 @@ export class NzxPrintComponent implements AfterViewInit {
   @Input() width = 814;
   @Input() height = 1143;
   @Input() enablePreview = true;
+  @Input() identifierStr: string | string[] = '';
+  @Input() pagedCDN = '';
 
   @ViewChild('iframeContainer', { read: ElementRef, static: true })
   private containerRef!: ElementRef;
@@ -55,6 +58,12 @@ export class NzxPrintComponent implements AfterViewInit {
     private platform: Platform,
     @Inject(DOCUMENT) private document: Document
   ) {}
+
+  ngOnInit(): void {
+    if (!this.pagedCDN) {
+      throw new Error('pagedCDN is required');
+    }
+  }
 
   ngAfterViewInit(): void {
     this.render();
@@ -110,10 +119,13 @@ export class NzxPrintComponent implements AfterViewInit {
   }
 
   private getTemplateStr() {
-    const styles = getElementTag('style');
+    let styles = getElementTag('style');
+    if (this.identifierStr || this.identifierStr.length > 0) {
+      styles = getStyles(this.identifierStr);
+    }
 
     const scripts = `
-        <script src="https://winkong-frontend.oss-cn-qingdao.aliyuncs.com/javascript/paged/paged.polyfill.min.js"></script>
+        <script src="${this.pagedCDN}"></script>
         <script>
           class RepeatingTableHeaders extends Paged.Handler {
             constructor(chunker, polisher, caller) {
