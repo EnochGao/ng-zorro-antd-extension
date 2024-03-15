@@ -32,6 +32,8 @@ import { GoodEvaluatePdfComponent } from '../good-evaluate-pdf/good-evaluate-pdf
       <nzx-print
         #nzxPrint
         [enablePreview]="true"
+        [identifierStr]="'.mate-pro-header'"
+        [pagedCDN]="'https://unpkg.com/pagedjs/dist/paged.polyfill.js'"
         printTitle="HUAWEI Mate 60 Pro评价表"
       >
         <div nzxPrintHeader>
