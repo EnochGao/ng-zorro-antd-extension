@@ -5,7 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { getElementTag } from './util';
+import { getElementTag, getStyles } from './util';
 
 /**
  * 常规打印
@@ -16,6 +16,7 @@ import { getElementTag } from './util';
 export class NzxPrintDirective implements OnInit, AfterViewInit {
   @Input() printEl: HTMLElement | string | undefined;
   @Input() printTitle: string | undefined = 'pdf';
+  @Input() identifierStr: string | string[] = '';
   private _printEl!: HTMLElement;
 
   ngOnInit(): void {
@@ -35,7 +36,10 @@ export class NzxPrintDirective implements OnInit, AfterViewInit {
     const newWin = window.open('', '_blank');
 
     if (newWin) {
-      const styles = getElementTag('style');
+      let styles = getElementTag('style');
+      if (this.identifierStr || this.identifierStr.length > 0) {
+        styles = getStyles(this.identifierStr);
+      }
       const links = getElementTag('link');
       const baseTag = getElementTag('base');
 
