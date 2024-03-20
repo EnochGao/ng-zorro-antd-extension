@@ -8,8 +8,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './good-evaluate-pdf.component.html',
   styleUrls: ['./good-evaluate-pdf.component.less'],
 })
-export class GoodEvaluatePdfComponent {
-  guide = `
-  欢迎评价
-  `;
-}
+export class GoodEvaluatePdfComponent {}
