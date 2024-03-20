@@ -1,0 +1,160 @@
+<p>富文本编辑器，易于在 angular 中使用基于<a target="_blank" href="https://www.npmjs.com/package/@wangeditor/editor">wangEditor 5</a>的包装组件。详情查看<a target="_blank" href="https://www.wangeditor.com/">文档</a></p>
+
+        <h2 id="%E6%94%AF%E6%8C%81%E7%89%88%E6%9C%AC" class="docs-header-link">
+          <span header-link="%E6%94%AF%E6%8C%81%E7%89%88%E6%9C%AC"></span>
+          支持版本
+        </h2>
+      <div class="dg-paragraph"><label type="success">v15.3.1+</label></div>
+
+        <h2 id="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" class="docs-header-link">
+          <span header-link="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"></span>
+          基本使用
+        </h2>
+      <ol>
+<li>安装<code>@wangeditor/editor</code></li>
+</ol>
+<pre class="language-bash"><code class="language-bash"><div><span class="token function">npm</span> i @wangeditor/editor</div></code></pre>
+<ol start="2">
+<li>style 文件或者 angular.json 中引入富文本样式文件</li>
+</ol>
+<pre class="language-css"><code class="language-css"><div><span class="token atrule"><span class="token rule">@import</span> <span class="token string">"node_modules/@wangeditor/editor/dist/css/style.css"</span><span class="token punctuation">;</span></span></div></code></pre>
+
+        <h3 id="%E5%BC%95%E5%85%A5" class="docs-header-link">
+          <span header-link="%E5%BC%95%E5%85%A5"></span>
+          引入
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxWangEditorModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/wang-editor"</span><span class="token punctuation">;</span></div></code></pre>
+
+        <h3 id="html" class="docs-header-link">
+          <span header-link="html"></span>
+          html
+        </h3>
+      <pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ border: <span class="token punctuation">'</span>1px solid #ccc<span class="token punctuation">'</span>, <span class="token punctuation">'</span>z-index<span class="token punctuation">'</span>: 100 }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-wang-toolbar</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ <span class="token punctuation">'</span>border-bottom<span class="token punctuation">'</span>: <span class="token punctuation">'</span>1px solid #ccc<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span> <span class="token attr-name">[editor]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>editorRef.editor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-wang-toolbar</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-wang-editor</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ height: <span class="token punctuation">'</span>300px<span class="token punctuation">'</span>, <span class="token punctuation">'</span>overflow-y<span class="token punctuation">'</span>: <span class="token punctuation">'</span>hidden<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span> <span class="token attr-name">#editorRef</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>NzxWangEditor<span class="token punctuation">"</span></span> <span class="token attr-name">[(ngModel)]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-wang-editor</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></div></code></pre>
+<p>或者</p>
+<pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ border: <span class="token punctuation">'</span>1px solid #ccc<span class="token punctuation">'</span>, <span class="token punctuation">'</span>z-index<span class="token punctuation">'</span>: 100 }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nzxWangToolbar</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ <span class="token punctuation">'</span>border-bottom<span class="token punctuation">'</span>: <span class="token punctuation">'</span>1px solid #ccc<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span> <span class="token attr-name">[editor]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>editorRef1.editor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nzxWangEditor</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ height: <span class="token punctuation">'</span>300px<span class="token punctuation">'</span>, <span class="token punctuation">'</span>overflow-y<span class="token punctuation">'</span>: <span class="token punctuation">'</span>hidden<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span> <span class="token attr-name">#editorRef1</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>NzxWangEditor<span class="token punctuation">"</span></span> <span class="token attr-name">[(ngModel)]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></div></code></pre>
+
+        <h3 id="%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7" class="docs-header-link">
+          <span header-link="%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7"></span>
+          内置属性
+        </h3>
+      <p>nzx-wang-toolbar</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mode</td>
+<td>Mode</td>
+<td>default</td>
+</tr>
+<tr>
+<td>editor</td>
+<td>IDomEditor</td>
+<td>--</td>
+</tr>
+<tr>
+<td>defaultConfig</td>
+<td><code> Partial&lt;IToolbarConfig&gt;</code></td>
+<td>{}</td>
+</tr>
+<tr>
+<td>toolbar</td>
+<td>Toolbar</td>
+<td>--</td>
+</tr>
+</tbody></table>
+<p>nzx-wang-editor</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mode</td>
+<td>Mode</td>
+<td>default</td>
+</tr>
+<tr>
+<td>editor</td>
+<td>IDomEditor</td>
+<td>--</td>
+</tr>
+<tr>
+<td>defaultConfig</td>
+<td><code>Partial&lt;IToolbarConfig&gt;</code></td>
+<td>{}</td>
+</tr>
+<tr>
+<td>defaultHtml</td>
+<td>string</td>
+<td>&#39;&#39;</td>
+</tr>
+<tr>
+<td>defaultContent</td>
+<td>SlateDescendant[]</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>height</td>
+<td>string</td>
+<td>35px</td>
+</tr>
+<tr>
+<td>textRequired</td>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>onCreated</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>onDestroyed</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>onMaxLength</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>onFocus</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>onBlur</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>customAlert</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>customPaste</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+<tr>
+<td>onChange</td>
+<td>EventEmitter</td>
+<td>--</td>
+</tr>
+</tbody></table>

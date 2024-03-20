@@ -1,0 +1,84 @@
+<div><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> inject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> FormsModule<span class="token punctuation">,</span> ReactiveFormsModule<span class="token punctuation">,</span> FormBuilder <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/forms'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzInputModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/input'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CommonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxTrimModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/trim'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzGridModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/grid'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzButtonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/button'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    CommonModule<span class="token punctuation">,</span>
+    NzGridModule<span class="token punctuation">,</span>
+    FormsModule<span class="token punctuation">,</span>
+    ReactiveFormsModule<span class="token punctuation">,</span>
+    NzInputModule<span class="token punctuation">,</span>
+    NzButtonModule<span class="token punctuation">,</span>
+    NzxTrimModule<span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-trim-example'</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;form [formGroup]="form">
+      trim：
+      &lt;input formControlName="trim" nz-input nzxTrim trimType="trim" />
+      &lt;div nz-row>
+        &lt;pre nz-col nzSpan="20">
+        {{ form.value.trim | json }}
+      &lt;/pre
+        >
+      &lt;/div>
+
+      trimStart：
+      &lt;input
+        nz-input
+        nzxTrim
+        trimType="trimStart"
+        formControlName="trimStart"
+      />
+      &lt;div nz-row>
+        &lt;pre nz-col nzSpan="20">
+        {{ form.value.trimStart | json }}
+      &lt;/pre
+        >
+      &lt;/div>
+
+      trimEnd：
+      &lt;textarea
+        rows="4"
+        nz-input
+        nzxTrim
+        trimType="trimEnd"
+        formControlName="trimEnd"
+      >&lt;/textarea>
+      &lt;div nz-row>
+        &lt;pre nz-col nzSpan="20">
+        {{ form.value.trimEnd | json }}
+      &lt;/pre
+        >
+      &lt;/div>
+    &lt;/form>
+
+    &lt;button nz-button (click)="log()">log&lt;/button>
+  `</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxTrimExampleComponent</span> <span class="token punctuation">{</span>
+  form <span class="token operator">=</span> <span class="token function">inject</span><span class="token punctuation">(</span>FormBuilder<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    trimStart<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    trimEnd<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    trim<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'  fdfdf      '</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span>valueChanges<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div>
