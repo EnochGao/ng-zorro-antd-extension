@@ -15,3 +15,4 @@ export * from './lib/isString';
 export * from './lib/toNumber';
 export * from './lib/toString';
 export * from './lib/fileUtil';
+export * from './lib/getElementByTag';
