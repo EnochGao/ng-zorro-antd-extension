@@ -5,7 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { getElementTag, getStyles } from './util';
+import { getElementByTag } from 'ng-zorro-antd-extension/util';
 
 /**
  * 常规打印
@@ -36,12 +36,9 @@ export class NzxPrintDirective implements OnInit, AfterViewInit {
     const newWin = window.open('', '_blank');
 
     if (newWin) {
-      let styles = getElementTag('style');
-      if (this.identifierStr || this.identifierStr.length > 0) {
-        styles = getStyles(this.identifierStr);
-      }
-      const links = getElementTag('link');
-      const baseTag = getElementTag('base');
+      const styles = getElementByTag('style', this.identifierStr);
+      const links = getElementByTag('link');
+      const baseTag = getElementByTag('base');
 
       const scripts = `
       <script>

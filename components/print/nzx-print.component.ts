@@ -11,7 +11,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { getElementTag, getStyles } from './util';
+import { getElementByTag } from 'ng-zorro-antd-extension/util';
+
 
 @Directive({
   selector: '[nzxPrintContent]',
@@ -119,10 +120,7 @@ export class NzxPrintComponent implements OnInit, AfterViewInit {
   }
 
   private getTemplateStr() {
-    let styles = getElementTag('style');
-    if (this.identifierStr || this.identifierStr.length > 0) {
-      styles = getStyles(this.identifierStr);
-    }
+    const styles = getElementByTag('style', this.identifierStr);
 
     const scripts = `
         <script src="${this.pagedCDN}"></script>
