@@ -1,7 +1,6 @@
 <nzx-configurable-query
   *ngIf="controls && controls.length"
   [controls]="controls"
-  [nzxCollapse]="nzxCollapse"
   [nzxBtnSpan]="nzxBtnSpan"
   (queryChange)="nzxQueryParamsChange.emit($event)"
   (resetChange)="nzxQueryParamsChange.emit($event)"
