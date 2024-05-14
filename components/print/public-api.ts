@@ -6,3 +6,4 @@ export * from './nzx-print.component';
 export * from './nzx-print-v.component';
 export * from './nzx-print.directive';
 export * from './nzx-print.module';
+export * from './nzx-print-content.directive';
