@@ -1,0 +1,55 @@
+@import url(./common.less);
+
+@page {
+  size: A4 portrait;
+  margin: 30px;
+  margin-top: 130px;
+}
+
+.mate-pro {
+  page: mate-pro;
+}
+
+.mate-pro-header {
+  position: running(mateproHeaderRunning);
+}
+.mate-pro-footer {
+  position: running(mateproFooterRunning);
+}
+
+@page mate-pro {
+  @top-center {
+    content: element(mateproHeaderRunning);
+  }
+  @bottom-center {
+    content: element(mateproFooterRunning);
+  }
+  @bottom-left {
+    content: "第" counter(page) "页，共" counter(pages) "页";
+    font-size: 12px;
+  }
+}
+
+.mate {
+  page: mate;
+}
+
+.mate-header {
+  position: running(mateHeaderRunning);
+}
+.mate-footer {
+  position: running(mateFooterRunning);
+}
+
+@page mate {
+  @top-center {
+    content: element(mateHeaderRunning);
+  }
+  @bottom-center {
+    content: element(mateFooterRunning);
+  }
+  @bottom-left {
+    content: "第" counter(page) "页，共" counter(pages) "页";
+    font-size: 12px;
+  }
+}

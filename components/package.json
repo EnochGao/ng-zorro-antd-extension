@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-extension",
-  "version": "17.1.0",
+  "version": "17.2.0",
   "license": "MIT",
   "description": "An extension based on ng-zorro-antd",
   "keywords": [
@@ -31,6 +31,7 @@
     "@angular/common": "^15.0.0||^16.0.0||^17.0.0",
     "@angular/core": "^15.0.0||^16.0.0||^17.0.0",
     "@wangeditor/editor": "^5.0.0",
+    "@vivliostyle/core": "^2.29.0",
     "date-fns": "^2.16.1",
     "ng-zorro-antd": "^15.0.0||^16.0.0||^17.0.0"
   },

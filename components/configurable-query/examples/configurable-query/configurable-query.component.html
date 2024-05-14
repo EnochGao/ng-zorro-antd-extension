@@ -18,7 +18,7 @@
 
   <div>例子2： 一行展示</div>
   <nzx-configurable-query
-    [nzxCollapse]="false"
+
     [controls]="controls2"
     (queryChange)="queryParams2 = $event"
     (resetChange)="queryParams2 = $event"
@@ -32,7 +32,6 @@
 
   <div>例子3： 全展示禁用折叠</div>
   <nzx-configurable-query
-    [nzxCollapse]="false"
     [nzxBtnSpan]="24"
     [controls]="controls3"
     (queryChange)="queryParams3 = $event"
@@ -109,7 +108,6 @@
     #query7
     [controls]="controls7"
     [initQuery]="true"
-    [nzxCollapse]="false"
     (queryChange)="queryParams7 = $event"
     (resetChange)="queryParams7 = $event"
   >
@@ -124,7 +122,6 @@
     #query8
     [controls]="controls8"
     [fixedParams]="{ enabled: true }"
-    [nzxCollapse]="false"
     (queryChange)="queryParams8 = $event"
     (resetChange)="queryParams8 = $event"
   >
@@ -140,7 +137,6 @@
     [controls]="controls9"
     [initQuery]="true"
     [fixedParams]="{ enabled: true }"
-    [nzxCollapse]="false"
     (queryChange)="queryChange($event)"
     (resetChange)="queryChange($event)"
   >
