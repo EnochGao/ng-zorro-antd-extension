@@ -24,7 +24,6 @@ import { NzxTableAdaptorModule } from "ng-zorro-antd-extension/table-adaptor";
 ```html
 <nzx-configurable-query
   #configQuery
-  [nzxCollapse]="false"
   [controls]="controls"
   (queryChange)="adaptor.refresh()"
   (resetChange)="adaptor.reset()"
