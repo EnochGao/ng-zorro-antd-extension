@@ -42,22 +42,22 @@ ng add ng-zorro-antd-extension
 3、app.module <label type="success">v15.11.0+</label>
 
 ```ts
-import zh from "@angular/common/locales/zh";
-import { NZ_I18N, zh_CN } from "ng-zorro-antd/i18n";
-import { nzx_zh_CN } from "ng-zorro-antd-extension/i18n";
+import zh from '@angular/common/locales/zh';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
+import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 
 registerLocaleData(zh);
 
 const customLanguagePack = {
-  ...zh_CN,
-  ...nzx_zh_CN,
+	...zh_CN,
+	...nzx_zh_CN,
 };
 
 @NgModule({
-  declarations: [],
-  imports: [],
-  providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
-  bootstrap: [RootComponent],
+	declarations: [],
+	imports: [],
+	providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
+	bootstrap: [RootComponent],
 })
 export class AppModule {}
 ```
@@ -68,6 +68,7 @@ export class AppModule {}
 | ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
 | ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
 | ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
 
 如需指定版本
 
