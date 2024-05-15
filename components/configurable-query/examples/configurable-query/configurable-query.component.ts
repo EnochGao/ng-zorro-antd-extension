@@ -374,32 +374,41 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
 	private query10!: NzxConfigurableQueryComponent;
 
 	addGender() {
-		this.query10.addControl({
-			controlName: 'gender',
-			label: '性别',
-			placeholder: '请选择',
-			controlType: 'select',
-			menuList: [
-				{ label: '男', value: 1 },
-				{ label: '女', value: 2 },
-			],
-			controlInstance: new FormControl(1, [Validators.required]),
-			errorTip: '假设必填默认',
-			nzxAllowClear: true,
-		});
+		this.query10.addControl(
+			{
+				controlName: 'gender',
+				label: '性别',
+				placeholder: '请选择',
+				controlType: 'select',
+				menuList: [
+					{ label: '男', value: 1 },
+					{ label: '女', value: 2 },
+				],
+				controlInstance: new FormControl(1, [Validators.required]),
+				errorTip: '假设必填默认',
+				nzxAllowClear: true,
+			},
+			2
+		);
 	}
 
 	addLevel() {
-		this.query10.addControl({
-			controlName: 'level',
-			label: '职业等级',
-			controlType: 'Template',
-			templateRef: this.levelRef,
-		},1);
+		this.query10.addControl(
+			{
+				controlName: 'level',
+				label: '职业等级',
+				controlType: 'Template',
+				templateRef: this.levelRef,
+			},
+			1
+		);
 	}
 
 	removeLevel() {
 		this.query10.removeControl('level');
+	}
+	removeGender() {
+		this.query10.removeControl('gender');
 	}
 
 	ngOnInit(): void {
