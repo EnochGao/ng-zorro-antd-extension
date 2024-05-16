@@ -5,7 +5,7 @@ subtitle: nzx-configurable-query
 order: 3
 ---
 
-通过配置项生成一个查询表单控件，支持自定义拓展
+通过配置项生成一个查询表单控件，支持自定义拓展查询控件，使用NzxQueryConfigService支持全局配置查询控件
 
 ## 支持版本
 
@@ -16,15 +16,23 @@ order: 3
 ### 引入
 
 ```ts
-import { NzxConfigurableQueryModule } from "ng-zorro-antd-extension/configurable-query";
+import { NzxConfigurableQueryModule } from 'ng-zorro-antd-extension/configurable-query';
 ```
 
 ### html
 
 ```html
+<!-- 
+queryParamsChange最新版本区分出查询还是重置，注意甄别
+(queryChange)="queryParams10 = $event"
+(resetChange)="queryParams10 = $event"
+-->
 <div>例子1： 自定义拓展查询职业等级，更多使用方法请查看示例</div>
 
-<nzx-configurable-query [controls]="controls" (queryParamsChange)="queryParams=$event">
+<nzx-configurable-query
+  [controls]="controls"
+  (queryParamsChange)="queryParams=$event"
+>
   <ng-template nzxControl="level" let-formControl>
     <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
   </ng-template>

@@ -1,51 +1,51 @@
 <form #queyForm class="nzx-query-container" nz-form [formGroup]="queryForm">
-	<div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
-		<ng-container *ngFor="let config of controls; let i = index">
-			<div
-				*ngIf="!config.hidden"
-				nz-col
-				[nzSpan]="config.nzxSpan || 24 / lineNumber"
-				[hidden]="config.collapse"
-				[nzOrder]="i"
-			>
-				<nzx-configurable-query-item
-					*ngIf="config.controlName"
-					[form]="queryForm"
-					[control]="config"
-				></nzx-configurable-query-item>
-			</div>
-		</ng-container>
+  <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
+    <ng-container *ngFor="let config of controls; let i = index">
+      <div
+        *ngIf="!config.hidden"
+        nz-col
+        [nzSpan]="config.nzxSpan || 24 / lineNumber"
+        [hidden]="config.collapse"
+        [nzOrder]="i"
+      >
+        <nzx-configurable-query-item
+          *ngIf="config.controlName"
+          [form]="queryForm"
+          [control]="config"
+        ></nzx-configurable-query-item>
+      </div>
+    </ng-container>
 
-		<div
-			[nzOrder]="controls.length"
-			class="nzx-query-btn"
-			nz-col
-			[nzSpan]="nzxBtnSpan || 24 / lineNumber"
-		>
-			<div nz-row nzJustify="end" nzAlign="middle">
-				<button
-					nz-button
-					nzType="primary"
-					type="button"
-					title="Enter"
-					(click)="search($event)"
-				>
-					{{ locale['query'] }}
-				</button>
-				<button nz-button type="button" title="ctrl+r" (click)="reset()">
-					{{ locale['reset'] }}
-				</button>
-				<ng-content></ng-content>
-				<a
-					*ngIf="nzxCollapse"
-					nz-button
-					nzType="link"
-					(click)="toggleCollapse()"
-				>
-					{{ collapseText }}
-					<i nz-icon [nzType]="collapseIcon"></i>
-				</a>
-			</div>
-		</div>
-	</div>
+    <div
+      [nzOrder]="controls.length"
+      class="nzx-query-btn"
+      nz-col
+      [nzSpan]="nzxBtnSpan || 24 / lineNumber"
+    >
+      <div nz-row nzJustify="end" nzAlign="middle">
+        <button
+          nz-button
+          nzType="primary"
+          type="button"
+          title="Enter"
+          (click)="search($event)"
+        >
+          {{ locale['query'] }}
+        </button>
+        <button nz-button type="button" title="ctrl+r" (click)="reset()">
+          {{ locale['reset'] }}
+        </button>
+        <ng-content></ng-content>
+        <a
+          *ngIf="nzxCollapse"
+          nz-button
+          nzType="link"
+          (click)="toggleCollapse()"
+        >
+          {{ collapseText }}
+          <i nz-icon [nzType]="collapseIcon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 </form>
