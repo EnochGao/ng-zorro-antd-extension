@@ -47,7 +47,7 @@
     "ng-zorro-antd": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.1"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.0",
@@ -60,8 +60,8 @@
     "@angular/compiler-cli": "^14.0.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@docgeni/cli": "^2.2.0",
-    "@docgeni/template": "^2.2.0",
+    "@docgeni/cli": "2.2.0",
+    "@docgeni/template": "2.2.0",
     "@types/jasmine": "~4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
