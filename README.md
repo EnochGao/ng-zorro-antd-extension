@@ -4,49 +4,75 @@ ng-zorro-antd-extension
 
 <div align="center">
 
-基于ng-zorro的组件扩展包
+Component package based on ng-zorro-antd
 
 [![npm package](https://img.shields.io/npm/v/ng-zorro-antd-extension.svg?style=flat-square)](https://www.npmjs.org/package/ng-zorro-antd-extension)
 [![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-extension.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-extension)
 
 </div>
 
+English | [简体中文](README-zh_CN.md)
 
-# 文档
+## Docs
 
-[文档](https://enochgao.github.io/ng-zorro-antd-extension/)
+- [Docs github](https://enochgao.github.io/ng-zorro-antd-extension/)
+- [Docs gitee](http://enochgao.gitee.io/ng-zorro-antd-extension/)
 
-## 安装
+## Installation
 
-首先要安装ng-zorro：[ng zorro安装](https://ng.ant.design/docs/getting-started/zh)
+1、Make sure to install ng-zorro first：[ng-zorro-antd install](https://ng.ant.design/docs/getting-started/en)
 
-ng zorro安装成功之后然后再安装扩展包，推荐使用v14.0.0+以上版本
+2、After ng zorro is successfully installed, then install the package
+
+Using
 
 ```bash
 npm install ng-zorro-antd-extension --save
+```
+
 or
+
+```bash
 ng add ng-zorro-antd-extension
 ```
 
-ng-zorro-antd-extension: v13.0.0(只包含多选框，简单表格，映射管道)
+3、app.module v15.11.0+
+
+```ts
+import zh from "@angular/common/locales/zh";
+import { NZ_I18N, zh_CN } from "ng-zorro-antd/i18n";
+import { nzx_zh_CN } from "ng-zorro-antd-extension/i18n";
+
+registerLocaleData(zh);
+
+const customLanguagePack = {
+  ...zh_CN,
+  ...nzx_zh_CN,
+};
+
+@NgModule({
+  declarations: [],
+  imports: [],
+  providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
+  bootstrap: [RootComponent],
+})
+export class AppModule {}
+```
+
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends   |
+| ------- | ------------- | ----------------------- | ---------- |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
+| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
+| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
+| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
+
+Install the specified version if required using:
 
 ```bash
 npm install ng-zorro-antd-extension@13.0.0 --save
 ```
 
-|依赖环境|版本|
-|---|----|
-|angular|^13.0.0|
-|ng-zorro-antd|^13.0.0|
-|@ant-design/icons-angular|^13.0.0|
+v13.0.0(contains only multi-select, simple table, mapping pipeline), v15.0.0+ is recommended
 
-|依赖环境|版本|
-|---|----|
-|angular|^14.0.0|
-|ng-zorro-antd|^14.0.0|
-|@ant-design/icons-angular|^14.0.0|
-
-|依赖环境|版本|
-|---|----|
-|angular|^15.0.0|
-|ng-zorro-antd|^15.0.0|
+Welcome star fork pr

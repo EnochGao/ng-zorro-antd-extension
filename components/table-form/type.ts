@@ -1,7 +1,7 @@
-import { TemplateRef } from "@angular/core";
-import { Options } from "ng-zorro-antd-extension/types";
+import { TemplateRef } from '@angular/core';
+import { NzxOptions } from 'ng-zorro-antd-extension/types';
 
-export interface LimitMessage {
+export interface NzxLimitMessage {
   type: 'max' | 'min';
   limit: number;
   msg: string;
@@ -10,7 +10,7 @@ export interface LimitMessage {
 /**
  * nzx-table-form 配置项
  */
-export interface TableFormConfig {
+export interface NzxTableFormConfig {
   /** 表头名 */
   header: string;
   /** td th 宽度 */
@@ -20,13 +20,20 @@ export interface TableFormConfig {
   /** 控件默认值 */
   defaultValue?: any;
   /** 控件类型 */
-  type?: 'input' | 'date' | 'select' | 'number' | 'radio' | 'textarea' | 'template';
+  type?:
+    | 'input'
+    | 'date'
+    | 'select'
+    | 'number'
+    | 'radio'
+    | 'textarea'
+    | 'template';
   /** 控件校验 */
   validation?: Array<any>;
   /** 控件错误提示 */
   errorTip?: string;
   /** 控件为select radio时下拉选项 */
-  options?: Array<Options<any>>;
+  options?: Array<NzxOptions<any>>;
   /** 控件模式 */
   controlMode?: 'readonly' | 'edit';
   /** 控件列是否在table中展示 */
@@ -47,8 +54,7 @@ export interface TableFormConfig {
   format?: (value: any) => any;
 }
 
-
-export interface TableFormHeaderConfig {
+export interface NzxTableFormHeaderConfig {
   /** 表头名 */
   header: string;
   /** td th 宽度 */
@@ -63,7 +69,7 @@ export interface TableFormHeaderConfig {
   showRequiredTip?: boolean;
 }
 
-export interface TableFormTdConfig {
+export interface NzxTableFormTdConfig {
   /** td th 宽度 */
   width?: string;
   /** 控件名 */
@@ -77,13 +83,20 @@ export interface TableFormTdConfig {
   /** 控件默认值 */
   defaultValue?: any;
   /** 控件类型 */
-  type?: 'input' | 'date' | 'select' | 'number' | 'radio' | 'textarea' | 'template';
+  type?:
+    | 'input'
+    | 'date'
+    | 'select'
+    | 'number'
+    | 'radio'
+    | 'textarea'
+    | 'template';
   /** 控件校验 */
   validation?: Array<any>;
   /** 控件错误提示 */
   errorTip?: string;
   /** 控件为select时下拉选项 */
-  options?: Array<Options>;
+  options?: Array<NzxOptions>;
   /** 控件模式 */
   controlMode?: 'readonly' | 'edit';
   /** placeholder */

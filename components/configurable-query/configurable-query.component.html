@@ -1,92 +1,51 @@
-<div class="container">
-  <form nz-form [formGroup]="queryForm">
-    <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
-      <ng-container *ngFor="let control of controls">
-        <div
-          *ngIf="!control.hidden"
-          nz-col
-          [nzSpan]="control.nzxSpan || 24 / lineNumber"
-          [hidden]="nzxCollapse && control.collapse"
-        >
-          <nz-form-item>
-            <nz-form-label
-              *ngIf="control.label"
-              [nzSpan]="control.nzxLSpan || 6"
-            >
-              {{ control.label }}
-            </nz-form-label>
-            <nz-form-control
-              [nzSpan]="control.nzxRSpan || 18"
-              [nzErrorTip]="control.errorTip"
-            >
-              <input
-                *ngIf="control.controlType === 'input'"
-                nz-input
-                [placeholder]="control.placeholder"
-                [formControlName]="control.controlName"
-              />
-
-              <nz-select
-                *ngIf="control.controlType === 'select'"
-                [formControlName]="control.controlName"
-                [nzShowSearch]="true"
-                [nzAllowClear]="control.nzxAllowClear"
-                [nzPlaceHolder]="control.placeholder"
-              >
-                <nz-option
-                  *ngFor="let item of control.menuList"
-                  [nzValue]="item.value"
-                  [nzLabel]="item.label"
-                >
-                </nz-option>
-              </nz-select>
-
-              <nz-date-picker
-                *ngIf="control.controlType === 'datePicker'"
-                [ngStyle]="{ width: '100%' }"
-                [formControlName]="control.controlName"
-                [nzPlaceHolder]="control.placeholder"
-              >
-              </nz-date-picker>
-
-              <nz-range-picker
-                *ngIf="control.controlType === 'rangePicker'"
-                [ngStyle]="{ width: '100%' }"
-                [formControlName]="control.controlName"
-              >
-              </nz-range-picker>
-
-              <ng-container *ngIf="control.controlType === 'Template'">
-                <ng-container
-                  *ngTemplateOutlet="
-                    control.templateRef;
-                    context: { $implicit: queryForm.get(control.controlName) }
-                  "
-                >
-                </ng-container>
-              </ng-container>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-      </ng-container>
-
+<form #queyForm class="nzx-query-container" nz-form [formGroup]="queryForm">
+  <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
+    <ng-container *ngFor="let config of controls; let i = index">
       <div
-        class="btn-container"
+        *ngIf="!config.hidden"
         nz-col
-        [nzSpan]="nzxBtnSpan || 24 / lineNumber"
+        [nzSpan]="config.nzxSpan || 24 / lineNumber"
+        [hidden]="config.collapse"
+        [nzOrder]="i"
       >
-        <div nz-row nzJustify="end" nzAlign="middle">
-          <button nz-button nzType="primary" type="button" (click)="search()">
-            查询
-          </button>
-          <button nz-button type="button" (click)="reset()">重置</button>
-          <a *ngIf="nzxCollapse" (click)="toggleCollapse()">
-            {{ isCollapse ? "展开" : "收起" }}
-            <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
-          </a>
-          <ng-content></ng-content>
-        </div>
+        <nzx-configurable-query-item
+          *ngIf="config.controlName"
+          [form]="queryForm"
+          [control]="config"
+        ></nzx-configurable-query-item>
+      </div>
+    </ng-container>
+
+    <div
+      class="nzx-query-btn"
+      nz-col
+      [nzOrder]="controls.length"
+      [nzSpan]="nzxBtnSpan || 24 / lineNumber"
+    >
+      <div nz-row nzJustify="end" nzAlign="middle">
+        <button
+          nz-button
+          nzType="primary"
+          type="button"
+          title="Enter"
+          (click)="search()"
+        >
+          {{ locale['query'] }}
+        </button>
+        <button nz-button type="button" title="ctrl+r" (click)="reset()">
+          {{ locale['reset'] }}
+        </button>
+        <ng-content></ng-content>
+        <a
+          *ngIf="nzxCollapse"
+          nz-button
+          nzType="link"
+          (click)="toggleCollapse()"
+        >
+          {{ collapseText }}
+          <i nz-icon [nzType]="collapseIcon"></i>
+        </a>
       </div>
     </div>
-  </form>
-</div>
+  </div>
+</form>

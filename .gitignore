@@ -1,7 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+/src/app/contnet
+/src/assets/content
+
 # Compiled output
-/publish
+/dist
 /tmp
 /out-tsc
 /bazel-out
@@ -41,3 +44,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+.nx

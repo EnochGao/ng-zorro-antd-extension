@@ -9,30 +9,33 @@ order: 1
 
 提供`customFormateInFn`和`customFormateOutFn`自定义函数转换出入参格式
 
-引入
+## 支持版本
+
+<label type="success">v13.0.0+</label>
+
+## 基本使用
+
+### 引入
 
 ```ts
-import { NzCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
+import { NzxCheckboxModule } from "ng-zorro-antd-extension/checkbox";
 ```
 
- html:
+### html
 
- ```html
+```html
 <form [formGroup]="form">
-  <nzx-checkbox-group [customFormateInFn]="inFn" [customFormateOutFn]="outFn"
-    [checkOptions]="checkOptions" formControlName="value"></nzx-checkbox-group>
+  <nzx-checkbox-group [customFormateInFn]="inFn" [customFormateOutFn]="outFn" [checkOptions]="checkOptions" formControlName="value"></nzx-checkbox-group>
 </form>
+```
 
-{{form.value|json}}
- ```
+### ts
 
- ts:
-
- ```ts
+```ts
 class CheckboxGroupDemoComponent implements OnInit {
   checkOptions = [
-    { label: '客户信赖', value: 1 },
-    { label: '技术评估', value: 2 },
+    { label: "客户信赖", value: 1 },
+    { label: "技术评估", value: 2 },
   ];
   form!: FormGroup;
 
@@ -44,12 +47,16 @@ class CheckboxGroupDemoComponent implements OnInit {
   };
   outFn = (v: number[]) => v.reduce((pre, cur) => pre + cur, 0);
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      value: [1, []] // 0：不选 1：客户信赖，2：技术评估 3：客户信赖+技术评估
+      value: [1, []], // 0：不选 1：客户信赖，2：技术评估 3：客户信赖+技术评估
     });
   }
 }
- ```
+```
+
+### 介绍使用
+
+<iframe src="//player.bilibili.com/player.html?aid=233260069&bvid=BV1C8411B7s5&cid=1261660796&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>

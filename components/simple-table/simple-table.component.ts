@@ -10,9 +10,9 @@ import {
 } from '@angular/core';
 import { NzTableSize } from 'ng-zorro-antd/table';
 
-import { ExpandDirective } from './directive/expand.directive';
-import { TdDirective } from './directive/td.directive';
-import { ThDirective } from './directive/th.directive';
+import { NzxExpandDirective } from './directive/expand.directive';
+import { NzxTdDirective } from './directive/td.directive';
+import { NzxThDirective } from './directive/th.directive';
 
 /**
  * nzx-simple-table 组件配置格式
@@ -54,14 +54,14 @@ export interface NzxSimpleTableConfig<T> {
           <th
             [nzAlign]="nzxAlign"
             *ngFor="let config of nzxConfig"
-            [nzWidth]="config?.width"
+            [nzWidth]="config?.width!"
           >
             {{ config.header }}
           </th>
           <th
             [nzAlign]="nzxAlign"
             *ngFor="let item of thList; let i = index"
-            [nzWidth]="item?.width"
+            [nzWidth]="item?.width!"
           >
             <ng-container
               [ngTemplateOutlet]="item.templateRef"
@@ -108,9 +108,9 @@ export interface NzxSimpleTableConfig<T> {
               ></ng-container>
             </td>
           </tr>
-          <tr *ngIf="nzxExpand" [nzExpand]="data.expand">
+          <tr *ngIf="nzxExpand" [nzExpand]="data['expand']!">
             <ng-container
-              [ngTemplateOutlet]="expandDirective?.templateRef"
+              [ngTemplateOutlet]="expandDirective?.templateRef!"
               [ngTemplateOutletContext]="{ $implicit: data, index: i }"
             >
             </ng-container>
@@ -121,7 +121,13 @@ export interface NzxSimpleTableConfig<T> {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SimpleTableComponent<T> implements AfterContentInit {
+export class NzxSimpleTableComponent<
+  T extends {
+    expand?: boolean;
+    [key: string]: any;
+  }
+> implements AfterContentInit
+{
   /** th td 布局方式 */
   @Input() nzxAlign: 'left' | 'right' | 'center' | null = 'center';
   /** table 标题 */
@@ -139,12 +145,12 @@ export class SimpleTableComponent<T> implements AfterContentInit {
   /** table 配置项 */
   @Input() nzxConfig: Array<NzxSimpleTableConfig<T>> = [];
 
-  tdList: Array<TdDirective> = [];
-  thList: Array<ThDirective> = [];
+  tdList: Array<NzxTdDirective> = [];
+  thList: Array<NzxThDirective> = [];
 
-  @ContentChild(ExpandDirective) expandDirective!: ExpandDirective;
-  @ContentChildren(ThDirective) private _thList!: QueryList<ThDirective>;
-  @ContentChildren(TdDirective) private _tdList!: QueryList<TdDirective>;
+  @ContentChild(NzxExpandDirective) expandDirective!: NzxExpandDirective;
+  @ContentChildren(NzxThDirective) private _thList!: QueryList<NzxThDirective>;
+  @ContentChildren(NzxTdDirective) private _tdList!: QueryList<NzxTdDirective>;
 
   ngAfterContentInit(): void {
     this.thList = this._thList.toArray();

@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: docs
 
 on:
@@ -14,18 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           # 选择要使用的 node 版本
-          node-version: '14'
+          node-version: 18
 
-      # 缓存 node_modules
       - name: Cache dependencies
         uses: actions/cache@v2
         id: yarn-cache
@@ -43,13 +40,10 @@ jobs:
 
       # 运行构建脚本
       - name: Build site
-        run: yarn build:docs
-        
-      - name: Copy index.html
-        run: cp dist/custom-site/index.html dist/custom-site/404.html
+        run: yarn build
 
       - name: Copy index.html
-        run: cp dist/custom-site/index.html dist/custom-site/404.html
+        run: cp dist/docs-site/index.html dist/docs-site/404.html
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
@@ -59,7 +53,7 @@ jobs:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
           # 部署目录为 VuePress 的默认输出目录
-          build_dir: dist/custom-site
+          build_dir: dist/docs-site
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,42 @@
+<p>简单实现访问控制</p>
+
+        <h2 id="%E6%94%AF%E6%8C%81%E7%89%88%E6%9C%AC" class="docs-header-link">
+          <span header-link="%E6%94%AF%E6%8C%81%E7%89%88%E6%9C%AC"></span>
+          支持版本
+        </h2>
+      <div class="dg-paragraph"><label type="success">v15.9.0</label></div>
+
+        <h2 id="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8" class="docs-header-link">
+          <span header-link="%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"></span>
+          基本使用
+        </h2>
+      
+        <h3 id="%E5%BC%95%E5%85%A5" class="docs-header-link">
+          <span header-link="%E5%BC%95%E5%85%A5"></span>
+          引入
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxAclModule<span class="token punctuation">,</span> NzxAclService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/acl"</span><span class="token punctuation">;</span></div></code></pre>
+<p>appModule 中</p>
+<pre class="language-ts"><code class="language-ts"><div>@<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>NzxAclModule<span class="token punctuation">.</span><span class="token function">forRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></div></code></pre>
+
+        <h3 id="html" class="docs-header-link">
+          <span header-link="html"></span>
+          html
+        </h3>
+      <pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+  <span class="token attr-name">*nzxAcl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>
+          <span class="token punctuation">'</span>add<span class="token punctuation">'</span>;
+          let allAcls;
+          let currentAcl <span class="token punctuation">=</span> currentAcl;
+          dataAcl: dataAcl;
+          else: elseTemp
+        <span class="token punctuation">"</span></span>
+  <span class="token attr-name">nz-button</span>
+  <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dashed<span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span>
+  add btn
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">#elseTemp</span><span class="token punctuation">></span></span>add button have not permission <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span></div></code></pre>

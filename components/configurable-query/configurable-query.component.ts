@@ -1,23 +1,30 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
   QueryList,
+  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
+import { updateControlStatus } from 'ng-zorro-antd-extension/util';
 import { NzJustify } from 'ng-zorro-antd/grid';
-import { Subject, takeUntil } from 'rxjs';
-import { ControlDirective } from './control.directive';
-import { NzxQueryParams, QueryControlOptions } from './type';
+import { NzI18nService } from 'ng-zorro-antd/i18n';
+import { Subject, fromEvent, takeUntil } from 'rxjs';
+import { NzxControlDirective } from './control.directive';
+import { NzxQueryControlOptions, NzxQueryParams } from './type';
 
 /**
  * 查询组件
@@ -31,11 +38,11 @@ import { NzxQueryParams, QueryControlOptions } from './type';
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxConfigurableQuery',
 })
-export class ConfigurableQueryComponent
-  implements OnInit, AfterContentInit, OnDestroy
+export class NzxConfigurableQueryComponent
+  implements OnChanges, OnInit, AfterViewInit, AfterContentInit, OnDestroy
 {
   /** 配置项 */
-  @Input() controls: Array<QueryControlOptions> = [];
+  @Input() controls: Array<NzxQueryControlOptions> = [];
   /** 查询表单排列方式 */
   @Input() nzxJustify: NzJustify = 'start';
   /** 查询项间隔 */
@@ -44,134 +51,277 @@ export class ConfigurableQueryComponent
   @Input() lineNumber: number = 3;
   /** 操作按钮所占栅格数，24则换行 */
   @Input() nzxBtnSpan: number | null = null;
-  /**启用折叠 */
-  @Input() nzxCollapse = true;
   /** 初始化时，主动查询 */
   @Input() initQuery = false;
+  /** 缺省 固定参数 */
+  @Input() fixedParams = {};
 
-  /** 查询重置时会触发抛出查询参数 */
-  @Output() queryParamsChange = new EventEmitter<NzxQueryParams>();
+  /** 查询时会触发抛出查询参数 */
+  @Output() queryChange = new EventEmitter<NzxQueryParams>();
+  /** 重置时会触发抛出查询参数 */
+  @Output() resetChange = new EventEmitter<NzxQueryParams>();
 
-  queryParams: NzxQueryParams = {};
+  /** 查询组件出参*/
+  get queryParams() {
+    return this._queryParams;
+  }
+  set queryParams(value: any) {
+    this._queryParams = value;
+  }
+
+  get nzxCollapse() {
+    return this.controls.some((i) => i.hasOwnProperty('collapse'));
+  }
+
+  /** form 表单*/
   queryForm!: FormGroup;
-  isCollapse = true;
+  locale!: NzxQueryI18nInterface;
+  collapseIcon: string = 'down';
+  collapseText: string = '';
 
+  private _queryParams: NzxQueryParams = {};
   private defaultValue: NzxQueryParams = {};
-  private params: NzxQueryParams = {};
+  private cacheParams: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
-  private _nzxBtnSpan: number | null = null;
 
-  @ContentChildren(ControlDirective)
-  controlTemplateList!: QueryList<ControlDirective>;
+  @ViewChild('queyForm') private queyFormEl!: ElementRef<HTMLFormElement>;
+  @ContentChildren(NzxControlDirective, { descendants: true })
+  controlTemplateList!: QueryList<NzxControlDirective>;
 
-  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {
+  constructor(
+    private i18n: NzI18nService,
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef
+  ) {
     this.queryForm = this.fb.group({});
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['controls'] && !changes['controls'].isFirstChange()) {
+      const controls = changes['controls'].currentValue;
+      if (Array.isArray(controls)) {
+        this.generateForm(controls);
+      }
+    }
+  }
+
   ngOnInit(): void {
+    this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.locale = this.i18n.getLocaleData('Query');
+
+      this.cd.markForCheck();
+    });
+
     this.queryForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
-        this.queryParams = val;
+        this._queryParams = {
+          ...val,
+          ...this.fixedParams,
+        };
       });
+  }
 
-    this._nzxBtnSpan = this.nzxBtnSpan;
+  ngAfterViewInit(): void {
+    if (this.queyFormEl) {
+      fromEvent<KeyboardEvent>(this.queyFormEl.nativeElement, 'keydown')
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((event) => {
+          if (event.key === 'Enter') {
+            event.stopPropagation();
+            event.preventDefault();
+            this.search();
+          }
+          // 检查是否同时按下了Ctrl键（在Windows/Linux上）和S键
+          if ((event.ctrlKey || event.metaKey) && event.key === 'r') {
+            // 注意：event.metaKey用于兼容Mac的Command键
+            event.preventDefault(); // 阻止浏览器默认的保存行为
+            event.stopPropagation();
+            this.reset();
+          }
+        });
+    }
   }
 
   ngAfterContentInit(): void {
-    for (const control of this.controls) {
-      if (control.controlType === 'Template') {
-        const item = this.controlTemplateList.find(
-          (directive) => directive.nzxControl === control.controlName
-        );
-        if (item) {
-          control.templateRef = item.templateRef;
-        }
-      }
-      this.queryForm.addControl(
-        control.controlName,
-        control.controlInstance ?? this.fb.control(control.default ?? null)
-      );
-    }
-
-    this.queryParams = this.queryForm.value;
-
-    this.defaultValue = Object.assign({}, this.queryParams);
-
-    if (this.params) {
-      // 缓存回显查询条件
-      this.queryForm.patchValue(this.params);
-    }
+    this.generateForm(this.controls);
 
     if (this.initQuery) {
       this.search();
     }
   }
 
-  setQueryParams(params: NzxQueryParams) {
-    this.params = params;
+  /** 设置查询值进行回显 */
+  setQueryParams(cacheParams: NzxQueryParams): void {
+    this.cacheParams = cacheParams;
+    this.queryForm.patchValue(cacheParams);
   }
 
   /**
    * 根据controlName设置config值
    */
-  setControl(controlName: string, config: Partial<QueryControlOptions>): void {
-    let control = this.getControl(controlName);
+  setControl(
+    controlName: string,
+    config: Partial<NzxQueryControlOptions>
+  ): void {
+    Promise.resolve().then(() => {
+      const control = this.getControl(controlName);
+      if (control) {
+        Object.keys(config).forEach((key) => {
+          (control as any)[key] = (config as any)[key];
+        });
+      }
+    });
+  }
+
+  /**
+   * 动态添加控件
+   * @param config 配置项
+   * @param position 添加位置 不传为末尾
+   */
+  addControl(
+    config: NzxQueryControlOptions,
+    position?: number | undefined
+  ): void {
+    const control = this.getControl(config.controlName);
+    if (!control) {
+      if (config.controlName) {
+        this.queryForm.addControl(
+          config.controlName,
+          config.controlInstance ?? this.fb.control(config.default ?? null)
+        );
+      }
+      if (position === void 0 || position === null) {
+        this.controls.push(config);
+      } else {
+        this.controls.splice(position - 1, 0, config);
+      }
+      this.calculateText();
+    } else {
+      throw `The control name: '${config.controlName}' already exists!`;
+    }
+  }
+
+  /**
+   * 根据控件名删除控件
+   */
+  removeControl(controlName: string): void {
+    const control = this.getControl(controlName);
     if (control) {
-      Object.keys(config).forEach((key) => {
-        (control as any)[key] = (config as any)[key];
-      });
+      this.queryForm.removeControl(controlName);
+      this.controls = this.controls.filter(
+        (c) => c.controlName !== controlName
+      );
+
+      this.calculateText();
+    } else {
+      throw `The control name: '${controlName}' not find!`;
     }
   }
 
   /**
    * 根据controlName获取config项
    */
-  getControl(controlName: string): QueryControlOptions | undefined {
-    const index = this.controls.findIndex(
-      (item) => item.controlName === controlName
-    );
-    if (index > -1) {
-      return this.controls[index];
-    }
-    return void 0;
+  getControl(
+    controlName: string | undefined
+  ): NzxQueryControlOptions | undefined {
+    return this.controls.find((config) => config.controlName === controlName);
   }
 
+  /**
+   * 检索给定控件名称或路径的子控件。
+   * 这个 getFormControl 签名支持字符串和 const 数组（.getFormControl(['foo', 'bar'] as const)）
+   */
+  getFormControl(
+    path: string | readonly (string | number)[]
+  ): AbstractControl<any, any> | null {
+    return this.queryForm.get(path);
+  }
+
+  /** 查询 */
   search(): void {
     if (this.queryForm.invalid) {
-      Object.values(this.queryForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    } else {
-      this.queryParamsChange.emit(this.queryParams);
+      updateControlStatus(this.queryForm);
+      return;
     }
+    this.queryChange.emit(this._queryParams);
   }
 
-  reset() {
+  /** 重置 */
+  reset(): void {
+    if (this.queryForm.invalid) {
+      updateControlStatus(this.queryForm);
+      return;
+    }
     this.queryForm.reset(this.defaultValue);
-    this.search();
+    this.resetChange.emit(this._queryParams);
   }
 
-  toggleCollapse() {
-    this.controls.forEach((control) => {
-      if (this.isCollapse && control.collapse === true) {
-        // 展开
-        control.collapse = false;
-        this.nzxBtnSpan = 24;
+  /**展开、收起*/
+  toggleCollapse(): void {
+    for (let index = 0; index < this.controls.length; index++) {
+      const config = this.controls[index];
+      if (config.hasOwnProperty('collapse') && config.collapse === true) {
+        (config.collapse as boolean) = false;
+      } else if (
+        config.hasOwnProperty('collapse') &&
+        (config.collapse as boolean) === false
+      ) {
+        config.collapse = true;
       }
-      if (!this.isCollapse && control.collapse === false) {
-        control.collapse = true;
-        this.nzxBtnSpan = this._nzxBtnSpan;
-      }
-    });
-    this.isCollapse = !this.isCollapse;
+    }
+    this.calculateText();
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next();
     this.destroy$.complete();
-    this.destroy$.unsubscribe();
+  }
+
+  private calculateText() {
+    if (this.controls.some((i) => i.collapse === true)) {
+      this.collapseIcon = 'down';
+      this.collapseText = this.locale.expand;
+    } else {
+      this.collapseIcon = 'up';
+      this.collapseText = this.locale.collapse;
+    }
+    this.cd.markForCheck();
+  }
+
+  /** 清空表单控件 */
+  private clearFormControl(): void {
+    Object.keys(this.queryForm.controls).forEach((key) => {
+      this.queryForm.removeControl(key);
+    });
+  }
+
+  /** 生成表单 */
+  private generateForm(controlConfigs: Array<NzxQueryControlOptions>): void {
+    this.clearFormControl();
+
+    for (const config of controlConfigs) {
+      if (config.controlType === 'Template') {
+        const item = this.controlTemplateList.find(
+          (directive) => directive.nzxControl === config.controlName
+        );
+        if (item) {
+          config.templateRef = item.templateRef;
+        }
+      }
+      if (config.controlName) {
+        this.queryForm.addControl(
+          config.controlName,
+          config.controlInstance ?? this.fb.control(config.default ?? null)
+        );
+      }
+    }
+    this.defaultValue = this.queryForm.getRawValue();
+    if (this.cacheParams) {
+      // 缓存回显查询条件
+      this.queryForm.patchValue(this.cacheParams);
+    }
+
+    this.calculateText();
   }
 }

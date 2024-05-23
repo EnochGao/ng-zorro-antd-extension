@@ -1,0 +1,48 @@
+<nz-card nzTitle="nzx-page-table-select">
+  <form nz-form nzLayout="inline" [formGroup]="settingForm!">
+    <nz-form-item *ngFor="let switch of listOfSwitch">
+      <nz-form-label>{{ switch.name }}</nz-form-label>
+      <nz-form-control
+        ><nz-switch [formControlName]="switch.formControlName"></nz-switch
+      ></nz-form-control>
+    </nz-form-item>
+    <nz-form-item *ngFor="let radio of listOfRadio">
+      <nz-form-label>{{ radio.name }}</nz-form-label>
+      <nz-form-control>
+        <nz-radio-group [formControlName]="radio.formControlName">
+          <label
+            *ngFor="let o of radio.listOfOption"
+            nz-radio-button
+            [nzValue]="o.value"
+            >{{ o.label }}</label
+          >
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+  <nzx-page-table-select
+    [disabled]="settingForm.value.disabled"
+    [loading]="loading"
+    [tableConfig]="tableConfig"
+    [mode]="settingForm.value.mode"
+    uniqueKey="login.uuid"
+    [controls]="controls"
+    [list]="list"
+    [nzTotal]="total"
+    [(ngModel)]="selected"
+    (nzxQueryParamsChange)="queryParamsChange($event)"
+  >
+    <ng-template nzxTableSelectKey="picture" let-data>
+      <img
+        nz-image
+        width="80px"
+        height="80px"
+        [nzSrc]="data.picture.large"
+        alt=""
+      />
+    </ng-template>
+  </nzx-page-table-select>
+
+  选中：{{ selected | json }}
+</nz-card>

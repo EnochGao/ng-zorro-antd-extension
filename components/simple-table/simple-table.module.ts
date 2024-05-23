@@ -3,20 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
 
-import { ExpandDirective } from './directive/expand.directive';
-import { TdDirective } from './directive/td.directive';
-import { ThDirective } from './directive/th.directive';
-import { SimpleTableComponent } from './simple-table.component';
+import { NzxExpandDirective } from './directive/expand.directive';
+import { NzxTdDirective } from './directive/td.directive';
+import { NzxThDirective } from './directive/th.directive';
+import { NzxSimpleTableComponent } from './simple-table.component';
 
 @NgModule({
   declarations: [
-    SimpleTableComponent,
+    NzxSimpleTableComponent,
 
-    ThDirective,
-    TdDirective,
-    ExpandDirective,
+    NzxThDirective,
+    NzxTdDirective,
+    NzxExpandDirective,
   ],
   imports: [CommonModule, NzTableModule],
-  exports: [ThDirective, TdDirective, ExpandDirective, SimpleTableComponent],
+  exports: [
+    NzxThDirective,
+    NzxTdDirective,
+    NzxExpandDirective,
+    NzxSimpleTableComponent,
+  ],
 })
-export class SimpleTableModule {}
+export class NzxSimpleTableModule {}

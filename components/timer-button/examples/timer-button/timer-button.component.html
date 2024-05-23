@@ -1,0 +1,13 @@
+<button
+  type="button"
+  nz-button
+  nzType="primary"
+  nzxTimerButton
+  [duration]="6"
+  #timerBtn="NzxTimerButton"
+>
+  获取动态码6秒倒计时
+</button>
+
+<span> 剩余时间：{{ timerBtn.remainingTime | async }} </span>
+<span> 完成：{{ timerBtn.isCompleted | async | json }}</span>

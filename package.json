@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-extension",
-  "version": "^14.2.0",
+  "version": "14.3.0",
   "license": "MIT",
   "description": "An extension based on ng-zorro-antd",
   "keywords": [
@@ -21,12 +21,13 @@
   },
   "scripts": {
     "ng": "npx ng",
-    "start": "npx ng serve",
-    "build": "npx ng build",
-    "build:lib": "npx ng build ng-zorro-antd-extension-lib",
+    "start": "npx docgeni serve --port 4600",
+    "build": "npx docgeni build --production --base-href=/ng-zorro-antd-extension/",
+    "build:lib": "npx ng build ng-zorro-antd-extension",
+    "build:components": "cd components && npm run build && npm run postbuild",
+    "build:all": "npm-run-all \"build:lib\" \"build:components\" \"deploy\"",
+    "deploy": "cd dist/ng-zorro-antd-extension && npm publish",
     "watch": "npx ng build --watch --configuration development",
-    "start:docs": "npx docgeni serve --port 4600",
-    "build:docs": "npx docgeni build --production --base-href=/ng-zorro-antd-extension/",
     "test": "npx ng test",
     "lint": "npx ng lint --fix",
     "prepare": "husky install"
@@ -40,11 +41,13 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@vivliostyle/core": "^2.29.0",
+    "@wangeditor/editor": "^5.1.23",
     "date-fns": "^2.29.2",
     "ng-zorro-antd": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.13.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.0",
@@ -57,8 +60,8 @@
     "@angular/compiler-cli": "^14.0.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@docgeni/cli": "^2.0.1",
-    "@docgeni/template": "^2.0.1",
+    "@docgeni/cli": "^2.2.0",
+    "@docgeni/template": "^2.2.0",
     "@types/jasmine": "~4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
@@ -72,6 +75,7 @@
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^14.0.0",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "npm-run-all": "^4.1.5"
   }
 }

@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-zorro-antd-extension": {
+    "docs-site": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "less",
+          "style": "scss",
           "skipTests": true,
           "changeDetection": "OnPush"
         },
@@ -28,30 +28,27 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-zorro-antd-extension",
+            "outputPath": "dist/docs-site",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "less",
+            "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/"
-              ]
+              "includePaths": ["node_modules/"]
             },
             "assets": [
               {
                 "glob": "**/*",
-                "input": "./node_modules/ng-zorro-antd/node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
               },
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.less"
-            ],
-            "scripts": []
+            "styles": ["src/styles.scss"],
+            "scripts": [],
+            "allowedCommonJsDependencies": ["docsearch.js"]
           },
           "configurations": {
             "production": {
@@ -74,11 +71,7 @@
                 }
               ],
               "outputHashing": "all",
-              "optimization": true,
-              "buildOptimizer": true,
-              "aot": true,
-              "outputPath": "dist",
-              "baseHref": "ng-zorro-antd-extension"
+              "baseHref": "docs-site"
             },
             "development": {
               "buildOptimizer": false,
@@ -95,10 +88,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-zorro-antd-extension:build:production"
+              "browserTarget": "docs-site:build:production"
             },
             "development": {
-              "browserTarget": "ng-zorro-antd-extension:build:development",
+              "browserTarget": "docs-site:build:development",
               "open": true
             }
           },
@@ -107,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-zorro-antd-extension:build"
+            "browserTarget": "docs-site:build"
           }
         },
         "test": {
@@ -118,28 +111,20 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "less",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.less"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.less"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     },
-    "ng-zorro-antd-extension-lib": {
+    "ng-zorro-antd-extension": {
       "projectType": "library",
       "root": "components",
       "sourceRoot": "components",
@@ -188,117 +173,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "components/**/*.ts",
-              "components/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "custom-site": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/custom-site",
-      "sourceRoot": "projects/custom-site/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/custom-site",
-            "index": "projects/custom-site/src/index.html",
-            "main": "projects/custom-site/src/main.ts",
-            "polyfills": "projects/custom-site/src/polyfills.ts",
-            "tsConfig": "projects/custom-site/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/custom-site/src/favicon.ico",
-              "projects/custom-site/src/assets",
-              {
-                "glob": "**/*",
-                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
-                "output": "assets/"
-              }
-            ],
-            "styles": [
-              "projects/custom-site/src/styles.scss",
-              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
-            ],
-            "scripts": [],
-            "allowedCommonJsDependencies": ["docsearch.js"]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "2mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/custom-site/src/environments/environment.ts",
-                  "with": "projects/custom-site/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "custom-site:build:production"
-            },
-            "development": {
-              "browserTarget": "custom-site:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "custom-site:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/custom-site/src/test.ts",
-            "polyfills": "projects/custom-site/src/polyfills.ts",
-            "tsConfig": "projects/custom-site/tsconfig.spec.json",
-            "karmaConfig": "projects/custom-site/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/custom-site/src/favicon.ico",
-              "projects/custom-site/src/assets"
-            ],
-            "styles": [
-              "projects/custom-site/src/styles.scss"
-            ],
-            "scripts": []
+            "lintFilePatterns": ["components/**/*.ts", "components/**/*.html"]
           }
         }
       }
@@ -311,5 +186,8 @@
     "@angular-eslint/schematics:library": {
       "setParserOptionsProject": true
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

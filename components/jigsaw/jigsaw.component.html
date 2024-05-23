@@ -1,0 +1,60 @@
+<div
+  class="nzx-jigsaw-container"
+  [ngStyle]="{
+    width: width + 'px'
+  }"
+  (selectstart)="selectstart()"
+>
+  <div
+    class="nzx-jigsaw-loading-container"
+    [ngStyle]="{
+      display: isLoading ? '' : 'none',
+      width: width + 'px',
+      height: height + 'px'
+    }"
+  >
+    <span class="nzx-jigsaw-loading-icon" nz-icon [nzType]="'loading'"></span>
+    <span>{{ nzxLoadingText }}</span>
+  </div>
+
+  <canvas #canvasCtx [width]="width" [height]="height"></canvas>
+
+  <span
+    class="nzx-jigsaw-refresh-icon"
+    nz-icon
+    nzType="redo"
+    nzTheme="outline"
+    [nzRotate]="-80"
+    (click)="refresh()"
+  ></span>
+
+  <canvas
+    #blockCtx
+    class="nzx-jigsaw-block"
+    [width]="width"
+    [height]="height"
+    (touchstart)="handleDragStart($event)"
+    (mousedown)="handleDragStart($event)"
+  ></canvas>
+
+  <div
+    #sliderContainer
+    class="nzx-jigsaw-slider-container"
+    [ngStyle]="{
+      width: width + 'px',
+      'pointer-events': isLoading ? 'none' : ''
+    }"
+  >
+    <div #sliderMask class="nzx-jigsaw-slider-mask">
+      <div
+        #slider
+        class="nzx-jigsaw-slider"
+        (touchstart)="handleDragStart($event)"
+        (mousedown)="handleDragStart($event)"
+      >
+        <span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+      </div>
+    </div>
+    <span class="nzx-jigsaw-slider-text">{{ nzxTipText }}</span>
+  </div>
+</div>

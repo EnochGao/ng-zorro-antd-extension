@@ -1,0 +1,29 @@
+<div [formGroup]="form">
+  <nzx-blank-field formControlName="name">
+    <ng-template let-data let-disabled="disabled">
+      <p>data: {{ data }}</p>
+      <p>disabled: {{ disabled }}</p>
+
+      <nz-switch
+        [ngModel]="!disabled"
+        [ngModelOptions]="{ standalone: true }"
+      ></nz-switch>
+    </ng-template>
+  </nzx-blank-field>
+</div>
+
+<nz-space>
+  <button *nzSpaceItem nz-button type="button" nzDanger (click)="disabled()">
+    禁用
+  </button>
+  <button
+    *nzSpaceItem
+    nz-button
+    type="button"
+    nzType="primary"
+    (click)="enable()"
+  >
+    启用
+  </button>
+  <button *nzSpaceItem nz-button type="button" (click)="update()">更新</button>
+</nz-space>

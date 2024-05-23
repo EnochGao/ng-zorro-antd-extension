@@ -1,66 +1,21 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { BrowserModule } from '@angular/platform-browser';
-
-import { NzCheckboxExtensionModule } from 'ng-zorro-antd-extension/checkbox';
-
-import zh from '@angular/common/locales/zh';
-import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { DocgeniTemplateModule } from '@docgeni/template';
 
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
-import { NzGridModule } from 'ng-zorro-antd/grid';
+import { DOCGENI_SITE_PROVIDERS, RootComponent } from './content/index';
+
+import zh from '@angular/common/locales/zh';
+import { NzxAclModule } from 'ng-zorro-antd-extension/acl';
+import { NZX_CONFIG, NzxConfig } from 'ng-zorro-antd-extension/core/config';
+import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
+import { NZ_CONFIG, NzConfig } from 'ng-zorro-antd/core/config';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { NzSliderModule } from 'ng-zorro-antd/slider';
-import { NzxConfig, NZX_CONFIG } from 'ng-zorro-antd-extension/core/config';
 
 registerLocaleData(zh);
-
-const routes: Routes = [
-  {
-    path: 'checkbox',
-    loadChildren: () =>
-      import('./checkbox-group-demo/checkbox-group-demo.module').then(
-        (m) => m.CheckboxGroupDemoModule
-      ),
-  },
-  {
-    path: 'simple-table',
-    loadChildren: () =>
-      import('./simple-table-demo/simple-table-demo.module').then(
-        (m) => m.SimpleTableDemoModule
-      ),
-  },
-  {
-    path: 'nzx-configurable-query',
-    loadChildren: () =>
-      import(
-        './nzx-configurable-query-demo/nzx-configurable-query-demo.module'
-      ).then((m) => m.NzxConfigurableQueryDemoModule),
-  },
-  {
-    path: 'nzx-map-pipe',
-    loadChildren: () =>
-      import('./nzx-pipe-demo/nzx-pipe-demo.module').then(
-        (m) => m.NzxMapPipeDemoModule
-      ),
-  },
-  {
-    path: 'nzx-table-form',
-    loadChildren: () =>
-      import('./nzx-table-form-demo/nzx-table-form-demo.module').then(
-        (m) => m.NzxMapPipeDemoModule
-      ),
-  },
-  { path: '**', redirectTo: 'checkbox', pathMatch: 'full' },
-];
 
 const ngZorroConfig: NzConfig = {
   // 注意组件名称没有 nz 前缀
@@ -73,29 +28,27 @@ const ngZorroExtensionConfig: NzxConfig = {
   },
 };
 
+const customLanguagePack = {
+  ...zh_CN,
+  ...nzx_zh_CN,
+};
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    NzGridModule,
+    DocgeniTemplateModule,
     NzIconModule,
-    NzLayoutModule,
-    NzSliderModule,
-    NzMenuModule,
-    NzCheckboxExtensionModule,
-    RouterModule.forRoot(routes, {
-      // enableTracing: true,
-      preloadingStrategy: PreloadAllModules,
-    }),
+    NzxAclModule.forRoot(),
+    RouterModule.forRoot([]),
   ],
   providers: [
-    { provide: NZ_I18N, useValue: zh_CN },
+    ...DOCGENI_SITE_PROVIDERS,
+    { provide: NZ_I18N, useValue: customLanguagePack },
     { provide: NZ_CONFIG, useValue: ngZorroConfig },
     { provide: NZX_CONFIG, useValue: ngZorroExtensionConfig },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [RootComponent],
 })
 export class AppModule {}
