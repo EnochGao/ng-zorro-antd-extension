@@ -239,10 +239,7 @@ export class NzxConfigurableQueryComponent
   }
 
   /** 查询 */
-  search(event?: Event): void {
-    if (event) {
-      event.stopPropagation();
-    }
+  search(): void {
     if (this.queryForm.invalid) {
       updateControlStatus(this.queryForm);
       return;
