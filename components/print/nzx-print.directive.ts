@@ -51,7 +51,7 @@ export class NzxPrintDirective implements OnInit, AfterViewInit {
       </script>
       `;
 
-      const html = `
+      let html = `
       <!DOCTYPE html>
         <html>
           <head>
@@ -66,6 +66,7 @@ export class NzxPrintDirective implements OnInit, AfterViewInit {
           </body>
         </html>
       `;
+      html = html.replace(/<!---->/g, ' ');
       newWin.document.open();
       newWin.document.write(html);
       newWin.document.close();
