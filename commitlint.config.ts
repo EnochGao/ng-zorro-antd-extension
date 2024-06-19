@@ -26,7 +26,7 @@ const Configuration: UserConfig = {
     'body-leading-blank': [RuleConfigSeverity.Error, 'always'],
     'header-max-length': [RuleConfigSeverity.Error, 'always', 72],
     'subject-full-stop': [RuleConfigSeverity.Error, 'never', '.'],
-    'subject-case': [RuleConfigSeverity.Disabled, 'never', 'camel-case'],
+    'subject-case': [RuleConfigSeverity.Disabled, 'never', 'lower-case'],
   },
 };
 
