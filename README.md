@@ -39,9 +39,9 @@ ng add ng-zorro-antd-extension
 3、app.module v15.11.0+
 
 ```ts
-import zh from "@angular/common/locales/zh";
-import { NZ_I18N, zh_CN } from "ng-zorro-antd/i18n";
-import { nzx_zh_CN } from "ng-zorro-antd-extension/i18n";
+import zh from '@angular/common/locales/zh';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
+import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 
 registerLocaleData(zh);
 
@@ -63,7 +63,7 @@ export class AppModule {}
 | ------- | ------------- | ----------------------- | ---------- |
 | ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
 | ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
-| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | end        |
 | ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
 | ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
 
