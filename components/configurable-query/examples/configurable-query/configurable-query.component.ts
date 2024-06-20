@@ -138,6 +138,9 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
     if (cacheStr) {
       this.query9.setQueryParams(JSON.parse(cacheStr));
     }
+    setTimeout(() => {
+      this.query9.setControl('city', { menuList: this.cityList });
+    }, 3000);
   }
 
   queryChange(params: NzxQueryParams) {
