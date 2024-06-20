@@ -248,8 +248,8 @@ export const controls7: Array<NzxQueryControlOptions> = [
     placeholder: '城市',
     controlType: 'select',
     menuList: [
-      { label: '班级', value: 1 },
-      { label: '姓名', value: 2 },
+      { label: '青岛', value: '青岛' },
+      { label: '潍坊', value: '潍坊' },
     ],
   },
 ];
@@ -267,8 +267,8 @@ export const controls8: Array<NzxQueryControlOptions> = [
     placeholder: '城市',
     controlType: 'select',
     menuList: [
-      { label: '班级', value: 1 },
-      { label: '姓名', value: 2 },
+      { label: '青岛', value: '青岛' },
+      { label: '潍坊', value: '潍坊' },
     ],
   },
 ];
@@ -286,8 +286,8 @@ export const controls9: Array<NzxQueryControlOptions> = [
     placeholder: '城市',
     controlType: 'select',
     menuList: [
-      { label: '班级', value: 1 },
-      { label: '姓名', value: 2 },
+      { label: '青岛', value: '青岛' },
+      { label: '潍坊', value: '潍坊' },
     ],
   },
 ];
