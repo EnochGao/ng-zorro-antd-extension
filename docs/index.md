@@ -49,21 +49,22 @@ import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 registerLocaleData(zh);
 
 const customLanguagePack = {
-	...zh_CN,
-	...nzx_zh_CN,
+  ...zh_CN,
+  ...nzx_zh_CN,
 };
 
 @NgModule({
-	declarations: [],
-	imports: [],
-	providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
-	bootstrap: [RootComponent],
+  declarations: [],
+  imports: [],
+  providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
+  bootstrap: [RootComponent],
 })
 export class AppModule {}
 ```
 
 | angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends   |
 | ------- | ------------- | ----------------------- | ---------- |
+| ^18.0.0 | ^18.0.0       | ^18.0.0                 | 2025-11-xx |
 | ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
 | ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
 | ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
