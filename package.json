@@ -28,6 +28,7 @@
     "build:all": "npm-run-all \"build:lib\" \"build:components\" \"deploy\"",
     "deploy": "cd dist/ng-zorro-antd-extension && npm publish",
     "watch": "npx ng build --watch --configuration development",
+    "ui":"npx ng serve ui",
     "test": "npx ng test",
     "lint": "npx ng lint --fix",
     "prepare": "husky install"

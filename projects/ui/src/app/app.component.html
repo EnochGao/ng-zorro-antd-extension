@@ -1,0 +1,13 @@
+<button nz-button nzType="primary">Primary</button>
+
+<nzx-configurable-query
+  [controls]="controls"
+  (queryChange)="queryParams = $event"
+  (resetChange)="queryParams = $event"
+>
+  <ng-template nzxControl="level" let-formControl>
+    <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
+  </ng-template>
+</nzx-configurable-query>
+
+<router-outlet />
