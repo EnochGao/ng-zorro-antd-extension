@@ -10,17 +10,17 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 
+import { NzI18nModule } from 'ng-zorro-antd/i18n';
+import { NzxConfigurableQueryItemComponent } from './configurable-query-item/configurable-query-item.component';
 import { NzxConfigurableQueryComponent } from './configurable-query.component';
 import { NzxControlDirective } from './control.directive';
-import { NzI18nModule } from 'ng-zorro-antd/i18n';
-import { NzxInputControlComponent } from './controls/input.control';
-import { NzxTemplateControlComponent } from './controls/template.control';
-import { NzxSelectControlComponent } from './controls/select.control';
 import { NzxDatePickerControlComponent } from './controls/date-picker.control';
+import { NzxInputControlComponent } from './controls/input.control';
 import { NzxRangePickerControlComponent } from './controls/range-picker.control';
-import { NzxQueryConfig, NzxQueryControlType } from './type';
+import { NzxSelectControlComponent } from './controls/select.control';
+import { NzxTemplateControlComponent } from './controls/template.control';
 import { NzxQueryConfigService, QUERY_CONFIG } from './query-config.service';
-import { NzxConfigurableQueryItemComponent } from './configurable-query-item/configurable-query-item.component';
+import { NzxQueryConfig } from './type';
 
 @NgModule({
   declarations: [

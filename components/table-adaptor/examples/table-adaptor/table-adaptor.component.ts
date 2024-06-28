@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -33,8 +33,6 @@ interface RandomUser {
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
-
     FormsModule,
     NzButtonModule,
     NzTableModule,
