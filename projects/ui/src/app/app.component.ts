@@ -9,6 +9,11 @@ import {
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzRateComponent } from 'ng-zorro-antd/rate';
 
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+
+registerLocaleData(zh);
+
 @Component({
   selector: 'app-root',
   standalone: true,

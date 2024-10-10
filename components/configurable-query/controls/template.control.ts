@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
 
 @Component({
+  selector: 'nzx-template-control',
   template: `
     <ng-container
       *ngTemplateOutlet="
