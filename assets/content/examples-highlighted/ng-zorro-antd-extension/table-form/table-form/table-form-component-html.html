@@ -1,0 +1,171 @@
+<div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">nz-form</span> <span class="token attr-name">[formGroup]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form<span class="token punctuation">"</span></span> <span class="token attr-name">(ngSubmit)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-table-form</span>
+      <span class="token attr-name">#table</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>NzxTableForm<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[nzxBordered]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+      <span class="token attr-name">nzxSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[tableFormConfig]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tableFormConfig<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[enableExpand]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[enableNo]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[nzxFooter]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[errorTemplate]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>errorTemp<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[enableLimit]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[maxLimit]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[tableValidatorFn]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>customValidate<span class="token punctuation">"</span></span>
+      <span class="token attr-name">(limitMessage)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>errorMsg($event)<span class="token punctuation">"</span></span>
+      <span class="token attr-name">formControlName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>students<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[nzxFrontPagination]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">colspan</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>学生信息表单(表头)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span>
+        <span class="token attr-name">nzxTableFormTd</span>
+        <span class="token attr-name">controlName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stars<span class="token punctuation">"</span></span>
+        <span class="token attr-name">let-formControl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formControl<span class="token punctuation">"</span></span>
+        <span class="token attr-name">let-config</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>config<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-form-item</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-form-control</span> <span class="token attr-name">[nzErrorTip]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>config.errorTip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-rate</span> <span class="token attr-name">[formControl]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formControl<span class="token punctuation">"</span></span> <span class="token attr-name">nzAllowHalf</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-rate</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-form-control</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-form-item</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTableFormTh</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>140px<span class="token punctuation">"</span></span> <span class="token attr-name">let-form</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+          <span class="token attr-name">nz-button</span>
+          <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span>
+          <span class="token attr-name">nzSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span>
+          <span class="token attr-name">nzShape</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>circle<span class="token punctuation">"</span></span>
+          <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span>
+          <span class="token attr-name">[disabled]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form.disabled<span class="token punctuation">"</span></span>
+          <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>table.addRow()<span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">nz-icon</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>plus<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+        /
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+          <span class="token attr-name">nz-button</span>
+          <span class="token attr-name">nzSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span>
+          <span class="token attr-name">nzShape</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>circle<span class="token punctuation">"</span></span>
+          <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span>
+          <span class="token attr-name">[disabled]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form.disabled<span class="token punctuation">"</span></span>
+          <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>
+            table.addRow({
+              name: <span class="token punctuation">'</span>enochgao<span class="token punctuation">'</span>,
+              age: 18,
+              gender: 1,
+              address: <span class="token punctuation">'</span>青岛<span class="token punctuation">'</span>,
+              stars: 1,
+              class: 1,
+              expand: true
+            })
+          <span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">nz-icon</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>plus<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTableFormTd</span> <span class="token attr-name">let-formGroup</span> <span class="token attr-name">let-i</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span>
+          <span class="token attr-name">nz-button</span>
+          <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span>
+          <span class="token attr-name">[disabled]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formGroup.disabled<span class="token punctuation">"</span></span>
+          <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>table.deleteRow(i)<span class="token punctuation">"</span></span>
+          <span class="token punctuation">></span></span>删除<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span>
+        <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span>
+          <span class="token attr-name">nz-button</span>
+          <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span>
+          <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formGroup.get(<span class="token punctuation">'</span>expand<span class="token punctuation">'</span>).patchValue(!formGroup.value.expand)<span class="token punctuation">"</span></span>
+          <span class="token punctuation">></span></span>折叠<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span>
+        <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTableFormExpand</span> <span class="token attr-name">let-formGroup</span> <span class="token attr-name">let-i</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        本行值为： {{ formGroup.value | json }}
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-table-form</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">#footer</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>
+      页脚
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+        <span class="token attr-name">nz-button</span>
+        <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span>
+        <span class="token attr-name">[disabled]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form.invalid || table.invalid<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        提交
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>table.clearTable()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        清空table
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dashed<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form.disable()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        禁用table
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dashed<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form.enable()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        启用table
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+        <span class="token attr-name">nz-button</span>
+        <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span>
+        <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span>
+        <span class="token attr-name">[nzLoading]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span>
+        <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>lazyLoad()<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        远程加载下拉地址
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">#errorTemp</span> <span class="token attr-name">let-control</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">[ngStyle]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{ color: <span class="token punctuation">'</span>red<span class="token punctuation">'</span> }<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        {{ control?.errors?.tableError }}
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span>
+    表单值：
+  {{ form.value | json }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+
+  渲染只读：
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-table-form</span>
+    <span class="token attr-name">nzxSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span>
+    <span class="token attr-name">[nzxBordered]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name">[tableFormConfig]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tableFormConfig2<span class="token punctuation">"</span></span>
+    <span class="token attr-name">[enableExpand]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name">[(ngModel)]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>students<span class="token punctuation">"</span></span>
+  <span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span>
+      <span class="token attr-name">nzxTableFormTd</span>
+      <span class="token attr-name">controlName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stars<span class="token punctuation">"</span></span>
+      <span class="token attr-name">let-formControl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formControl<span class="token punctuation">"</span></span>
+      <span class="token attr-name">let-config</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>config<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-rate</span> <span class="token attr-name">[formControl]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formControl<span class="token punctuation">"</span></span> <span class="token attr-name">nzAllowHalf</span> <span class="token attr-name">nzDisabled</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-rate</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTableFormTh</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>80px<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>折叠 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTableFormTd</span> <span class="token attr-name">let-formGroup</span> <span class="token attr-name">let-i</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span>
+        <span class="token attr-name">nz-button</span>
+        <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span>
+        <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formGroup.get(<span class="token punctuation">'</span>expand<span class="token punctuation">'</span>).patchValue(!formGroup.value.expand)<span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>折叠<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span>
+      <span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxTableFormExpand</span> <span class="token attr-name">let-formGroup</span> <span class="token attr-name">let-i</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      本行值为： {{ formGroup.value | json }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-table-form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</div>

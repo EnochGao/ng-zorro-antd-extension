@@ -1,0 +1,65 @@
+<div><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> inject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CommonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/common'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzButtonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/button'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzDividerModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/divider'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxAclModule<span class="token punctuation">,</span> NzxAclService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/acl'</span><span class="token punctuation">;</span>
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>CommonModule<span class="token punctuation">,</span> NzButtonModule<span class="token punctuation">,</span> NzDividerModule<span class="token punctuation">,</span> NzxAclModule<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-acl-example'</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;button nz-button nzType="default" (click)="loadPermissions()">
+      load permissions
+    &lt;/button>
+    &lt;button nz-button nzType="default" (click)="changeDataAcl()">
+      change dataAcl
+    &lt;/button>
+    &lt;button nz-button nzType="default" (click)="addAcl()">add edit&lt;/button>
+    &lt;button nz-button nzType="default" (click)="removeAcl()">
+      remove edit
+    &lt;/button>
+    &lt;nz-divider nzText="divider">&lt;/nz-divider>
+    &lt;div>
+      &lt;button
+        *nzxAcl="
+          'add';
+          let allAcls;
+          let currentAcl = currentAcl;
+          dataAcl: dataAcl;
+          else: elseTemp
+        "
+        nz-button
+        nzType="dashed"
+      >
+        add btn
+      &lt;/button>
+      &lt;button *nzxAcl="['edit']" nz-button nzType="dashed">edit btn&lt;/button>
+      &lt;ng-template #elseTemp>add button have not permission &lt;/ng-template>
+    &lt;/div>
+  `</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxAclExampleComponent</span> <span class="token punctuation">{</span>
+  dataAcl <span class="token operator">=</span> <span class="token keyword">true</span><span class="token punctuation">;</span>
+  aclService <span class="token operator">=</span> <span class="token function">inject</span><span class="token punctuation">(</span>NzxAclService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">loadPermissions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>aclService<span class="token punctuation">.</span><span class="token function">loadPermissions</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'add'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">addAcl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>aclService<span class="token punctuation">.</span><span class="token function">addPermission</span><span class="token punctuation">(</span><span class="token string">'edit'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">removeAcl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>aclService<span class="token punctuation">.</span><span class="token function">removePermission</span><span class="token punctuation">(</span><span class="token string">'edit'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">changeDataAcl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>dataAcl <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>dataAcl<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>aclService<span class="token punctuation">.</span><span class="token function">refreshPermission</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</div>
