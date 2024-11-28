@@ -16,7 +16,6 @@ English | [简体中文](README-zh_CN.md)
 ## Docs
 
 - [Docs github](https://enochgao.github.io/ng-zorro-antd-extension/)
-- [Docs gitee](http://enochgao.gitee.io/ng-zorro-antd-extension/)
 
 ## Installation
 
@@ -59,13 +58,13 @@ const customLanguagePack = {
 export class AppModule {}
 ```
 
-| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends   |
-| ------- | ------------- | ----------------------- | ---------- |
-| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
-| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
-| ^15.0.0 | ^15.0.0       | ^15.0.0                 | end        |
-| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
-| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends        |
+| ------- | ------------- | ----------------------- | --------------- |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15      |
+| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08(end) |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18(end) |
+| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end             |
+| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end             |
 
 Install the specified version if required using:
 
