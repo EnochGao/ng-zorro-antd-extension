@@ -25,7 +25,7 @@ export function selectFile(
   return fromEvent(input, 'change')
     .pipe(take(1))
     .pipe(
-      map((e) => {
+      map((_e:any) => {
         if (input?.files) {
           if (input?.files.length) {
             if (multiple) {
