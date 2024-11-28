@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
 
 @Component({
+  selector: 'nzx-select-control',
   template: `
     <ng-container [formGroup]="form">
       <nz-select

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
 
 @Component({
+  selector: 'nzx-date-picker-control',
   template: `
     <ng-container [formGroup]="form">
       <nz-date-picker
