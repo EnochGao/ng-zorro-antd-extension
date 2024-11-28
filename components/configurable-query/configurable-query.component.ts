@@ -250,10 +250,10 @@ export class NzxConfigurableQueryComponent
 
   /** 重置 */
   reset(): void {
-    if (this.queryForm.invalid) {
-      updateControlStatus(this.queryForm);
-      return;
-    }
+    // if (this.queryForm.invalid) {
+    //   updateControlStatus(this.queryForm);
+    //   return;
+    // }
     this.queryForm.reset(this.defaultValue);
     this.resetChange.emit(this._queryParams);
   }

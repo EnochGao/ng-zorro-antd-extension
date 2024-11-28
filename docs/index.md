@@ -49,26 +49,26 @@ import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 registerLocaleData(zh);
 
 const customLanguagePack = {
-	...zh_CN,
-	...nzx_zh_CN,
+  ...zh_CN,
+  ...nzx_zh_CN,
 };
 
 @NgModule({
-	declarations: [],
-	imports: [],
-	providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
-	bootstrap: [RootComponent],
+  declarations: [],
+  imports: [],
+  providers: [{ provide: NZ_I18N, useValue: customLanguagePack }],
+  bootstrap: [RootComponent],
 })
 export class AppModule {}
 ```
 
-| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends   |
-| ------- | ------------- | ----------------------- | ---------- |
-| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
-| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
-| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
-| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
-| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends        |
+| ------- | ------------- | ----------------------- | --------------- |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15      |
+| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08(end) |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18(end) |
+| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end             |
+| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end             |
 
 如需指定版本
 

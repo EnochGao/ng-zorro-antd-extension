@@ -16,7 +16,6 @@ English | [简体中文](README-zh_CN.md)
 ## Docs
 
 - [Docs github](https://enochgao.github.io/ng-zorro-antd-extension/)
-- [Docs gitee](http://enochgao.gitee.io/ng-zorro-antd-extension/)
 
 ## Installation
 
@@ -39,9 +38,9 @@ ng add ng-zorro-antd-extension
 3、app.module v15.11.0+
 
 ```ts
-import zh from "@angular/common/locales/zh";
-import { NZ_I18N, zh_CN } from "ng-zorro-antd/i18n";
-import { nzx_zh_CN } from "ng-zorro-antd-extension/i18n";
+import zh from '@angular/common/locales/zh';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
+import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 
 registerLocaleData(zh);
 
@@ -59,13 +58,13 @@ const customLanguagePack = {
 export class AppModule {}
 ```
 
-| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends   |
-| ------- | ------------- | ----------------------- | ---------- |
-| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15 |
-| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08 |
-| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18 |
-| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end        |
-| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end        |
+| angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends        |
+| ------- | ------------- | ----------------------- | --------------- |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15      |
+| ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08(end) |
+| ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18(end) |
+| ^14.0.0 | ^14.0.0       | ^14.0.0                 | end             |
+| ^13.0.0 | ^13.0.0       | ^13.0.0                 | end             |
 
 Install the specified version if required using:
 
