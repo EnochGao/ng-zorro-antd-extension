@@ -6,10 +6,14 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import {
+  AbstractControl,
+  FormControl,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { NzRateModule } from 'ng-zorro-antd/rate';
-
 import {
   NzxConfigurableQueryComponent,
   NzxConfigurableQueryModule,
@@ -18,9 +22,23 @@ import {
   NzxQueryControlOptions,
   NzxQueryParams,
 } from 'ng-zorro-antd-extension/configurable-query/type';
-
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import {
+  controls,
+  controls10,
+  controls2,
+  controls3,
+  controls4,
+  controls5,
+  controls6,
+  controls7,
+  controls8,
+  controls9,
+} from './config';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { isArray } from 'ng-zorro-antd-extension/util';
+import { differenceInCalendarDays, endOfMonth, startOfMonth } from 'date-fns';
 
 @Component({
   selector: 'nzx-configurable-query-demo',
@@ -35,358 +53,85 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzxConfigurableQueryModule,
     NzButtonModule,
     NzSpaceModule,
+    NzDatePickerModule,
   ],
 })
 export class NzxConfigurableQueryExampleComponent implements OnInit {
   queryParams: NzxQueryParams = {};
+  controls: Array<NzxQueryControlOptions> = controls;
 
-  controls: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-      controlInstance: new FormControl(null, [Validators.required]),
-      errorTip: '必填',
-    },
-    {
-      label: '占位',
-    },
-    {
-      controlName: 'gender',
-      label: '性别',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
-      nzxAllowClear: true,
-    },
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-      collapse: true,
-    },
-    {
-      controlName: 'level',
-      label: '职业等级',
-      controlType: 'Template',
-      collapse: true,
-    },
-  ];
   queryParams2: NzxQueryParams = {};
+  controls2: Array<NzxQueryControlOptions> = controls2;
 
-  controls2: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-    },
-  ];
   queryParams3: NzxQueryParams = {};
+  controls3: Array<NzxQueryControlOptions> = controls3;
 
-  controls3: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-    {
-      controlName: 'gender',
-      label: '性别',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
-      controlInstance: new FormControl(1, [Validators.required]),
-      errorTip: '假设必填默认',
-      nzxAllowClear: true,
-    },
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-      collapse: true,
-    },
-    {
-      controlName: 'level',
-      label: '职业等级',
-      controlType: 'Template',
-      collapse: true,
-    },
-  ];
   queryParams4: NzxQueryParams = {};
+  controls4: Array<NzxQueryControlOptions> = controls4;
 
-  controls4: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-      nzxClass: 'test',
-    },
-    {
-      controlName: 'gender',
-      label: '性别',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
-      controlInstance: new FormControl(1, [Validators.required]),
-      errorTip: '假设必填默认',
-      nzxAllowClear: true,
-    },
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-      collapse: true,
-    },
-    {
-      controlName: 'level',
-      label: '职业等级',
-      controlType: 'Template',
-      collapse: true,
-    },
-  ];
   queryParams5: NzxQueryParams = {};
+  controls5: Array<NzxQueryControlOptions> = controls5;
 
-  controls5: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'searchType',
-      placeholder: '请选择',
-      nzxSpan: 3,
-      nzxRSpan: 24,
-      controlType: 'select',
-      menuList: [
-        { label: '班级', value: 1 },
-        { label: '姓名', value: 2 },
-      ],
-      default: 1,
-    },
-    {
-      controlName: 'searchKey',
-      placeholder: '搜索内容',
-      nzxSpan: 9,
-      nzxRSpan: 24,
-      controlType: 'input',
-    },
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-    {
-      controlName: 'gender',
-      label: '性别',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
-      controlInstance: new FormControl(1, [Validators.required]),
-      errorTip: '假设必填默认',
-      nzxAllowClear: true,
-    },
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-      collapse: true,
-    },
-    {
-      controlName: 'level',
-      label: '职业等级',
-      controlType: 'Template',
-      collapse: true,
-    },
-  ];
   queryParams6: NzxQueryParams = {};
-
-  controls6: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'searchType',
-      placeholder: '请选择',
-      nzxSpan: 3,
-      nzxRSpan: 24,
-      controlType: 'select',
-      menuList: [
-        { label: '班级', value: 1 },
-        { label: '姓名', value: 2 },
-      ],
-      default: 1,
-    },
-    {
-      controlName: 'searchKey',
-      placeholder: '搜索内容',
-      nzxSpan: 9,
-      nzxRSpan: 24,
-      controlType: 'input',
-    },
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-      collapse: true,
-    },
-    {
-      controlName: 'gender',
-      label: '性别',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
-      controlInstance: new FormControl(1, [Validators.required]),
-      errorTip: '假设必填默认',
-      nzxAllowClear: true,
-      collapse: true,
-    },
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-      collapse: true,
-    },
-    {
-      controlName: 'level',
-      label: '职业等级',
-      controlType: 'Template',
-      collapse: true,
-    },
-  ];
+  controls6: Array<NzxQueryControlOptions> = controls6;
 
   queryParams7: NzxQueryParams = {};
-
-  controls7: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-    {
-      controlName: 'city',
-      label: '城市',
-      placeholder: '城市',
-      controlType: 'select',
-      menuList: [
-        { label: '班级', value: 1 },
-        { label: '姓名', value: 2 },
-      ],
-    },
-  ];
+  controls7: Array<NzxQueryControlOptions> = controls7;
+  @ViewChild('query7') private query7!: NzxConfigurableQueryComponent;
 
   cityList = [
     { label: '青岛', value: '青岛' },
     { label: '潍坊', value: '潍坊' },
     { label: '烟台', value: '烟台' },
   ];
-  @ViewChild('query7') private query7!: NzxConfigurableQueryComponent;
 
   queryParams8: NzxQueryParams = {};
-  controls8: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-    {
-      controlName: 'city',
-      label: '城市',
-      placeholder: '城市',
-      controlType: 'select',
-      menuList: [
-        { label: '班级', value: 1 },
-        { label: '姓名', value: 2 },
-      ],
-    },
-  ];
+  controls8: Array<NzxQueryControlOptions> = controls8;
   @ViewChild('query8') private query8!: NzxConfigurableQueryComponent;
 
   queryParams9: NzxQueryParams = {};
-  controls9: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-    {
-      controlName: 'city',
-      label: '城市',
-      placeholder: '城市',
-      controlType: 'select',
-      menuList: [
-        { label: '青岛', value: '青岛' },
-        { label: '潍坊', value: '潍坊' },
-      ],
-    },
-  ];
+  controls9: Array<NzxQueryControlOptions> = controls9;
   @ViewChild('query9', { static: true })
   private query9!: NzxConfigurableQueryComponent;
 
   queryParams10: NzxQueryParams = {};
-
-  controls10: Array<NzxQueryControlOptions> = [
-    {
-      controlName: 'name',
-      label: '姓名',
-      placeholder: '姓名',
-      controlType: 'input',
-    },
-
-    {
-      controlName: 'birthday',
-      label: '出生日期',
-      placeholder: '日期',
-      controlType: 'datePicker',
-    },
-  ];
+  controls10: Array<NzxQueryControlOptions> = controls10;
 
   @ViewChild('levelRef', { static: true })
   private levelRef!: TemplateRef<any>;
   @ViewChild('query10', { static: true })
   private query10!: NzxConfigurableQueryComponent;
 
+  private pickerDateValidator = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    const list = control.value;
+    if (isArray(list) && list.length === 2) {
+      const calculate = differenceInCalendarDays(list[1], list[0]);
+      if (calculate > 30) {
+        return { error: true };
+      }
+    }
+    return null;
+  };
+
   addGender() {
-    this.query10.addControl({
-      controlName: 'gender',
-      label: '性别',
-      placeholder: '请选择',
-      controlType: 'select',
-      menuList: [
-        { label: '男', value: 1 },
-        { label: '女', value: 2 },
-      ],
-      controlInstance: new FormControl(1, [Validators.required]),
-      errorTip: '假设必填默认',
-      nzxAllowClear: true,
-    });
+    this.query10.addControl(
+      {
+        controlName: 'gender',
+        label: '性别',
+        placeholder: '请选择',
+        controlType: 'select',
+        menuList: [
+          { label: '男', value: 1 },
+          { label: '女', value: 2 },
+        ],
+        controlInstance: new FormControl(1, [Validators.required]),
+        errorTip: '假设必填默认',
+        nzxAllowClear: true,
+      },
+      2
+    );
   }
 
   addLevel() {
@@ -404,18 +149,32 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   removeLevel() {
     this.query10.removeControl('level');
   }
+  removeGender() {
+    this.query10.removeControl('gender');
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.query7.setControl('city', { menuList: this.cityList });
+      this.query7.addControl({
+        controlName: 'pickerDate',
+        label: '时间',
+        nzxSpan: 6,
+        nzxLSpan: 8,
+        nzxRSpan: 16,
+        controlType: 'Template',
+        errorTip: '日期选择跨度不能超过31天',
+        controlInstance: new FormControl(
+          [startOfMonth(new Date()), endOfMonth(new Date())],
+          [this.pickerDateValidator]
+        ),
+      });
     }, 3000);
+
     const cacheStr = sessionStorage.getItem('cacheParams');
     if (cacheStr) {
       this.query9.setQueryParams(JSON.parse(cacheStr));
     }
-    setTimeout(() => {
-      this.query9.setControl('city', { menuList: this.cityList });
-    }, 3000);
   }
 
   queryChange(params: NzxQueryParams) {

@@ -1,6 +1,5 @@
 <div class="container">
   <div>例子1： 自定义拓展查询职业等级,姓名必填</div>
-
   <nzx-configurable-query
     [controls]="controls"
     (queryChange)="queryParams = $event"
@@ -10,27 +9,22 @@
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams | json }}
   </pre>
 
-  <div>例子2： 一行展示</div>
+  <div>例子2： 自动一行展示</div>
   <nzx-configurable-query
-
     [controls]="controls2"
     (queryChange)="queryParams2 = $event"
     (resetChange)="queryParams2 = $event"
   >
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams2 | json }}
   </pre>
 
-  <div>例子3： 全展示禁用折叠</div>
+  <div>例子3： 根据collapse属性自动展示折叠</div>
   <nzx-configurable-query
     [nzxBtnSpan]="24"
     [controls]="controls3"
@@ -41,8 +35,6 @@
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams3 | json }}
   </pre>
@@ -59,14 +51,11 @@
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams4 | json }}
   </pre>
 
   <div>例子5： 简化查询</div>
-
   <nzx-configurable-query
     [controls]="controls5"
     [lineNumber]="2"
@@ -78,14 +67,11 @@
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams5 | json }}
   </pre>
 
   <div>例子6： 初始化界面主动查询</div>
-
   <nzx-configurable-query
     [controls]="controls6"
     [lineNumber]="2"
@@ -97,8 +83,6 @@
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams6 | json }}
   </pre>
@@ -111,8 +95,16 @@
     (queryChange)="queryParams7 = $event"
     (resetChange)="queryParams7 = $event"
   >
+    <ng-template nzxControl="pickerDate" let-formControl>
+      <nz-range-picker
+        [nzAllowClear]="false"
+        [nzStatus]="formControl.status === 'INVALID' ? 'error' : ''"
+        [nzShowTime]="false"
+        nzFormat="yyyy-MM-dd"
+        [formControl]="formControl"
+      ></nz-range-picker>
+    </ng-template>
   </nzx-configurable-query>
-  查询参数：
   <pre>
   {{ queryParams7 | json }}
   </pre>
@@ -126,7 +118,6 @@
     (resetChange)="queryParams8 = $event"
   >
   </nzx-configurable-query>
-  查询参数：
   <pre>
   {{ queryParams8 | json }}
   </pre>
@@ -141,7 +132,6 @@
     (resetChange)="queryChange($event)"
   >
   </nzx-configurable-query>
-  查询参数：
   <pre>
   {{ queryParams9 | json }}
   </pre>
@@ -153,19 +143,20 @@
       nz-button
       nzType="primary"
       nzSize="small"
-      (click)="addGender()"
+      (click)="addLevel()"
     >
-      add gender
+      add level to first
     </button>
     <button
       *nzSpaceItem
       nz-button
       nzType="primary"
       nzSize="small"
-      (click)="addLevel()"
+      (click)="addGender()"
     >
-      add level
+      add gender to second
     </button>
+
     <button
       *nzSpaceItem
       nz-button
@@ -174,6 +165,15 @@
       (click)="removeLevel()"
     >
       remove level
+    </button>
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="removeGender()"
+    >
+      remove gender
     </button>
   </nz-space>
 
@@ -188,8 +188,6 @@
     (resetChange)="queryParams10 = $event"
   >
   </nzx-configurable-query>
-
-  查询参数：
   <pre>
   {{ queryParams10 | json }}
   </pre>
