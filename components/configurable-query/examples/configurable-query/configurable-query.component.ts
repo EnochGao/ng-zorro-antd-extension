@@ -6,7 +6,13 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import {
   NzxConfigurableQueryComponent,
@@ -30,6 +36,9 @@ import {
   controls8,
   controls9,
 } from './config';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { isArray } from 'ng-zorro-antd-extension/util';
+import { differenceInCalendarDays, endOfMonth, startOfMonth } from 'date-fns';
 
 @Component({
   selector: 'nzx-configurable-query-demo',
@@ -44,6 +53,7 @@ import {
     NzxConfigurableQueryModule,
     NzButtonModule,
     NzSpaceModule,
+    NzDatePickerModule,
   ],
 })
 export class NzxConfigurableQueryExampleComponent implements OnInit {
@@ -92,6 +102,19 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   @ViewChild('query10', { static: true })
   private query10!: NzxConfigurableQueryComponent;
 
+  private pickerDateValidator = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    const list = control.value;
+    if (isArray(list) && list.length === 2) {
+      const calculate = differenceInCalendarDays(list[1], list[0]);
+      if (calculate > 30) {
+        return { error: true };
+      }
+    }
+    return null;
+  };
+
   addGender() {
     this.query10.addControl(
       {
@@ -133,7 +156,21 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.query7.setControl('city', { menuList: this.cityList });
+      this.query7.addControl({
+        controlName: 'pickerDate',
+        label: '时间',
+        nzxSpan: 6,
+        nzxLSpan: 8,
+        nzxRSpan: 16,
+        controlType: 'Template',
+        errorTip: '日期选择跨度不能超过31天',
+        controlInstance: new FormControl(
+          [startOfMonth(new Date()), endOfMonth(new Date())],
+          [this.pickerDateValidator]
+        ),
+      });
     }, 3000);
+
     const cacheStr = sessionStorage.getItem('cacheParams');
     if (cacheStr) {
       this.query9.setQueryParams(JSON.parse(cacheStr));

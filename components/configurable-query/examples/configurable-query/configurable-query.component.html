@@ -1,8 +1,10 @@
 <div class="container">
-
   <div>例子1： 自定义拓展查询职业等级,姓名必填</div>
-  <nzx-configurable-query [controls]="controls" (queryChange)="queryParams = $event"
-    (resetChange)="queryParams = $event">
+  <nzx-configurable-query
+    [controls]="controls"
+    (queryChange)="queryParams = $event"
+    (resetChange)="queryParams = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -12,16 +14,23 @@
   </pre>
 
   <div>例子2： 自动一行展示</div>
-  <nzx-configurable-query [controls]="controls2" (queryChange)="queryParams2 = $event"
-    (resetChange)="queryParams2 = $event">
+  <nzx-configurable-query
+    [controls]="controls2"
+    (queryChange)="queryParams2 = $event"
+    (resetChange)="queryParams2 = $event"
+  >
   </nzx-configurable-query>
   <pre>
   {{ queryParams2 | json }}
   </pre>
 
   <div>例子3： 根据collapse属性自动展示折叠</div>
-  <nzx-configurable-query [nzxBtnSpan]="24" [controls]="controls3" (queryChange)="queryParams3 = $event"
-    (resetChange)="queryParams3 = $event">
+  <nzx-configurable-query
+    [nzxBtnSpan]="24"
+    [controls]="controls3"
+    (queryChange)="queryParams3 = $event"
+    (resetChange)="queryParams3 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -31,8 +40,13 @@
   </pre>
 
   <div>例子4： 一行展示两个control</div>
-  <nzx-configurable-query [controls]="controls4" [lineNumber]="2" [nzxBtnSpan]="24"
-    (queryChange)="queryParams4 = $event" (resetChange)="queryParams4 = $event">
+  <nzx-configurable-query
+    [controls]="controls4"
+    [lineNumber]="2"
+    [nzxBtnSpan]="24"
+    (queryChange)="queryParams4 = $event"
+    (resetChange)="queryParams4 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -42,8 +56,13 @@
   </pre>
 
   <div>例子5： 简化查询</div>
-  <nzx-configurable-query [controls]="controls5" [lineNumber]="2" [nzxBtnSpan]="24"
-    (queryChange)="queryParams5 = $event" (resetChange)="queryParams5 = $event">
+  <nzx-configurable-query
+    [controls]="controls5"
+    [lineNumber]="2"
+    [nzxBtnSpan]="24"
+    (queryChange)="queryParams5 = $event"
+    (resetChange)="queryParams5 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -53,8 +72,13 @@
   </pre>
 
   <div>例子6： 初始化界面主动查询</div>
-  <nzx-configurable-query [controls]="controls6" [lineNumber]="2" [initQuery]="true"
-    (queryChange)="queryParams6 = $event" (resetChange)="queryParams6 = $event">
+  <nzx-configurable-query
+    [controls]="controls6"
+    [lineNumber]="2"
+    [initQuery]="true"
+    (queryChange)="queryParams6 = $event"
+    (resetChange)="queryParams6 = $event"
+  >
     <ng-template nzxControl="level" let-formControl>
       <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
     </ng-template>
@@ -64,24 +88,49 @@
   </pre>
 
   <div>例子7： 模拟远程加载下拉</div>
-  <nzx-configurable-query #query7 [controls]="controls7" [initQuery]="true" (queryChange)="queryParams7 = $event"
-    (resetChange)="queryParams7 = $event">
+  <nzx-configurable-query
+    #query7
+    [controls]="controls7"
+    [initQuery]="true"
+    (queryChange)="queryParams7 = $event"
+    (resetChange)="queryParams7 = $event"
+  >
+    <ng-template nzxControl="pickerDate" let-formControl>
+      <nz-range-picker
+        [nzAllowClear]="false"
+        [nzStatus]="formControl.status === 'INVALID' ? 'error' : ''"
+        [nzShowTime]="false"
+        nzFormat="yyyy-MM-dd"
+        [formControl]="formControl"
+      ></nz-range-picker>
+    </ng-template>
   </nzx-configurable-query>
   <pre>
   {{ queryParams7 | json }}
   </pre>
 
   <div>例子8：缺省固定参数</div>
-  <nzx-configurable-query #query8 [controls]="controls8" [fixedParams]="{ enabled: true }"
-    (queryChange)="queryParams8 = $event" (resetChange)="queryParams8 = $event">
+  <nzx-configurable-query
+    #query8
+    [controls]="controls8"
+    [fixedParams]="{ enabled: true }"
+    (queryChange)="queryParams8 = $event"
+    (resetChange)="queryParams8 = $event"
+  >
   </nzx-configurable-query>
   <pre>
   {{ queryParams8 | json }}
   </pre>
 
   <div>例子9：缓存查询参数</div>
-  <nzx-configurable-query #query9 [controls]="controls9" [initQuery]="true" [fixedParams]="{ enabled: true }"
-    (queryChange)="queryChange($event)" (resetChange)="queryChange($event)">
+  <nzx-configurable-query
+    #query9
+    [controls]="controls9"
+    [initQuery]="true"
+    [fixedParams]="{ enabled: true }"
+    (queryChange)="queryChange($event)"
+    (resetChange)="queryChange($event)"
+  >
   </nzx-configurable-query>
   <pre>
   {{ queryParams9 | json }}
@@ -89,17 +138,41 @@
 
   <div>例子10： 动态添加删除控件</div>
   <nz-space>
-    <button *nzSpaceItem nz-button nzType="primary" nzSize="small" (click)="addLevel()">
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="addLevel()"
+    >
       add level to first
     </button>
-    <button *nzSpaceItem nz-button nzType="primary" nzSize="small" (click)="addGender()">
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="addGender()"
+    >
       add gender to second
     </button>
 
-    <button *nzSpaceItem nz-button nzType="primary" nzSize="small" (click)="removeLevel()">
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="removeLevel()"
+    >
       remove level
     </button>
-    <button *nzSpaceItem nz-button nzType="primary" nzSize="small" (click)="removeGender()">
+    <button
+      *nzSpaceItem
+      nz-button
+      nzType="primary"
+      nzSize="small"
+      (click)="removeGender()"
+    >
       remove gender
     </button>
   </nz-space>
@@ -108,11 +181,14 @@
     <nz-rate [formControl]="formControl" nzAllowHalf></nz-rate>
   </ng-template>
 
-  <nzx-configurable-query #query10 [controls]="controls10" (queryChange)="queryParams10 = $event"
-    (resetChange)="queryParams10 = $event">
+  <nzx-configurable-query
+    #query10
+    [controls]="controls10"
+    (queryChange)="queryParams10 = $event"
+    (resetChange)="queryParams10 = $event"
+  >
   </nzx-configurable-query>
   <pre>
   {{ queryParams10 | json }}
   </pre>
-
 </div>

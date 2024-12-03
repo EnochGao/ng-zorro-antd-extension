@@ -80,6 +80,7 @@ export class NzxConfigurableQueryComponent
   collapseText: string = '';
 
   private _queryParams: NzxQueryParams = {};
+  /** 重置时用来给查询框默认值 */
   private defaultValue: NzxQueryParams = {};
   private cacheParams: NzxQueryParams = {};
   private destroy$ = new Subject<void>();
@@ -108,7 +109,6 @@ export class NzxConfigurableQueryComponent
   ngOnInit(): void {
     this.i18n.localeChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.locale = this.i18n.getLocaleData('Query');
-
       this.cd.markForCheck();
     });
 
@@ -159,38 +159,38 @@ export class NzxConfigurableQueryComponent
 
   /**
    * 根据controlName设置config值
+   * @param defaultValueResettable 添加的表单控件默认值是否可以重置，默认不可以
    */
   setControl(
     controlName: string,
-    config: Partial<NzxQueryControlOptions>
+    config: Partial<NzxQueryControlOptions>,
+    defaultValueResettable = false
   ): void {
-    Promise.resolve().then(() => {
-      const control = this.getControl(controlName);
-      if (control) {
-        Object.keys(config).forEach((key) => {
-          (control as any)[key] = (config as any)[key];
-        });
-      }
-    });
+    const control = this.getControl(controlName);
+    if (control) {
+      Object.keys(config).forEach((key) => {
+        (control as any)[key] = (config as any)[key];
+      });
+      this.generateControl(control, defaultValueResettable);
+      this.cd.markForCheck();
+    }
   }
 
   /**
    * 动态添加控件
    * @param config 配置项
    * @param position 添加位置 不传为末尾
+   * @param defaultValueResettable 添加的表单控件默认值是否可以重置，默认不可以
    */
   addControl(
     config: NzxQueryControlOptions,
-    position?: number | undefined
+    position?: number | undefined,
+    defaultValueResettable = false
   ): void {
     const control = this.getControl(config.controlName);
     if (!control) {
-      if (config.controlName) {
-        this.queryForm.addControl(
-          config.controlName,
-          config.controlInstance ?? this.fb.control(config.default ?? null)
-        );
-      }
+      this.generateControl(config, defaultValueResettable);
+
       if (position === void 0 || position === null) {
         this.controls.push(config);
       } else {
@@ -212,7 +212,6 @@ export class NzxConfigurableQueryComponent
       this.controls = this.controls.filter(
         (c) => c.controlName !== controlName
       );
-
       this.calculateText();
     } else {
       throw `The control name: '${controlName}' not find!`;
@@ -249,10 +248,6 @@ export class NzxConfigurableQueryComponent
 
   /** 重置 */
   reset(): void {
-    if (this.queryForm.invalid) {
-      updateControlStatus(this.queryForm);
-      return;
-    }
     this.queryForm.reset(this.defaultValue);
     this.resetChange.emit(this._queryParams);
   }
@@ -296,32 +291,58 @@ export class NzxConfigurableQueryComponent
     });
   }
 
-  /** 生成表单 */
+  /** 生成 queryForm 表单 */
   private generateForm(controlConfigs: Array<NzxQueryControlOptions>): void {
     this.clearFormControl();
 
     for (const config of controlConfigs) {
-      if (config.controlType === 'Template') {
-        const item = this.controlTemplateList.find(
-          (directive) => directive.nzxControl === config.controlName
-        );
-        if (item) {
-          config.templateRef = item.templateRef;
-        }
-      }
-      if (config.controlName) {
-        this.queryForm.addControl(
-          config.controlName,
-          config.controlInstance ?? this.fb.control(config.default ?? null)
-        );
-      }
+      this.generateControl(config);
     }
     this.defaultValue = this.queryForm.getRawValue();
+
     if (this.cacheParams) {
       // 缓存回显查询条件
       this.queryForm.patchValue(this.cacheParams);
     }
 
     this.calculateText();
+  }
+
+  /**
+   *
+   * @param controlConfig control配置
+   * @param defaultValueResettable 添加的表单控件默认值是否可以重置，默认不可以
+   *
+   * 1. 生成单个表单控件并将其添加到queryForm中
+   * 2. 如果没有templateRef根据controlName获取投影的templateList中的templateRef给 templateRef 赋值
+   *
+   **/
+  private generateControl(
+    config: NzxQueryControlOptions,
+    defaultValueResettable = false
+  ) {
+    if (config.controlName) {
+      if (!config?.templateRef) {
+        const d = this.controlTemplateList.find(
+          (d) => d.nzxControl === config.controlName
+        );
+        if (d) {
+          config.templateRef = d.templateRef;
+        }
+      }
+
+      this.queryForm.setControl(
+        config.controlName,
+        config.controlInstance ?? this.fb.control(config.default ?? null)
+      );
+
+      if (!defaultValueResettable) {
+        const control = this.queryForm.get(config.controlName);
+        this.defaultValue = {
+          ...this.defaultValue,
+          [config.controlName]: control.value,
+        };
+      }
+    }
   }
 }
