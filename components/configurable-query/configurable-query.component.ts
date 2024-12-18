@@ -189,6 +189,15 @@ export class NzxConfigurableQueryComponent
   ): void {
     const control = this.getControl(config.controlName);
     if (!control) {
+      if (config && config['hasOwnProperty']('collapse')) {
+        const hasCollapseProperty = this.controls.some((i) =>
+          i['hasOwnProperty']('collapse')
+        );
+        if (hasCollapseProperty) {
+          config.collapse = this.controls.some((i) => i.collapse === true);
+        }
+      }
+
       this.generateControl(config, defaultValueResettable);
 
       if (position === void 0 || position === null) {
@@ -256,12 +265,10 @@ export class NzxConfigurableQueryComponent
   toggleCollapse(): void {
     for (let index = 0; index < this.controls.length; index++) {
       const config = this.controls[index];
-      if (config.hasOwnProperty('collapse') && config.collapse === true) {
-        (config.collapse as boolean) = false;
-      } else if (
-        config.hasOwnProperty('collapse') &&
-        (config.collapse as boolean) === false
-      ) {
+      const hasProperty = config.hasOwnProperty('collapse');
+      if (hasProperty && config.collapse) {
+        config.collapse = false;
+      } else if (hasProperty && !config.collapse) {
         config.collapse = true;
       }
     }
