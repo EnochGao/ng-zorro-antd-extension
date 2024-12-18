@@ -141,6 +141,7 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
         label: '职业等级',
         controlType: 'Template',
         templateRef: this.levelRef,
+        collapse: true,
       },
       1
     );
