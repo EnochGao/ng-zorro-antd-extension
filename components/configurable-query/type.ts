@@ -74,7 +74,7 @@ export interface NzxQueryControlOptions {
 	/**
 	 * 折叠
 	 */
-	collapse?: true;
+	collapse?: boolean;
 	/**
 	 * 隐藏控件(主要用来携带查询参数但界面不可见)
 	 */
