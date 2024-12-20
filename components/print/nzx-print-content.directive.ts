@@ -1,10 +1,10 @@
-import { Directive, ElementRef, Input } from "@angular/core";
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
-	selector: '[nzxPrintContent]',
+  selector: '[nzxPrintContent]',
 })
 export class NzxPrintContentDirective {
-	@Input() identifierStr: string | string[] = '';
-	@Input() customStyle = '';
-	constructor(public elementRef: ElementRef) {}
+  @Input() identifierStr: string | string[] = '';
+  @Input() customStyle = '';
+  constructor(public elementRef: ElementRef) {}
 }
