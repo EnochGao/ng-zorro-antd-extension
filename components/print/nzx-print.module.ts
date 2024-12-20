@@ -8,18 +8,18 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzxPrintContentDirective } from './nzx-print-content.directive';
 
 @NgModule({
-	declarations: [
-		NzxPrintComponent,
-		NzxPrintVComponent,
-		NzxPrintDirective,
-		NzxPrintContentDirective,
-	],
-	imports: [CommonModule, NzGridModule, NzPaginationModule],
-	exports: [
-		NzxPrintComponent,
-		NzxPrintVComponent,
-		NzxPrintContentDirective,
-		NzxPrintDirective,
-	],
+  declarations: [
+    NzxPrintComponent,
+    NzxPrintVComponent,
+    NzxPrintDirective,
+    NzxPrintContentDirective,
+  ],
+  imports: [CommonModule, NzGridModule, NzPaginationModule],
+  exports: [
+    NzxPrintComponent,
+    NzxPrintVComponent,
+    NzxPrintContentDirective,
+    NzxPrintDirective,
+  ],
 })
 export class NzxPrintModule {}
