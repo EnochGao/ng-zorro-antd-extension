@@ -21,6 +21,8 @@ import { NzxSelectControlComponent } from './controls/select.control';
 import { NzxTemplateControlComponent } from './controls/template.control';
 import { NzxQueryConfigService, QUERY_CONFIG } from './query-config.service';
 import { NzxQueryConfig } from './type';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { NzxQueryConfig } from './type';
     NzButtonModule,
     NzSelectModule,
     NzDatePickerModule,
+    NzCardModule,
+    NzSpaceModule,
     NzIconModule,
     NzI18nModule,
   ],
