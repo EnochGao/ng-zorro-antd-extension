@@ -29,8 +29,8 @@ import { NzxJigsawModule } from "ng-zorro-antd-extension/jigsaw";
 
 | 属性           | 类型                    | 默认值               |
 | -------------- | ----------------------- | -------------------- |
-| width          | `number`                | `310`                |
-| height         | `number`                | `155`                |
+| width          | 'number'                | `310`                |
+| height         | 'number'                | `155`                |
 | nzxLoadingText | `string`                | `'加载中...'`        |
 | nzxTipText     | `string`                | `'向右滑动填充拼图'` |
 | nzxBgImgUrl   | `string`\|\| `string[]` | `''`                 |

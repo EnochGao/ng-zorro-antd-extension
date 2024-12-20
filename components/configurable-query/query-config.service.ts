@@ -48,6 +48,7 @@ export class NzxQueryConfigService {
     }
   }
 
+  /** 添加controlType 类型控件 */
   addControlType(controlType: NzxQueryControlType) {
     const find = this.controlTypePoll.some((i) => i.key === controlType.key);
     if (find) {
@@ -56,6 +57,7 @@ export class NzxQueryConfigService {
     this.controlTypePoll.push(controlType);
   }
 
+  /** 删除controlType 类型控件 */
   removeControlType(key: string) {
     const find = this.controlTypePoll.some((i) => i.key === key);
     if (find) {
@@ -65,6 +67,7 @@ export class NzxQueryConfigService {
     }
   }
 
+  /** 刷新 */
   refreshControlType() {
     this.controlTypes$.next(this.controlTypePoll);
   }
