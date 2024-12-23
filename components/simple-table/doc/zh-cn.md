@@ -7,11 +7,11 @@ order: 2
 
 简单 table 通过配置项快速生成一个 table，支持自定义 template，初衷只是为了数据展示方便，不支持服务端分页
 
-## 支持版本
+## 版本支持
 
 <label type="success">v13.0.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 

@@ -7,7 +7,7 @@ module.exports = {
   title: "ng-zorro-antd-extension",
   description: "ng zorro 拓展包",
   siteProjectName: "docs-site",
-  logoUrl: "https://avatars.githubusercontent.com/u/41459067?v=4",
+  logoUrl: "assets/images/logo.png",
   repoUrl: "https://github.com/EnochGao/ng-zorro-antd-extension",
   footer:
     "Open-source MIT Licensed | Copyright © 2022-present Powered by EnochGao",

@@ -8,10 +8,13 @@ hero:
 features:
   - icon: https://angular.cn/assets/images/logos/angular/angular.svg
     title: Angular
-    description: 基于Angular
-  - icon: https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg
+    description: 基于Angular前端框架
+  - icon: https://ng.ant.design/assets/img/logo.svg
     title: NG-ZORRO
-    description: 基于ng-zorro-antd
+    description: 基于ng-zorro组件库
+  - icon: assets/images/logo.png
+    title: NG-ZORRO-EXTENSION
+    description: 进行扩展、新增特色组件
 ---
 
 <div align="center">
@@ -20,6 +23,10 @@ features:
 [![NPM downloads](http://img.shields.io/npm/dm/ng-zorro-antd-extension.svg?style=flat-square)](https://npmjs.org/package/ng-zorro-antd-extension)
 
 </div>
+
+## 参与贡献
+
+欢迎在 [github](https://github.com/EnochGao/ng-zorro-antd-extension) star fork pr
 
 ## 安装
 
@@ -76,10 +83,8 @@ export class AppModule {}
 npm install ng-zorro-antd-extension@13.0.0 --save
 ```
 
-注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用 15.0.0+版本，具体 feature 请查看组件文档中基本使用下的版本
+注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用 15.0.0+版本，具体 feature 请查看组件文档中使用下的版本
 
 ### 使用介绍
 
 <iframe  src="//player.bilibili.com/player.html?aid=873336769&bvid=BV1kN4y1Q7vv&cid=1261626841&p=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-欢迎在 [github](https://github.com/EnochGao/ng-zorro-antd-extension) star fork pr

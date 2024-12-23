@@ -16,13 +16,13 @@ label: new
 
 在使用`nzx-print`时，推荐将`nzxPrintContent`包含的内容做成 dump 组件，只用来做纯展示，不包含业务逻辑。当 dump 组件的数据需要通过异步调用接口时，要使用`nzx-print`的`refresh`方法重新渲染。
 
-## 支持版本
+## 版本支持
 
-<label type="success">^15.13.0</label>
+<label type="success">v15.13.0+</label>
 
-<label type="success">^15.14.0</label>开始含有 nzx-print-v
+<label type="success">v15.14.0+</label>(开始含有 nzx-print-v)
 
-## 基本使用
+## 使用
 
 ### 引入
 
