@@ -8,7 +8,7 @@ order: 2
 - 映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接
 - 缺省管道(nzxSafeNull)，属性值为`null`、`undefined`、`''`时展示默认占位符，支持通过 nzxConfig 全局配置
 
-## 支持版本
+## 版本支持
 
 | pipe               | version support                         |
 | ------------------ | --------------------------------------- |
@@ -20,7 +20,7 @@ order: 2
 | nzxSafeStyle       | <label type="success">v15.10.0+</label> |
 | nzxSafeUrl         | <label type="success">v15.10.0+</label> |
 
-## 基本使用
+## 使用
 
 ### 引入
 

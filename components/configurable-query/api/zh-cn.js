@@ -36,7 +36,7 @@ module.exports = [
       },
       {
         name: 'nzxSpan',
-        type: `number`,
+        type: 'number',
         description: '查询项所占栅格数',
       },
       {
@@ -46,12 +46,12 @@ module.exports = [
       },
       {
         name: 'nzxLSpan',
-        type: `number`,
+        type: 'number',
         description: '查询项label所占栅格数',
       },
       {
         name: 'nzxRSpan',
-        type: `number`,
+        type: 'number',
         description: '查询项控件所占栅格数',
       },
       {

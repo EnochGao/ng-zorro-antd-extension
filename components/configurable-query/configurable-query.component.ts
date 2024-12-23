@@ -41,19 +41,21 @@ import { NzxQueryControlOptions, NzxQueryParams } from './type';
 export class NzxConfigurableQueryComponent
   implements OnChanges, OnInit, AfterViewInit, AfterContentInit, OnDestroy
 {
-  /** 配置项 */
+  /**
+   * 配置项用来生成查询表单
+   */
   @Input() controls: Array<NzxQueryControlOptions> = [];
-  /** 查询表单排列方式 */
+  /** 查询表单排列方式默认start */
   @Input() nzxJustify: NzJustify = 'start';
-  /** 查询项间隔 */
+  /** 查询项间隔默认为8 */
   @Input() nzxGutter: number = 8;
-  /** 一行展示多少查询项 */
+  /** 一行展示多少查询项默认展示3个 */
   @Input() lineNumber: number = 3;
   /** 操作按钮所占栅格数，24则换行 */
   @Input() nzxBtnSpan: number | null = null;
-  /** 初始化时，主动查询 */
+  /** 初始化时，是否主动触发查询 */
   @Input() initQuery = false;
-  /** 缺省 固定参数 */
+  /** 缺省 固定参数会固定携带在抛出事件中 */
   @Input() fixedParams = {};
 
   /** 查询时会触发抛出查询参数 */
@@ -61,7 +63,7 @@ export class NzxConfigurableQueryComponent
   /** 重置时会触发抛出查询参数 */
   @Output() resetChange = new EventEmitter<NzxQueryParams>();
 
-  /** 查询组件出参*/
+  /** 组件最终的查询参数 */
   get queryParams() {
     return this._queryParams;
   }
@@ -69,11 +71,12 @@ export class NzxConfigurableQueryComponent
     this._queryParams = value;
   }
 
+  /** 判断当前组件是否展示展开折叠按钮 */
   get nzxCollapse() {
     return this.controls.some((i) => i.hasOwnProperty('collapse'));
   }
 
-  /** form 表单*/
+  /** 内置 form 查询表单实例 */
   queryForm!: FormGroup;
   locale!: NzxQueryI18nInterface;
   collapseIcon: string = 'down';
@@ -280,6 +283,7 @@ export class NzxConfigurableQueryComponent
     this.destroy$.complete();
   }
 
+  /** 计算展开收起icon、文案 */
   private calculateText() {
     if (this.controls.some((i) => i.collapse === true)) {
       this.collapseIcon = 'down';

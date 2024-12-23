@@ -7,11 +7,11 @@ order: 7
 
 纯前端实现七巧板拼图
 
-## 支持版本
+## 版本支持
 
-<label type="success">v15.9.0</label>
+<label type="success">v15.9.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 
@@ -29,8 +29,8 @@ import { NzxJigsawModule } from "ng-zorro-antd-extension/jigsaw";
 
 | 属性           | 类型                    | 默认值               |
 | -------------- | ----------------------- | -------------------- |
-| width          | `number`                | `310`                |
-| height         | `number`                | `155`                |
+| width          | 'number'                | `310`                |
+| height         | 'number'                | `155`                |
 | nzxLoadingText | `string`                | `'加载中...'`        |
 | nzxTipText     | `string`                | `'向右滑动填充拼图'` |
 | nzxBgImgUrl   | `string`\|\| `string[]` | `''`                 |

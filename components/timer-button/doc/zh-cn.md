@@ -7,11 +7,11 @@ order: 4
 
 nzxTimerButton：倒计时 button，只能作用到 button 元素上，一般用来获取验证码。支持全局配置
 
-## 支持版本
+## 版本支持
 
 <label type="success">v15.6.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 
