@@ -7,11 +7,11 @@ order: 3
 
 通过配置项生成一个查询表单控件，支持自定义拓展查询控件，使用NzxQueryConfigService支持全局配置查询控件
 
-## 支持版本
+## 版本支持
 
 <label type="success">v14.0.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 

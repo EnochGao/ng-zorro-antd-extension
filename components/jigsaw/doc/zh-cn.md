@@ -7,11 +7,11 @@ order: 7
 
 纯前端实现七巧板拼图
 
-## 支持版本
+## 版本支持
 
-<label type="success">v15.9.0</label>
+<label type="success">v15.9.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 

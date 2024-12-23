@@ -79,6 +79,6 @@ npm install ng-zorro-antd-extension@13.0.0 --save
 npm install ng-zorro-antd-extension@13.0.0 --save
 ```
 
-注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用最新版本，具体 feature 请查看组件文档中基本使用下的版本
+注意：v13.0.0(只包含多选框，简单表格，映射管道)，推荐使用最新版本，具体 feature 请查看组件文档中使用下的版本
 
 欢迎 star fork pr

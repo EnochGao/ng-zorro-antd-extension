@@ -7,11 +7,11 @@ order: 5
 
 空表单控件，方便 angular 表单中自定义显示
 
-## 支持版本
+## 版本支持
 
 <label type="success">v13.3.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 

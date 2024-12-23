@@ -9,11 +9,11 @@ order: 1
 
 提供`customFormateInFn`和`customFormateOutFn`自定义函数转换出入参格式
 
-## 支持版本
+## 版本支持
 
 <label type="success">v13.0.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 

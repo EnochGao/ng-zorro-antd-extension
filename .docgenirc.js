@@ -53,14 +53,14 @@ const docsLibs = [
  * @type {import('@docgeni/core').DocgeniConfig}
  */
 module.exports = {
-  mode: 'full',
-  theme: 'angular',
+  mode: "full",
+  theme: "angular",
   switchTheme: true,
-  title: 'ng-zorro-antd-extension',
-  description: 'ng zorro 拓展包',
-  siteProjectName: 'docs-site',
-  logoUrl: 'https://avatars.githubusercontent.com/u/41459067?v=4',
-  repoUrl: 'https://github.com/EnochGao/ng-zorro-antd-extension',
+  title: "ng-zorro-antd-extension",
+  description: "ng zorro 拓展包",
+  siteProjectName: "docs-site",
+  logoUrl: "assets/images/logo.png",
+  repoUrl: "https://github.com/EnochGao/ng-zorro-antd-extension",
   footer:
     'Open-source MIT Licensed | Copyright © 2022-present Powered by EnochGao',
   navs: [

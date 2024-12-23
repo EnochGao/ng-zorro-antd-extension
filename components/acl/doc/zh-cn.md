@@ -7,11 +7,11 @@ order: 5
 
 简单实现访问控制
 
-## 支持版本
+## 版本支持
 
-<label type="success">v15.9.0</label>
+<label type="success">v15.9.0+</label>
 
-## 基本使用
+## 使用
 
 ### 引入
 

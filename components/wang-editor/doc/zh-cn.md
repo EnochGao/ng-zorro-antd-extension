@@ -7,11 +7,11 @@ order: 1
 
 富文本编辑器，易于在 angular 中使用基于[wangEditor 5](https://www.npmjs.com/package/@wangeditor/editor)的包装组件。详情查看[文档](https://www.wangeditor.com/)
 
-## 支持版本
+## 版本支持
 
 <label type="success">v15.3.1+</label>
 
-## 基本使用
+## 使用
 
 1. 安装`@wangeditor/editor`
 
