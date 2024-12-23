@@ -1,0 +1,50 @@
+
+        <h2 id="14-4-2%E3%80%8115-15-2%E3%80%81-16-4-2%E3%80%8117-4-2%E3%80%8118-1-2" class="docs-header-link">
+          <span header-link="14-4-2%E3%80%8115-15-2%E3%80%81-16-4-2%E3%80%8117-4-2%E3%80%8118-1-2"></span>
+          14.4.2、15.15.2、 16.4.2、17.4.2、18.1.2
+        </h2>
+      
+        <h3 id="%E4%BF%AE%E5%A4%8D" class="docs-header-link">
+          <span header-link="%E4%BF%AE%E5%A4%8D"></span>
+          修复
+        </h3>
+      <div class="dg-paragraph"><code>nzx-configurable-query</code></div>
+<div class="dg-paragraph"><code>addControl</code> 方法 <code>collapse</code>异常问题</div>
+
+        <h2 id="14-4-1%E3%80%8115-15-1%E3%80%81-16-4-1%E3%80%8117-4-1%E3%80%8118-1-1" class="docs-header-link">
+          <span header-link="14-4-1%E3%80%8115-15-1%E3%80%81-16-4-1%E3%80%8117-4-1%E3%80%8118-1-1"></span>
+          14.4.1、15.15.1、 16.4.1、17.4.1、18.1.1
+        </h2>
+      
+        <h3 id="%E4%BF%AE%E5%A4%8D" class="docs-header-link">
+          <span header-link="%E4%BF%AE%E5%A4%8D"></span>
+          修复
+        </h3>
+      <div class="dg-paragraph"><code>nzx-configurable-query</code></div>
+<div class="dg-paragraph"><code>setControl</code>、<code>addControl</code> 方法添加 <code>defaultValueResettable</code> 参数,添加的表单控件默认值是否可以重置，默认不可以</div>
+
+        <h2 id="14-4-1%E3%80%8115-15-1%E3%80%8116-4-0%E3%80%8117-4-0%E3%80%8118-1-0" class="docs-header-link">
+          <span header-link="14-4-1%E3%80%8115-15-1%E3%80%8116-4-0%E3%80%8117-4-0%E3%80%8118-1-0"></span>
+          14.4.1、15.15.1、16.4.0、17.4.0、18.1.0
+        </h2>
+      
+        <h3 id="%E6%96%B0%E5%8A%9F%E8%83%BD" class="docs-header-link">
+          <span header-link="%E6%96%B0%E5%8A%9F%E8%83%BD"></span>
+          新功能
+        </h3>
+      <div class="dg-paragraph"><code>nzx-configurable-query</code></div>
+<ul>
+<li>template 自定义暴露 formGroup</li>
+</ul>
+<pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-template</span> <span class="token attr-name">nzxControl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>level<span class="token punctuation">"</span></span> <span class="token attr-name">let-formControl</span> <span class="token attr-name">let-formGroup</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formGroup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-rate</span> <span class="token attr-name">[formControl]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>formControl<span class="token punctuation">"</span></span> <span class="token attr-name">nzAllowHalf</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-rate</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-template</span><span class="token punctuation">></span></span></div></code></pre>
+
+        <h3 id="%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4" class="docs-header-link">
+          <span header-link="%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4"></span>
+          破坏变更
+        </h3>
+      <div class="dg-paragraph"><code>nzx-configurable-query</code></div>
+<ul>
+<li>resetChange 内部方法不再进行表单合法性检测，必定触发</li>
+</ul>
