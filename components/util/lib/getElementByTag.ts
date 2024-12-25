@@ -1,3 +1,5 @@
+import { isString } from './isString';
+
 /**
  * 获取当前document下所有指定标签
  * @param tagName 标签名
@@ -13,7 +15,7 @@ export function getElementByTag(
   if (identifier) {
     if (Array.isArray(identifier)) {
       identifiers = [...identifier];
-    } else {
+    } else if (isString(identifier)) {
       identifiers = [identifier];
     }
   }
@@ -21,15 +23,23 @@ export function getElementByTag(
   const elements = document.getElementsByTagName(tagName);
   const length = elements.length;
   for (let index = 0; index < length; index++) {
-    identifiers.forEach((s) => {
-      if (elements[index].outerHTML.includes(s)) {
-        const formateStr = elements[index].outerHTML.replace(
-          /\/\*[\s\S]*?\*\//g,
-          ''
-        );
-        html.push(formateStr);
-      }
-    });
+    if (identifiers.length) {
+      identifiers.forEach((s) => {
+        if (elements[index].outerHTML.includes(s)) {
+          const formateStr = elements[index].outerHTML.replace(
+            /\/\*[\s\S]*?\*\//g,
+            ''
+          );
+          html.push(formateStr);
+        }
+      });
+    } else {
+      const formateStr = elements[index].outerHTML.replace(
+        /\/\*[\s\S]*?\*\//g,
+        ''
+      );
+      html.push(formateStr);
+    }
   }
   return html.join('\r\n');
 }
