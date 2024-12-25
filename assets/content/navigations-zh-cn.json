@@ -1,0 +1,2330 @@
+{
+  "navs": [
+    {
+      "title": "组件",
+      "path": "components",
+      "lib": "ng-zorro-antd-extension",
+      "items": [
+        {
+          "id": "component",
+          "title": "组件",
+          "items": [
+            {
+              "id": "checkbox",
+              "title": "多选框",
+              "subtitle": "nzx-checkbox-group",
+              "path": "checkbox",
+              "importSpecifier": "ng-zorro-antd-extension/checkbox",
+              "examples": [
+                "nzx-checkbox-checkbox-group-example"
+              ],
+              "overview": true,
+              "api": true,
+              "order": 1,
+              "category": "component",
+              "originPath": "components/checkbox/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "ts",
+                  "name": "ts",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E4%BB%8B%E7%BB%8D%E4%BD%BF%E7%94%A8",
+                  "name": "介绍使用",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "simple-table",
+              "title": "简单表格",
+              "subtitle": "nzx-simple-table",
+              "path": "simple-table",
+              "importSpecifier": "ng-zorro-antd-extension/simple-table",
+              "examples": [
+                "nzx-simple-table-simple-table-example"
+              ],
+              "overview": true,
+              "api": true,
+              "order": 2,
+              "category": "component",
+              "originPath": "components/simple-table/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "ts",
+                  "name": "ts",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "configurable-query",
+              "title": "查询组件",
+              "subtitle": "nzx-configurable-query",
+              "path": "configurable-query",
+              "importSpecifier": "ng-zorro-antd-extension/configurable-query",
+              "examples": [
+                "nzx-configurable-query-configurable-query-example"
+              ],
+              "overview": true,
+              "api": true,
+              "order": 3,
+              "category": "component",
+              "originPath": "components/configurable-query/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+                  "name": "使用介绍",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "table-form",
+              "title": "表格表单",
+              "subtitle": "nzx-table-form",
+              "path": "table-form",
+              "importSpecifier": "ng-zorro-antd-extension/table-form",
+              "examples": [
+                "nzx-table-form-table-form-example"
+              ],
+              "overview": true,
+              "api": true,
+              "order": 4,
+              "category": "component",
+              "originPath": "components/table-form/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "table-select",
+              "title": "表格选择",
+              "subtitle": "nzx-table-select",
+              "path": "table-select",
+              "importSpecifier": "ng-zorro-antd-extension/table-select",
+              "examples": [
+                "nzx-table-select-page-table-select-example",
+                "nzx-table-select-table-select-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 4,
+              "category": "component",
+              "originPath": "components/table-select/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "blank-field",
+              "title": "空表单控件",
+              "subtitle": "nzx-blank-filed",
+              "path": "blank-field",
+              "importSpecifier": "ng-zorro-antd-extension/blank-field",
+              "examples": [
+                "nzx-blank-field-blank-field-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 5,
+              "category": "component",
+              "originPath": "components/blank-field/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "ts",
+                  "name": "ts",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "jigsaw",
+              "title": "七巧板",
+              "subtitle": "nzx-jigsaw",
+              "path": "jigsaw",
+              "importSpecifier": "ng-zorro-antd-extension/jigsaw",
+              "examples": [
+                "nzx-jigsaw-jigsaw-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 7,
+              "category": "component",
+              "originPath": "components/jigsaw/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+                  "name": "内置属性",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E5%86%85%E7%BD%AE%E4%BA%8B%E4%BB%B6",
+                  "name": "内置事件",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "editable",
+              "title": "可编辑组件",
+              "subtitle": "nzx-editable",
+              "path": "editable",
+              "importSpecifier": "ng-zorro-antd-extension/editable",
+              "examples": [
+                "nzx-editable-editable-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 8,
+              "category": "component",
+              "originPath": "components/editable/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+                  "name": "使用介绍",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "print",
+              "title": "打印",
+              "subtitle": "nzx-print",
+              "path": "print",
+              "importSpecifier": "ng-zorro-antd-extension/print",
+              "examples": [
+                "nzx-print-print-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 9,
+              "category": "component",
+              "label": {
+                "text": "New",
+                "color": "#73D897"
+              },
+              "originPath": "components/print/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "dynamic-form",
+              "title": "动态表单",
+              "subtitle": "nzx-dynamic-form",
+              "path": "dynamic-form",
+              "importSpecifier": "ng-zorro-antd-extension/dynamic-form",
+              "examples": [
+                "nzx-dynamic-form-dynamic-form-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 10,
+              "category": "component",
+              "originPath": "components/dynamic-form/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            }
+          ],
+          "order": 0
+        },
+        {
+          "id": "directive",
+          "title": "指令",
+          "items": [
+            {
+              "id": "trim",
+              "title": "去空格",
+              "subtitle": "nzx-trim",
+              "path": "trim",
+              "importSpecifier": "ng-zorro-antd-extension/trim",
+              "examples": [
+                "nzx-trim-trim-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 1,
+              "category": "directive",
+              "originPath": "components/trim/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+                  "name": "内置属性",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+                  "name": "使用介绍",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "wang-editor",
+              "title": "富文本编辑器",
+              "subtitle": "nzx-wang-editor",
+              "path": "wang-editor",
+              "importSpecifier": "ng-zorro-antd-extension/wang-editor",
+              "examples": [
+                "nzx-wang-editor-editor-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 1,
+              "category": "directive",
+              "originPath": "components/wang-editor/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+                  "name": "内置属性",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "table-adaptor",
+              "title": "查询连接器",
+              "subtitle": "nzx-table-adaptor",
+              "path": "table-adaptor",
+              "importSpecifier": "ng-zorro-antd-extension/table-adaptor",
+              "examples": [
+                "nzx-table-adaptor-page-table-basic-example",
+                "nzx-table-adaptor-table-adaptor-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 2,
+              "category": "directive",
+              "originPath": "components/table-adaptor/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+                  "name": "内置属性",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95",
+                  "name": "内置方法",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "timer-button",
+              "title": "倒计时button",
+              "subtitle": "nzx-timer-button",
+              "path": "timer-button",
+              "importSpecifier": "ng-zorro-antd-extension/timer-button",
+              "examples": [
+                "nzx-timer-button-timer-button-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 4,
+              "category": "directive",
+              "originPath": "components/timer-button/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            },
+            {
+              "id": "acl",
+              "title": "访问控制",
+              "subtitle": "nzx-acl",
+              "path": "acl",
+              "importSpecifier": "ng-zorro-antd-extension/acl",
+              "examples": [
+                "nzx-acl-acl-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 5,
+              "category": "directive",
+              "originPath": "components/acl/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            }
+          ],
+          "order": 0
+        },
+        {
+          "id": "pipe",
+          "title": "管道",
+          "items": [
+            {
+              "id": "pipes",
+              "title": "管道",
+              "subtitle": "pipes",
+              "path": "pipes",
+              "importSpecifier": "ng-zorro-antd-extension/pipes",
+              "examples": [
+                "nzx-pipes-pipes-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 2,
+              "category": "pipe",
+              "originPath": "components/pipes/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "module",
+                  "name": "module",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "html",
+                  "name": "html",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "ts",
+                  "name": "ts",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+                  "name": "使用介绍",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            }
+          ],
+          "order": 0
+        },
+        {
+          "id": "util",
+          "title": "工具函数",
+          "items": [
+            {
+              "id": "util",
+              "title": "工具函数",
+              "subtitle": "util",
+              "path": "util",
+              "importSpecifier": "ng-zorro-antd-extension/util",
+              "examples": [
+                "nzx-util-util-example"
+              ],
+              "overview": true,
+              "api": false,
+              "order": 1,
+              "category": "util",
+              "originPath": "components/util/doc/zh-cn.md",
+              "toc": "content",
+              "headings": [
+                {
+                  "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+                  "name": "版本支持",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E4%BD%BF%E7%94%A8",
+                  "name": "使用",
+                  "level": 2,
+                  "type": "h2"
+                },
+                {
+                  "id": "%E5%BC%95%E5%85%A5",
+                  "name": "引入",
+                  "level": 3,
+                  "type": "h3"
+                },
+                {
+                  "id": "ts",
+                  "name": "ts",
+                  "level": 3,
+                  "type": "h3"
+                }
+              ],
+              "channelPath": "components"
+            }
+          ],
+          "order": 0
+        }
+      ]
+    },
+    {
+      "id": "changelog",
+      "path": "changelog",
+      "channelPath": "changelog",
+      "title": "变更日志",
+      "items": [
+        {
+          "id": "v15.x",
+          "path": "v15-x",
+          "channelPath": "changelog",
+          "title": "v15",
+          "order": 1,
+          "toc": "content",
+          "headings": [
+            {
+              "id": "v15-14-0-(%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA-feature-%E7%89%88%E6%9C%AC%EF%BC%8C%E5%90%8E%E9%9D%A2-feature-%E4%BC%9A%E8%BD%AC%E5%88%B0-v16/17)",
+              "name": "v15.14.0 (最后一个 feature 版本，后面 feature 会转到 v16/17)",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-12-0",
+              "name": "v15.12.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-11-0",
+              "name": "v15.11.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-10-2",
+              "name": "v15.10.2",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-10-1",
+              "name": "v15.10.1",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-10-0",
+              "name": "v15.10.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-9-0",
+              "name": "v15.9.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-8-5",
+              "name": "v15.8.5",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-8-4",
+              "name": "v15.8.4",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-8-2",
+              "name": "v15.8.2",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "bug-%E4%BF%AE%E5%A4%8D",
+              "name": "BUG 修复",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-8-1",
+              "name": "v15.8.1",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "bug-%E4%BF%AE%E5%A4%8D",
+              "name": "BUG 修复",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-8-0",
+              "name": "v15.8.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-7-0",
+              "name": "v15.7.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-6-0",
+              "name": "v15.6.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-5-0",
+              "name": "v15.5.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-4-0",
+              "name": "v15.4.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-3-1",
+              "name": "v15.3.1",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "v15-2-0",
+              "name": "v15.2.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            }
+          ],
+          "contentPath": "docs/changelog/v15.x.html",
+          "originPath": "docs/changelog/v15.x.md"
+        },
+        {
+          "id": "v16.x",
+          "path": "v16-x",
+          "channelPath": "changelog",
+          "title": "v16/17/v18",
+          "order": 1,
+          "toc": "content",
+          "headings": [
+            {
+              "id": "14-4-2%E3%80%8115-15-2%E3%80%81-16-4-2%E3%80%8117-4-2%E3%80%8118-1-2",
+              "name": "14.4.2、15.15.2、 16.4.2、17.4.2、18.1.2",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E4%BF%AE%E5%A4%8D",
+              "name": "修复",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "14-4-1%E3%80%8115-15-1%E3%80%81-16-4-1%E3%80%8117-4-1%E3%80%8118-1-1",
+              "name": "14.4.1、15.15.1、 16.4.1、17.4.1、18.1.1",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E4%BF%AE%E5%A4%8D",
+              "name": "修复",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "14-4-1%E3%80%8115-15-1%E3%80%8116-4-0%E3%80%8117-4-0%E3%80%8118-1-0",
+              "name": "14.4.1、15.15.1、16.4.0、17.4.0、18.1.0",
+              "level": 2,
+              "type": "h2"
+            },
+            {
+              "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+              "name": "新功能",
+              "level": 3,
+              "type": "h3"
+            },
+            {
+              "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+              "name": "破坏变更",
+              "level": 3,
+              "type": "h3"
+            }
+          ],
+          "contentPath": "docs/changelog/v16.x.html",
+          "originPath": "docs/changelog/v16.x.md"
+        }
+      ],
+      "order": 3
+    }
+  ],
+  "docs": [
+    {
+      "id": "v15.x",
+      "path": "v15-x",
+      "channelPath": "changelog",
+      "title": "v15",
+      "order": 1,
+      "toc": "content",
+      "headings": [
+        {
+          "id": "v15-14-0-(%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA-feature-%E7%89%88%E6%9C%AC%EF%BC%8C%E5%90%8E%E9%9D%A2-feature-%E4%BC%9A%E8%BD%AC%E5%88%B0-v16/17)",
+          "name": "v15.14.0 (最后一个 feature 版本，后面 feature 会转到 v16/17)",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-12-0",
+          "name": "v15.12.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-11-0",
+          "name": "v15.11.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-10-2",
+          "name": "v15.10.2",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-10-1",
+          "name": "v15.10.1",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-10-0",
+          "name": "v15.10.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-9-0",
+          "name": "v15.9.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-8-5",
+          "name": "v15.8.5",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-8-4",
+          "name": "v15.8.4",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-8-2",
+          "name": "v15.8.2",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "bug-%E4%BF%AE%E5%A4%8D",
+          "name": "BUG 修复",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-8-1",
+          "name": "v15.8.1",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "bug-%E4%BF%AE%E5%A4%8D",
+          "name": "BUG 修复",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-8-0",
+          "name": "v15.8.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-7-0",
+          "name": "v15.7.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-6-0",
+          "name": "v15.6.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-5-0",
+          "name": "v15.5.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-4-0",
+          "name": "v15.4.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-3-1",
+          "name": "v15.3.1",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "v15-2-0",
+          "name": "v15.2.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "contentPath": "docs/changelog/v15.x.html",
+      "originPath": "docs/changelog/v15.x.md"
+    },
+    {
+      "id": "v16.x",
+      "path": "v16-x",
+      "channelPath": "changelog",
+      "title": "v16/17/v18",
+      "order": 1,
+      "toc": "content",
+      "headings": [
+        {
+          "id": "14-4-2%E3%80%8115-15-2%E3%80%81-16-4-2%E3%80%8117-4-2%E3%80%8118-1-2",
+          "name": "14.4.2、15.15.2、 16.4.2、17.4.2、18.1.2",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BF%AE%E5%A4%8D",
+          "name": "修复",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "14-4-1%E3%80%8115-15-1%E3%80%81-16-4-1%E3%80%8117-4-1%E3%80%8118-1-1",
+          "name": "14.4.1、15.15.1、 16.4.1、17.4.1、18.1.1",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BF%AE%E5%A4%8D",
+          "name": "修复",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "14-4-1%E3%80%8115-15-1%E3%80%8116-4-0%E3%80%8117-4-0%E3%80%8118-1-0",
+          "name": "14.4.1、15.15.1、16.4.0、17.4.0、18.1.0",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E6%96%B0%E5%8A%9F%E8%83%BD",
+          "name": "新功能",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E7%A0%B4%E5%9D%8F%E5%8F%98%E6%9B%B4",
+          "name": "破坏变更",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "contentPath": "docs/changelog/v16.x.html",
+      "originPath": "docs/changelog/v16.x.md"
+    },
+    {
+      "id": "acl",
+      "title": "访问控制",
+      "subtitle": "nzx-acl",
+      "path": "acl",
+      "importSpecifier": "ng-zorro-antd-extension/acl",
+      "examples": [
+        "nzx-acl-acl-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 5,
+      "category": "directive",
+      "originPath": "components/acl/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "blank-field",
+      "title": "空表单控件",
+      "subtitle": "nzx-blank-filed",
+      "path": "blank-field",
+      "importSpecifier": "ng-zorro-antd-extension/blank-field",
+      "examples": [
+        "nzx-blank-field-blank-field-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 5,
+      "category": "component",
+      "originPath": "components/blank-field/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "ts",
+          "name": "ts",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "checkbox",
+      "title": "多选框",
+      "subtitle": "nzx-checkbox-group",
+      "path": "checkbox",
+      "importSpecifier": "ng-zorro-antd-extension/checkbox",
+      "examples": [
+        "nzx-checkbox-checkbox-group-example"
+      ],
+      "overview": true,
+      "api": true,
+      "order": 1,
+      "category": "component",
+      "originPath": "components/checkbox/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "ts",
+          "name": "ts",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E4%BB%8B%E7%BB%8D%E4%BD%BF%E7%94%A8",
+          "name": "介绍使用",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "configurable-query",
+      "title": "查询组件",
+      "subtitle": "nzx-configurable-query",
+      "path": "configurable-query",
+      "importSpecifier": "ng-zorro-antd-extension/configurable-query",
+      "examples": [
+        "nzx-configurable-query-configurable-query-example"
+      ],
+      "overview": true,
+      "api": true,
+      "order": 3,
+      "category": "component",
+      "originPath": "components/configurable-query/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+          "name": "使用介绍",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "dynamic-form",
+      "title": "动态表单",
+      "subtitle": "nzx-dynamic-form",
+      "path": "dynamic-form",
+      "importSpecifier": "ng-zorro-antd-extension/dynamic-form",
+      "examples": [
+        "nzx-dynamic-form-dynamic-form-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 10,
+      "category": "component",
+      "originPath": "components/dynamic-form/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "editable",
+      "title": "可编辑组件",
+      "subtitle": "nzx-editable",
+      "path": "editable",
+      "importSpecifier": "ng-zorro-antd-extension/editable",
+      "examples": [
+        "nzx-editable-editable-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 8,
+      "category": "component",
+      "originPath": "components/editable/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+          "name": "使用介绍",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "jigsaw",
+      "title": "七巧板",
+      "subtitle": "nzx-jigsaw",
+      "path": "jigsaw",
+      "importSpecifier": "ng-zorro-antd-extension/jigsaw",
+      "examples": [
+        "nzx-jigsaw-jigsaw-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 7,
+      "category": "component",
+      "originPath": "components/jigsaw/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+          "name": "内置属性",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E5%86%85%E7%BD%AE%E4%BA%8B%E4%BB%B6",
+          "name": "内置事件",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "pipes",
+      "title": "管道",
+      "subtitle": "pipes",
+      "path": "pipes",
+      "importSpecifier": "ng-zorro-antd-extension/pipes",
+      "examples": [
+        "nzx-pipes-pipes-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 2,
+      "category": "pipe",
+      "originPath": "components/pipes/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "module",
+          "name": "module",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "ts",
+          "name": "ts",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+          "name": "使用介绍",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "print",
+      "title": "打印",
+      "subtitle": "nzx-print",
+      "path": "print",
+      "importSpecifier": "ng-zorro-antd-extension/print",
+      "examples": [
+        "nzx-print-print-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 9,
+      "category": "component",
+      "label": {
+        "text": "New",
+        "color": "#73D897"
+      },
+      "originPath": "components/print/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "simple-table",
+      "title": "简单表格",
+      "subtitle": "nzx-simple-table",
+      "path": "simple-table",
+      "importSpecifier": "ng-zorro-antd-extension/simple-table",
+      "examples": [
+        "nzx-simple-table-simple-table-example"
+      ],
+      "overview": true,
+      "api": true,
+      "order": 2,
+      "category": "component",
+      "originPath": "components/simple-table/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "ts",
+          "name": "ts",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "table-adaptor",
+      "title": "查询连接器",
+      "subtitle": "nzx-table-adaptor",
+      "path": "table-adaptor",
+      "importSpecifier": "ng-zorro-antd-extension/table-adaptor",
+      "examples": [
+        "nzx-table-adaptor-page-table-basic-example",
+        "nzx-table-adaptor-table-adaptor-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 2,
+      "category": "directive",
+      "originPath": "components/table-adaptor/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+          "name": "内置属性",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95",
+          "name": "内置方法",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "table-form",
+      "title": "表格表单",
+      "subtitle": "nzx-table-form",
+      "path": "table-form",
+      "importSpecifier": "ng-zorro-antd-extension/table-form",
+      "examples": [
+        "nzx-table-form-table-form-example"
+      ],
+      "overview": true,
+      "api": true,
+      "order": 4,
+      "category": "component",
+      "originPath": "components/table-form/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "table-select",
+      "title": "表格选择",
+      "subtitle": "nzx-table-select",
+      "path": "table-select",
+      "importSpecifier": "ng-zorro-antd-extension/table-select",
+      "examples": [
+        "nzx-table-select-page-table-select-example",
+        "nzx-table-select-table-select-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 4,
+      "category": "component",
+      "originPath": "components/table-select/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "timer-button",
+      "title": "倒计时button",
+      "subtitle": "nzx-timer-button",
+      "path": "timer-button",
+      "importSpecifier": "ng-zorro-antd-extension/timer-button",
+      "examples": [
+        "nzx-timer-button-timer-button-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 4,
+      "category": "directive",
+      "originPath": "components/timer-button/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "trim",
+      "title": "去空格",
+      "subtitle": "nzx-trim",
+      "path": "trim",
+      "importSpecifier": "ng-zorro-antd-extension/trim",
+      "examples": [
+        "nzx-trim-trim-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 1,
+      "category": "directive",
+      "originPath": "components/trim/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+          "name": "内置属性",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D",
+          "name": "使用介绍",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "util",
+      "title": "工具函数",
+      "subtitle": "util",
+      "path": "util",
+      "importSpecifier": "ng-zorro-antd-extension/util",
+      "examples": [
+        "nzx-util-util-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 1,
+      "category": "util",
+      "originPath": "components/util/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "ts",
+          "name": "ts",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    },
+    {
+      "id": "wang-editor",
+      "title": "富文本编辑器",
+      "subtitle": "nzx-wang-editor",
+      "path": "wang-editor",
+      "importSpecifier": "ng-zorro-antd-extension/wang-editor",
+      "examples": [
+        "nzx-wang-editor-editor-example"
+      ],
+      "overview": true,
+      "api": false,
+      "order": 1,
+      "category": "directive",
+      "originPath": "components/wang-editor/doc/zh-cn.md",
+      "toc": "content",
+      "headings": [
+        {
+          "id": "%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81",
+          "name": "版本支持",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E4%BD%BF%E7%94%A8",
+          "name": "使用",
+          "level": 2,
+          "type": "h2"
+        },
+        {
+          "id": "%E5%BC%95%E5%85%A5",
+          "name": "引入",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "html",
+          "name": "html",
+          "level": 3,
+          "type": "h3"
+        },
+        {
+          "id": "%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7",
+          "name": "内置属性",
+          "level": 3,
+          "type": "h3"
+        }
+      ],
+      "channelPath": "components"
+    }
+  ],
+  "homeMeta": {
+    "title": "首页",
+    "order": 10,
+    "hero": {
+      "title": "NG-ZORRO-EXTENSION",
+      "description": "基于ng-zorro-antd的组件扩展包"
+    },
+    "features": [
+      {
+        "icon": "https://angular.cn/assets/images/logos/angular/angular.svg",
+        "title": "Angular",
+        "description": "基于Angular前端框架"
+      },
+      {
+        "icon": "https://ng.ant.design/assets/img/logo.svg",
+        "title": "NG-ZORRO",
+        "description": "基于ng-zorro组件库"
+      },
+      {
+        "icon": "assets/images/logo.png",
+        "title": "NG-ZORRO-EXTENSION",
+        "description": "进行扩展、新增特色组件"
+      }
+    ],
+    "contentPath": "docs/index.html"
+  }
+}

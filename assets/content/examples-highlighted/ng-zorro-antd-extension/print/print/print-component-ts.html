@@ -1,0 +1,105 @@
+<div><span class="token keyword">import</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CommonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzGridModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/grid'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzButtonModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd/button'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NzxPrintModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/print'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> GoodEvaluatePdfComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./good-evaluate-pdf/good-evaluate-pdf.component'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> GoodEvaluatePdfVComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./good-evaluate-pdf-v/good-evaluate-pdf.component'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  standalone<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    CommonModule<span class="token punctuation">,</span>
+    NzGridModule<span class="token punctuation">,</span>
+    NzButtonModule<span class="token punctuation">,</span>
+    GoodEvaluatePdfComponent<span class="token punctuation">,</span>
+    GoodEvaluatePdfVComponent<span class="token punctuation">,</span>
+    NzxPrintModule<span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'nzx-print-example'</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;div nz-row nzJustify="space-between" nzAlign="middle">
+      &lt;div nz-col>基于vivliostyle实现(支持分页，页眉页脚)&lt;/div>
+      &lt;div nz-col>
+        &lt;button nz-button nzType="primary" (click)="nzxPrintV.print()">
+          下载打印评价表
+        &lt;/button>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;div nz-row nzJustify="center">
+      &lt;nzx-print-v
+        #nzxPrintV
+        [enablePreview]="true"
+        printTitle="HUAWEI Mate 60 Pro评价表"
+      >
+        &lt;div nzxPrintHeader>
+          我是header不参与打印
+          &lt;button nz-button nzType="primary" (click)="nzxPrintV.refresh()">
+            刷新
+          &lt;/button>
+        &lt;/div>
+        &lt;div nzxPrintContent [identifierStr]="'.mate-pro-header'">
+          &lt;nzx-good-evaluate-pdf-v>&lt;/nzx-good-evaluate-pdf-v>
+        &lt;/div>
+      &lt;/nzx-print-v>
+    &lt;/div>
+
+    &lt;div nz-row nzJustify="space-between" nzAlign="middle">
+      &lt;div nz-col>
+        基于paged.js实现(目前bug比较多推荐使用vivliostyle，支持分页，页眉页脚)
+      &lt;/div>
+      &lt;div nz-col>
+        &lt;button nz-button nzType="primary" (click)="nzxPrint.print()">
+          下载打印评价表
+        &lt;/button>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;div nz-row nzJustify="center">
+      &lt;nzx-print
+        #nzxPrint
+        [enablePreview]="true"
+        [identifierStr]="'.mate-pro-header'"
+        [pagedCDN]="'https://unpkg.com/pagedjs/dist/paged.polyfill.js'"
+        printTitle="HUAWEI Mate 60 Pro评价表"
+      >
+        &lt;div nzxPrintHeader>
+          我是header不参与打印
+          &lt;button nz-button nzType="primary" (click)="nzxPrint.refresh()">
+            刷新
+          &lt;/button>
+        &lt;/div>
+        &lt;div nzxPrintContent>
+          &lt;nzx-good-evaluate-pdf>&lt;/nzx-good-evaluate-pdf>
+        &lt;/div>
+      &lt;/nzx-print>
+    &lt;/div>
+
+    &lt;div nz-row nzJustify="space-between" nzAlign="middle">
+      &lt;div nz-col>普通打印&lt;/div>
+      &lt;div nz-col>
+        &lt;button
+          nz-button
+          nzType="primary"
+          nzxPrint
+          [printEl]="printRef"
+          printTitle="评价表"
+          identifierStr=".mate-pro"
+        >
+          下载打印评价表
+        &lt;/button>
+      &lt;/div>
+    &lt;/div>
+    &lt;div nz-row nzJustify="center">
+      &lt;div #printRef>
+        &lt;nzx-good-evaluate-pdf>&lt;/nzx-good-evaluate-pdf>
+      &lt;/div>
+    &lt;/div>
+  `</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxPrintExampleComponent</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</div>

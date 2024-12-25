@@ -1,0 +1,108 @@
+<p>前端打印，注意：paged.js 主要兼容 Chromium 内核系列 pc 端浏览器</p>
+<div class="dg-paragraph"><code>NzxPrintModule</code>有三种打印：</div>
+<ul>
+<li>一种是基于 vivliostyle 实现的<code>nzx-print-v</code>(也是推荐使用的)</li>
+<li>一种是基于 paged.js 实现的<code>nzx-print</code></li>
+<li>另一种是作用到 button 按钮的<code>nzxPrint</code>普通打印。</li>
+</ul>
+<p>在使用<code>nzx-print</code>时，推荐将<code>nzxPrintContent</code>包含的内容做成 dump 组件，只用来做纯展示，不包含业务逻辑。当 dump 组件的数据需要通过异步调用接口时，要使用<code>nzx-print</code>的<code>refresh</code>方法重新渲染。</p>
+
+        <h2 id="%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81" class="docs-header-link">
+          <span header-link="%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81"></span>
+          版本支持
+        </h2>
+      <div class="dg-paragraph"><label type="success">v15.13.0+</label></div>
+<div class="dg-paragraph"><label type="success">v15.14.0+</label>(开始含有 nzx-print-v)</div>
+
+        <h2 id="%E4%BD%BF%E7%94%A8" class="docs-header-link">
+          <span header-link="%E4%BD%BF%E7%94%A8"></span>
+          使用
+        </h2>
+      
+        <h3 id="%E5%BC%95%E5%85%A5" class="docs-header-link">
+          <span header-link="%E5%BC%95%E5%85%A5"></span>
+          引入
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxPrintModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'ng-zorro-antd-extension/print'</span><span class="token punctuation">;</span></div></code></pre>
+
+        <h3 id="html" class="docs-header-link">
+          <span header-link="html"></span>
+          html
+        </h3>
+      <pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-row</span> <span class="token attr-name">nzJustify</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>space-between<span class="token punctuation">"</span></span> <span class="token attr-name">nzAlign</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>middle<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-col</span><span class="token punctuation">></span></span>基于vivliostyle实现(支持分页，页眉页脚)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-col</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nzxPrintV.print()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            下载打印评价表
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-row</span> <span class="token attr-name">nzJustify</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-print-v</span>
+        <span class="token attr-name">#nzxPrintV</span>
+        <span class="token attr-name">[enablePreview]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name">printTitle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HUAWEI Mate 60 Pro评价表<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nzxPrintHeader</span><span class="token punctuation">></span></span>
+            我是header不参与打印
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nzxPrintV.refresh()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                刷新
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nzxPrintContent</span> <span class="token attr-name">[identifierStr]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>.mate-pro-header<span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-good-evaluate-pdf-v</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-good-evaluate-pdf-v</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-print-v</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-row</span> <span class="token attr-name">nzJustify</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>space-between<span class="token punctuation">"</span></span> <span class="token attr-name">nzAlign</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>middle<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-col</span><span class="token punctuation">></span></span>
+        基于paged.js实现(目前bug比较多推荐使用vivliostyle，支持分页，页眉页脚)
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-col</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nzxPrint.print()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            下载打印评价表
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-row</span> <span class="token attr-name">nzJustify</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-print</span>
+        <span class="token attr-name">#nzxPrint</span>
+        <span class="token attr-name">[enablePreview]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name">[identifierStr]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>.mate-pro-header<span class="token punctuation">'</span><span class="token punctuation">"</span></span>
+        <span class="token attr-name">[pagedCDN]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>https://unpkg.com/pagedjs/dist/paged.polyfill.js<span class="token punctuation">'</span><span class="token punctuation">"</span></span>
+        <span class="token attr-name">printTitle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HUAWEI Mate 60 Pro评价表<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nzxPrintHeader</span><span class="token punctuation">></span></span>
+            我是header不参与打印
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">nz-button</span> <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nzxPrint.refresh()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                刷新
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nzxPrintContent</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-good-evaluate-pdf</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-good-evaluate-pdf</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-print</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-row</span> <span class="token attr-name">nzJustify</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>space-between<span class="token punctuation">"</span></span> <span class="token attr-name">nzAlign</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>middle<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-col</span><span class="token punctuation">></span></span>普通打印<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-col</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+            <span class="token attr-name">nz-button</span>
+            <span class="token attr-name">nzType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span>
+            <span class="token attr-name">nzxPrint</span>
+            <span class="token attr-name">[printEl]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>printRef<span class="token punctuation">"</span></span>
+            <span class="token attr-name">printTitle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>评价表<span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>
+            下载打印评价表
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">nz-row</span> <span class="token attr-name">nzJustify</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">#printRef</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-good-evaluate-pdf</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-good-evaluate-pdf</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></div></code></pre>

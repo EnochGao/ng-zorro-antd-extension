@@ -1,0 +1,118 @@
+<p>用来链接 nz-table 和查询组件，方便进行分页查询</p>
+
+        <h2 id="%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81" class="docs-header-link">
+          <span header-link="%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81"></span>
+          版本支持
+        </h2>
+      <div class="dg-paragraph"><label type="success">v15.2.0+</label></div>
+
+        <h2 id="%E4%BD%BF%E7%94%A8" class="docs-header-link">
+          <span header-link="%E4%BD%BF%E7%94%A8"></span>
+          使用
+        </h2>
+      
+        <h3 id="%E5%BC%95%E5%85%A5" class="docs-header-link">
+          <span header-link="%E5%BC%95%E5%85%A5"></span>
+          引入
+        </h3>
+      <pre class="language-ts"><code class="language-ts"><div><span class="token keyword">import</span> <span class="token punctuation">{</span> NzxTableAdaptorModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"ng-zorro-antd-extension/table-adaptor"</span><span class="token punctuation">;</span></div></code></pre>
+
+        <h3 id="html" class="docs-header-link">
+          <span header-link="html"></span>
+          html
+        </h3>
+      <pre class="language-html"><code class="language-html"><div><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nzx-configurable-query</span>
+  <span class="token attr-name">#configQuery</span>
+  <span class="token attr-name">[controls]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>controls<span class="token punctuation">"</span></span>
+  <span class="token attr-name">(queryChange)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>adaptor.refresh()<span class="token punctuation">"</span></span>
+  <span class="token attr-name">(resetChange)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>adaptor.reset()<span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nzx-configurable-query</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nz-table</span>
+  <span class="token attr-name">nzxTableAdaptor</span>
+  <span class="token attr-name">#adaptor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>NzxTableAdaptor<span class="token punctuation">"</span></span>
+  <span class="token attr-name">[enableCache]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+  <span class="token attr-name">[queryParams]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>configQuery.queryParams<span class="token punctuation">"</span></span>
+  <span class="token attr-name">(nzxQueryParams)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>loadData($event)<span class="token punctuation">"</span></span>
+  <span class="token attr-name">(nzxQueryCacheQueryParams)</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>configQuery.setQueryParams($event)<span class="token punctuation">"</span></span>
+  <span class="token attr-name">#nzTable</span>
+  <span class="token attr-name">[nzData]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span>
+  <span class="token attr-name">[nzLoading]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>loading<span class="token punctuation">"</span></span>
+  <span class="token attr-name">[nzTotal]</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>total<span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nz-table</span><span class="token punctuation">></span></span></div></code></pre>
+<p>另外可以继承<code>NzxPageTableBase</code>类，减少属性书写</p>
+<pre class="language-ts"><code class="language-ts"><div><span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">NzxPageTableBase</span><span class="token operator">&lt;</span>T <span class="token operator">=</span> <span class="token keyword">any</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/** 列表数据 */</span>
+  list<span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/** loading加载条标志位 */</span>
+  loading <span class="token operator">=</span> <span class="token keyword">false</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/** 分页总条数 */</span>
+  nzTotal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">/** 表单指令实例用来刷新重置 */</span>
+  @<span class="token function">ViewChild</span><span class="token punctuation">(</span>NzxTableAdaptor<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">static</span><span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> nzxTableAdaptorRef<span class="token operator">!</span><span class="token punctuation">:</span> NzxTableAdaptor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></div></code></pre>
+<p>详见示例Page Table Basic</p>
+
+        <h3 id="%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7" class="docs-header-link">
+          <span header-link="%E5%86%85%E7%BD%AE%E5%B1%9E%E6%80%A7"></span>
+          内置属性
+        </h3>
+      <table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>enableCache</td>
+<td>boolean</td>
+<td>false</td>
+<td>缓存查询条件</td>
+</tr>
+<tr>
+<td>queryParams</td>
+<td><code>Partial&lt;NzxTableQueryParams&gt;</code></td>
+<td>{}</td>
+<td>查询组件值</td>
+</tr>
+<tr>
+<td>dateFormat</td>
+<td>string</td>
+<td>&#39;yyyy-MM-dd&#39;</td>
+<td>日期格式化</td>
+</tr>
+</tbody></table>
+
+        <h3 id="%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95" class="docs-header-link">
+          <span header-link="%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95"></span>
+          内置方法
+        </h3>
+      <table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nzxQueryParams</td>
+<td>NzxTableQueryParams</td>
+<td>-</td>
+<td>用来调接口查询</td>
+</tr>
+<tr>
+<td>nzxQueryCacheQueryParams</td>
+<td>NzxTableQueryParams</td>
+<td>-</td>
+<td>可选，用来设置查询祖甲氨参数回显</td>
+</tr>
+</tbody></table>
