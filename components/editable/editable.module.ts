@@ -6,14 +6,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzxEditableComponent } from './editable.component';
 @NgModule({
-  declarations: [NzxEditableComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    NzIconModule,
-    NzInputModule,
-    NzTransButtonModule,
-  ],
+  declarations: [],
+  imports: [NzxEditableComponent],
   exports: [NzxEditableComponent],
 })
 export class NzxEditableModule {}

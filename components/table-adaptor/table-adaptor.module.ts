@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { NzxTableAdaptor } from './table-adaptor.directive';
 
 @NgModule({
-  imports: [],
+  imports: [NzxTableAdaptor],
   exports: [NzxTableAdaptor],
-  declarations: [NzxTableAdaptor],
 })
 export class NzxTableAdaptorModule {}

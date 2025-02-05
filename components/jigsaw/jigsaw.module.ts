@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
-  imports: [CommonModule, NzIconModule],
-  declarations: [NzxJigsawComponent],
+  imports: [NzxJigsawComponent],
+  declarations: [],
   exports: [NzxJigsawComponent],
 })
 export class NzxJigsawModule {}

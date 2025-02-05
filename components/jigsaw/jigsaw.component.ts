@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -9,6 +10,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 const l = 42; // 滑块边长
 const r = 9; // 滑块半径
@@ -20,6 +22,7 @@ const L = l + r * 2 + 3; // 滑块实际边长
   templateUrl: './jigsaw.component.html',
   styleUrls: ['./jigsaw.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, NzIconModule],
 })
 export class NzxJigsawComponent implements AfterViewInit {
   @Input() width = 310;

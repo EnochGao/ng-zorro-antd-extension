@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @Component({
   selector: 'nzx-select-control',
@@ -20,5 +23,6 @@ import { NzxAbstractControl } from './abstract.control';
       </nz-select>
     </ng-container>
   `,
+  imports: [NgFor, ReactiveFormsModule, NzSelectModule],
 })
 export class NzxSelectControlComponent extends NzxAbstractControl {}

@@ -38,7 +38,6 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
   templateUrl: './table-select.component.html',
   styleUrls: ['./table-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

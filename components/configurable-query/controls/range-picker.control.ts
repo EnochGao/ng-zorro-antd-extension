@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'nzx-range-picker-control',
@@ -12,5 +15,6 @@ import { NzxAbstractControl } from './abstract.control';
       </nz-range-picker>
     </ng-container>
   `,
+  imports: [NgStyle, ReactiveFormsModule, NzDatePickerModule],
 })
 export class NzxRangePickerControlComponent extends NzxAbstractControl {}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'nzx-template-control',
@@ -12,5 +13,6 @@ import { NzxAbstractControl } from './abstract.control';
     >
     </ng-container>
   `,
+  imports:[CommonModule]
 })
 export class NzxTemplateControlComponent extends NzxAbstractControl {}

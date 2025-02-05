@@ -19,6 +19,9 @@ import {
   SingleDocumentOptions,
 } from '@vivliostyle/core';
 import { NzxPrintContentDirective } from './nzx-print-content.directive';
+import { CommonModule } from '@angular/common';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 /**
  * Vivliostyle 打印
@@ -43,6 +46,7 @@ import { NzxPrintContentDirective } from './nzx-print-content.directive';
       ></nz-pagination>
     </div>
   `,
+  imports: [CommonModule, NzGridModule, NzPaginationModule],
 })
 export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
   @Input() printTitle = 'pdf';

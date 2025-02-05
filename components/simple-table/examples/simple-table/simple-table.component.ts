@@ -13,7 +13,6 @@ interface Person {
 }
 
 @Component({
-  standalone: true,
   imports: [CommonModule, NzxSimpleTableModule, NzButtonModule],
   selector: 'nzx-simple-table-demo',
   templateUrl: './simple-table.component.html',

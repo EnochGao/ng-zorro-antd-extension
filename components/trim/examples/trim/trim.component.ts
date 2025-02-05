@@ -9,7 +9,6 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     NzGridModule,

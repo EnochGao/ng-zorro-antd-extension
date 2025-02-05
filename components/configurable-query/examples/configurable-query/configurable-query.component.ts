@@ -45,7 +45,6 @@ import { differenceInCalendarDays, endOfMonth, startOfMonth } from 'date-fns';
   templateUrl: './configurable-query.component.html',
   styleUrls: ['./configurable-query.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

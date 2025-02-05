@@ -4,7 +4,6 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,12 +11,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
 import {
-  NzxCheckboxModule,
   NzxCheckboxGroupComponent,
+  NzxCheckboxModule,
 } from 'ng-zorro-antd-extension/checkbox';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -16,7 +16,6 @@ registerLocaleData(zh);
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     RouterOutlet,
     ReactiveFormsModule,

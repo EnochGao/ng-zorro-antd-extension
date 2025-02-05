@@ -12,17 +12,11 @@ import { NzxTableSelectComponent } from './table-select/table-select.component';
 import { NzxPipesModule } from 'ng-zorro-antd-extension/pipes';
 
 @NgModule({
-  declarations: [
+  declarations: [],
+  imports: [
     NzxKeyDirective,
     NzxTableSelectComponent,
     NzxPageTableSelectComponent,
-  ],
-  imports: [
-    CommonModule,
-    NzTableModule,
-    NzxConfigurableQueryModule,
-    NzxTableAdaptorModule,
-    NzxPipesModule,
   ],
   exports: [
     NzxKeyDirective,

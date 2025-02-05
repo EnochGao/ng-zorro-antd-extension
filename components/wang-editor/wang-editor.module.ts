@@ -5,8 +5,8 @@ import { NzxWangEditorDirective } from './wang-editor.component';
 import { NzxWangToolbarDirective } from './wang-toolbar.component';
 
 @NgModule({
-  declarations: [NzxWangToolbarDirective, NzxWangEditorDirective],
-  imports: [CommonModule],
+  declarations: [],
+  imports: [NzxWangToolbarDirective, NzxWangEditorDirective],
   exports: [NzxWangToolbarDirective, NzxWangEditorDirective],
 })
 export class NzxWangEditorModule {}

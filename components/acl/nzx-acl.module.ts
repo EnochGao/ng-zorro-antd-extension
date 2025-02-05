@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NzxAclDirective } from './nzx-acl.directive';
 import { NzxAclService } from './nzx-acl.service';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [NzxAclDirective],
+  imports: [NzxAclDirective],
   exports: [NzxAclDirective],
 })
 export class NzxAclModule {

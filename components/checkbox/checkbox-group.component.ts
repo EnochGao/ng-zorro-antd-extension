@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -5,9 +6,14 @@ import {
   forwardRef,
   Input,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 
 import { NzxOptions } from 'ng-zorro-antd-extension/types';
+import { NzCheckboxModule, NzCheckboxOption } from 'ng-zorro-antd/checkbox';
 
 /**
  * nzx-checkbox-group
@@ -16,10 +22,12 @@ import { NzxOptions } from 'ng-zorro-antd-extension/types';
 @Component({
   selector: 'nzx-checkbox-group',
   exportAs: 'NzxCheckboxGroup',
+  imports: [CommonModule, FormsModule, NzCheckboxModule],
   template: `
     <nz-checkbox-group
       [nzDisabled]="nzDisabled"
-      [ngModel]="_checkOptions"
+      [ngModel]="selectValue"
+      [nzOptions]="checkOptions"
       (ngModelChange)="valueChange($event)"
     >
     </nz-checkbox-group>
@@ -33,21 +41,8 @@ import { NzxOptions } from 'ng-zorro-antd-extension/types';
     },
   ],
 })
-export class NzxCheckboxGroupComponent
-  implements ControlValueAccessor
-{
-  @Input() set checkOptions(value: Array<NzxOptions<string | number>>) {
-    this._checkOptions = value.map((i) => {
-      return { ...i, checked: false };
-    });
-  }
-
-  _checkOptions: Array<{
-    label: string;
-    value: number | string;
-    disabled?: boolean;
-    checked?: boolean;
-  }> = [];
+export class NzxCheckboxGroupComponent implements ControlValueAccessor {
+  @Input() checkOptions: Array<NzCheckboxOption> = [];
 
   /**
    * 自定义函数用来格式化输输入内容用来回显
@@ -62,22 +57,25 @@ export class NzxCheckboxGroupComponent
     checkedList;
 
   nzDisabled = false;
-  private templateValue: any;
+  selectValue = [];
+
   private propagateChange = (_: any) => {};
 
   constructor(private cd: ChangeDetectorRef) {}
 
   writeValue(v: (string | number)[] | any): void {
-    this._checkOptions.forEach((i) => (i['checked'] = false));
-    this.templateValue = v;
-    this._updateView();
+    console.log(v);
+    if (v) {
+      this.selectValue = this.customFormateInFn(v);
+    } else {
+      this.selectValue = [];
+    }
+    this.cd.markForCheck();
   }
 
   /**更新视图 */
   updateView() {
-    setTimeout(() => {
-      this._updateView();
-    }, 0);
+    this.cd.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -91,25 +89,8 @@ export class NzxCheckboxGroupComponent
     this.cd.markForCheck();
   }
 
-  valueChange(
-    value: Array<{
-      label: string;
-      value: number | string;
-      checked?: boolean;
-    }>
-  ): void {
-    const checkedList = value.filter((i) => i['checked']).map((i) => i.value);
-    this.propagateChange(this.customFormateOutFn(checkedList));
-  }
-
-  private _updateView() {
-    let list = this.customFormateInFn(this.templateValue) || [];
-    list.forEach((value: string | number) => {
-      const index = this._checkOptions.findIndex((i) => i.value === value);
-      if (index > -1) {
-        this._checkOptions[index]['checked'] = true;
-      }
-    });
-    this.cd.markForCheck();
+  valueChange(value: Array<number | string>): void {
+    console.log(value);
+    this.propagateChange(this.customFormateOutFn(value));
   }
 }

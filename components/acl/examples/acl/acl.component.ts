@@ -7,7 +7,6 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { NzxAclModule, NzxAclService } from 'ng-zorro-antd-extension/acl';
 @Component({
-  standalone: true,
   imports: [CommonModule, NzButtonModule, NzDividerModule, NzxAclModule],
   selector: 'nzx-acl-example',
   template: `

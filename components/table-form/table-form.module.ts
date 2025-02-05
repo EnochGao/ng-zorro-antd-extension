@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzInputNumberLegacyModule } from 'ng-zorro-antd/input-number-legacy';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -16,23 +16,13 @@ import { NzxTableFormThDirective } from './directive/table-th.directive';
 import { NzxTableFormComponent } from './table-form.component';
 
 @NgModule({
-  declarations: [
+  imports: [
     NzxTableFormComponent,
     NzxTableFormTdDirective,
     NzxTableFormThDirective,
     NzxTableFormExpandDirective,
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
 
-    NzFormModule,
-    NzTableModule,
-    NzRadioModule,
-    NzInputModule,
-    NzSelectModule,
-    NzDatePickerModule,
-    NzInputNumberModule,
+
   ],
   exports: [
     NzxTableFormComponent,

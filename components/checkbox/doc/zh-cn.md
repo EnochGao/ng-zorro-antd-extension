@@ -9,6 +9,8 @@ order: 1
 
 提供`customFormateInFn`和`customFormateOutFn`自定义函数转换出入参格式
 
+**注意(v19+):zorro19版本增加了`nzOptions`属性，解决了checkbox group使用不便的情况，请酌情使用此组件，现与zorro的不同之处仅仅是自定义函数转换**
+
 ## 版本支持
 
 <label type="success">v13.0.0+</label>
@@ -18,14 +20,19 @@ order: 1
 ### 引入
 
 ```ts
-import { NzxCheckboxModule } from "ng-zorro-antd-extension/checkbox";
+import { NzxCheckboxModule } from 'ng-zorro-antd-extension/checkbox';
 ```
 
 ### html
 
 ```html
 <form [formGroup]="form">
-  <nzx-checkbox-group [customFormateInFn]="inFn" [customFormateOutFn]="outFn" [checkOptions]="checkOptions" formControlName="value"></nzx-checkbox-group>
+  <nzx-checkbox-group
+    [customFormateInFn]="inFn"
+    [customFormateOutFn]="outFn"
+    [checkOptions]="checkOptions"
+    formControlName="value"
+  ></nzx-checkbox-group>
 </form>
 ```
 
@@ -34,8 +41,8 @@ import { NzxCheckboxModule } from "ng-zorro-antd-extension/checkbox";
 ```ts
 class CheckboxGroupDemoComponent implements OnInit {
   checkOptions = [
-    { label: "客户信赖", value: 1 },
-    { label: "技术评估", value: 2 },
+    { label: '客户信赖', value: 1 },
+    { label: '技术评估', value: 2 },
   ];
   form!: FormGroup;
 

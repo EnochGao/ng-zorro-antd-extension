@@ -6,7 +6,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @Component({
-  standalone: true,
   imports: [CommonModule, NzButtonModule, NzDividerModule],
   selector: 'nzx-dynamic-form-example',
   template: `nzx-dynamic-form-example`,

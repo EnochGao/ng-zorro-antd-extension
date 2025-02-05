@@ -30,7 +30,6 @@ interface RandomUser {
 }
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

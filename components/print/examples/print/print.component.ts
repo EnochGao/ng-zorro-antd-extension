@@ -10,7 +10,6 @@ import { GoodEvaluatePdfComponent } from './good-evaluate-pdf/good-evaluate-pdf.
 import { GoodEvaluatePdfVComponent } from './good-evaluate-pdf-v/good-evaluate-pdf.component';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     NzGridModule,

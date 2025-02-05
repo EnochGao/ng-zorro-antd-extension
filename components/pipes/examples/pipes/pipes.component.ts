@@ -16,7 +16,6 @@ interface Person {
   course?: string[];
 }
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     NzCardModule,

@@ -7,7 +7,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
