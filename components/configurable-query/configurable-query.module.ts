@@ -7,7 +7,6 @@ import { NzxQueryConfig } from './type';
 
 @NgModule({
   imports: [NzxControlDirective, NzxConfigurableQueryComponent],
-
   exports: [NzxControlDirective, NzxConfigurableQueryComponent],
 })
 export class NzxConfigurableQueryModule {
