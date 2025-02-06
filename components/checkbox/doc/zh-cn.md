@@ -9,7 +9,7 @@ order: 1
 
 提供`customFormateInFn`和`customFormateOutFn`自定义函数转换出入参格式
 
-**注意(v19+):zorro19版本增加了`nzOptions`属性，解决了checkbox group使用不便的情况，请酌情使用此组件，现与zorro的不同之处仅仅是自定义函数转换**
+**注意(v19+):zorro19版本增加了`nzOptions`属性，解决了checkbox group使用不便的情况，请酌情使用此组件，现与zorro的不同之处仅仅是自定义函数转换出入参**
 
 ## 版本支持
 
