@@ -1,32 +1,20 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { NzxDFConfigService } from './config/dynamic-form-config';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'nzx-dynamic-form',
   template: `
-    <form nz-form>
-      <ng-template #dfItemTemp></ng-template>
+    <form nz-form [nzLayout]="'vertical'">
+      <nz-form-item>
+        <nz-form-label>我是label</nz-form-label>
+        <nz-form-control>
+          <input nz-input />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nzx-dynamic-form-item></nzx-dynamic-form-item>
+      <nzx-dynamic-form-item></nzx-dynamic-form-item>
+      <nzx-dynamic-form-item></nzx-dynamic-form-item>
     </form>
   `,
 })
-export class NzxDynamicFormComponent implements OnInit {
-  @ViewChild('dfItemTemp', { static: true, read: ViewContainerRef })
-  private itemTemplateView!: ViewContainerRef;
-
-  constructor(private nzxDFConfig: NzxDFConfigService) {}
-
-  ngOnInit(): void {
-    this.renderItem();
-  }
-
-  private renderItem() {
-    this.itemTemplateView.clear();
-    const labelComponent = this.nzxDFConfig.getItemWrapper('builtin-item');
-    if (labelComponent) {
-      const componentRef =
-        this.itemTemplateView.createComponent(labelComponent);
-    } else {
-      throw `item::  is invalidate`;
-    }
-  }
-}
+export class NzxDynamicFormComponent {}

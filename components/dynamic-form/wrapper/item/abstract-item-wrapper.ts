@@ -23,20 +23,24 @@ export class NzxDFAbstractItemWrapper implements OnInit {
 
   private renderLabel() {
     this.labelWrapperTemplateView.clear();
-    const labelWrapperComponent = this.nzxDFConfig.getLabelWrapper('builtin-label');
+    const labelWrapperComponent =
+      this.nzxDFConfig.getLabelWrapper('builtin-label');
     if (labelWrapperComponent) {
-      const componentRef =
-        this.labelWrapperTemplateView.createComponent(labelWrapperComponent);
+      const componentRef = this.labelWrapperTemplateView.createComponent(
+        labelWrapperComponent
+      );
     } else {
       throw `label::  is invalidate`;
     }
   }
   private renderControl() {
     this.controlWrapperTemplateView.clear();
-    const controlWrapperComponent = this.nzxDFConfig.getControlWrapper('builtin-control');
+    const controlWrapperComponent =
+      this.nzxDFConfig.getControlWrapper('builtin-control');
     if (controlWrapperComponent) {
-      const componentRef =
-        this.controlWrapperTemplateView.createComponent(controlWrapperComponent);
+      const componentRef = this.controlWrapperTemplateView.createComponent(
+        controlWrapperComponent
+      );
     } else {
       throw `label::  is invalidate`;
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { NzxDFAbstractControlWrapper } from './abstract-control-wrapper';
 
 @Component({
@@ -9,4 +9,6 @@ import { NzxDFAbstractControlWrapper } from './abstract-control-wrapper';
     </nz-form-control>
   `,
 })
-export class NzxDFBuiltInControlWrapperComponent extends NzxDFAbstractControlWrapper {}
+export class NzxDFBuiltInControlWrapperComponent extends NzxDFAbstractControlWrapper {
+  @HostBinding('class.ant-form-item-control') controlWrapper = true;
+}

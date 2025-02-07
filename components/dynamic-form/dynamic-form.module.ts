@@ -13,6 +13,7 @@ import { NzxDFDatePickerControlComponent } from './controls/date-picker.control'
 import { NzxDFInputControlComponent } from './controls/input.control';
 import { NzxDFRangePickerControlComponent } from './controls/range-picker.control';
 import { NzxDFSelectControlComponent } from './controls/select.control';
+import { DynamicFormItemComponent } from './dynamic-form-item/dynamic-form-item.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { NzxDFSelectControlComponent } from './controls/select.control';
   ],
   declarations: [
     NzxDynamicFormComponent,
+    DynamicFormItemComponent,
 
     NzxDFBuiltInItemWrapperComponent,
     NzxDFBuiltInLabelWrapperComponent,

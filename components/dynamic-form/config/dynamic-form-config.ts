@@ -17,9 +17,11 @@ export class NzxDFConfigService {
   private itemWrapperMap = new Map<string, typeof NzxDFAbstractItemWrapper>([
     ['builtin-item', NzxDFBuiltInItemWrapperComponent],
   ]);
+
   private labelWrapperMap = new Map<string, typeof NzxDFAbstractLabelWrapper>([
     ['builtin-label', NzxDFBuiltInLabelWrapperComponent],
   ]);
+
   private controlWrapperMap = new Map<
     string,
     typeof NzxDFAbstractControlWrapper
