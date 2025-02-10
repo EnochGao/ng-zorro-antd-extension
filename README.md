@@ -15,7 +15,7 @@ English | [简体中文](README-zh_CN.md)
 
 ## Docs
 
-- [Docs github](https://enochgao.github.io/ng-zorro-antd-extension/)
+- [Docs](https://ng-zorro-antd-extension.netlify.app/)
 
 ## Installation
 
