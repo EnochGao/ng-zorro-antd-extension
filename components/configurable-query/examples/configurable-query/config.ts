@@ -252,6 +252,16 @@ export const controls7: Array<NzxQueryControlOptions> = [
       { label: '姓名', value: 2 },
     ],
   },
+  {
+    controlName: 'gender',
+    label: '性别',
+    placeholder: '性别',
+    controlType: 'select',
+    menuList: [
+      { label: '男', value: '男' },
+      { label: '女', value: '女' },
+    ],
+  },
 ];
 
 export const controls8: Array<NzxQueryControlOptions> = [

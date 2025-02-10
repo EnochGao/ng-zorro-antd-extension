@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -30,6 +31,7 @@ import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
       </nz-form-control>
     </nz-form-item>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
   @Input() form!: FormGroup;
