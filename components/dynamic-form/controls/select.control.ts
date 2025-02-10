@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NzxAbstractControl } from './abstract.control';
+import { Component } from '@angular/core';
+import { NzxDFAbstractControl } from './abstract.control';
 
 @Component({
-  selector: 'nzx-select-control',
   template: `
     <ng-container [formGroup]="form">
       <nz-select
-        [formControl]="formControl"
+        [formControlName]="control.controlName!"
         [nzShowSearch]="control.nzxShowSearch ?? true"
         [nzAllowClear]="control.nzxAllowClear ?? true"
         [nzPlaceHolder]="control.placeholder!"
@@ -20,6 +19,5 @@ import { NzxAbstractControl } from './abstract.control';
       </nz-select>
     </ng-container>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NzxSelectControlComponent extends NzxAbstractControl {}
+export class NzxDFSelectControlComponent extends NzxDFAbstractControl {}

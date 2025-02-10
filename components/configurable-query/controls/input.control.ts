@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
 
 @Component({
@@ -6,12 +6,13 @@ import { NzxAbstractControl } from './abstract.control';
   template: `
     <ng-container [formGroup]="form">
       <input
+        [formControl]="formControl"
         nz-input
         type="text"
         [placeholder]="control.placeholder"
-        [formControlName]="control.controlName!"
       />
     </ng-container>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxInputControlComponent extends NzxAbstractControl {}
