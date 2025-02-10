@@ -1,4 +1,4 @@
-import { Directive, Injectable } from '@angular/core';
+import { Directive } from '@angular/core';
 
 @Directive()
 export class NzxDFAbstractLabelWrapper {}

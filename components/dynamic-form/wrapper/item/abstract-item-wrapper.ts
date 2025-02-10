@@ -1,11 +1,5 @@
-import {
-  Directive,
-  Injectable,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
-import { NzxDFConfigService } from 'ng-zorro-antd-extension/dynamic-form';
+import { Directive, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { NzxDFConfigService } from '../../config/dynamic-form-config';
 
 @Directive()
 export class NzxDFAbstractItemWrapper implements OnInit {
