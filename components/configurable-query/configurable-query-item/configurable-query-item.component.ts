@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -33,6 +34,7 @@ import { NgIf } from '@angular/common';
     </nz-form-item>
   `,
   imports: [NzFormModule,NgIf],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
   @Input() form!: FormGroup;

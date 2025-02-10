@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NzxAbstractControl } from './abstract.control';
+import { Component } from '@angular/core';
+import { NzxDFAbstractControl } from './abstract.control';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'nzx-select-control',
+  imports: [CommonModule, ReactiveFormsModule, NzSelectModule],
   template: `
     <ng-container [formGroup]="form">
       <nz-select
-        [formControl]="formControl"
+        [formControlName]="control.controlName!"
         [nzShowSearch]="control.nzxShowSearch ?? true"
         [nzAllowClear]="control.nzxAllowClear ?? true"
         [nzPlaceHolder]="control.placeholder!"
@@ -23,7 +23,5 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
       </nz-select>
     </ng-container>
   `,
-  imports: [NgFor, ReactiveFormsModule, NzSelectModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NzxSelectControlComponent extends NzxAbstractControl {}
+export class NzxDFSelectControlComponent extends NzxDFAbstractControl {}
