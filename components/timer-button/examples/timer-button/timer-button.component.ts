@@ -6,7 +6,6 @@ import { NzxTimerButtonModule } from 'ng-zorro-antd-extension/timer-button';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

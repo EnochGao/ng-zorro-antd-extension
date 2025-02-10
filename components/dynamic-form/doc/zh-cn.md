@@ -12,8 +12,8 @@ order: 10
 ## 版本支持
 
 <label type="success">v17.5.0+ </label>
-
 <label type="success">v18.2.0+ </label>
+<label type="success">v19.1.0+</label>
 
 ## 使用
 

@@ -1,4 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,9 +15,11 @@ interface Context {
 }
 @Component({
   selector: 'nzx-blank-field',
-  template: ` <ng-container
-    *ngTemplateOutlet="templateRefExp; context: contextExp"
-  ></ng-container>`,
+  imports: [CommonModule],
+  template: `
+    <ng-container *ngTemplateOutlet="templateRefExp; context: contextExp">
+    </ng-container>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

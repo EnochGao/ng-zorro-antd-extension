@@ -16,15 +16,21 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
 import { updateControlStatus } from 'ng-zorro-antd-extension/util';
-import { NzJustify } from 'ng-zorro-antd/grid';
+import { NzGridModule, NzJustify } from 'ng-zorro-antd/grid';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
 import { NzxControlDirective } from './control.directive';
 import { NzxQueryControlOptions, NzxQueryParams } from './type';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzxConfigurableQueryItemComponent } from './configurable-query-item/configurable-query-item.component';
+import { CommonModule } from '@angular/common';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 /**
  * 查询组件
@@ -37,6 +43,16 @@ import { NzxQueryControlOptions, NzxQueryParams } from './type';
   styleUrls: ['./configurable-query.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxConfigurableQuery',
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NzCardModule,
+    NzGridModule,
+    NzSpaceModule,
+    NzButtonModule,
+    NzIconModule,
+    NzxConfigurableQueryItemComponent,
+  ],
 })
 export class NzxConfigurableQueryComponent
   implements OnChanges, OnInit, AfterViewInit, AfterContentInit, OnDestroy

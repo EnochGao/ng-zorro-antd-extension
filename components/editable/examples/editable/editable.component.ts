@@ -11,7 +11,6 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

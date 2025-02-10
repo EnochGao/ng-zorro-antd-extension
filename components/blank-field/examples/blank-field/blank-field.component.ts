@@ -18,7 +18,6 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

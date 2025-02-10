@@ -9,7 +9,7 @@ import { NzxSafeResourceUrlPipe } from './safe-resource-url.pipe';
 import { NzxSafeScriptPipe } from './safe-script.pipe';
 
 @NgModule({
-  declarations: [
+  imports: [
     NzxMapPipe,
     NzxSafeNullPipe,
     NzxSafeUrlPipe,

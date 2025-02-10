@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { NzxTrimDirective } from './trim.directive';
 
 @NgModule({
-  imports: [],
+  imports: [NzxTrimDirective],
   exports: [NzxTrimDirective],
-  declarations: [NzxTrimDirective],
 })
 export class NzxTrimModule {}

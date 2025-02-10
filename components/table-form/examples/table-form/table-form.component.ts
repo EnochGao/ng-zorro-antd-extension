@@ -34,7 +34,6 @@ import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
   templateUrl: './table-form.component.html',
   styleUrls: ['./table-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,

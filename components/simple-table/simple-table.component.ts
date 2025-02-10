@@ -8,11 +8,12 @@ import {
   QueryList,
   TemplateRef,
 } from '@angular/core';
-import { NzTableSize } from 'ng-zorro-antd/table';
+import { NzTableModule, NzTableSize } from 'ng-zorro-antd/table';
 
 import { NzxExpandDirective } from './directive/expand.directive';
 import { NzxTdDirective } from './directive/td.directive';
 import { NzxThDirective } from './directive/th.directive';
+import { CommonModule } from '@angular/common';
 
 /**
  * nzx-simple-table 组件配置格式
@@ -119,6 +120,7 @@ export interface NzxSimpleTableConfig<T> {
       </tbody>
     </nz-table>
   `,
+  imports: [CommonModule, NzTableModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxSimpleTableComponent<

@@ -1,6 +1,7 @@
 /* eslint-disable @angular-eslint/directive-class-suffix */
 /* eslint-disable @angular-eslint/directive-selector */
 /* eslint-disable @angular-eslint/component-selector */
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,12 +15,16 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   isNumber,
   isString,
   toNumber,
   toString,
 } from 'ng-zorro-antd-extension/util';
+import { NzTransButtonModule } from 'ng-zorro-antd/core/trans-button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 @Component({
   selector: '[nzx-editable]',
@@ -58,6 +63,13 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxEditable',
+  imports: [
+    NgIf,
+    FormsModule,
+    NzIconModule,
+    NzInputModule,
+    NzTransButtonModule,
+  ],
 })
 export class NzxEditableComponent implements OnInit {
   @Input() nzxContent: string | number | null = '';

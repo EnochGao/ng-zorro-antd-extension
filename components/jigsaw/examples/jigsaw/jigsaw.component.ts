@@ -5,7 +5,6 @@ import { NzxJigsawModule } from 'ng-zorro-antd-extension/jigsaw';
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  standalone: true,
   imports: [CommonModule, NzMessageModule, NzxJigsawModule],
   selector: 'nzx-jigsaw-example',
   template: `

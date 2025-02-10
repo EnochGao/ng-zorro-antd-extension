@@ -1,5 +1,5 @@
 import { Platform } from '@angular/cdk/platform';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -22,6 +22,7 @@ import { NzxPrintContentDirective } from './nzx-print-content.directive';
     <ng-content select="[nzxPrintHeader]"></ng-content>
     <div #iframeContainer></div>
   `,
+  imports: [CommonModule],
 })
 export class NzxPrintComponent implements OnInit, AfterViewInit {
   @Input() printTitle = 'pdf';

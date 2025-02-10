@@ -45,7 +45,6 @@ import { differenceInCalendarDays, endOfMonth, startOfMonth } from 'date-fns';
   templateUrl: './configurable-query.component.html',
   styleUrls: ['./configurable-query.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -157,19 +156,23 @@ export class NzxConfigurableQueryExampleComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.query7.setControl('city', { menuList: this.cityList });
-      this.query7.addControl({
-        controlName: 'pickerDate',
-        label: '时间',
-        nzxSpan: 6,
-        nzxLSpan: 8,
-        nzxRSpan: 16,
-        controlType: 'Template',
-        errorTip: '日期选择跨度不能超过31天',
-        controlInstance: new FormControl(
-          [startOfMonth(new Date()), endOfMonth(new Date())],
-          [this.pickerDateValidator]
-        ),
-      });
+      this.query7.addControl(
+        {
+          controlName: 'pickerDate',
+          label: '时间',
+          nzxSpan: 6,
+          nzxLSpan: 8,
+          nzxRSpan: 16,
+          controlType: 'Template',
+          errorTip: '日期选择跨度不能超过31天',
+          controlInstance: new FormControl(
+            [startOfMonth(new Date()), endOfMonth(new Date())],
+            [this.pickerDateValidator]
+          ),
+        },
+        undefined,
+        true
+      );
     }, 3000);
 
     const cacheStr = sessionStorage.getItem('cacheParams');

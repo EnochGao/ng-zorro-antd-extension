@@ -22,12 +22,13 @@ import {
   FormGroup,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
   ValidationErrors,
   Validator,
   ValidatorFn,
 } from '@angular/forms';
 
-import { NzTableLayout, NzTableSize } from 'ng-zorro-antd/table';
+import { NzTableLayout, NzTableModule, NzTableSize } from 'ng-zorro-antd/table';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
 import { updateControlStatus } from 'ng-zorro-antd-extension/util';
@@ -41,6 +42,13 @@ import {
   NzxTableFormHeaderConfig,
   NzxTableFormTdConfig,
 } from './type';
+import { CommonModule } from '@angular/common';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberLegacyModule } from 'ng-zorro-antd/input-number-legacy';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @Component({
   selector: 'nzx-table-form',
@@ -54,6 +62,18 @@ import {
       multi: true,
     },
     { provide: NG_VALIDATORS, useExisting: NzxTableFormComponent, multi: true },
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+
+    NzFormModule,
+    NzTableModule,
+    NzRadioModule,
+    NzInputModule,
+    NzSelectModule,
+    NzDatePickerModule,
+    NzInputNumberLegacyModule,
   ],
 })
 export class NzxTableFormComponent

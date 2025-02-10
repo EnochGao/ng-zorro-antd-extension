@@ -31,7 +31,6 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
   selector: 'nzx-util-demo',
   templateUrl: './util.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

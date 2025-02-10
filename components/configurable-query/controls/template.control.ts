@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NzxAbstractControl } from './abstract.control';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'nzx-template-control',
@@ -7,10 +8,12 @@ import { NzxAbstractControl } from './abstract.control';
     <ng-container
       *ngTemplateOutlet="
         control.templateRef!;
-        context: { $implicit: form.get(control.controlName!), formGroup: form }
+        context: { $implicit: formControl, formGroup: form }
       "
     >
     </ng-container>
   `,
+  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxTemplateControlComponent extends NzxAbstractControl {}

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -11,6 +12,8 @@ import { FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { NzxQueryConfigService } from '../query-config.service';
 import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'nzx-configurable-query-item',
@@ -30,6 +33,8 @@ import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
       </nz-form-control>
     </nz-form-item>
   `,
+  imports: [NzFormModule,NgIf],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
   @Input() form!: FormGroup;
