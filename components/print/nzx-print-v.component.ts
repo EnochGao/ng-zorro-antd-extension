@@ -11,6 +11,7 @@ import {
   QueryList,
   ViewChild,
 } from '@angular/core';
+import { Platform } from '@angular/cdk/platform';
 import {
   CoreViewer,
   Navigation,
@@ -30,7 +31,7 @@ import { NzxPrintContentDirective } from './nzx-print-content.directive';
 
     <div #vivView [ngStyle]="{ margin: '10px 0' }"></div>
 
-    <div nz-row nzJustify="end">
+    <div nz-row nzJustify="end" *ngIf="enablePreview">
       <ng-template #totalTemplate let-total>共 {{ total }} 页</ng-template>
       <nz-pagination
         [nzPageIndex]="1"
@@ -67,7 +68,7 @@ export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
   private iframeEl!: HTMLIFrameElement;
   private _isRenderComplete = false;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private platform: Platform, private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -104,6 +105,20 @@ export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
   private createIframeWrapper() {
     if (this.vivViewRef) {
       this.clearView();
+      if (!this.enablePreview) {
+        this.vivViewRef.nativeElement.style.visibility = 'hidden';
+        if (this.platform.FIREFOX) {
+          this.vivViewRef.nativeElement.setAttribute(
+            'style',
+            'width: 1px; height: 100px; position: fixed; left: 0; top: 0; opacity: 0; border-width: 0; margin: 0; padding: 0'
+          );
+        } else {
+          this.vivViewRef.nativeElement.setAttribute(
+            'style',
+            'visibility: hidden; height: 0; width: 0; position: absolute; border: 0'
+          );
+        }
+      }
 
       this.iframeEl = document.createElement('iframe');
       this.iframeEl.height = this.height + '';
