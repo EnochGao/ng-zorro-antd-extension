@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-extension",
-  "version": "19.0.0",
+  "version": "19.0.1",
   "license": "MIT",
   "description": "An extension based on ng-zorro-antd",
   "keywords": [
@@ -65,8 +65,8 @@
     "@angular/compiler-cli": "^19.1.2",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@docgeni/cli": "2.5.0-next.0",
-    "@docgeni/template": "2.5.0-next.0",
+    "@docgeni/cli": "2.5.0",
+    "@docgeni/template": "2.5.0",
     "@types/jasmine": "~4.0.0",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
