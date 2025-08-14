@@ -1,3 +1,8 @@
+import {
+  NgDocRootComponent,
+  NgDocNavbarComponent,
+  NgDocSidebarComponent,
+} from '@ng-doc/app';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
@@ -22,6 +27,9 @@ registerLocaleData(zh);
     NzxConfigurableQueryModule,
     NzButtonComponent,
     NzRateComponent,
+    NgDocRootComponent,
+    NgDocNavbarComponent,
+    NgDocSidebarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less',

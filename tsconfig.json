@@ -21,6 +21,8 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
+      "@ng-doc/generated": ["./ng-doc/ui/index.ts"],
+      "@ng-doc/generated/*": ["./ng-doc/ui/*"],
       "ng-zorro-antd-extension": ["components/public-api.ts"],
       "ng-zorro-antd-extension/*": ["components/*"]
     },

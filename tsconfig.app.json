@@ -2,6 +2,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "strict": false,
     "noImplicitOverride": false,
     "outDir": "./out-tsc/app",
