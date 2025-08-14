@@ -64,26 +64,26 @@
           "style": "less"
         }
       },
-      "root": "projects/ui",
-      "sourceRoot": "projects/ui/src",
+      "root": "./",
+      "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/ui",
-            "index": "projects/ui/src/index.html",
-            "browser": "projects/ui/src/main.ts",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
             "polyfills": ["zone.js"],
-            "tsConfig": "projects/ui/tsconfig.app.json",
+            "tsConfig": "/tsconfig.app.json",
             "inlineStyleLanguage": "less",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/ui/public"
+                "input": "/public"
               }
             ],
-            "styles": ["projects/ui/src/styles.less"],
+            "styles": ["src/styles.less"],
             "scripts": []
           },
           "configurations": {
@@ -129,15 +129,15 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/ui/tsconfig.spec.json",
+            "tsConfig": "/tsconfig.spec.json",
             "inlineStyleLanguage": "less",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/ui/public"
+                "input": "/public"
               }
             ],
-            "styles": ["projects/ui/src/styles.less"],
+            "styles": ["src/styles.less"],
             "scripts": []
           }
         }
