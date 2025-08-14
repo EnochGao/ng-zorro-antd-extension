@@ -1,5 +1,5 @@
 import { Platform } from '@angular/cdk/platform';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -9,6 +9,7 @@ import {
   Input,
   OnInit,
   ViewChild,
+  DOCUMENT
 } from '@angular/core';
 import { getElementByTag } from 'ng-zorro-antd-extension/util';
 import { NzxPrintContentDirective } from './nzx-print-content.directive';
