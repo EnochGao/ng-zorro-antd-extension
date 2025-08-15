@@ -1,5 +1,5 @@
 ---
 title: 变更日志
-path: "changelog"
+path: 'changelog'
 order: 3
 ---

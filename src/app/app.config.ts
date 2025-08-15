@@ -32,7 +32,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(BrowserAnimationsModule),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
     {
       provide: NZ_I18N,
       useValue: {
@@ -41,7 +40,6 @@ export const appConfig: ApplicationConfig = {
       },
     },
     provideAnimations(),
-    provideHttpClient(withInterceptorsFromDi()),
     provideRouter(
       NG_DOC_ROUTING,
       withInMemoryScrolling({
