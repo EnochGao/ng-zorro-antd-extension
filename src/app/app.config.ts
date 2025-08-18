@@ -1,17 +1,7 @@
 import {
-  provideNgDocApp,
-  provideSearchEngine,
-  NgDocDefaultSearchEngine,
-  providePageSkeleton,
-  NG_DOC_DEFAULT_PAGE_SKELETON,
-  provideMainPageProcessor,
-  NG_DOC_DEFAULT_PAGE_PROCESSORS,
-} from '@ng-doc/app';
-import { NG_DOC_ROUTING, provideNgDocContext } from '@ng-doc/generated';
-import {
   provideHttpClient,
-  withInterceptorsFromDi,
   withFetch,
+  withInterceptorsFromDi,
 } from '@angular/common/http';
 import {
   ApplicationConfig,
@@ -19,14 +9,23 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import {
+  NG_DOC_DEFAULT_PAGE_PROCESSORS,
+  NG_DOC_DEFAULT_PAGE_SKELETON,
+  NgDocDefaultSearchEngine,
+  provideMainPageProcessor,
+  provideNgDocApp,
+  providePageSkeleton,
+  provideSearchEngine,
+} from '@ng-doc/app';
+import { NG_DOC_ROUTING, provideNgDocContext } from '@ng-doc/generated';
 
-import { routes } from './app.routes';
-import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
-import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 import {
   BrowserAnimationsModule,
   provideAnimations,
 } from '@angular/platform-browser/animations';
+import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 
 export const appConfig: ApplicationConfig = {
   providers: [
