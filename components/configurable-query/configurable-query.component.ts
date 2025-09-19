@@ -27,7 +27,7 @@ import { NzxControlDirective } from './control.directive';
 import { NzxQueryControlOptions, NzxQueryParams } from './type';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzxConfigurableQueryItemComponent } from './configurable-query-item/configurable-query-item.component';
-import { CommonModule } from '@angular/common';
+
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -44,15 +44,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxConfigurableQuery',
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     NzCardModule,
     NzGridModule,
     NzSpaceModule,
     NzButtonModule,
     NzIconModule,
-    NzxConfigurableQueryItemComponent,
-  ],
+    NzxConfigurableQueryItemComponent
+],
 })
 export class NzxConfigurableQueryComponent
   implements OnChanges, OnInit, AfterViewInit, AfterContentInit, OnDestroy

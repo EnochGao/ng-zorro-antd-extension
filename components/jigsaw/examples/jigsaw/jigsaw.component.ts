@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
 import { NzxJigsawModule } from 'ng-zorro-antd-extension/jigsaw';
-import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  imports: [CommonModule, NzMessageModule, NzxJigsawModule],
+  imports: [NzxJigsawModule],
   selector: 'nzx-jigsaw-example',
   template: `
     <nzx-jigsaw

@@ -15,14 +15,21 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "paths": {
-      "ng-zorro-antd-extension": ["components/public-api.ts"],
-      "ng-zorro-antd-extension/*": ["components/*"]
+      "ng-zorro-antd-extension": [
+        "components/public-api.ts"
+      ],
+      "ng-zorro-antd-extension/*": [
+        "components/*"
+      ]
     },
 
     "useDefineForClassFields": false

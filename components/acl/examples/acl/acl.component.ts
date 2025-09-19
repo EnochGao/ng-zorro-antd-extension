@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { NzxAclModule, NzxAclService } from 'ng-zorro-antd-extension/acl';
 @Component({
-  imports: [CommonModule, NzButtonModule, NzDividerModule, NzxAclModule],
+  imports: [NzButtonModule, NzDividerModule, NzxAclModule],
   selector: 'nzx-acl-example',
   template: `
     <button nz-button nzType="default" (click)="loadPermissions()">

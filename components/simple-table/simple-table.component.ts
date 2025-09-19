@@ -49,77 +49,85 @@ export interface NzxSimpleTableConfig<T> {
       nzHideOnSinglePage
       [nzTitle]="nzxTitle"
       [nzFooter]="nzxFooter"
-    >
+      >
       <thead>
         <tr>
-          <th
-            [nzAlign]="nzxAlign"
-            *ngFor="let config of nzxConfig"
-            [nzWidth]="config?.width!"
-          >
-            {{ config.header }}
-          </th>
-          <th
-            [nzAlign]="nzxAlign"
-            *ngFor="let item of thList; let i = index"
-            [nzWidth]="item?.width!"
-          >
-            <ng-container
-              [ngTemplateOutlet]="item.templateRef"
-              [ngTemplateOutletContext]="{ $implicit: i }"
-            >
-            </ng-container>
-          </th>
+          @for (config of nzxConfig; track config) {
+            <th
+              [nzAlign]="nzxAlign"
+              [nzWidth]="config?.width!"
+              >
+              {{ config.header }}
+            </th>
+          }
+          @for (item of thList; track item; let i = $index) {
+            <th
+              [nzAlign]="nzxAlign"
+              [nzWidth]="item?.width!"
+              >
+              <ng-container
+                [ngTemplateOutlet]="item.templateRef"
+                [ngTemplateOutletContext]="{ $implicit: i }"
+                >
+              </ng-container>
+            </th>
+          }
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let data of table.data; let i = index">
+        @for (data of table.data; track data; let i = $index) {
           <tr>
-            <td [nzAlign]="nzxAlign" *ngFor="let config of nzxConfig">
-              <ng-container *ngIf="config.template">
-                <ng-template
-                  [ngTemplateOutlet]="config.template"
+            @for (config of nzxConfig; track config) {
+              <td [nzAlign]="nzxAlign">
+                @if (config.template) {
+                  <ng-template
+                    [ngTemplateOutlet]="config.template"
+                    [ngTemplateOutletContext]="{ $implicit: data }"
+                    >
+                  </ng-template>
+                }
+                @if (!config.template) {
+                  @if (!!config.key) {
+                    @if (!config.format) {
+                      {{ data[config.key] }}
+                    }
+                    @if (config.format) {
+                      {{ config.format(data) }}
+                    }
+                  }
+                  @if (!!!config.key) {
+                    @if (!config.format) {
+                      {{ data }}
+                    }
+                    @if (config.format) {
+                      {{ config.format(data) }}
+                    }
+                  }
+                }
+              </td>
+            }
+            @for (item of tdList; track item) {
+              <td [nzAlign]="nzxAlign">
+                <ng-container
+                  [ngTemplateOutlet]="item.templateRef"
                   [ngTemplateOutletContext]="{ $implicit: data }"
-                >
-                </ng-template>
-              </ng-container>
-              <ng-container *ngIf="!config.template">
-                <ng-container *ngIf="!!config.key">
-                  <ng-container *ngIf="!config.format">
-                    {{ data[config.key] }}
-                  </ng-container>
-                  <ng-container *ngIf="config.format">
-                    {{ config.format(data) }}
-                  </ng-container>
-                </ng-container>
-                <ng-container *ngIf="!!!config.key">
-                  <ng-container *ngIf="!config.format">
-                    {{ data }}
-                  </ng-container>
-                  <ng-container *ngIf="config.format">
-                    {{ config.format(data) }}
-                  </ng-container>
-                </ng-container>
-              </ng-container>
-            </td>
-            <td [nzAlign]="nzxAlign" *ngFor="let item of tdList">
+                ></ng-container>
+              </td>
+            }
+          </tr>
+          @if (nzxExpand) {
+            <tr [nzExpand]="data['expand']!">
               <ng-container
-                [ngTemplateOutlet]="item.templateRef"
-                [ngTemplateOutletContext]="{ $implicit: data }"
-              ></ng-container>
-            </td>
-          </tr>
-          <tr *ngIf="nzxExpand" [nzExpand]="data['expand']!">
-            <ng-container
-              [ngTemplateOutlet]="expandDirective?.templateRef!"
-              [ngTemplateOutletContext]="{ $implicit: data, index: i }"
-            >
-            </ng-container>
-          </tr>
-        </ng-container>
+                [ngTemplateOutlet]="expandDirective?.templateRef!"
+                [ngTemplateOutletContext]="{ $implicit: data, index: i }"
+                >
+              </ng-container>
+            </tr>
+          }
+        }
       </tbody>
     </nz-table>
-  `,
+    `,
   imports: [CommonModule, NzTableModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

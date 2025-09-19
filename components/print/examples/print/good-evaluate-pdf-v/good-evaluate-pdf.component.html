@@ -2,7 +2,7 @@
   <header class="common-header mate-pro-header">
     <img
       src="https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/pdp/phones/mate60-pro/img/list-img/green.png"
-    />
+      />
     <span class="common-title">HUAWEI Mate 60 Pro评价表（第一份）</span>
   </header>
 
@@ -56,18 +56,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="
-          let item of [
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-          ];
-          let i = index
-        "
-      >
-        <td>{{ i + 1 }} 颜色</td>
-        <td>符合人类审美</td>
-        <td [ngStyle]="{ 'text-align': 'center' }">好</td>
-      </tr>
+      @for (
+        item of [
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        ]; track
+        item; let i = $index) {
+        <tr
+          >
+          <td>{{ i + 1 }} 颜色</td>
+          <td>符合人类审美</td>
+          <td [ngStyle]="{ 'text-align': 'center' }">好</td>
+        </tr>
+      }
       <tr>
         <td>Your valued suggestion <br />您的建议</td>
         <td colSpan="2">建议购买</td>
@@ -85,7 +85,7 @@
   <header class="common-header mate-header">
     <img
       src="https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/pdp/phones/mate60-pro/img/list-img/green.png"
-    />
+      />
     <span class="common-title">HUAWEI Mate 60 评价表（第二份）</span>
   </header>
   <footer class="common-footer mate-footer">页脚 mate 60（第二份）</footer>
@@ -137,18 +137,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="
-          let item of [
-            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-          ];
-          let i = index
-        "
-      >
-        <td>{{ i + 1 }} 颜色</td>
-        <td>符合人类审美</td>
-        <td [ngStyle]="{ 'text-align': 'center' }">好</td>
-      </tr>
+      @for (
+        item of [
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+        ]; track
+        item; let i = $index) {
+        <tr
+          >
+          <td>{{ i + 1 }} 颜色</td>
+          <td>符合人类审美</td>
+          <td [ngStyle]="{ 'text-align': 'center' }">好</td>
+        </tr>
+      }
       <tr>
         <td>Your valued suggestion <br />您的建议</td>
         <td colSpan="2">建议购买</td>

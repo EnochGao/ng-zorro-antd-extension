@@ -3,7 +3,7 @@
   [controls]="controls"
   (queryChange)="adaptor.refresh()"
   (resetChange)="adaptor.reset()"
->
+  >
 </nzx-configurable-query>
 
 <div>
@@ -26,7 +26,7 @@
   [nzData]="list"
   [nzLoading]="loading"
   [nzTotal]="total"
->
+  >
   <thead>
     <tr>
       <th nzColumnKey="name" [nzSortFn]="true">姓名</th>
@@ -38,11 +38,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of list">
-      <td>{{ data.name.first }} {{ data.name.last }}</td>
-      <td>{{ data.gender }}</td>
-      <td>{{ data.nat }}</td>
-      <td>{{ data.email }}</td>
-    </tr>
+    @for (data of list; track data) {
+      <tr>
+        <td>{{ data.name.first }} {{ data.name.last }}</td>
+        <td>{{ data.gender }}</td>
+        <td>{{ data.nat }}</td>
+        <td>{{ data.email }}</td>
+      </tr>
+    }
   </tbody>
 </nz-table>

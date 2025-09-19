@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -32,13 +32,12 @@ interface RandomUser {
 
 @Component({
   imports: [
-    CommonModule,
     FormsModule,
     NzButtonModule,
     NzTableModule,
     NzxConfigurableQueryModule,
-    NzxTableAdaptorModule,
-  ],
+    NzxTableAdaptorModule
+],
   selector: 'nzx-page-table-basic-example',
   templateUrl: './page-table-basic.component.html',
 })

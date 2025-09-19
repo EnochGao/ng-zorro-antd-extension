@@ -1,28 +1,30 @@
 <nz-card>
   <form #queyForm class="nzx-query-container" nz-form [formGroup]="queryForm">
     <div nz-row [nzGutter]="nzxGutter" [nzJustify]="nzxJustify">
-      <ng-container *ngFor="let config of controls; let i = index">
-        <div
-          *ngIf="!config.hidden"
-          nz-col
-          [nzSpan]="config.nzxSpan || 24 / lineNumber"
-          [hidden]="config.collapse"
-          [nzOrder]="i"
-        >
-          <nzx-configurable-query-item
-            *ngIf="config.controlName"
-            [form]="queryForm"
-            [control]="config"
-          ></nzx-configurable-query-item>
-        </div>
-      </ng-container>
+      @for (config of controls; track config; let i = $index) {
+        @if (!config.hidden) {
+          <div
+            nz-col
+            [nzSpan]="config.nzxSpan || 24 / lineNumber"
+            [hidden]="config.collapse"
+            [nzOrder]="i"
+            >
+            @if (config.controlName) {
+              <nzx-configurable-query-item
+                [form]="queryForm"
+                [control]="config"
+              ></nzx-configurable-query-item>
+            }
+          </div>
+        }
+      }
 
       <div
         class="nzx-query-btn"
         nz-col
         [nzOrder]="controls.length"
         [nzSpan]="nzxBtnSpan || 24 / lineNumber"
-      >
+        >
         <div nz-row nzJustify="end" nzAlign="middle">
           <nz-space>
             <button
@@ -32,7 +34,7 @@
               type="button"
               title="Enter"
               (click)="search()"
-            >
+              >
               {{ locale['query'] }}
             </button>
             <button
@@ -41,23 +43,23 @@
               type="button"
               title="ctrl+r"
               (click)="reset()"
-            >
+              >
               {{ locale['reset'] }}
             </button>
             <ng-container *nzSpaceItem>
               <ng-content></ng-content>
             </ng-container>
-            <ng-container *ngIf="nzxCollapse">
+            @if (nzxCollapse) {
               <a
                 *nzSpaceItem
                 nz-button
                 nzType="link"
                 (click)="toggleCollapse()"
-              >
+                >
                 {{ collapseText }}
                 <i nz-icon [nzType]="collapseIcon"></i>
               </a>
-            </ng-container>
+            }
           </nz-space>
         </div>
       </div>
