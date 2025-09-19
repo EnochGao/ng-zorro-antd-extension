@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
 } from '@angular/core';
-import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { CommonModule } from '@angular/common';
 import {
@@ -37,7 +37,6 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzGridModule,
     NzFormModule,
     NzButtonModule,
-    NzMessageModule,
     NzCardModule,
     NzImageModule,
     NzInputModule,

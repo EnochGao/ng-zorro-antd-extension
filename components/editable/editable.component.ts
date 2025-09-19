@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/directive-class-suffix */
 /* eslint-disable @angular-eslint/directive-selector */
 /* eslint-disable @angular-eslint/component-selector */
-import { NgIf } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,20 +30,21 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   selector: '[nzx-editable]',
   template: `
     <ng-container #detailContainer> </ng-container>
-
+    
     <ng-template #detailTemplate>
       {{ nzxContent }}
-      <button
-        *ngIf="nzxShowBtn"
-        class="ant-typography-edit"
-        type="button"
-        nz-trans-button
-        (click)="edit()"
-      >
-        <span nz-icon nzType="edit" nzTheme="outline"></span>
-      </button>
+      @if (nzxShowBtn) {
+        <button
+          class="ant-typography-edit"
+          type="button"
+          nz-trans-button
+          (click)="edit()"
+          >
+          <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </button>
+      }
     </ng-template>
-
+    
     <ng-template #editTemplate>
       <textarea
         nz-input
@@ -53,7 +54,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
         (blur)="blur()"
       ></textarea>
     </ng-template>
-  `,
+    `,
   styles: [
     `
       .nzx-editable-cell {
@@ -64,12 +65,11 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'NzxEditable',
   imports: [
-    NgIf,
     FormsModule,
     NzIconModule,
     NzInputModule,
-    NzTransButtonModule,
-  ],
+    NzTransButtonModule
+],
 })
 export class NzxEditableComponent implements OnInit {
   @Input() nzxContent: string | number | null = '';

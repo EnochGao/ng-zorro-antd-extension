@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -19,14 +19,13 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 @Component({
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NzxBlankFieldModule,
     NzButtonModule,
     NzSpaceModule,
-    NzSwitchModule,
-  ],
+    NzSwitchModule
+],
   selector: 'nzx-blank-field-example',
   templateUrl: './blank-field.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

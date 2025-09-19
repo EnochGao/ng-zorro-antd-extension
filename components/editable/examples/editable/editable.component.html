@@ -14,21 +14,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of list">
-        <td nzBreakWord>
-          <span nzx-editable [(nzxContent)]="item.name"></span>
-        </td>
-        <td nzAlign="center">
-          <span nzx-editable [(nzxContent)]="item.age"></span>
-        </td>
-        <td nzBreakWord>
-          <span
-            nzx-editable
-            [(nzxContent)]="item.country"
-            [nzxShowBtn]="false"
-          ></span>
-        </td>
-      </tr>
+      @for (item of list; track item) {
+        <tr>
+          <td nzBreakWord>
+            <span nzx-editable [(nzxContent)]="item.name"></span>
+          </td>
+          <td nzAlign="center">
+            <span nzx-editable [(nzxContent)]="item.age"></span>
+          </td>
+          <td nzBreakWord>
+            <span
+              nzx-editable
+              [(nzxContent)]="item.country"
+              [nzxShowBtn]="false"
+            ></span>
+          </td>
+        </tr>
+      }
     </tbody>
   </nz-table>
 </nz-card>

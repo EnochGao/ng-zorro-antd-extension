@@ -37,18 +37,21 @@
     </div>
 
     <ng-container formArrayName="aliases">
-      <nz-form-item *ngFor="let alias of aliases.controls; let i = index">
-        <nz-form-label [nzSpan]="7" [nzRequired]="!!!i" [nzNoColon]="!!i">
-          <span *ngIf="!i"> Alias </span>
-        </nz-form-label>
-
-        <nz-form-control [nzSpan]="12" nzErrorTip="必填">
-          <input nz-input [formControlName]="i" />
-        </nz-form-control>
-        <div nz-col [nzSpan]="2">
-          <a nz-button nzType="link" nzDanger (click)="remove(i)">remove</a>
-        </div>
-      </nz-form-item>
+      @for (alias of aliases.controls; track alias; let i = $index) {
+        <nz-form-item>
+          <nz-form-label [nzSpan]="7" [nzRequired]="!!!i" [nzNoColon]="!!i">
+            @if (!i) {
+              <span> Alias </span>
+            }
+          </nz-form-label>
+          <nz-form-control [nzSpan]="12" nzErrorTip="必填">
+            <input nz-input [formControlName]="i" />
+          </nz-form-control>
+          <div nz-col [nzSpan]="2">
+            <a nz-button nzType="link" nzDanger (click)="remove(i)">remove</a>
+          </div>
+        </nz-form-item>
+      }
     </ng-container>
 
     <nz-form-item>
@@ -59,7 +62,7 @@
             nz-button
             nzType="primary"
             (click)="markAsDirty()"
-          >
+            >
             markAsDirty
           </button>
 
@@ -68,7 +71,7 @@
             nz-button
             nzType="primary"
             (click)="markAsPristine()"
-          >
+            >
             markAsPristine
           </button>
           <button
@@ -76,7 +79,7 @@
             nz-button
             nzType="primary"
             (click)="markAsFullClean()"
-          >
+            >
             markAsFullClean
           </button>
 
@@ -94,14 +97,15 @@
   <a nz-button nzType="link" (click)="selectFile()">选择单文件(jpg)</a>
   <a nz-button nzType="link" (click)="selectMultipleFile()"
     >选择多文件(图片，pdf)</a
-  >
-</nz-card>
-<nz-card nzTitle="文件下载">
-  <img
-    *ngIf="imageUrl"
-    [ngStyle]="{ border: '1px dashed #ccc', height: '150px', width: '150px' }"
-    nz-image
-    [nzSrc]="imageUrl"
-  />
-  <a nz-button nzType="link" (click)="downloadFile()">下载文件</a>
-</nz-card>
+    >
+  </nz-card>
+  <nz-card nzTitle="文件下载">
+    @if (imageUrl) {
+      <img
+        [ngStyle]="{ border: '1px dashed #ccc', height: '150px', width: '150px' }"
+        nz-image
+        [nzSrc]="imageUrl"
+        />
+    }
+    <a nz-button nzType="link" (click)="downloadFile()">下载文件</a>
+  </nz-card>

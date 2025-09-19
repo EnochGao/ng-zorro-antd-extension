@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -22,7 +22,7 @@ import { NzCheckboxModule, NzCheckboxOption } from 'ng-zorro-antd/checkbox';
 @Component({
   selector: 'nzx-checkbox-group',
   exportAs: 'NzxCheckboxGroup',
-  imports: [CommonModule, FormsModule, NzCheckboxModule],
+  imports: [FormsModule, NzCheckboxModule],
   template: `
     <nz-checkbox-group
       [nzDisabled]="nzDisabled"

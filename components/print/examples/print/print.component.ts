@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -11,13 +11,12 @@ import { GoodEvaluatePdfVComponent } from './good-evaluate-pdf-v/good-evaluate-p
 
 @Component({
   imports: [
-    CommonModule,
     NzGridModule,
     NzButtonModule,
     GoodEvaluatePdfComponent,
     GoodEvaluatePdfVComponent,
-    NzxPrintModule,
-  ],
+    NzxPrintModule
+],
   selector: 'nzx-print-example',
   template: `
     <div nz-row nzJustify="space-between" nzAlign="middle">

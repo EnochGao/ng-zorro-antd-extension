@@ -1,53 +1,62 @@
-<nzx-configurable-query
-  *ngIf="controls && controls.length"
-  [controls]="controls"
-  [nzxBtnSpan]="nzxBtnSpan"
-  (queryChange)="nzxQueryParamsChange.emit($event)"
-  (resetChange)="nzxQueryParamsChange.emit($event)"
->
-</nzx-configurable-query>
+@if (controls && controls.length) {
+  <nzx-configurable-query
+    [controls]="controls"
+    [nzxBtnSpan]="nzxBtnSpan"
+    (queryChange)="nzxQueryParamsChange.emit($event)"
+    (resetChange)="nzxQueryParamsChange.emit($event)"
+    >
+  </nzx-configurable-query>
+}
 
 <nz-table #table nzShowSizeChanger [nzData]="list">
   <thead>
     <tr>
-      <th
-        *ngIf="mode === 'single'"
-        [nzShowCheckbox]="false"
-        [nzWidth]="checkboxWidth"
-      ></th>
-      <th
-        *ngIf="mode === 'multiple'"
-        [nzWidth]="checkboxWidth"
-        [(nzChecked)]="checked"
-        [nzDisabled]="isDisabled"
-        [nzIndeterminate]="indeterminate"
-        (nzCheckedChange)="onAllChecked($event)"
-      ></th>
-      <th nzAlign="center" *ngFor="let item of tableConfig">
-        {{ item.label }}
-      </th>
+      @if (mode === 'single') {
+        <th
+          [nzShowCheckbox]="false"
+          [nzWidth]="checkboxWidth"
+        ></th>
+      }
+      @if (mode === 'multiple') {
+        <th
+          [nzWidth]="checkboxWidth"
+          [(nzChecked)]="checked"
+          [nzDisabled]="isDisabled"
+          [nzIndeterminate]="indeterminate"
+          (nzCheckedChange)="onAllChecked($event)"
+        ></th>
+      }
+      @for (item of tableConfig; track item) {
+        <th nzAlign="center">
+          {{ item.label }}
+        </th>
+      }
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of table.data">
-      <td
-        [nzChecked]="setOfCheckedId.has(this.getValue(data, this.uniqueKey))"
-        [nzDisabled]="data.disabled!"
-        (nzCheckedChange)="onItemChecked(data, $event)"
-      ></td>
-      <td *ngFor="let item of tableConfig">
-        <ng-container *ngIf="!item.format && !item.template">
-          {{ data[item.key] | nzxSafeNull }}
-        </ng-container>
-        <ng-container *ngIf="item.format && !item.template">
-          {{ item.format(data) | nzxSafeNull }}
-        </ng-container>
-        <ng-container *ngIf="item.template">
-          <ng-container
-            *ngTemplateOutlet="item.template; context: { $implicit: data }"
-          ></ng-container>
-        </ng-container>
-      </td>
-    </tr>
+    @for (data of table.data; track data) {
+      <tr>
+        <td
+          [nzChecked]="setOfCheckedId.has(this.getValue(data, this.uniqueKey))"
+          [nzDisabled]="data.disabled!"
+          (nzCheckedChange)="onItemChecked(data, $event)"
+        ></td>
+        @for (item of tableConfig; track item) {
+          <td>
+            @if (!item.format && !item.template) {
+              {{ data[item.key] | nzxSafeNull }}
+            }
+            @if (item.format && !item.template) {
+              {{ item.format(data) | nzxSafeNull }}
+            }
+            @if (item.template) {
+              <ng-container
+                *ngTemplateOutlet="item.template; context: { $implicit: data }"
+              ></ng-container>
+            }
+          </td>
+        }
+      </tr>
+    }
   </tbody>
 </nz-table>

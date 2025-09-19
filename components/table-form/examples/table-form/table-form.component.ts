@@ -13,7 +13,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { NzxTableFormComponent } from 'ng-zorro-antd-extension/table-form';
 import {
@@ -44,7 +44,6 @@ import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
     NzxPipesModule,
     NzTableModule,
     NzRateModule,
-    NzMessageModule,
     NzxTableFormModule,
   ],
 })

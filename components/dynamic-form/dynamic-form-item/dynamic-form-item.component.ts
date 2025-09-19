@@ -6,10 +6,10 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NzxDFConfigService } from '../config/dynamic-form-config';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
-  imports: [CommonModule],
+  imports: [],
   selector: 'nzx-dynamic-form-item',
   template: ` <ng-template #dfItemTpl></ng-template> `,
   styles: [],

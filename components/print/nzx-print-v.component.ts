@@ -31,22 +31,24 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
   selector: 'nzx-print-v',
   template: `
     <ng-content select="[nzxPrintHeader]"></ng-content>
-
+    
     <div #vivView [ngStyle]="{ margin: '10px 0' }"></div>
-
-    <div nz-row nzJustify="end" *ngIf="enablePreview">
-      <ng-template #totalTemplate let-total>共 {{ total }} 页</ng-template>
-      <nz-pagination
-        [nzPageIndex]="1"
-        [nzTotal]="pageTotal"
-        [nzPageSize]="1"
-        [nzSize]="'small'"
-        [nzShowTotal]="totalTemplate"
-        nzShowQuickJumper
-        (nzPageIndexChange)="onPageIndexChange($event)"
-      ></nz-pagination>
-    </div>
-  `,
+    
+    @if (enablePreview) {
+      <div nz-row nzJustify="end">
+        <ng-template #totalTemplate let-total>共 {{ total }} 页</ng-template>
+        <nz-pagination
+          [nzPageIndex]="1"
+          [nzTotal]="pageTotal"
+          [nzPageSize]="1"
+          [nzSize]="'small'"
+          [nzShowTotal]="totalTemplate"
+          nzShowQuickJumper
+          (nzPageIndexChange)="onPageIndexChange($event)"
+        ></nz-pagination>
+      </div>
+    }
+    `,
   imports: [CommonModule, NzGridModule, NzPaginationModule],
 })
 export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
