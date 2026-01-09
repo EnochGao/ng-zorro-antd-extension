@@ -13,7 +13,7 @@
   "homepage": "https://enochgao.github.io/ng-zorro-antd-extension",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EnochGao/ng-zorro-antd-extension"
+    "url": "git+https://github.com/EnochGao/ng-zorro-antd-extension.git"
   },
   "author": {
     "name": "enochgao",
