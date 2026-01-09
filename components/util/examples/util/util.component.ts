@@ -8,6 +8,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { CommonModule } from '@angular/common';
 import {
   downloadFile,
+  scrollToFirstInvalidControl,
   selectFile,
   updateControlStatus,
 } from 'ng-zorro-antd-extension/util';
@@ -100,6 +101,7 @@ export class NzxUtilExampleComponent {
 
   markAsDirty(): void {
     updateControlStatus(this.form);
+    scrollToFirstInvalidControl();
   }
 
   markAsPristine() {

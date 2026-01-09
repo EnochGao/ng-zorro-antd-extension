@@ -16,3 +16,4 @@ export * from './lib/toNumber';
 export * from './lib/toString';
 export * from './lib/fileUtil';
 export * from './lib/getElementByTag';
+export * from './lib/scrollToInvalidControl'
