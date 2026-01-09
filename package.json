@@ -1,6 +1,6 @@
 {
   "name": "ng-zorro-antd-extension",
-  "version": "18.1.5",
+  "version": "18.1.6",
   "license": "MIT",
   "description": "An extension based on ng-zorro-antd",
   "keywords": [
@@ -13,7 +13,7 @@
   "homepage": "https://enochgao.github.io/ng-zorro-antd-extension",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EnochGao/ng-zorro-antd-extension"
+    "url": "git+https://github.com/EnochGao/ng-zorro-antd-extension.git"
   },
   "author": {
     "name": "enochgao",
@@ -43,7 +43,9 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@commitlint/format": "^19.3.0",
+    "@ctrl/tinycolor": "^4.2.0",
     "@vivliostyle/core": "^2.29.0",
+    "@wangeditor-next/editor": "^5.6.49",
     "@wangeditor/editor": "^5.1.23",
     "conventional-changelog-atom": "^5.0.0",
     "date-fns": "^2.29.2",

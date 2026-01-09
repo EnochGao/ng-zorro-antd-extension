@@ -105,20 +105,6 @@ export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
   private createIframeWrapper() {
     if (this.vivViewRef) {
       this.clearView();
-      if (!this.enablePreview) {
-        this.vivViewRef.nativeElement.style.visibility = 'hidden';
-        if (this.platform.FIREFOX) {
-          this.vivViewRef.nativeElement.setAttribute(
-            'style',
-            'width: 1px; height: 100px; position: fixed; left: 0; top: 0; opacity: 0; border-width: 0; margin: 0; padding: 0'
-          );
-        } else {
-          this.vivViewRef.nativeElement.setAttribute(
-            'style',
-            'visibility: hidden; height: 0; width: 0; position: absolute; border: 0'
-          );
-        }
-      }
 
       this.iframeEl = document.createElement('iframe');
       this.iframeEl.height = this.height + '';
@@ -158,6 +144,13 @@ export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
           </body>
         </html>
       `;
+
+      if (!this.enablePreview) {
+        this.vivViewRef.nativeElement.setAttribute(
+          'style',
+          'visibility: hidden; height: 0; width: 0; position: absolute; border: 0'
+        );
+      }
 
       this.iframeEl.srcdoc = template;
       this.vivViewRef.nativeElement.appendChild(this.iframeEl);

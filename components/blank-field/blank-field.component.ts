@@ -1,9 +1,11 @@
 /* eslint-disable @angular-eslint/component-selector */
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChild,
   forwardRef,
+  inject,
   TemplateRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -14,9 +16,11 @@ interface Context {
 }
 @Component({
   selector: 'nzx-blank-field',
-  template: ` <ng-container
-    *ngTemplateOutlet="templateRefExp; context: contextExp"
-  ></ng-container>`,
+  template: `
+    <ng-container
+      *ngTemplateOutlet="templateRefExp; context: contextExp"
+    ></ng-container>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -27,22 +31,30 @@ interface Context {
   ],
 })
 export class NzxBlankFieldComponent implements ControlValueAccessor {
-  contextExp: Context = {} as Context;
+  private cd = inject(ChangeDetectorRef);
+
+  contextExp: Context = {
+    disabled: false,
+    $implicit: null,
+  } as Context;
+
   @ContentChild(TemplateRef) templateRefExp!: TemplateRef<Context>;
 
   private propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
-    // this.propagateChange = fn;
+    this.propagateChange = fn;
   }
 
   registerOnTouched(fn: any): void {}
 
   setDisabledState(isDisabled: boolean): void {
     this.contextExp.disabled = isDisabled;
+    this.cd.markForCheck();
   }
 
   writeValue(obj: any): void {
     this.contextExp.$implicit = obj;
+    this.cd.markForCheck();
   }
 }
