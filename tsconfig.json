@@ -2,12 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "skipLibCheck": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "strict": false,
+    "skipLibCheck": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
