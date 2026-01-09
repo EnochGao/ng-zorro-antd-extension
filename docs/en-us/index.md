@@ -6,12 +6,15 @@ hero:
   description: Component package based on ng-zorro-antd
 
 features:
-  - icon: https://angular.cn/assets/images/logos/angular/angular.svg
+  - icon: https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif
     title: Angular
     description: Based on Angular
   - icon: https://img.alicdn.com/tfs/TB1g.mWZAL0gK0jSZFtXXXQCXXa-200-200.svg
     title: NG-ZORRO
     description: Developed based on ng-zorro components
+  - icon: assets/images/logo.png
+    title: NG-ZORRO-EXTENSION
+    description: extend feature component
 ---
 
 <div align="center">
@@ -65,8 +68,8 @@ export class AppModule {}
 | angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends        |
 | ------- | ------------- | ----------------------- | --------------- |
 | ^19.0.0 | ^19.0.0       | ^19.0.0                 | 2026-05-19      |
-| ^18.0.0 | ^18.0.0       | ^18.0.0                 | 2025-11-19      |
-| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15      |
+| ^18.0.0 | ^18.0.0       | ^18.0.0                 | 2025-11-19(end) |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15(end) |
 | ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08(end) |
 | ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18(end) |
 | ^14.0.0 | ^14.0.0       | ^14.0.0                 | end             |

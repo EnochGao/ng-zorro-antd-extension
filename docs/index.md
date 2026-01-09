@@ -6,7 +6,7 @@ hero:
   description: 基于ng-zorro-antd的组件扩展包
 
 features:
-  - icon: https://angular.cn/assets/images/logos/angular/angular.svg
+  - icon: https://angular.dev/assets/images/press-kit/angular_icon_gradient.gif
     title: Angular
     description: 基于Angular前端框架
   - icon: https://ng.ant.design/assets/img/logo.svg
@@ -72,8 +72,8 @@ export class AppModule {}
 | angular | ng-zorro-antd | ng-zorro-antd-extension | LTS ends        |
 | ------- | ------------- | ----------------------- | --------------- |
 | ^19.0.0 | ^19.0.0       | ^19.0.0                 | 2026-05-19      |
-| ^18.0.0 | ^18.0.0       | ^18.0.0                 | 2025-11-19      |
-| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15      |
+| ^18.0.0 | ^18.0.0       | ^18.0.0                 | 2025-11-19(end) |
+| ^17.0.0 | ^17.0.0       | ^15.6.0                 | 2025-05-15(end) |
 | ^16.0.0 | ^16.0.0       | ^15.6.0                 | 2024-11-08(end) |
 | ^15.0.0 | ^15.0.0       | ^15.0.0                 | 2024-05-18(end) |
 | ^14.0.0 | ^14.0.0       | ^14.0.0                 | end             |
