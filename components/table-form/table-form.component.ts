@@ -45,7 +45,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzInputNumberLegacyModule } from 'ng-zorro-antd/input-number-legacy';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
@@ -73,7 +73,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     NzInputModule,
     NzSelectModule,
     NzDatePickerModule,
-    NzInputNumberLegacyModule,
+    NzInputNumberModule,
   ],
 })
 export class NzxTableFormComponent

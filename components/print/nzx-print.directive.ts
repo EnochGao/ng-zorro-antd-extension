@@ -32,7 +32,7 @@ export class NzxPrintDirective implements OnInit, AfterViewInit {
   }
 
   @HostListener('click')
-  private print(): void {
+  print(): void {
     const newWin = window.open('', '_blank');
 
     if (newWin) {

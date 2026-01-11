@@ -26,25 +26,25 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
             <nzx-wang-toolbar
               [ngStyle]="{ 'border-bottom': '1px solid #ccc' }"
               [editor]="editorRef.editor"
-            >
+              >
             </nzx-wang-toolbar>
             <nzx-wang-editor
               [tagRequired]="true"
               [ngStyle]="{ height: '300px', 'overflow-y': 'hidden' }"
               #editorRef="NzxWangEditor"
               formControlName="zh"
-            >
+              >
             </nzx-wang-editor>
           </div>
-
+    
           <ng-template #errorTip let-control>
-            <ng-container *ngIf="control.hasError('editorTextRequired')">
+            @if (control.hasError('editorTextRequired')) {
               必填
-            </ng-container>
+            }
           </ng-template>
         </nz-form-control>
       </nz-form-item>
-
+    
       <nz-form-item>
         <nz-form-label [nzSpan]="6">英文</nz-form-label>
         <nz-form-control [nzSpan]="14">
@@ -63,7 +63,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
           </div>
         </nz-form-control>
       </nz-form-item>
-
+    
       <nz-form-item>
         <nz-form-control [nzOffset]="20" [nzSpan]="4">
           <button nz-button nzType="primary" [disabled]="!form.valid">
@@ -72,7 +72,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
         </nz-form-control>
       </nz-form-item>
     </form>
-  `,
+    `,
 })
 export class NzxWangEditorExampleComponent {
   form = inject(FormBuilder).group({
