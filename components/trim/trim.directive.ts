@@ -22,8 +22,9 @@ import {
 
 const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTrim';
 
+/** trim input/textarea控件 */
 @Directive({
-  selector: '[nzxTrim]',
+  selector: 'input[nzxTrim],textarea[nzxTrim]',
   exportAs: 'NzxTrim',
   providers: [
     {
@@ -71,13 +72,15 @@ export class NzxTrimDirective implements ControlValueAccessor {
   }
 
   @HostListener('compositionstart', ['$event'])
-  compositionstart(val: CompositionEvent) {
+  compositionstart(val: Event) {
     this._compositionStart();
   }
 
   @HostListener('compositionend', ['$event'])
-  compositionend(e: CompositionEvent) {
-    this._compositionEnd((e.target as HTMLInputElement).value);
+  compositionend(e: Event) {
+    this._compositionEnd(
+      (e.target as HTMLInputElement | HTMLTextAreaElement).value
+    );
   }
 
   @HostListener('blur', ['$event'])
