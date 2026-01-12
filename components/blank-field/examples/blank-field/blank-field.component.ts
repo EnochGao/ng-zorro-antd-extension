@@ -1,4 +1,3 @@
-
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -24,18 +23,18 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
     NzxBlankFieldModule,
     NzButtonModule,
     NzSpaceModule,
-    NzSwitchModule
-],
+    NzSwitchModule,
+  ],
   selector: 'nzx-blank-field-example',
   templateUrl: './blank-field.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxBlankFieldExampleComponent {
+  private cd = inject(ChangeDetectorRef);
+
   form: FormGroup = inject(FormBuilder).group({
     name: [{ value: 'EnochGao', disabled: true }],
   });
-
-  constructor(private cd: ChangeDetectorRef) {}
 
   update() {
     this.form.get('name')?.patchValue(`张三${Math.floor(Math.random() * 10)}`);

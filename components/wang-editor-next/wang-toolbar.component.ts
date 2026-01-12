@@ -2,6 +2,7 @@ import {
   Directive,
   ElementRef,
   HostBinding,
+  inject,
   Input,
   OnChanges,
   OnDestroy,
@@ -22,6 +23,8 @@ import { Mode } from './type';
   exportAs: 'NzxWangToolbar',
 })
 export class NzxWangToolbarDirective implements OnInit, OnChanges, OnDestroy {
+  private toolbarRef = inject(ElementRef);
+
   @Input() mode: Mode = 'default';
   @Input() editor!: IDomEditor;
   @Input() defaultConfig: Partial<IToolbarConfig> = {};
@@ -29,8 +32,6 @@ export class NzxWangToolbarDirective implements OnInit, OnChanges, OnDestroy {
   @HostBinding('style') display = 'display:block';
 
   toolbar!: Toolbar;
-
-  constructor(private toolbarRef: ElementRef) {}
 
   ngOnInit(): void {
     this.initToolbar();

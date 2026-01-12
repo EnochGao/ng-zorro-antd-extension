@@ -1,8 +1,8 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter, mapTo } from 'rxjs/operators';
 
-import { NzxConfig, NzxConfigKey, NZX_CONFIG } from './config';
+import { NZX_CONFIG, NzxConfig, NzxConfigKey } from './config';
 
 const isDefined = function (value?: any): boolean {
   return value !== void 0;
@@ -17,7 +17,9 @@ export class NzxConfigService {
   /** Global config holding property. */
   private readonly config: NzxConfig;
 
-  constructor(@Optional() @Inject(NZX_CONFIG) defaultConfig?: NzxConfig) {
+  constructor() {
+    const defaultConfig = inject<NzxConfig>(NZX_CONFIG, { optional: true });
+
     this.config = defaultConfig || {};
   }
 

@@ -2,10 +2,19 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  inject,
 } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 import { CommonModule } from '@angular/common';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import {
   downloadFile,
   scrollToFirstInvalidControl,
@@ -15,17 +24,9 @@ import {
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzImageModule } from 'ng-zorro-antd/image';
-import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 @Component({
@@ -45,6 +46,10 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
   ],
 })
 export class NzxUtilExampleComponent {
+  private logger = inject(NzMessageService);
+  private cd = inject(ChangeDetectorRef);
+  private fb = inject(FormBuilder);
+
   imageUrl!: string;
   form: FormGroup;
 
@@ -53,11 +58,7 @@ export class NzxUtilExampleComponent {
   }
 
   private file!: File;
-  constructor(
-    private logger: NzMessageService,
-    private cd: ChangeDetectorRef,
-    private fb: FormBuilder
-  ) {
+  constructor() {
     this.form = this.fb.group({
       userName: ['', [Validators.required]],
       address: this.fb.group({

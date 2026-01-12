@@ -15,22 +15,28 @@ import {
   QueryList,
   SimpleChanges,
   ViewChild,
+  inject,
 } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { NzxQueryI18nInterface } from 'ng-zorro-antd-extension/i18n';
 import { updateControlStatus } from 'ng-zorro-antd-extension/util';
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzGridModule, NzJustify } from 'ng-zorro-antd/grid';
 import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
+import { NzxConfigurableQueryItemComponent } from './configurable-query-item/configurable-query-item.component';
 import { NzxControlDirective } from './control.directive';
 import { NzxQueryControlOptions, NzxQueryParams } from './type';
-import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzxConfigurableQueryItemComponent } from './configurable-query-item/configurable-query-item.component';
 
-import { NzSpaceModule } from 'ng-zorro-antd/space';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 /**
  * 查询组件
@@ -50,12 +56,16 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzSpaceModule,
     NzButtonModule,
     NzIconModule,
-    NzxConfigurableQueryItemComponent
-],
+    NzxConfigurableQueryItemComponent,
+  ],
 })
 export class NzxConfigurableQueryComponent
   implements OnChanges, OnInit, AfterViewInit, AfterContentInit, OnDestroy
 {
+  private i18n = inject(NzI18nService);
+  private fb = inject(FormBuilder);
+  private cd = inject(ChangeDetectorRef);
+
   /**
    * 配置项用来生成查询表单
    */
@@ -107,11 +117,7 @@ export class NzxConfigurableQueryComponent
   @ContentChildren(NzxControlDirective, { descendants: true })
   controlTemplateList!: QueryList<NzxControlDirective>;
 
-  constructor(
-    private i18n: NzI18nService,
-    private fb: FormBuilder,
-    private cd: ChangeDetectorRef
-  ) {
+  constructor() {
     this.queryForm = this.fb.group({});
   }
 

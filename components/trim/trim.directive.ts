@@ -2,9 +2,7 @@ import {
   Directive,
   ElementRef,
   HostListener,
-  Inject,
   Input,
-  Optional,
   Renderer2,
   forwardRef,
   inject,
@@ -24,8 +22,9 @@ import {
 
 const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTrim';
 
+/** trim input/textarea控件 */
 @Directive({
-  selector: '[nzxTrim]',
+  selector: 'input[nzxTrim],textarea[nzxTrim]',
   exportAs: 'NzxTrim',
   providers: [
     {
@@ -52,37 +51,40 @@ export class NzxTrimDirective implements ControlValueAccessor {
   @Input()
   trimType: 'trim' | 'trimStart' | 'trimEnd' = 'trim';
 
-  constructor(
-    private _renderer: Renderer2,
-    private _elementRef: ElementRef,
-    @Optional()
-    @Inject(COMPOSITION_BUFFER_MODE)
-    private _compositionMode: boolean
-  ) {
+  private _renderer = inject(Renderer2);
+  private _elementRef = inject(ElementRef);
+
+  private _compositionMode = inject(COMPOSITION_BUFFER_MODE, {
+    optional: true,
+  });
+
+  constructor() {
     if (this._compositionMode == null) {
       this._compositionMode = !this._isAndroid();
     }
   }
 
-  @HostListener('input', ['$event.target.value'])
-  input(val: string) {
-    const value = val[this.trimType]();
+  @HostListener('input', ['$event'])
+  input(e: Event) {
+    const value = (e.target as HTMLInputElement).value[this.trimType]();
     this.setProperty('value', value);
     this._handleInput(value);
   }
 
   @HostListener('compositionstart', ['$event'])
-  compositionstart(val: string) {
+  compositionstart(val: Event) {
     this._compositionStart();
   }
 
-  @HostListener('compositionend', ['$event.target.value'])
-  compositionend(val: any) {
-    this._compositionEnd(val);
+  @HostListener('compositionend', ['$event'])
+  compositionend(e: Event) {
+    this._compositionEnd(
+      (e.target as HTMLInputElement | HTMLTextAreaElement).value
+    );
   }
 
-  @HostListener('blur', ['$event.target.value'])
-  blur(val: string) {
+  @HostListener('blur', ['$event'])
+  blur(e: Event) {
     this.onTouched();
   }
 

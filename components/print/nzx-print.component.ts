@@ -4,12 +4,12 @@ import {
   AfterViewInit,
   Component,
   ContentChild,
+  DOCUMENT,
   ElementRef,
-  Inject,
+  inject,
   Input,
   OnInit,
   ViewChild,
-  DOCUMENT
 } from '@angular/core';
 import { getElementByTag } from 'ng-zorro-antd-extension/util';
 import { NzxPrintContentDirective } from './nzx-print-content.directive';
@@ -26,6 +26,9 @@ import { NzxPrintContentDirective } from './nzx-print-content.directive';
   imports: [],
 })
 export class NzxPrintComponent implements OnInit, AfterViewInit {
+  private platform = inject(Platform);
+  private document = inject<Document>(DOCUMENT);
+
   @Input() printTitle = 'pdf';
   /**
    * a4 794px1123px
@@ -50,11 +53,6 @@ export class NzxPrintComponent implements OnInit, AfterViewInit {
   private beforePrint = () => {
     this.iframeEl.contentWindow!.parent.document.title = this.printTitle;
   };
-
-  constructor(
-    private platform: Platform,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
 
   ngOnInit(): void {
     if (!this.pagedCDN) {

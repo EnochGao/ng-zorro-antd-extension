@@ -1,4 +1,4 @@
-import { Inject, InjectionToken, Optional } from '@angular/core';
+import { InjectionToken, inject } from '@angular/core';
 import { NzxQueryConfig, NzxQueryControlType } from './type';
 
 export const QUERY_CONFIG = new InjectionToken<NzxQueryControlType[]>(
@@ -30,11 +30,11 @@ export class NzxQueryConfigService {
     this.controlTypePoll
   );
 
-  constructor(
-    @Optional()
-    @Inject(QUERY_CONFIG)
-    nzxQueryConfig: NzxQueryConfig
-  ) {
+  constructor() {
+    const nzxQueryConfig = inject<NzxQueryConfig>(QUERY_CONFIG, {
+      optional: true,
+    });
+
     if (nzxQueryConfig) {
       if (
         nzxQueryConfig.controlTypes &&

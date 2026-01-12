@@ -12,6 +12,7 @@ import {
   Output,
   QueryList,
   TemplateRef,
+  inject,
 } from '@angular/core';
 
 import {
@@ -45,7 +46,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzInputNumberLegacyModule } from 'ng-zorro-antd/input-number-legacy';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
@@ -73,7 +74,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     NzInputModule,
     NzSelectModule,
     NzDatePickerModule,
-    NzInputNumberLegacyModule,
+    NzInputNumberModule,
   ],
 })
 export class NzxTableFormComponent
@@ -84,6 +85,9 @@ export class NzxTableFormComponent
     Validator,
     OnDestroy
 {
+  private cd = inject(ChangeDetectorRef);
+  private fb = inject(FormBuilder);
+
   @Input() tableLayout: NzTableLayout = 'fixed';
   @Input() tableAlign: 'left' | 'right' | 'center' | null = 'center';
   /** table 启用扩展行 */
@@ -166,8 +170,6 @@ export class NzxTableFormComponent
 
   @ContentChild(NzxTableFormExpandDirective)
   tableExpandDirective!: NzxTableFormExpandDirective;
-
-  constructor(private cd: ChangeDetectorRef, private fb: FormBuilder) {}
 
   ngOnDestroy(): void {
     this.destroyed$.complete();

@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, inject } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -36,12 +35,14 @@ interface RandomUser {
     NzButtonModule,
     NzTableModule,
     NzxConfigurableQueryModule,
-    NzxTableAdaptorModule
-],
+    NzxTableAdaptorModule,
+  ],
   selector: 'nzx-page-table-basic-example',
   templateUrl: './page-table-basic.component.html',
 })
 export class NzxPageTableBasicExampleComponent extends NzxPageTableBase<RandomUser> {
+  private http = inject(HttpClient);
+
   controls: Array<NzxQueryControlOptions> = [
     {
       controlName: 'nat',
@@ -55,10 +56,6 @@ export class NzxPageTableBasicExampleComponent extends NzxPageTableBase<RandomUs
     { text: 'male', value: 'male' },
     { text: 'female', value: 'female' },
   ];
-
-  constructor(private http: HttpClient) {
-    super();
-  }
 
   refresh(current: boolean = false) {
     this.nzxTableAdaptorRef.refresh(current);

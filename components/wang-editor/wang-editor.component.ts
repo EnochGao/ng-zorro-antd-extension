@@ -6,6 +6,7 @@ import {
   EventEmitter,
   forwardRef,
   HostBinding,
+  inject,
   Input,
   OnChanges,
   OnDestroy,
@@ -48,6 +49,9 @@ import { Mode } from './type';
 export class NzxWangEditorDirective
   implements OnInit, ControlValueAccessor, OnDestroy, OnChanges, Validator
 {
+  private editorRef = inject(ElementRef);
+  private cd = inject(ChangeDetectorRef);
+
   @Input() mode: Mode = 'default';
   @Input() defaultContent: SlateDescendant[] = [];
   @Input() defaultHtml = '';
@@ -71,8 +75,6 @@ export class NzxWangEditorDirective
   currentValue = '';
 
   private propagateChange = (_: any) => {};
-
-  constructor(private editorRef: ElementRef, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.init();

@@ -6,9 +6,7 @@ import {
   EventEmitter,
   HostBinding,
   Input,
-  NgZone,
   OnDestroy,
-  OnInit,
   Output,
   inject,
 } from '@angular/core';
@@ -34,6 +32,9 @@ const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTimerButton';
   exportAs: 'NzxTimerButton',
 })
 export class NzxTimerButtonDirective implements AfterViewInit, OnDestroy {
+  private elementRef = inject(ElementRef);
+  private cd = inject(ChangeDetectorRef);
+
   @ExtensionWithConfig() @Input() duration: number = 3;
 
   @Output() isCompleted = new EventEmitter<boolean>(true);
@@ -48,8 +49,6 @@ export class NzxTimerButtonDirective implements AfterViewInit, OnDestroy {
 
   readonly _nzModuleName: NzxConfigKey = NZ_CONFIG_MODULE_NAME;
   private nzxConfigService: NzxConfigService = inject(NzxConfigService);
-
-  constructor(private elementRef: ElementRef, private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.isCompleted.emit(true);

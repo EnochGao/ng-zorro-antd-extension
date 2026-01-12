@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -28,6 +29,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxCheckboxGroupExampleComponent implements OnInit {
+  private fb = inject(FormBuilder);
+
   checkOptions: any[] = [
     { label: '客户信赖', value: 1 },
     { label: '技术评估', value: 2 },
@@ -46,8 +49,6 @@ export class NzxCheckboxGroupExampleComponent implements OnInit {
 
   @ViewChild('nzxCheckbox')
   nzxCheckboxRef!: NzxCheckboxGroupComponent;
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

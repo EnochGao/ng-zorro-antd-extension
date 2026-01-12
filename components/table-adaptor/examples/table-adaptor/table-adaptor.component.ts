@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-
+import { Component, ViewChild, inject } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -35,12 +34,14 @@ interface RandomUser {
     NzButtonModule,
     NzTableModule,
     NzxConfigurableQueryModule,
-    NzxTableAdaptorModule
-],
+    NzxTableAdaptorModule,
+  ],
   selector: 'nzx-table-adaptor-example',
   templateUrl: './table-adaptor.component.html',
 })
 export class NzxTableAdaptorExampleComponent {
+  private http = inject(HttpClient);
+
   controls: Array<NzxQueryControlOptions> = [
     {
       controlName: 'nat',
@@ -60,8 +61,6 @@ export class NzxTableAdaptorExampleComponent {
   total = 1;
 
   @ViewChild('adaptor') private adaptorRef!: NzxTableAdaptor;
-
-  constructor(private http: HttpClient) {}
 
   refresh(current: boolean = false) {
     this.adaptorRef.refresh(current);

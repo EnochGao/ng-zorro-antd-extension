@@ -2,36 +2,25 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit,
-  ViewChild,
+  inject,
 } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
-import { NzxTableFormComponent } from 'ng-zorro-antd-extension/table-form';
-import {
-  NzxLimitMessage,
-  NzxTableFormConfig,
-} from 'ng-zorro-antd-extension/table-form/type';
 import { CommonModule } from '@angular/common';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzxPipesModule } from 'ng-zorro-antd-extension/pipes';
-import { NzTableModule } from 'ng-zorro-antd/table';
-import { NzRateModule } from 'ng-zorro-antd/rate';
-import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
 import { NzxTableSelectModule } from 'ng-zorro-antd-extension/table-select';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 @Component({
   selector: 'nzx-table-select-demo',
@@ -54,6 +43,9 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
   ],
 })
 export class NzxTableSelectExampleComponent {
+  private cd = inject(ChangeDetectorRef);
+  private fb = inject(FormBuilder);
+
   settingForm: FormGroup;
   listOfSwitch = [{ name: 'Disable', formControlName: 'disabled' }];
   listOfRadio = [
@@ -95,7 +87,7 @@ export class NzxTableSelectExampleComponent {
     { id: 11, name: 'enochgao', age: 20, class: 2, stars: 1 },
   ];
 
-  constructor(private cd: ChangeDetectorRef, private fb: FormBuilder) {
+  constructor() {
     this.settingForm = this.fb.group({
       disabled: false,
 

@@ -1,14 +1,20 @@
-import { Directive, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+  inject,
+} from '@angular/core';
 import { NzxDFConfigService } from '../../config/dynamic-form-config';
 
 @Directive()
 export class NzxDFAbstractItemWrapper implements OnInit {
+  private nzxDFConfig = inject(NzxDFConfigService);
+
   @ViewChild('dfLabelWrapperTpl', { static: true, read: ViewContainerRef })
   private labelWrapperTemplateView!: ViewContainerRef;
   @ViewChild('dfControlWrapperTpl', { static: true, read: ViewContainerRef })
   private controlWrapperTemplateView!: ViewContainerRef;
-
-  constructor(private nzxDFConfig: NzxDFConfigService) {}
 
   ngOnInit(): void {
     this.renderLabel();

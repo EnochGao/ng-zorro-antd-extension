@@ -1,10 +1,10 @@
-import { Directive, Input, TemplateRef } from '@angular/core';
+import { Directive, Input, TemplateRef, inject } from '@angular/core';
 
 @Directive({
   selector: '[nzxTd]',
 })
 export class NzxTdDirective {
-  @Input() key?: any;
+  templateRef = inject<TemplateRef<any>>(TemplateRef);
 
-  constructor(public templateRef: TemplateRef<any>) {}
+  @Input() key?: any;
 }
