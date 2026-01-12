@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  inject,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -45,6 +46,10 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
   ],
 })
 export class NzxPageTableSelectExampleComponent {
+  private http = inject(HttpClient);
+  private cd = inject(ChangeDetectorRef);
+  private fb = inject(FormBuilder);
+
   settingForm: FormGroup;
   listOfSwitch = [{ name: 'Disable', formControlName: 'disabled' }];
   listOfRadio = [
@@ -86,11 +91,7 @@ export class NzxPageTableSelectExampleComponent {
     { label: 'photo', key: 'picture' },
   ];
 
-  constructor(
-    private http: HttpClient,
-    private cd: ChangeDetectorRef,
-    private fb: FormBuilder
-  ) {
+  constructor() {
     this.settingForm = this.fb.group({
       disabled: false,
 

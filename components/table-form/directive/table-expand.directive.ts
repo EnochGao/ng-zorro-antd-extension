@@ -1,10 +1,10 @@
-import { Directive, Input, TemplateRef } from '@angular/core';
+import { Directive, Input, TemplateRef, inject } from '@angular/core';
 
 @Directive({
   selector: '[nzxTableFormExpand]',
 })
 export class NzxTableFormExpandDirective {
-  @Input() controlName!: string;
+  templateRef = inject<TemplateRef<any>>(TemplateRef);
 
-  constructor(public templateRef: TemplateRef<any>) {}
+  @Input() controlName!: string;
 }

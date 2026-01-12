@@ -9,6 +9,7 @@ import {
   Input,
   Output,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
@@ -25,6 +26,8 @@ const L = l + r * 2 + 3; // 滑块实际边长
   imports: [CommonModule, NzIconModule],
 })
 export class NzxJigsawComponent implements AfterViewInit {
+  private cd = inject(ChangeDetectorRef);
+
   @Input() width = 310;
   @Input() height = 155;
   @Input() nzxLoadingText = '加载中...';
@@ -60,8 +63,6 @@ export class NzxJigsawComponent implements AfterViewInit {
   private originY: number = 0;
   private trail: any[] = [];
   private isMouseDown = false;
-
-  constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.initImg();

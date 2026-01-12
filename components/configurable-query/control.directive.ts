@@ -1,9 +1,10 @@
-import { Directive, Input, TemplateRef } from '@angular/core';
+import { Directive, Input, TemplateRef, inject } from '@angular/core';
 
 @Directive({
   selector: '[nzxControl]',
 })
 export class NzxControlDirective {
+  templateRef = inject<TemplateRef<unknown>>(TemplateRef);
+
   @Input() nzxControl!: string;
-  constructor(public templateRef: TemplateRef<unknown>) {}
 }

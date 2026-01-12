@@ -6,23 +6,23 @@ import {
   OnInit,
   ViewChild,
   ViewContainerRef,
+  inject,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { Subject, takeUntil } from 'rxjs';
 import { NzxQueryConfigService } from '../query-config.service';
 import { NzxQueryControlOptions, NzxQueryControlType } from '../type';
-import { NzFormModule } from 'ng-zorro-antd/form';
-
 
 @Component({
   selector: 'nzx-configurable-query-item',
   template: `
     <nz-form-item>
       @if (control.label) {
-        <nz-form-label [nzSpan]="control.nzxLSpan || 6">
-          {{ control.label }}
-        </nz-form-label>
+      <nz-form-label [nzSpan]="control.nzxLSpan || 6">
+        {{ control.label }}
+      </nz-form-label>
       }
       <nz-form-control
         [nzSpan]="control.nzxRSpan || 18"
@@ -30,15 +30,17 @@ import { NzFormModule } from 'ng-zorro-antd/form';
           control?.controlInstance ?? $any(form.get(control.controlName!))
         "
         [nzErrorTip]="control.errorTip"
-        >
+      >
         <ng-template #controlTemp></ng-template>
       </nz-form-control>
     </nz-form-item>
-    `,
+  `,
   imports: [NzFormModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
+  private nzxQueryConfigService = inject(NzxQueryConfigService);
+
   @Input() form!: FormGroup;
   @Input() control!: NzxQueryControlOptions;
 
@@ -46,8 +48,6 @@ export class NzxConfigurableQueryItemComponent implements OnInit, OnDestroy {
   private controlTemplateView!: ViewContainerRef;
 
   private destroy$ = new Subject<void>();
-
-  constructor(private nzxQueryConfigService: NzxQueryConfigService) {}
 
   ngOnInit(): void {
     this.nzxQueryConfigService.controlTypes$

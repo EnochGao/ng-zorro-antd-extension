@@ -1,8 +1,8 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef, inject } from '@angular/core';
 
 @Directive({
   selector: '[nzxExpandTr]',
 })
 export class NzxExpandDirective {
-  constructor(public templateRef: TemplateRef<unknown>) {}
+  templateRef = inject<TemplateRef<unknown>>(TemplateRef);
 }

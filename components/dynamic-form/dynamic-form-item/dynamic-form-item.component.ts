@@ -4,9 +4,9 @@ import {
   OnInit,
   ViewChild,
   ViewContainerRef,
+  inject,
 } from '@angular/core';
 import { NzxDFConfigService } from '../config/dynamic-form-config';
-
 
 @Component({
   imports: [],
@@ -16,10 +16,10 @@ import { NzxDFConfigService } from '../config/dynamic-form-config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormItemComponent implements OnInit {
+  private nzxDFConfig = inject(NzxDFConfigService);
+
   @ViewChild('dfItemTpl', { static: true, read: ViewContainerRef })
   private itemTemplateView!: ViewContainerRef;
-
-  constructor(private nzxDFConfig: NzxDFConfigService) {}
 
   ngOnInit(): void {
     this.renderItem();

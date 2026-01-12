@@ -6,6 +6,7 @@ import {
   OnInit,
   TemplateRef,
   ViewContainerRef,
+  inject,
 } from '@angular/core';
 
 import { NzxAclService } from './nzx-acl.service';
@@ -21,6 +22,11 @@ interface AclContext {
   exportAs: 'NzxAcl',
 })
 export class NzxAclDirective implements OnInit, OnDestroy {
+  private templateRef = inject<TemplateRef<AclContext>>(TemplateRef);
+  private viewContainerRef = inject(ViewContainerRef);
+  private nzxAclService = inject(NzxAclService);
+  private cd = inject(ChangeDetectorRef);
+
   @Input('nzxAcl') codes: string | string[] = '';
   @Input() nzxAclElse?: TemplateRef<any>;
 
@@ -28,13 +34,6 @@ export class NzxAclDirective implements OnInit, OnDestroy {
   dataAcl = true;
 
   private destroy$ = new Subject<void>();
-
-  constructor(
-    private templateRef: TemplateRef<AclContext>,
-    private viewContainerRef: ViewContainerRef,
-    private nzxAclService: NzxAclService,
-    private cd: ChangeDetectorRef
-  ) {}
 
   ngOnDestroy(): void {
     this.destroy$.next();

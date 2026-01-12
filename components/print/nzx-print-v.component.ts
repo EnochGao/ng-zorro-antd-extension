@@ -1,3 +1,5 @@
+import { Platform } from '@angular/cdk/platform';
+import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -10,8 +12,8 @@ import {
   Output,
   QueryList,
   ViewChild,
+  inject,
 } from '@angular/core';
-import { Platform } from '@angular/cdk/platform';
 import {
   CoreViewer,
   Navigation,
@@ -19,10 +21,9 @@ import {
   Payload,
   SingleDocumentOptions,
 } from '@vivliostyle/core';
-import { NzxPrintContentDirective } from './nzx-print-content.directive';
-import { CommonModule } from '@angular/common';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzxPrintContentDirective } from './nzx-print-content.directive';
 
 /**
  * Vivliostyle 打印
@@ -31,27 +32,30 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
   selector: 'nzx-print-v',
   template: `
     <ng-content select="[nzxPrintHeader]"></ng-content>
-    
+
     <div #vivView [ngStyle]="{ margin: '10px 0' }"></div>
-    
+
     @if (enablePreview) {
-      <div nz-row nzJustify="end">
-        <ng-template #totalTemplate let-total>共 {{ total }} 页</ng-template>
-        <nz-pagination
-          [nzPageIndex]="1"
-          [nzTotal]="pageTotal"
-          [nzPageSize]="1"
-          [nzSize]="'small'"
-          [nzShowTotal]="totalTemplate"
-          nzShowQuickJumper
-          (nzPageIndexChange)="onPageIndexChange($event)"
-        ></nz-pagination>
-      </div>
+    <div nz-row nzJustify="end">
+      <ng-template #totalTemplate let-total>共 {{ total }} 页</ng-template>
+      <nz-pagination
+        [nzPageIndex]="1"
+        [nzTotal]="pageTotal"
+        [nzPageSize]="1"
+        [nzSize]="'small'"
+        [nzShowTotal]="totalTemplate"
+        nzShowQuickJumper
+        (nzPageIndexChange)="onPageIndexChange($event)"
+      ></nz-pagination>
+    </div>
     }
-    `,
+  `,
   imports: [CommonModule, NzGridModule, NzPaginationModule],
 })
 export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
+  private platform = inject(Platform);
+  private cd = inject(ChangeDetectorRef);
+
   @Input() printTitle = 'pdf';
   /**
    * a4 794px1123px
@@ -73,8 +77,6 @@ export class NzxPrintVComponent implements OnDestroy, AfterViewInit {
   private _title = document.title;
   private iframeEl!: HTMLIFrameElement;
   private _isRenderComplete = false;
-
-  constructor(private platform: Platform, private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {

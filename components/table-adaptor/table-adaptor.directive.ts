@@ -10,20 +10,20 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Subject, takeUntil } from 'rxjs';
 import { format, isDate } from 'date-fns';
 import {
   NzTableComponent,
   NzTableDataService,
   NzTableQueryParams,
 } from 'ng-zorro-antd/table';
+import { Subject, takeUntil } from 'rxjs';
 
-import { trimObject } from 'ng-zorro-antd-extension/util';
 import {
   ExtensionWithConfig,
   NzxConfigKey,
   NzxConfigService,
 } from 'ng-zorro-antd-extension/core/config';
+import { trimObject } from 'ng-zorro-antd-extension/util';
 
 const NZ_CONFIG_MODULE_NAME: NzxConfigKey = 'nzxTableAdaptor';
 
@@ -38,6 +38,8 @@ const CACHE_KEY = 'NZX_TABLE_ADAPTOR';
   exportAs: 'NzxTableAdaptor',
 })
 export class NzxTableAdaptor implements OnInit, OnDestroy {
+  private router = inject(Router);
+
   readonly _nzModuleName: NzxConfigKey = NZ_CONFIG_MODULE_NAME;
 
   @Input() set queryParams(value: any) {
@@ -88,7 +90,7 @@ export class NzxTableAdaptor implements OnInit, OnDestroy {
   private nzTableDataService: NzTableDataService<any> =
     inject(NzTableDataService);
 
-  constructor(private router: Router) {
+  constructor() {
     // 服务端分页
     setTimeout(() => {
       this.nzTable.nzShowSizeChanger = true;

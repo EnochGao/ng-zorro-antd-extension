@@ -1,9 +1,9 @@
-
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
 } from '@angular/core';
 import {
@@ -12,7 +12,6 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
-import { NzxOptions } from 'ng-zorro-antd-extension/types';
 import { NzCheckboxModule, NzCheckboxOption } from 'ng-zorro-antd/checkbox';
 
 /**
@@ -42,6 +41,8 @@ import { NzCheckboxModule, NzCheckboxOption } from 'ng-zorro-antd/checkbox';
   ],
 })
 export class NzxCheckboxGroupComponent implements ControlValueAccessor {
+  private cd = inject(ChangeDetectorRef);
+
   @Input() checkOptions: Array<NzCheckboxOption> = [];
 
   /**
@@ -60,8 +61,6 @@ export class NzxCheckboxGroupComponent implements ControlValueAccessor {
   selectValue = [];
 
   private propagateChange = (_: any) => {};
-
-  constructor(private cd: ChangeDetectorRef) {}
 
   writeValue(v: (string | number)[] | any): void {
     console.log(v);

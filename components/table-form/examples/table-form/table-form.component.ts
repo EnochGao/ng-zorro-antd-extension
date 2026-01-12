@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
   ViewChild,
+  inject,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -15,19 +16,21 @@ import {
 } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
-import { NzxTableFormComponent } from 'ng-zorro-antd-extension/table-form';
+import { CommonModule } from '@angular/common';
+import { NzxPipesModule } from 'ng-zorro-antd-extension/pipes';
+import {
+  NzxTableFormComponent,
+  NzxTableFormModule,
+} from 'ng-zorro-antd-extension/table-form';
 import {
   NzxLimitMessage,
   NzxTableFormConfig,
 } from 'ng-zorro-antd-extension/table-form/type';
-import { CommonModule } from '@angular/common';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzxPipesModule } from 'ng-zorro-antd-extension/pipes';
-import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzRateModule } from 'ng-zorro-antd/rate';
-import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'nzx-table-form-demo',
@@ -48,6 +51,10 @@ import { NzxTableFormModule } from 'ng-zorro-antd-extension/table-form';
   ],
 })
 export class NzxTableFormExampleComponent implements OnInit {
+  private fb = inject(FormBuilder);
+  private logger = inject(NzMessageService);
+  private cd = inject(ChangeDetectorRef);
+
   form: FormGroup;
   form2: FormGroup;
 
@@ -152,11 +159,7 @@ export class NzxTableFormExampleComponent implements OnInit {
 
   @ViewChild('table') private table1!: NzxTableFormComponent;
 
-  constructor(
-    private fb: FormBuilder,
-    private logger: NzMessageService,
-    private cd: ChangeDetectorRef
-  ) {
+  constructor() {
     this.form = this.fb.group({
       students: [[], []],
     });

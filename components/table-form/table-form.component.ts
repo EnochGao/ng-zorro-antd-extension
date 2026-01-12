@@ -12,6 +12,7 @@ import {
   Output,
   QueryList,
   TemplateRef,
+  inject,
 } from '@angular/core';
 
 import {
@@ -84,6 +85,9 @@ export class NzxTableFormComponent
     Validator,
     OnDestroy
 {
+  private cd = inject(ChangeDetectorRef);
+  private fb = inject(FormBuilder);
+
   @Input() tableLayout: NzTableLayout = 'fixed';
   @Input() tableAlign: 'left' | 'right' | 'center' | null = 'center';
   /** table 启用扩展行 */
@@ -166,8 +170,6 @@ export class NzxTableFormComponent
 
   @ContentChild(NzxTableFormExpandDirective)
   tableExpandDirective!: NzxTableFormExpandDirective;
-
-  constructor(private cd: ChangeDetectorRef, private fb: FormBuilder) {}
 
   ngOnDestroy(): void {
     this.destroyed$.complete();
