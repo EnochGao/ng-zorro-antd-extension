@@ -20,12 +20,12 @@ import { NzFormModule } from 'ng-zorro-antd/form';
   template: `
     <nz-form-item>
       @if (control.label) {
-        <nz-form-label [nzSpan]="control.nzxLSpan || 6">
+        <nz-form-label [nzSpan]="control.nzxLSpan">
           {{ control.label }}
         </nz-form-label>
       }
       <nz-form-control
-        [nzSpan]="control.nzxRSpan || 18"
+        [nzSpan]="control.nzxRSpan"
         [nzValidateStatus]="
           control?.controlInstance ?? $any(form.get(control.controlName!))
         "

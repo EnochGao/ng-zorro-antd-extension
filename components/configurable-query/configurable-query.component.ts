@@ -347,6 +347,18 @@ export class NzxConfigurableQueryComponent
     config: NzxQueryControlOptions,
     defaultValueResettable = false
   ) {
+    const hasLSpan = config.nzxLSpan != null;
+    const hasRSpan = config.nzxRSpan != null;
+
+    if (hasLSpan && !hasRSpan) {
+      config.nzxRSpan = 24 - config.nzxLSpan!;
+    } else if (hasRSpan && !hasLSpan) {
+      config.nzxLSpan = 24 - config.nzxRSpan!;
+    } else if (!hasLSpan && !hasRSpan) {
+      config.nzxLSpan = 6;
+      config.nzxRSpan = 18;
+    }
+
     if (config.controlName) {
       if (!config?.templateRef) {
         const d = this.controlTemplateList.find(
