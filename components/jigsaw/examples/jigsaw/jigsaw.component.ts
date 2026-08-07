@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { NzxJigsawModule } from 'ng-zorro-antd-extension/jigsaw';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -6,6 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   imports: [NzxJigsawModule],
   selector: 'nzx-jigsaw-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <nzx-jigsaw
       (nzxOnFail)="fail()"

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -38,6 +38,7 @@ interface RandomUser {
     NzxTableAdaptorModule,
   ],
   selector: 'nzx-page-table-basic-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './page-table-basic.component.html',
 })
 export class NzxPageTableBasicExampleComponent extends NzxPageTableBase<RandomUser> {

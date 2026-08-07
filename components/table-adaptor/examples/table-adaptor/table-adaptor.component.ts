@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -37,6 +37,7 @@ interface RandomUser {
     NzxTableAdaptorModule,
   ],
   selector: 'nzx-table-adaptor-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './table-adaptor.component.html',
 })
 export class NzxTableAdaptorExampleComponent {

@@ -30,7 +30,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   selector: '[nzx-editable]',
   template: `
     <ng-container #detailContainer> </ng-container>
-    
+
     <ng-template #detailTemplate>
       {{ nzxContent }}
       @if (nzxShowBtn) {
@@ -44,11 +44,10 @@ import { NzInputModule } from 'ng-zorro-antd/input';
         </button>
       }
     </ng-template>
-    
+
     <ng-template #editTemplate>
       <textarea
         nz-input
-        [nzAutosize]="{ minRows: 1, maxRows: 4 }"
         [ngModel]="nzxContent"
         (ngModelChange)="valueChange($event)"
         (blur)="blur()"

@@ -14,6 +14,8 @@ import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 import { NZ_CONFIG, NzConfig } from 'ng-zorro-antd/core/config';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
+
 
 registerLocaleData(zh);
 
@@ -47,7 +49,7 @@ const customLanguagePack = {
     ...DOCGENI_SITE_PROVIDERS,
     { provide: NZ_I18N, useValue: customLanguagePack },
     { provide: NZ_CONFIG, useValue: ngZorroConfig },
-    { provide: NZX_CONFIG, useValue: ngZorroExtensionConfig },
+    { provide: NZX_CONFIG, useValue: ngZorroExtensionConfig }, provideNzDateFnsAdapter(),
   ],
   bootstrap: [RootComponent],
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -18,6 +18,7 @@ import { GoodEvaluatePdfVComponent } from './good-evaluate-pdf-v/good-evaluate-p
     NzxPrintModule
 ],
   selector: 'nzx-print-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div nz-row nzJustify="space-between" nzAlign="middle">
       <div nz-col>基于vivliostyle实现(支持分页，页眉页脚)</div>

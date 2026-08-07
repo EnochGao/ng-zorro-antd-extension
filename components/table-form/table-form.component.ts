@@ -13,6 +13,7 @@ import {
   QueryList,
   TemplateRef,
   inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -64,6 +65,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
     },
     { provide: NG_VALIDATORS, useExisting: NzxTableFormComponent, multi: true },
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     ReactiveFormsModule,

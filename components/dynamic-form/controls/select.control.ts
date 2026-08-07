@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NzxDFAbstractControl } from './abstract.control';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
@@ -6,6 +6,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @Component({
   imports: [ReactiveFormsModule, NzSelectModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng-container [formGroup]="form">
       <nz-select

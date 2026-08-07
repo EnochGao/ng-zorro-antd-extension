@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +19,6 @@ export const appConfig: ApplicationConfig = {
         ...zh_CN,
         ...nzx_zh_CN,
       },
-    },
+    }, provideNzDateFnsAdapter(),
   ],
 };

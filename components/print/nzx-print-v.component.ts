@@ -13,6 +13,7 @@ import {
   QueryList,
   ViewChild,
   inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   CoreViewer,
@@ -50,6 +51,7 @@ import { NzxPrintContentDirective } from './nzx-print-content.directive';
     </div>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [CommonModule, NzGridModule, NzPaginationModule],
 })
 export class NzxPrintVComponent implements OnDestroy, AfterViewInit {

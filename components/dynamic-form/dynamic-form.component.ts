@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { DynamicFormItemComponent } from './dynamic-form-item/dynamic-form-item.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -11,6 +11,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     DynamicFormItemComponent
 ],
   selector: 'nzx-dynamic-form',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <form nz-form [nzLayout]="'vertical'">
       <nz-form-item>

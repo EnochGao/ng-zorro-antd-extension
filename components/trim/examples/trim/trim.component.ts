@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -19,6 +19,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzxTrimModule,
   ],
   selector: 'nzx-trim-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <form [formGroup]="form">
       trim：

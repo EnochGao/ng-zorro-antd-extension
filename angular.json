@@ -115,12 +115,6 @@
             "styles": ["src/styles.less"],
             "scripts": []
           }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-          }
         }
       }
     },
@@ -168,12 +162,6 @@
             "main": "components/test.ts",
             "tsConfig": "components/tsconfig.spec.json",
             "karmaConfig": "components/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": ["components/**/*.ts", "components/**/*.html"]
           }
         }
       }
@@ -266,12 +254,6 @@
     }
   },
   "schematics": {
-    "@angular-eslint/schematics:application": {
-      "setParserOptionsProject": true
-    },
-    "@angular-eslint/schematics:library": {
-      "setParserOptionsProject": true
-    },
     "@schematics/angular:component": {
       "type": "component"
     },
@@ -298,7 +280,6 @@
     }
   },
   "cli": {
-    "analytics": false,
-    "schematicCollections": ["angular-eslint"]
+    "analytics": false
   }
 }

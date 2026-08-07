@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { NzxDFAbstractControlWrapper } from './abstract-control-wrapper';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -6,6 +6,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 @Component({
   imports: [NzFormModule],
   selector: 'nzx-built-in-control-wrapper',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <nz-form-control>
       <ng-template #dfControlTpl></ng-template>

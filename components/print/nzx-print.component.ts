@@ -10,6 +10,7 @@ import {
   Input,
   OnInit,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { getElementByTag } from 'ng-zorro-antd-extension/util';
 import { NzxPrintContentDirective } from './nzx-print-content.directive';
@@ -23,6 +24,7 @@ import { NzxPrintContentDirective } from './nzx-print-content.directive';
     <ng-content select="[nzxPrintHeader]"></ng-content>
     <div #iframeContainer></div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [],
 })
 export class NzxPrintComponent implements OnInit, AfterViewInit {

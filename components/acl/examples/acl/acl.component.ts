@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 
 
@@ -9,6 +9,7 @@ import { NzxAclModule, NzxAclService } from 'ng-zorro-antd-extension/acl';
 @Component({
   imports: [NzButtonModule, NzDividerModule, NzxAclModule],
   selector: 'nzx-acl-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <button nz-button nzType="default" (click)="loadPermissions()">
       load permissions

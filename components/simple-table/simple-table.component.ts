@@ -55,7 +55,7 @@ export interface NzxSimpleTableConfig<T> {
           @for (config of nzxConfig; track config) {
             <th
               [nzAlign]="nzxAlign"
-              [nzWidth]="config?.width!"
+              [nzWidth]="$safeNavigationMigration(config?.width)!"
               >
               {{ config.header }}
             </th>
@@ -63,7 +63,7 @@ export interface NzxSimpleTableConfig<T> {
           @for (item of thList; track item; let i = $index) {
             <th
               [nzAlign]="nzxAlign"
-              [nzWidth]="item?.width!"
+              [nzWidth]="$safeNavigationMigration(item?.width)!"
               >
               <ng-container
                 [ngTemplateOutlet]="item.templateRef"
@@ -118,7 +118,7 @@ export interface NzxSimpleTableConfig<T> {
           @if (nzxExpand) {
             <tr [nzExpand]="data['expand']!">
               <ng-container
-                [ngTemplateOutlet]="expandDirective?.templateRef!"
+                [ngTemplateOutlet]="$safeNavigationMigration(expandDirective?.templateRef)!"
                 [ngTemplateOutletContext]="{ $implicit: data, index: i }"
                 >
               </ng-container>

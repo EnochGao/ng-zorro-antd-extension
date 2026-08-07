@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NzxDFAbstractControl } from './abstract.control';
 import { CommonModule } from '@angular/common';
 
 @Component({
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng-container
       *ngTemplateOutlet="

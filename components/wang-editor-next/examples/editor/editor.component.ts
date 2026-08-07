@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzxWangEditorModule,
   ],
   selector: 'nzx-editor-example',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <form nz-form [formGroup]="form">
       <nz-form-item>
