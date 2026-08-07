@@ -3,121 +3,6 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "docs-site": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true,
-          "changeDetection": "OnPush"
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
-          "options": {
-            "outputPath": {
-              "base": "dist/docs-site"
-            },
-            "index": "src/index.html",
-            "polyfills": ["src/polyfills.ts"],
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "stylePreprocessorOptions": {
-              "includePaths": ["node_modules/", "."]
-            },
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
-                "output": "/assets/"
-              },
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": ["src/styles.scss"],
-            "scripts": [],
-            "allowedCommonJsDependencies": ["docsearch.js"],
-            "browser": "src/main.ts"
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all",
-              "baseHref": "docs-site"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "docs-site:build:production"
-            },
-            "development": {
-              "open": true,
-              "buildTarget": "docs-site:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n",
-          "options": {
-            "buildTarget": "docs-site:build"
-          }
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "less",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.less"],
-            "scripts": []
-          }
-        }
-      }
-    },
     "ng-zorro-antd-extension": {
       "projectType": "library",
       "root": "components",
@@ -190,6 +75,32 @@
               {
                 "glob": "**/*",
                 "input": "projects/ui/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "components",
+                "output": "site-src/components",
+                "ignore": ["**/*.ts", "**/*.html", "**/examples/**", "**/*.less", "**/*.scss"]
+              },
+              {
+                "glob": "**/examples/**/*.ts",
+                "input": "components",
+                "output": "site-src/components"
+              },
+              {
+                "glob": "**/examples/**/*.html",
+                "input": "components",
+                "output": "site-src/components"
+              },
+              {
+                "glob": "**/doc/**/*",
+                "input": "components",
+                "output": "site-src/components"
+              },
+              {
+                "glob": "**/*",
+                "input": "docs",
+                "output": "site-src/docs"
               }
             ],
             "styles": ["projects/ui/src/styles.less"],
