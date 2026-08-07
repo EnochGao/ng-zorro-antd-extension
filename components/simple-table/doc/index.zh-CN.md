@@ -1,17 +1,20 @@
 ---
-category: component
-title: 简单表格
+category: Components
+type: 组件
+title: Simple Table
 subtitle: nzx-simple-table
+cover: ''
+description: 通过配置项快速生成表格，支持自定义 template，适用于数据展示场景，不支持服务端分页。
 order: 2
 ---
 
 简单 table 通过配置项快速生成一个 table，支持自定义 template，初衷只是为了数据展示方便，不支持服务端分页
 
-## 版本支持
+## 支持版本
 
 <label type="success">v13.0.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

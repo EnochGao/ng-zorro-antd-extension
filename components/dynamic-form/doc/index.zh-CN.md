@@ -1,7 +1,10 @@
 ---
-category: component
-title: 动态表单
+category: Components
+type: 组件
+title: Dynamic Form
 subtitle: nzx-dynamic-form
+cover: ''
+description: 通过配置项快速实现动态表单。
 order: 10
 ---
 
@@ -9,13 +12,13 @@ order: 10
 
 动态表单通过配置项快速实现表单
 
-## 版本支持
+## 支持版本
 
 <label type="success">v17.5.0+ </label>
 <label type="success">v18.2.0+ </label>
 <label type="success">v19.1.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

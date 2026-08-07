@@ -1,17 +1,20 @@
 ---
-category: component
-title: 查询组件
+category: Components
+type: 组件
+title: Configurable Query
 subtitle: nzx-configurable-query
+cover: ''
+description: 通过配置项生成查询表单控件，支持自定义拓展查询控件，并可通过 NzxQueryConfigService 进行全局配置。
 order: 3
 ---
 
 通过配置项生成一个查询表单控件，支持自定义拓展查询控件，使用NzxQueryConfigService支持全局配置查询控件
 
-## 版本支持
+## 支持版本
 
 <label type="success">v14.0.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

@@ -1,7 +1,10 @@
 ---
-category: util
-title: 工具函数
+category: Components
+type: 工具函数
+title: Util
 subtitle: util
+cover: ''
+description: 常用工具函数，帮助减少项目包体积，具体用法查看方法注释。
 order: 1
 label: new
 ---
@@ -26,11 +29,11 @@ label: new
 | scrollToFirstInvalidControl | 页面滚动到第一个校验失败的表单控件，一般与 updateControlStatus 一起使用  | <label type="success">v17.4+</label>   |
 | getElementByTag             | 获取当前 document 下所有指定标签                                         | <label type="success">v17.4+</label>   |
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.4.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

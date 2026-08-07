@@ -1,17 +1,20 @@
 ---
-category: component
-title: 空表单控件
+category: Components
+type: 组件
+title: Blank Field
 subtitle: nzx-blank-filed
+cover: ''
+description: 空表单控件，方便在 Angular 表单中自定义显示内容。
 order: 5
 ---
 
 空表单控件，方便 angular 表单中自定义显示
 
-## 版本支持
+## 支持版本
 
 <label type="success">v13.3.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

@@ -1,17 +1,20 @@
 ---
-category: directive
-title: 倒计时button
+category: Components
+type: 指令
+title: Timer Button
 subtitle: nzx-timer-button
+cover: ''
+description: 倒计时按钮指令，只能作用于 button 元素，一般用于获取验证码，支持全局配置。
 order: 4
 ---
 
 nzxTimerButton：倒计时 button，只能作用到 button 元素上，一般用来获取验证码。支持全局配置
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.6.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

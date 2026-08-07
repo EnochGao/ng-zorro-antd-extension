@@ -1,7 +1,10 @@
 ---
-category: component
-title: 打印
+category: Components
+type: 组件
+title: Print
 subtitle: nzx-print
+cover: ''
+description: 前端打印组件，基于 vivliostyle 与 paged.js 实现分页打印，并提供普通按钮打印能力。
 order: 9
 label: new
 ---
@@ -16,13 +19,13 @@ label: new
 
 在使用`nzx-print`时，推荐将`nzxPrintContent`包含的内容做成 dump 组件，只用来做纯展示，不包含业务逻辑。当 dump 组件的数据需要通过异步调用接口时，要使用`nzx-print`的`refresh`方法重新渲染。
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.13.0+</label>
 
 <label type="success">v15.14.0+</label>(开始含有 nzx-print-v)
 
-## 使用
+## 何时使用
 
 ### 引入
 

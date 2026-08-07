@@ -1,17 +1,20 @@
 ---
-category: directive
-title: 去空格
+category: Components
+type: 指令
+title: Trim
 subtitle: nzx-trim
+cover: ''
+description: 去空格指令，用来自动去除表单输入框中的前后空格。
 order: 1
 ---
 
 去空格指令，用来自动去除表单输入框中的前后空格
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.2.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

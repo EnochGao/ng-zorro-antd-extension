@@ -1,17 +1,20 @@
 ---
-category: directive
-title: 查询连接器
+category: Components
+type: 指令
+title: Table Adaptor
 subtitle: nzx-table-adaptor
+cover: ''
+description: 用来链接 nz-table 与查询组件，方便进行分页查询。
 order: 2
 ---
 
 用来链接 nz-table 和查询组件，方便进行分页查询
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.2.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

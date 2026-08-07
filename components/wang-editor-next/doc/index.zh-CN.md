@@ -1,7 +1,10 @@
 ---
-category: directive
-title: 富文本编辑器
+category: Components
+type: 指令
+title: Wang Editor Next
 subtitle: nzx-wang-editor-next
+cover: ''
+description: 基于 @wangeditor-next/editor 封装的富文本编辑器（wangEditor 停更后的替代方案）。
 order: 1
 ---
 

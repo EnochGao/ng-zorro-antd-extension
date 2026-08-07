@@ -1,17 +1,20 @@
 ---
-category: component
-title: 七巧板
+category: Components
+type: 组件
+title: Jigsaw
 subtitle: nzx-jigsaw
+cover: ''
+description: 纯前端实现的七巧板拼图滑块验证组件。
 order: 7
 ---
 
 纯前端实现七巧板拼图
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.9.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

@@ -1,7 +1,10 @@
 ---
-category: component
-title: 多选框
+category: Components
+type: 组件
+title: Checkbox
 subtitle: nzx-checkbox-group
+cover: ''
+description: 自定义选择框，选择时传出的值为数组形式，并提供自定义函数转换出入参格式。
 order: 1
 ---
 
@@ -11,11 +14,11 @@ order: 1
 
 **注意(v19+):zorro19版本增加了`nzOptions`属性，解决了checkbox group使用不便的情况，请酌情使用此组件，现与zorro的不同之处仅仅是自定义函数转换出入参**
 
-## 版本支持
+## 支持版本
 
 <label type="success">v13.0.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

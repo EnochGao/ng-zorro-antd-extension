@@ -1,17 +1,20 @@
 ---
-category: directive
-title: 访问控制
+category: Components
+type: 指令
+title: ACL
 subtitle: nzx-acl
+cover: ''
+description: 简单实现前端访问控制。
 order: 5
 ---
 
 简单实现访问控制
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.9.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 

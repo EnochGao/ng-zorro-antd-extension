@@ -1,17 +1,20 @@
 ---
-category: directive
-title: 富文本编辑器
+category: Components
+type: 指令
+title: Wang Editor
 subtitle: nzx-wang-editor
+cover: ''
+description: 基于 wangEditor 5 封装的富文本编辑器，易于在 Angular 中使用。
 order: 1
 ---
 
 富文本编辑器，易于在 angular 中使用基于[wangEditor 5](https://www.npmjs.com/package/@wangeditor/editor)的包装组件。详情查看[文档](https://www.wangeditor.com/)
 
-## 版本支持
+## 支持版本
 
 <label type="success">v15.3.1+</label>
 
-## 使用
+## 何时使用
 
 1. 安装`@wangeditor/editor`
 

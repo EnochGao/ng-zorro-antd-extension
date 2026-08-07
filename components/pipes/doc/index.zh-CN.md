@@ -1,14 +1,17 @@
 ---
-category: pipe
-title: 管道
+category: Components
+type: 管道
+title: Pipes
 subtitle: pipes
+cover: ''
+description: 提供映射、缺省值等常用管道，支持通过 nzxConfig 全局配置。
 order: 2
 ---
 
 - 映射管道(nzxMap)，可以转换数据格式，可将数组展开拼接
 - 缺省管道(nzxSafeNull)，属性值为`null`、`undefined`、`''`时展示默认占位符，支持通过 nzxConfig 全局配置
 
-## 版本支持
+## 支持版本
 
 | pipe               | version support                         |
 | ------------------ | --------------------------------------- |
@@ -20,7 +23,7 @@ order: 2
 | nzxSafeStyle       | <label type="success">v15.10.0+</label> |
 | nzxSafeUrl         | <label type="success">v15.10.0+</label> |
 
-## 使用
+## 何时使用
 
 ### 引入
 

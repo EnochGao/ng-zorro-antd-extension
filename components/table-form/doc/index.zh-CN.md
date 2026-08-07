@@ -1,7 +1,10 @@
 ---
-category: component
-title: 表格表单
+category: Components
+type: 组件
+title: Table Form
 subtitle: nzx-table-form
+cover: ''
+description: 表格表单，整个 table 作为一个表单控件，适用于填写的表单为 list 集合的场景。
 order: 4
 ---
 
@@ -11,11 +14,11 @@ order: 4
 
 具体使用详情查看右侧示例。
 
-## 版本支持
+## 支持版本
 
 <label type="success">v14.0.0+</label>
 
-## 使用
+## 何时使用
 
 ### 引入
 
