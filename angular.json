@@ -78,6 +78,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*",
                 "input": "components",
                 "output": "site-src/components",
                 "ignore": ["**/*.ts", "**/*.html", "**/examples/**", "**/*.less", "**/*.scss"]

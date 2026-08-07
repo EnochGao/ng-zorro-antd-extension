@@ -48,7 +48,7 @@ import { HighlightService } from '../highlight.service';
       pre {
         margin: 0;
         padding: 12px 16px;
-        background: #fafafa;
+        background: #2d2d2d;
         overflow: auto;
       }
       code {
@@ -83,7 +83,7 @@ export class ExampleComponent implements OnChanges {
       lang,
       html: this.highlight.highlight(
         code,
-        lang === 'HTML' ? 'xml' : 'typescript'
+        lang === 'HTML' ? 'markup' : 'typescript'
       ),
     }));
     this.sources.set(highlighted);

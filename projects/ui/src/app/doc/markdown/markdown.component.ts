@@ -36,11 +36,19 @@ import marked from './index';
         line-height: 1.8;
       }
       .doc-markdown ::ng-deep pre {
-        background: #fafafa;
-        border: 1px solid #f0f0f0;
+        margin: 16px 0;
+        background: #2d2d2d;
+        border: 1px solid #2d2d2d;
         border-radius: 6px;
         padding: 16px;
         overflow: auto;
+      }
+      .doc-markdown ::ng-deep pre code {
+        font-family: 'SFMono-Regular', Consolas, monospace;
+        font-size: 13px;
+        color: #ccc;
+        background: transparent;
+        text-shadow: none;
       }
       .doc-markdown ::ng-deep code {
         font-family: 'SFMono-Regular', Consolas, monospace;
