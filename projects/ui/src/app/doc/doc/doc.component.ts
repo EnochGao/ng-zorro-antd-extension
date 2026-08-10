@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -16,7 +15,6 @@ import { MarkdownRenderComponent } from '../markdown/markdown.component';
 import { ExampleComponent } from '../example/example.component';
 import { NavItem } from '../nav.service';
 import { LocaleService } from '../locale.service';
-import { ApiExtractorService } from '../api-extractor.service';
 import { ApiDocsService } from '../api-docs.service';
 
 interface TocItem {
@@ -43,16 +41,16 @@ interface TocItem {
           <p>文档加载中…</p>
         }
 
-        @if (apiMarkdown(); as amd) {
-          <app-markdown [data]="amd" (ready)="onMarkdownReady()"></app-markdown>
-        }
-
         @if (item.examples && item.examples.length > 0) {
           <h2 id="examples">代码示例</h2>
           @for (ex of item.examples; track ex) {
             <h3 [id]="ex" class="example-anchor"></h3>
             <app-example [name]="ex" [title]="item.title"></app-example>
           }
+        }
+
+        @if (apiMarkdown(); as amd) {
+          <app-markdown [data]="amd" (ready)="onMarkdownReady()"></app-markdown>
         }
       </article>
 
@@ -144,7 +142,6 @@ export class DocComponent implements OnChanges {
 
   private readonly http = inject(HttpClient);
   private readonly localeSvc = inject(LocaleService);
-  private readonly apiExtractor = inject(ApiExtractorService);
   private readonly apiDocs = inject(ApiDocsService);
   readonly markdown = signal('');
   readonly apiMarkdown = signal('');

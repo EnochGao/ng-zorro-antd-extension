@@ -64,11 +64,58 @@ import marked from './index';
       .doc-markdown ::ng-deep table {
         border-collapse: collapse;
         width: 100%;
+        margin: 16px 0;
+        font-size: 14px;
       }
       .doc-markdown ::ng-deep th,
       .doc-markdown ::ng-deep td {
         border: 1px solid #f0f0f0;
         padding: 8px 12px;
+      }
+      .doc-markdown ::ng-deep th {
+        background: #fafafa;
+        font-weight: 600;
+        text-align: left;
+        white-space: nowrap;
+      }
+      /* API 表格内的行内代码（参数名 / 类型 / 默认值）等宽高亮，与官方一致 */
+      .doc-markdown ::ng-deep td code {
+        margin: 0;
+        padding: 2px 6px;
+        font-size: 13px;
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        color: #c41d7f;
+        background: #f2f4f5;
+        border-radius: 3px;
+      }
+      /* API 子标题的类型标签，对齐官方 component/directive/service 彩色标签 */
+      .doc-markdown ::ng-deep .api-type-label {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 0 8px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        border-radius: 3px;
+        vertical-align: middle;
+      }
+      .doc-markdown ::ng-deep .api-type-label.component {
+        color: #fff;
+        background: #1890ff;
+      }
+      .doc-markdown ::ng-deep .api-type-label.directive {
+        color: #fff;
+        background: #13c2c2;
+      }
+      .doc-markdown ::ng-deep .api-type-label.service,
+      .doc-markdown ::ng-deep .api-type-label.pipe,
+      .doc-markdown ::ng-deep .api-type-label.class {
+        color: #fff;
+        background: #722ed1;
+      }
+      .doc-markdown ::ng-deep .api-type-label.interface {
+        color: #fff;
+        background: #52c41a;
       }
       .doc-markdown ::ng-deep iframe {
         width: 100%;

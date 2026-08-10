@@ -15,7 +15,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropdownModule } from 'ng-zorro-antd/dropdown';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTooltipModule } from 'ng-zorro-antd/tooltip';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NavService, NavGroup, NavItem } from '../nav.service';
@@ -38,7 +37,6 @@ import { LocaleService } from '../locale.service';
     NzDropdownModule,
     NzButtonModule,
     NzInputModule,
-    NzSelectModule,
     NzTooltipModule,
     NzTagModule,
     FormsModule,
@@ -93,16 +91,6 @@ import { LocaleService } from '../locale.service';
           </nz-input-group>
         </div>
         <div class="header-right">
-          <nz-select
-            class="version-select"
-            [nzPlaceHolder]="'版本'"
-            [ngModel]="currentVersion()"
-            (ngModelChange)="onVersionChange($event)"
-          >
-            @for (opt of versionOptions(); track opt.value) {
-              <nz-option [nzValue]="opt.value" [nzLabel]="opt.label"></nz-option>
-            }
-          </nz-select>
           <div
             class="lang-switch"
             (click)="toggleLocale()"
@@ -274,9 +262,6 @@ import { LocaleService } from '../locale.service';
         margin-left: auto;
         flex-shrink: 0;
       }
-      .version-select {
-        width: 90px;
-      }
       .lang-switch {
         position: relative;
         width: 1.2em;
@@ -417,12 +402,6 @@ export class LayoutComponent implements OnInit {
 
   navigate(url: string): void {
     this.router.navigateByUrl(url);
-  }
-
-  onVersionChange(version: string): void {
-    if (version) {
-      this.navigate('/changelog/' + version);
-    }
   }
 
   isActive(url: string): boolean {

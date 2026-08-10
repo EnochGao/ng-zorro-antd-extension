@@ -109,6 +109,11 @@
                 "output": "site-src/components"
               },
               {
+                "glob": "**/api/**/*.js",
+                "input": "components",
+                "output": "site-src/components"
+              },
+              {
                 "glob": "**/*",
                 "input": "docs",
                 "output": "site-src/docs"
