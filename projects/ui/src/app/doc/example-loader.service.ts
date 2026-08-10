@@ -22,10 +22,11 @@ type ExampleEntry = {
 };
 
 function resolveComponent(module: Record<string, unknown>): Type<unknown> {
+  // 用 Angular 注入到组件类上的 ɵcmp 静态属性识别组件类型，
+  // 避免生产构建对类名做 minify 后基于名字正则匹配失败。
   const found = Object.values(module).find(
     (v): v is Type<unknown> =>
-      typeof v === 'function' &&
-      /^Nzx.*ExampleComponent$/.test((v as { name: string }).name)
+      typeof v === 'function' && !!(v as { ɵcmp?: unknown }).ɵcmp
   );
   if (!found) {
     throw new Error('示例模块中未找到 ExampleComponent');

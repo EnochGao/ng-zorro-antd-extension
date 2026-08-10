@@ -61,6 +61,7 @@
     "@angular/compiler-cli": "^22.1.0",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@stackblitz/sdk": "^1.11.1",
     "@types/jasmine": "~4.0.0",
     "@types/prismjs": "^1.26.6",
     "copyfiles": "^2.4.1",

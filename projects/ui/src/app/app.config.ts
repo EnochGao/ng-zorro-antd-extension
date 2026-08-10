@@ -12,6 +12,8 @@ import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { nzx_zh_CN } from 'ng-zorro-antd-extension/i18n';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideNzDateFnsAdapter } from 'ng-zorro-antd/core/time';
+import { provideNzIcons } from 'ng-zorro-antd/icon';
+import * as AllIcons from '@ant-design/icons-angular/icons';
 
 // 文档站 markdown 渲染配置（prismjs 高亮 + 自定义 renderer）封装在 doc/markdown/index 中，
 // 这里导入以确保全局 marked 单例与组件内渲染行为一致（对标 NG-ZORRO scripts/site/markdown）。
@@ -30,5 +32,6 @@ export const appConfig: ApplicationConfig = {
       },
     },
     provideNzDateFnsAdapter(),
+    provideNzIcons(Object.values(AllIcons)),
   ],
 };

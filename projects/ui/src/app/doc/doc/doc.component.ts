@@ -16,6 +16,8 @@ import { MarkdownRenderComponent } from '../markdown/markdown.component';
 import { ExampleComponent } from '../example/example.component';
 import { NavItem } from '../nav.service';
 import { LocaleService } from '../locale.service';
+import { ApiExtractorService } from '../api-extractor.service';
+import { ApiDocsService } from '../api-docs.service';
 
 interface TocItem {
   id: string;
@@ -41,11 +43,15 @@ interface TocItem {
           <p>文档加载中…</p>
         }
 
+        @if (apiMarkdown(); as amd) {
+          <app-markdown [data]="amd" (ready)="onMarkdownReady()"></app-markdown>
+        }
+
         @if (item.examples && item.examples.length > 0) {
           <h2 id="examples">代码示例</h2>
           @for (ex of item.examples; track ex) {
-            <h3 [id]="ex">{{ ex }}</h3>
-            <app-example [name]="ex"></app-example>
+            <h3 [id]="ex" class="example-anchor"></h3>
+            <app-example [name]="ex" [title]="item.title"></app-example>
           }
         }
       </article>
@@ -121,6 +127,14 @@ interface TocItem {
           display: none;
         }
       }
+      /* 示例锚点：仅占位用于 TOC/链接，不显示文字 */
+      .example-anchor {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+      }
     `,
   ],
 })
@@ -130,7 +144,10 @@ export class DocComponent implements OnChanges {
 
   private readonly http = inject(HttpClient);
   private readonly localeSvc = inject(LocaleService);
+  private readonly apiExtractor = inject(ApiExtractorService);
+  private readonly apiDocs = inject(ApiDocsService);
   readonly markdown = signal('');
+  readonly apiMarkdown = signal('');
   readonly toc = signal<TocItem[]>([]);
 
   async ngOnChanges(): Promise<void> {
@@ -144,6 +161,7 @@ export class DocComponent implements OnChanges {
       `site-src/components/${lib}/doc/index.${localeFile}.md`,
       `site-src/components/${lib}/doc/index.zh-CN.md`,
     ];
+    let docLoaded = false;
     for (const url of candidates) {
       try {
         const text = await firstValueFrom(
@@ -151,13 +169,19 @@ export class DocComponent implements OnChanges {
         );
         if (text != null) {
           this.markdown.set(text);
-          return;
+          docLoaded = true;
+          break;
         }
       } catch {
         // 尝试下一个候选
       }
     }
-    this.markdown.set(`# ${this.item.title}\n\n文档缺失：${lib}`);
+    if (!docLoaded) {
+      this.markdown.set(`# ${this.item.title}\n\n文档缺失：${lib}`);
+    }
+    // 与官方一致：API 部分优先读取预生成的 api-docs JSON，回退到运行时源码提取
+    const api = this.item.api ? await this.apiDocs.render(lib, locale) : '';
+    this.apiMarkdown.set(api);
   }
 
   /** markdown 渲染完成后，给标题注入 id 并生成 TOC */

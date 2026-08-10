@@ -88,9 +88,15 @@
                 "ignore": ["**/*.ts", "**/*.html", "**/examples/**", "**/*.less", "**/*.scss"]
               },
               {
-                "glob": "**/examples/**/*.ts",
+                "glob": "**/public-api.ts",
                 "input": "components",
                 "output": "site-src/components"
+              },
+              {
+                "glob": "**/*.ts",
+                "input": "components",
+                "output": "site-src/components",
+                "ignore": ["**/examples/**", "**/test.ts", "**/*.spec.ts", "**/karma.conf.js"]
               },
               {
                 "glob": "**/examples/**/*.html",
